@@ -4,7 +4,7 @@
 \alias{Triangle}
 \title{R6 class representing a triangle}
 \description{
-A triangle has three vertices.
+A triangle has three vertices. They are named A, B, C.
 }
 \examples{
 
@@ -72,7 +72,7 @@ Triangle$new(c(0,0), c(1,0), c(1,1))
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
-Create a new triangle object.
+Create a new \code{Triangle} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$new(A, B, C)}\if{html}{\out{</div>}}
 }

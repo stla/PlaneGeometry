@@ -1,8 +1,6 @@
-#' @title
-#' R6 class representing a triangle
+#' @title R6 class representing a triangle
 #'
-#' @description
-#' A triangle has three vertices.
+#' @description A triangle has three vertices. They are named A, B, C.
 #'
 #' @export
 #' @importFrom R6 R6Class
@@ -65,7 +63,7 @@ Triangle <- R6Class(
 
   public = list(
     #' @description
-    #' Create a new triangle object.
+    #' Create a new \code{Triangle} object.
     #' @param A,B,C vertices
     #' @return A new \code{Triangle} object.
     #' @examples t <- Triangle$new(c(0,0), c(1,0), c(1,1))
