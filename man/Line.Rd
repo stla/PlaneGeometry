@@ -45,6 +45,7 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \itemize{
 \item \href{#method-new}{\code{Line$new()}}
 \item \href{#method-print}{\code{Line$print()}}
+\item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
 \item \href{#method-clone}{\code{Line$clone()}}
 }
 }
@@ -102,6 +103,15 @@ Show instance of a line object
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-directionAndOffset"></a>}}
+\subsection{Method \code{directionAndOffset()}}{
+Direction (angle between 0 and 2pi) and offset of the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$directionAndOffset()}\if{html}{\out{</div>}}
 }
 
 }

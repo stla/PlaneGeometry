@@ -125,11 +125,64 @@ Line <- R6Class(
     #' @param ... ignored
     #' @examples Line$new(c(0,0), c(1,0), FALSE, TRUE)
     print = function(...) {
-      cat("    Line:\n")
+      extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
+      cat("Line:\n")
       cat("       A: ", toString(private[[".A"]]), "\n", sep = "")
       cat("       B: ", toString(private[[".B"]]), "\n", sep = "")
-      cat(" extendA: ", toString(private[[".extendA"]]), "\n", sep = "")
-      cat(" extendB: ", toString(private[[".extendB"]]), "\n", sep = "")
+      cat(" extendA: ", toString(extendA), "\n", sep = "")
+      cat(" extendB: ", toString(extendB), "\n", sep = "")
+      if(extendA && extendB){
+        cat("Infinite line passing through A and B.\n")
+      }else if(extendA){
+        cat("Half-line with origin B and passing through A.\n")
+      }else if(extendB){
+        cat("Half-line with origin A and passing through B.\n")
+      }else{
+        cat("Segment joining A and B.\n")
+      }
+    },
+
+    #' @description Direction (angle between 0 and 2pi) and offset of the line.
+    directionAndOffset = function(){
+      A <- private[[".A"]]; B <- private[[".B"]]
+      if(A[1L] == B[1L]){
+        if(A[1L] > 0){
+          list(direction = 0, offset = A[1L])
+        }else{
+          list(direction = pi, offset = -A[1L])
+        }
+      }else{
+        x <- B[1L] - A[1L]
+        y <- B[2L] - A[2L]
+        # sgn <- sign(x)*sign(y)
+        intercept <-
+          retistruct::line.line.intersection(A, B, c(0,0), c(0,1))[2L]
+        theta <- -atan2(x, y) # if(y >= 0) atan2(y, x) else atan(y, x)
+        offset <- A[1]*cos(theta)+A[2]*sin(theta)
+        if(offset < 0){
+          theta <- theta + pi
+          offset <- -offset
+        }
+        # theta <- if(sgn >= 0){
+        #   if(x < 0){
+        #     atan2(y, x)
+        #   }else{
+        #     atan2(y, -x)
+        #   }
+        # }else{
+        #   if(x < 0){
+        #     atan2(y, -x)
+        #   }else{
+        #     atan2(y, x)
+        #   }
+        # }
+        # if(intercept > 0){
+        #   theta <- theta + pi
+        # }else{
+        #   theta <- theta + 2*pi
+        # }
+        list(direction = theta %% (2*pi), offset = offset)
+      }
     }
   )
 )
