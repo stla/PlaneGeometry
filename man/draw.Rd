@@ -26,13 +26,17 @@ general graphical parameters for a \code{Line} object}
 Draw a geometric object on the current plot.
 }
 \examples{
+# open new plot window
+plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+     xlab = NA, ylab = NA)
+grid()
 # draw a triangle
 t <- Triangle$new(c(0,0), c(1,0), c(0.5,sqrt(3)/2))
-plot(0, 0, type="n", asp = 1, xlim = c(0,2), ylim = c(0,2),
-     xlab = NA, ylab = NA)
 draw(t, col = "blue", lwd = 2)
 draw(t$rotate(90, t$C), col = "green", lwd = 2)
 # draw a line
 l <- Line$new(c(1,1), c(1.5,1.5), FALSE, TRUE)
 draw(l, col = "red", lwd = 2)
+perp <- l$perpendicular(c(2,1))
+draw(perp, col = "yellow", lwd = 2)
 }

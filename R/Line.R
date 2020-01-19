@@ -142,7 +142,12 @@ Line <- R6Class(
       }
     },
 
-    #' @description Direction (angle between 0 and 2pi) and offset of the line.
+    #' @description Direction (angle between 0 and 2pi)
+    #' and offset (positive number) of the line.
+    #' @details The equation of the line is
+    #' \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
+    #' where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
+    #' and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
     directionAndOffset = function(){
       A <- private[[".A"]]; B <- private[[".B"]]
       if(A[1L] == B[1L]){
@@ -155,8 +160,8 @@ Line <- R6Class(
         x <- B[1L] - A[1L]
         y <- B[2L] - A[2L]
         # sgn <- sign(x)*sign(y)
-        intercept <-
-          retistruct::line.line.intersection(A, B, c(0,0), c(0,1))[2L]
+        # intercept <-
+        #   retistruct::line.line.intersection(A, B, c(0,0), c(0,1))[2L]
         theta <- -atan2(x, y) # if(y >= 0) atan2(y, x) else atan(y, x)
         offset <- A[1]*cos(theta)+A[2]*sin(theta)
         if(offset < 0){
@@ -183,6 +188,23 @@ Line <- R6Class(
         # }
         list(direction = theta %% (2*pi), offset = offset)
       }
+    },
+
+    #' @description Perpendicular line passing through a given point.
+    #' @param M the point through which the perpendicular passes.
+    #' @param extendH logical, whether to extend the perpendicular line
+    #' beyond the meeting point
+    #' @param extendM logical, whether to extend the perpendicular line
+    #' beyond the point \code{M}
+    #' @return A \code{Line} object; its two points are the
+    #' meeting point and the point \code{M}.
+    perpendicular = function(M, extendH = FALSE, extendM = TRUE) {
+      A <- private[[".A"]]; B <- private[[".B"]]
+      A_B <- B - A
+      v <- c(-A_B[2L], A_B[1L])
+      H <- retistruct::line.line.intersection(A, B, M, M+v)
+      Line$new(H, M, extendH, extendM)
     }
+
   )
 )

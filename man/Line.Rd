@@ -46,6 +46,7 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \item \href{#method-new}{\code{Line$new()}}
 \item \href{#method-print}{\code{Line$print()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
+\item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-clone}{\code{Line$clone()}}
 }
 }
@@ -109,11 +110,45 @@ Show instance of a line object
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-directionAndOffset"></a>}}
 \subsection{Method \code{directionAndOffset()}}{
-Direction (angle between 0 and 2pi) and offset of the line.
+Direction (angle between 0 and 2pi)
+and offset (positive number) of the line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$directionAndOffset()}\if{html}{\out{</div>}}
 }
 
+\subsection{Details}{
+The equation of the line is
+\ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
+where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
+and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-perpendicular"></a>}}
+\subsection{Method \code{perpendicular()}}{
+Perpendicular line passing through a given point.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$perpendicular(M, extendH = FALSE, extendM = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{the point through which the perpendicular passes.}
+
+\item{\code{extendH}}{logical, whether to extend the perpendicular line
+beyond the meeting point}
+
+\item{\code{extendM}}{logical, whether to extend the perpendicular line
+beyond the point \code{M}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object; its two points are the
+meeting point and the point \code{M}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
