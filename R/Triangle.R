@@ -472,7 +472,7 @@ Triangle <- R6Class(
       private[[".A"]] -> A; private[[".B"]] -> B
       Mcircles <- self$MalfattiCircles(tangencyPoints = TRUE)
       Ts <- attr(Mcircles, "tangencyPoints")
-      retistruct::line.line.intersection(A, Ts$TA, B, Ts$TB)
+      .LineLineIntersection(A, Ts$TA, B, Ts$TB)
     },
 
     #' @description Second Ajima-Malfatti point of the triangle.
@@ -485,7 +485,7 @@ Triangle <- R6Class(
       JB <- (a*A - b*B + c*C) / (a - b + c)
       Mcircles <- self$MalfattiCircles(tangencyPoints = TRUE)
       Ts <- attr(Mcircles, "tangencyPoints")
-      retistruct::line.line.intersection(JA, Ts$TA, JB, Ts$TB)
+      .LineLineIntersection(JA, Ts$TA, JB, Ts$TB)
     },
 
     #' @description Equal detour point of the triangle.

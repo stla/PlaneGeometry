@@ -81,8 +81,14 @@ Circle <- R6Class(
       cat("Circle:\n")
       cat(" center: ", toString(private[[".center"]]), "\n", sep = "")
       cat(" radius: ", toString(private[[".radius"]]), "\n", sep = "")
+    },
+
+    #' @description Power of a point with respect to the circle.
+    #' @param M point
+    #' @return A number.
+    power = function(M) {
+      private[[".radius"]] -> radius
+      c(crossprod(M - private[[".center"]])) - radius*radius
     }
-
-
   )
 )

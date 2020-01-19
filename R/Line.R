@@ -202,9 +202,18 @@ Line <- R6Class(
       A <- private[[".A"]]; B <- private[[".B"]]
       A_B <- B - A
       v <- c(-A_B[2L], A_B[1L])
-      H <- retistruct::line.line.intersection(A, B, M, M+v)
+      H <- .LineLineIntersection(A, B, M, M+v)
       Line$new(H, M, extendH, extendM)
+    },
+
+    #' @description Orthogonal projection of a point to the line.
+    #' @param M a point
+    #' @return A point.
+    projection = function(M) {
+      A <- private[[".A"]]; B <- private[[".B"]]
+      A_B <- B - A
+      v <- c(-A_B[2L], A_B[1L])
+      .LineLineIntersection(A, B, M, M+v)
     }
-# projection ?
   )
 )

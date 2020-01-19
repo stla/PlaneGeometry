@@ -47,6 +47,7 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \item \href{#method-print}{\code{Line$print()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
+\item \href{#method-projection}{\code{Line$projection()}}
 \item \href{#method-clone}{\code{Line$clone()}}
 }
 }
@@ -148,6 +149,25 @@ beyond the point \code{M}}
 \subsection{Returns}{
 A \code{Line} object; its two points are the
 meeting point and the point \code{M}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-projection"></a>}}
+\subsection{Method \code{projection()}}{
+Orthogonal projection of a point to the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$projection(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point.
 }
 }
 \if{html}{\out{<hr>}}

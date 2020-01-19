@@ -39,6 +39,7 @@ Circle$new(c(0,0), 2)
 \itemize{
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
+\item \href{#method-power}{\code{Circle$power()}}
 \item \href{#method-clone}{\code{Circle$clone()}}
 }
 }
@@ -98,6 +99,25 @@ Show instance of a circle object
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-power"></a>}}
+\subsection{Method \code{power()}}{
+Power of a point with respect to the circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$power(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A number.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
