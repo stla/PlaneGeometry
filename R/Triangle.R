@@ -251,6 +251,7 @@ Triangle <- R6Class(
     },
 
     #' @description Incircle of the triangle.
+    #' @return A \code{Circle} object.
     incircle = function() {
       if(self$flatness() == 1){
         warning("The triangle is flat.")
@@ -261,14 +262,14 @@ Triangle <- R6Class(
       c <- sqrt(c(crossprod(B-A)))
       p <- (a + b + c); s <- p / 2;
       areaABC <- sqrt(s*(s-a)*(s-b)*(s-c))
-      list(
+      Circle$new(
         center = (A*a + B*b + C*c) / p,
         radius = areaABC / s
       )
     },
 
     #' @description Excircles of the triangle.
-    #' @return A list with the three excircles.
+    #' @return A list with the three excircles, \code{Circle} objects.
     excircles = function() {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       a <- sqrt(c(crossprod(B-C)))
@@ -282,9 +283,9 @@ Triangle <- R6Class(
       rB <- sqrt(s*(s-a)*(s-c)/(s-b))
       rC <- sqrt(s*(s-a)*(s-b)/(s-c))
       list(
-        A = list(center = JA, radius = rA),
-        B = list(center = JB, radius = rB),
-        C = list(center = JC, radius = rC)
+        A = Circle$new(center = JA, radius = rA),
+        B = Circle$new(center = JB, radius = rB),
+        C = Circle$new(center = JC, radius = rC)
       )
     },
 
@@ -382,6 +383,7 @@ Triangle <- R6Class(
     },
 
     #' @description Circumcircle of the triangle.
+    #' @return A \code{Circle} object.
     circumcircle = function() {
       if(self$flatness() == 1){
         warning("The triangle is flat.")
@@ -393,12 +395,23 @@ Triangle <- R6Class(
       Dx <- det(cbind(q, ABC[,2L], 1))
       Dy <- -det(cbind(q, ABC[,1L], 1))
       center <- c(Dx,Dy) / det(cbind(ABC, 1)) / 2
-      list(center = center, radius = sqrt(c(crossprod(center-A))))
+      Circle$new(center = center, radius = sqrt(c(crossprod(center-A))))
     },
 
     #' @description Malfatti circles of the triangle.
     #' @param tangencyPoints logical, whether to retourn the tangency points of
     #' the Malfatti circles as an attribute.
+    #' @return A list with the three Malfatti circles, \code{Circle} objects.
+    #' @examples t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+    #' Mcircles <- t$MalfattiCircles(TRUE)
+    #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+    #'      xlab = NA, ylab = NA)
+    #' grid()
+    #' draw(t, col = "blue", lwd = 2)
+    #' invisible(lapply(Mcircles, draw, col = "green", border = "red"))
+    #' invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
+    #'   points(P[1], P[2], pch = 19)
+    #' }))
     MalfattiCircles = function(tangencyPoints = FALSE) {
       if(self$flatness() == 1){
         warning("The triangle is flat.")
@@ -437,9 +450,9 @@ Triangle <- R6Class(
       x <- w; y <- w; z <- d/r3 - (u+v) # trilinear coordinates
       O3 <- (u*x*A + v*y*B + w*z*C) / (u*x + v*y + w*z)
       out <- list(
-        cA = list(center = O1, radius = r1),
-        cB = list(center = O2, radius = r2),
-        cC = list(center = O3, radius = r3)
+        cA = Circle$new(center = O1, radius = r1),
+        cB = Circle$new(center = O2, radius = r2),
+        cC = Circle$new(center = O3, radius = r3)
       )
       if(tangencyPoints){
         O2_O3 <- O3 - O2

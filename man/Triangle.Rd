@@ -23,6 +23,21 @@ t
 ## ------------------------------------------------
 
 Triangle$new(c(0,0), c(1,0), c(1,1))
+
+## ------------------------------------------------
+## Method `Triangle$MalfattiCircles`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+Mcircles <- t$MalfattiCircles(TRUE)
+plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+     xlab = NA, ylab = NA)
+grid()
+draw(t, col = "blue", lwd = 2)
+invisible(lapply(Mcircles, draw, col = "green", border = "red"))
+invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
+  points(P[1], P[2], pch = 19)
+}))
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -274,6 +289,9 @@ Incircle of the triangle.
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$incircle()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A \code{Circle} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-excircles"></a>}}
@@ -284,7 +302,7 @@ Excircles of the triangle.
 }
 
 \subsection{Returns}{
-A list with the three excircles.
+A list with the three excircles, \code{Circle} objects.
 }
 }
 \if{html}{\out{<hr>}}
@@ -357,6 +375,9 @@ Circumcircle of the triangle.
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$circumcircle()}\if{html}{\out{</div>}}
 }
 
+\subsection{Returns}{
+A \code{Circle} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MalfattiCircles"></a>}}
@@ -374,6 +395,26 @@ the Malfatti circles as an attribute.}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+A list with the three Malfatti circles, \code{Circle} objects.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+Mcircles <- t$MalfattiCircles(TRUE)
+plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+     xlab = NA, ylab = NA)
+grid()
+draw(t, col = "blue", lwd = 2)
+invisible(lapply(Mcircles, draw, col = "green", border = "red"))
+invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
+  points(P[1], P[2], pch = 19)
+}))
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-AjimaMalfatti1"></a>}}

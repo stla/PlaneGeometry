@@ -3,6 +3,7 @@
 S3method(draw,Circle)
 S3method(draw,Line)
 S3method(draw,Triangle)
+export(Circle)
 export(Line)
 export(Triangle)
 export(draw)

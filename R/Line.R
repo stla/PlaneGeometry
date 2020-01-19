@@ -205,6 +205,6 @@ Line <- R6Class(
       H <- retistruct::line.line.intersection(A, B, M, M+v)
       Line$new(H, M, extendH, extendM)
     }
-
+# projection ?
   )
 )
