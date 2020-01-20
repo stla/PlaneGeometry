@@ -7,6 +7,30 @@
 A triangle has three vertices. They are named A, B, C.
 }
 \examples{
+# incircle and excircles
+A <- c(0,0); B <- c(1,2); C <- c(3.5,1)
+t <- Triangle$new(A, B, C)
+incircle <- t$incircle()
+excircles <- t$excircles()
+JA <- excircles$A$center
+JB <- excircles$B$center
+JC <- excircles$C$center
+JAJBJC <- Triangle$new(JA, JB, JC)
+A_JA <- Line$new(A, JA, FALSE, FALSE)
+B_JB <- Line$new(B, JB, FALSE, FALSE)
+C_JC <- Line$new(C, JC, FALSE, FALSE)
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(0,6), ylim = c(-4,4),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(incircle, border = "orange")
+draw(excircles$A); draw(excircles$B); draw(excircles$C)
+draw(JAJBJC, col = "blue")
+draw(A_JA, col = "green")
+draw(B_JB, col = "green")
+draw(C_JC, col = "green")
+par(opar)
+
 
 ## ------------------------------------------------
 ## Method `Triangle$new`

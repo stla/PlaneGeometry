@@ -131,7 +131,7 @@ Inversion <- R6Class(
         Ot <- c0 - c1
         R180 <- -Ot + c1
         R90 <- c(-Ot[2L], Ot[1L]) + c1
-        Line$new(self$invert(R180), sel$invert(R90), TRUE, TRUE)
+        Line$new(self$invert(R180), self$invert(R90), TRUE, TRUE)
       }
     },
 
