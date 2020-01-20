@@ -5,7 +5,7 @@
 \title{R6 class representing an inversion}
 \description{
 An inversion is given by a pole (a point) and a power (a number,
-possibly negative).
+possibly negative, but not zero).
 }
 \examples{
 
@@ -14,6 +14,11 @@ possibly negative).
 ## ------------------------------------------------
 
 Inversion$new(c(0,0), 2)
+}
+\seealso{
+\code{\link{inversionMappingCircle2Circle}},
+\code{\link{inversionFixingTwoCircles}},
+\code{\link{inversionFixingThreeCircles}} to create some inversions.
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -96,7 +101,7 @@ Inversion of a point.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A point.
+A point, the image of \code{M}.
 }
 }
 \if{html}{\out{<hr>}}

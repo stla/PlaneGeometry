@@ -42,6 +42,7 @@ Circle$new(c(0,0), 2)
 \itemize{
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
+\item \href{#method-isEqual}{\code{Circle$isEqual()}}
 \item \href{#method-power}{\code{Circle$power()}}
 \item \href{#method-radicalCenter}{\code{Circle$radicalCenter()}}
 \item \href{#method-radicalAxis}{\code{Circle$radicalAxis()}}
@@ -107,6 +108,22 @@ Show instance of a circle object.
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isEqual"></a>}}
+\subsection{Method \code{isEqual()}}{
+Check whether the circle equals another circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$isEqual(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle object}}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-power"></a>}}

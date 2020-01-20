@@ -84,6 +84,14 @@ Circle <- R6Class(
       cat(" radius: ", toString(private[[".radius"]]), "\n", sep = "")
     },
 
+    #' @description Check whether the circle equals another circle.
+    #' @param circ a \code{Circle object}
+    isEqual = function(circ){
+      c0 <- private[[".center"]]; r0 <- private[[".radius"]]
+      c1 <- circ$center; r1 <- circ$radius
+      isTRUE(all.equal(c(c0[1L],c0[2L],r0), c(c1[1L],c1[2L],r1)))
+    },
+
     #' @description Power of a point with respect to the circle.
     #' @param M point
     #' @return A number.
@@ -96,8 +104,8 @@ Circle <- R6Class(
     #' @param circ2 a \code{Circle} object
     #' @seealso \code{\link{radicalCenter}} for the radical center of three circles.
     radicalCenter = function(circ2){
-      C1 <- primitive[[".center"]]; C2 <- circ2$center
-      k < primitive[[".radius"]]^2 - circ2$radius^2;
+      C1 <- private[[".center"]]; C2 <- circ2$center
+      k <- private[[".radius"]]^2 - circ2$radius^2;
       C1_C2 <- C2 - C1
       C1C2sqr <- c(crossprod(C1_C2))
       K <- if(C1C2sqr == 0){
@@ -105,18 +113,18 @@ Circle <- R6Class(
       }else{
         (C1+C2)/2 + k/2 * C1_C2/C1C2sqr
       }
-      c(C1[1L], K/C1[1L]) # quid if C1[1] = 0 ?
+      K/C1[1L] # quid if C1[1] = 0 ?
     },
 
     #' @description Radical axis of two circles.
     #' @param circ2 a \code{Circle} object
     #' @return A \code{Line} object.
     radicalAxis = function(circ2){
-      C1 <- primitive[[".center"]]; C2 <- circ2$center
+      C1 <- private[[".center"]]; C2 <- circ2$center
       if(isTRUE(all.equal(C1,C2))){
         stop("The two circles must have distinct centers.")
       }
-      l <- Line$new(C1, C2)
+      l <- Line$new(C1, C2, TRUE, TRUE)
       R <- self$radicalCenter(circ2)
       l$perpendicular(R, TRUE, TRUE)
     },
@@ -173,7 +181,7 @@ Circle <- R6Class(
 )
 
 #' Radical center
-#' Returns the radical center of three circles.
+#' @description Returns the radical center of three circles.
 #'
 #' @param circ1,circ2,circ3 \code{Circle} objects
 #'

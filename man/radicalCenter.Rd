@@ -2,8 +2,7 @@
 % Please edit documentation in R/Circle.R
 \name{radicalCenter}
 \alias{radicalCenter}
-\title{Radical center
-Returns the radical center of three circles.}
+\title{Radical center}
 \usage{
 radicalCenter(circ1, circ2, circ3)
 }
@@ -14,6 +13,5 @@ radicalCenter(circ1, circ2, circ3)
 A point.
 }
 \description{
-Radical center
 Returns the radical center of three circles.
 }

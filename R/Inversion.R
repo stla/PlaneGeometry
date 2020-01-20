@@ -1,7 +1,11 @@
 #' @title R6 class representing an inversion
 #'
 #' @description An inversion is given by a pole (a point) and a power (a number,
-#' possibly negative).
+#' possibly negative, but not zero).
+#'
+#' @seealso \code{\link{inversionMappingCircle2Circle}},
+#' \code{\link{inversionFixingTwoCircles}},
+#' \code{\link{inversionFixingThreeCircles}} to create some inversions.
 #'
 #' @export
 #' @importFrom R6 R6Class
@@ -39,7 +43,8 @@ Inversion <- R6Class(
         stopifnot(
           is.numeric(power),
           length(power) == 1L,
-          !is.na(power)
+          !is.na(power),
+          power != 0
         )
         private[[".power"]] <- power
       }
@@ -62,7 +67,8 @@ Inversion <- R6Class(
       stopifnot(
         is.numeric(power),
         length(power) == 1L,
-        !is.na(power)
+        !is.na(power),
+        power != 0
       )
       private[[".pole"]] <- pole
       private[[".power"]] <- power
@@ -79,11 +85,11 @@ Inversion <- R6Class(
 
     #' @description Inversion of a point.
     #' @param M a point
-    #' @return A point.
+    #' @return A point, the image of \code{M}.
     invert = function(M) {
       pole <- private[[".pole"]]; k <- private[[".power"]]
-      A_M <- M - A
-      pole + k/c(crossprod(A_M)) * A_M
+      pole_M <- M - pole
+      pole + k/c(crossprod(pole_M)) * pole_M
     },
 
     #' @description Inversion of a circle.
@@ -119,3 +125,54 @@ Inversion <- R6Class(
     }
   )
 )
+
+
+#' Inversion mapping a circle to a circle
+#' @description Return the inversion which maps a given circle to another given
+#' circle.
+#'
+#' @param circ1,circ2 \code{Circle} objects
+#' @param positive logical, whether the sign of the desired inversion power
+#' must be positive or negative
+#'
+#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}.
+#' @export
+inversionMappingCircle2Circle <- function(circ1, circ2, positive = TRUE){
+  warning("This function does not work yet.")
+  c1 <- circ1$center; r1 <- circ1$radius
+  c2 <- circ2$center; r2 <- circ2$radius
+  a <- r1/r2
+  if(positive){
+    O <- c1 + a/abs(1 - a) * (c2 - c1) # issue if a = 1 !
+    Inversion$new(O, a * abs(c(crossprod(O - c2)) - r2*r2))
+  }else{
+    O <- c1 + a/(1 + a) * (c2 - c1)
+    Inversion$new(O, -a * abs(c(crossprod(O - c2)) - r2*r2))
+  }
+}
+
+#' Inversion fixing two circles
+#' @description Return the inversion which lets invariant two given circles.
+#'
+#' @param circ1,circ2 \code{Circle} objects
+#'
+#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ1}
+#' and \code{circ2} to \code{circ2}.
+#' @export
+inversionFixingTwoCircles <- function(circ1, circ2){
+  O <- circ1$radicalCenter(circ2)
+  Inversion$new(O, circ1$power(O));
+}
+
+#' Inversion fixing three circles
+#' @description Return the inversion which lets invariant three given circles.
+#'
+#' @param circ1,circ2,circ3 \code{Circle} objects
+#'
+#' @return An \code{Inversion} object, which lets each of \code{circ1},
+#' \code{circ2} and \code{circ3} invariant.
+#' @export
+inversionFixingThreeCircles <- function(circ1, circ2, circ3){
+  Rc <- radicalCenter(circ1, circ2, circ3)
+  Inversion$new(Rc, circ1$power(Rc))
+}
