@@ -84,7 +84,7 @@ Circle <- R6Class(
       cat(" radius: ", toString(private[[".radius"]]), "\n", sep = "")
     },
 
-    #' @description Check whether the circle equals another circle.
+    #' @description Check whether the reference circle equals another circle.
     #' @param circ a \code{Circle object}
     isEqual = function(circ){
       c0 <- private[[".center"]]; r0 <- private[[".radius"]]
@@ -92,7 +92,41 @@ Circle <- R6Class(
       isTRUE(all.equal(c(c0[1L],c0[2L],r0), c(c1[1L],c1[2L],r1)))
     },
 
-    #' @description Power of a point with respect to the circle.
+    #' @description Orthogonal circle passing through two points on the reference circle.
+    #' @param alpha1,alpha2 two angles defining two points on the reference circle
+    #' @return A \code{Circle} object.
+    orthogonalThroughTwoPointsOnCircle = function(alpha1, alpha2) {
+      stopifnot((alpha1-alpha2) %% pi != 0)
+      I <- private[[".center"]]; r <- private[[".radius"]]
+      dalpha <- alpha1 - alpha2
+      r0 <- r * abs(tan(dalpha/2))
+      IO <- r / cos(dalpha/2)
+      Ox <- IO * cos((alpha1+alpha2)/2)
+      Oy <- IO * sin((alpha1+alpha2)/2)
+      Circle$new(I+c(Ox,Oy), r0)
+    },
+
+    #' @description Orthogonal circle passing through two points within the reference circle.
+    #' @param P1,P2 two points in the interior of the reference circle
+    #' @return A \code{Circle} object.
+    orthogonalThroughTwoPointsWithinCircle = function(P1, P2) {
+      I <- private[[".center"]]; r <- private[[".radius"]]; r2 <- r*r
+      if(c(crossprod(P1-I)) >= r2){
+        stop("`P1` is not in the interior of the reference circle")
+      }
+      if(c(crossprod(P2-I)) >= r2){
+        stop("`P2` is not in the interior of the reference circle")
+      }
+      iota <- Inversion$new(I, r2)
+      P1prime <- iota$invert(P1); P2prime <- iota$invert(P2)
+      line1 <- Line$new(P1,P1prime); line2 <- Line$new(P2,P2prime)
+      perp1 <- suppressMessages(line1$perpendicular((P1+P1prime)/2))
+      perp2 <- suppressMessages(line2$perpendicular((P2+P2prime)/2))
+      O <- .LineLineIntersection(perp1$A, perp1$B, perp2$A, perp2$B)
+      Circle$new(O, sqrt(c(crossprod(O-P1))))
+    },
+
+    #' @description Power of a point with respect to the reference circle.
     #' @param M point
     #' @return A number.
     power = function(M) {
@@ -133,7 +167,7 @@ Circle <- R6Class(
       # l$perpendicular(R, TRUE, TRUE)
     },
 
-    #' @description Rotate the circle.
+    #' @description Rotate the reference circle.
     #' @param alpha angle of rotation
     #' @param O center of rotation
     #' @param degrees logical, whether \code{alpha} is given in degrees
@@ -160,7 +194,7 @@ Circle <- R6Class(
       Circle$new(RAt + O, private[[".radius"]])
     },
 
-    #' @description Translate the circle.
+    #' @description Translate the reference circle.
     #' @param v the vector of translation
     #' @return A \code{Circle} object.
     translate = function(v){
@@ -173,13 +207,12 @@ Circle <- R6Class(
       Circle$new(private[[".center"]] + v, private[[".radius"]])
     },
 
-    #' @description Invert the circle.
+    #' @description Invert the reference circle.
     #' @param inversion an \code{Inversion} object
     #' @return A \code{Circle} object or a \code{Line} object.
     invert = function(inversion){
       inversion$invertCircle(self)
     }
-
 
   )
 )

@@ -465,7 +465,7 @@ Nagel point of the triangle.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GergonneTriangle"></a>}}
 \subsection{Method \code{GergonneTriangle()}}{
-Gergonne triangle of the triangle.
+Gergonne triangle of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$GergonneTriangle(GergonnePoint = FALSE)}\if{html}{\out{</div>}}
 }
@@ -490,7 +490,7 @@ A \code{Triangle} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GergonnePoint"></a>}}
 \subsection{Method \code{GergonnePoint()}}{
-Gergonne point of the triangle.
+Gergonne point of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$GergonnePoint()}\if{html}{\out{</div>}}
 }

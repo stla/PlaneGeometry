@@ -425,7 +425,7 @@ Triangle <- R6Class(
       (tA*A + tB*B + tC*C) / (tA + tB + tC)
     },
 
-    #' @description Gergonne triangle of the triangle.
+    #' @description Gergonne triangle of the reference triangle.
     #' @param GergonnePoint logical, whether to return the Gergonne point as an attribute
     #' @return A \code{Triangle} object.
     #' @details The Gergonne triangle is also known as the
@@ -455,7 +455,7 @@ Triangle <- R6Class(
       out
     },
 
-    #' @description Gergonne point of the triangle.
+    #' @description Gergonne point of the reference triangle.
     GergonnePoint = function() {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       a <- sqrt(c(crossprod(B-C)))

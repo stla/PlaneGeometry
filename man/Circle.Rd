@@ -43,6 +43,8 @@ Circle$new(c(0,0), 2)
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
+\item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
+\item \href{#method-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
 \item \href{#method-power}{\code{Circle$power()}}
 \item \href{#method-radicalCenter}{\code{Circle$radicalCenter()}}
 \item \href{#method-radicalAxis}{\code{Circle$radicalAxis()}}
@@ -112,7 +114,7 @@ Show instance of a circle object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isEqual"></a>}}
 \subsection{Method \code{isEqual()}}{
-Check whether the circle equals another circle.
+Check whether the reference circle equals another circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$isEqual(circ)}\if{html}{\out{</div>}}
 }
@@ -126,9 +128,47 @@ Check whether the circle equals another circle.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-orthogonalThroughTwoPointsOnCircle"></a>}}
+\subsection{Method \code{orthogonalThroughTwoPointsOnCircle()}}{
+Orthogonal circle passing through two points on the reference circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsOnCircle(alpha1, alpha2)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha1, alpha2}}{two angles defining two points on the reference circle}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-orthogonalThroughTwoPointsWithinCircle"></a>}}
+\subsection{Method \code{orthogonalThroughTwoPointsWithinCircle()}}{
+Orthogonal circle passing through two points within the reference circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsWithinCircle(P1, P2)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P1, P2}}{two points in the interior of the reference circle}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-power"></a>}}
 \subsection{Method \code{power()}}{
-Power of a point with respect to the circle.
+Power of a point with respect to the reference circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$power(M)}\if{html}{\out{</div>}}
 }
@@ -182,7 +222,7 @@ A \code{Line} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotate"></a>}}
 \subsection{Method \code{rotate()}}{
-Rotate the circle.
+Rotate the reference circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$rotate(alpha, O, degrees = TRUE)}\if{html}{\out{</div>}}
 }
@@ -205,7 +245,7 @@ A \code{Circle} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-translate"></a>}}
 \subsection{Method \code{translate()}}{
-Translate the circle.
+Translate the reference circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$translate(v)}\if{html}{\out{</div>}}
 }
@@ -224,7 +264,7 @@ A \code{Circle} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invert"></a>}}
 \subsection{Method \code{invert()}}{
-Invert the circle.
+Invert the reference circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$invert(inversion)}\if{html}{\out{</div>}}
 }
