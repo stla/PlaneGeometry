@@ -62,6 +62,15 @@ invisible(lapply(Mcircles, draw, col = "green", border = "red"))
 invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
   points(P[1], P[2], pch = 19)
 }))
+
+## ------------------------------------------------
+## Method `Triangle$trilinearToPoint`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,0), c(2,1), c(5,7))
+incircle <- t$incircle()
+t$trilinearToPoint(1, 1, 1)
+incircle$center
 }
 \seealso{
 \code{\link{TriangleThreeLines}} to define a triangle by three lines.
@@ -94,9 +103,12 @@ invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
 \item \href{#method-angles}{\code{Triangle$angles()}}
 \item \href{#method-X175}{\code{Triangle$X175()}}
 \item \href{#method-VeldkampIsoperimetricPoint}{\code{Triangle$VeldkampIsoperimetricPoint()}}
+\item \href{#method-centroid}{\code{Triangle$centroid()}}
+\item \href{#method-orthocenter}{\code{Triangle$orthocenter()}}
 \item \href{#method-area}{\code{Triangle$area()}}
 \item \href{#method-incircle}{\code{Triangle$incircle()}}
 \item \href{#method-excircles}{\code{Triangle$excircles()}}
+\item \href{#method-incentralTriangle}{\code{Triangle$incentralTriangle()}}
 \item \href{#method-NagelTriangle}{\code{Triangle$NagelTriangle()}}
 \item \href{#method-NagelPoint}{\code{Triangle$NagelPoint()}}
 \item \href{#method-GergonneTriangle}{\code{Triangle$GergonneTriangle()}}
@@ -106,6 +118,7 @@ invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
 \item \href{#method-equalDetourPoint}{\code{Triangle$equalDetourPoint()}}
+\item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
@@ -300,6 +313,24 @@ Otherwise, returns `NULL`.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-centroid"></a>}}
+\subsection{Method \code{centroid()}}{
+Centroid.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$centroid()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-orthocenter"></a>}}
+\subsection{Method \code{orthocenter()}}{
+Orthocenter.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$orthocenter()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-area"></a>}}
 \subsection{Method \code{area()}}{
 Area of the triangle.
@@ -330,6 +361,23 @@ Excircles of the triangle.
 
 \subsection{Returns}{
 A list with the three excircles, \code{Circle} objects.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-incentralTriangle"></a>}}
+\subsection{Method \code{incentralTriangle()}}{
+Incentral triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$incentralTriangle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+It is the triangle whose vertices are the intersections of the
+reference triangle's angle bisectors with the respective opposite sides.
+}
+
+\subsection{Returns}{
+A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
@@ -478,6 +526,37 @@ Equal detour point of the triangle.
 }
 \subsection{Details}{
 Also known as the X(176) triangle center.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-trilinearToPoint"></a>}}
+\subsection{Method \code{trilinearToPoint()}}{
+Point given by trilinear coordinates.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$trilinearToPoint(x, y, z)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{x, y, z}}{trilinear coordinates}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The point with trilinear coordinates \code{x:y:z} with respect to
+the reference triangle.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,0), c(2,1), c(5,7))
+incircle <- t$incircle()
+t$trilinearToPoint(1, 1, 1)
+incircle$center
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

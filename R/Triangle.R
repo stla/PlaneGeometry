@@ -272,6 +272,28 @@ Triangle <- R6Class(
       self$X175()
     },
 
+    #' @description Centroid.
+    centroid = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      (A + B + C) / 3
+    },
+
+    #' @description Orthocenter.
+    orthocenter = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- sqrt(c(crossprod(B-C)))
+      b <- sqrt(c(crossprod(A-C)))
+      c <- sqrt(c(crossprod(B-A)))
+      AC <- C-A; AB <- B-A
+      BC <- C-B; BA <- A-B
+      CA <- A-C; CB <- B-C
+      x <- 1 / (c(crossprod(AC,AB)) / b / c)
+      y <- 1 / (c(crossprod(BC,BA)) / a / c)
+      z <- 1 / (c(crossprod(CA,CB)) / a / b)
+      den <- a*x + b*y + c*z
+      (a*x*A + b*y*B + c*z*C) / den
+    },
+
     #' @description Area of the triangle.
     area = function() {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
@@ -318,6 +340,22 @@ Triangle <- R6Class(
         A = Circle$new(center = JA, radius = rA),
         B = Circle$new(center = JB, radius = rB),
         C = Circle$new(center = JC, radius = rC)
+      )
+    },
+
+    #' @description Incentral triangle.
+    #' @return A \code{Triangle} object.
+    #' @details It is the triangle whose vertices are the intersections of the
+    #' reference triangle's angle bisectors with the respective opposite sides.
+    incentralTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- sqrt(c(crossprod(B-C)))
+      b <- sqrt(c(crossprod(A-C)))
+      c <- sqrt(c(crossprod(B-A)))
+      Triangle$new(
+        (b*B + c*C) / (b + c),
+        (a*A + c*C) / (a + c),
+        (a*A + b*B) / (a + b)
       )
     },
 
@@ -537,6 +575,23 @@ Triangle <- R6Class(
           sqrt(c(crossprod(A-out))) + sqrt(c(crossprod(B-out))) - c
       }
       out
+    },
+
+    #' @description Point given by trilinear coordinates.
+    #' @param x,y,z trilinear coordinates
+    #' @return The point with trilinear coordinates \code{x:y:z} with respect to
+    #' the reference triangle.
+    #' @examples t <- Triangle$new(c(0,0), c(2,1), c(5,7))
+    #' incircle <- t$incircle()
+    #' t$trilinearToPoint(1, 1, 1)
+    #' incircle$center
+    trilinearToPoint = function(x, y, z) {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- sqrt(c(crossprod(B-C)))
+      b <- sqrt(c(crossprod(A-C)))
+      c <- sqrt(c(crossprod(B-A)))
+      den <- a*x + b*y + c*z
+      (a*x*A + b*y*B + c*z*C) / den
     },
 
     #' @description Rotate the triangle.
