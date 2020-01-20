@@ -49,6 +49,32 @@ t
 Triangle$new(c(0,0), c(1,0), c(1,1))
 
 ## ------------------------------------------------
+## Method `Triangle$NagelTriangle`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
+lineAB <- Line$new(t$A, t$B)
+lineAC <- Line$new(t$A, t$C)
+lineBC <- Line$new(t$B, t$C)
+NagelTriangle <- t$NagelTriangle(NagelPoint = TRUE)
+NagelPoint <- attr(NagelTriangle, "Nagel point")
+excircles <- t$excircles()
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type="n", asp = 1, xlim = c(-1,5), ylim = c(-3,3),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(lineAB); draw(lineAC); draw(lineBC)
+draw(excircles$A, border = "orange")
+draw(excircles$B, border = "orange")
+draw(excircles$C, border = "orange")
+draw(NagelTriangle, lwd = 2, col = "red")
+draw(Line$new(t$A, NagelTriangle$A, FALSE, FALSE), col = "blue")
+draw(Line$new(t$B, NagelTriangle$B, FALSE, FALSE), col = "blue")
+draw(Line$new(t$C, NagelTriangle$C, FALSE, FALSE), col = "blue")
+points(rbind(NagelPoint), pch = 19)
+par(opar)
+
+## ------------------------------------------------
 ## Method `Triangle$MalfattiCircles`
 ## ------------------------------------------------
 
@@ -383,7 +409,7 @@ A \code{Triangle} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NagelTriangle"></a>}}
 \subsection{Method \code{NagelTriangle()}}{
-Nagel triangle of the triangle.
+Nagel triangle (or extouch triangle) of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$NagelTriangle(NagelPoint = FALSE)}\if{html}{\out{</div>}}
 }
@@ -398,6 +424,34 @@ Nagel triangle of the triangle.
 \subsection{Returns}{
 A \code{Triangle} object.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
+lineAB <- Line$new(t$A, t$B)
+lineAC <- Line$new(t$A, t$C)
+lineBC <- Line$new(t$B, t$C)
+NagelTriangle <- t$NagelTriangle(NagelPoint = TRUE)
+NagelPoint <- attr(NagelTriangle, "Nagel point")
+excircles <- t$excircles()
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type="n", asp = 1, xlim = c(-1,5), ylim = c(-3,3),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(lineAB); draw(lineAC); draw(lineBC)
+draw(excircles$A, border = "orange")
+draw(excircles$B, border = "orange")
+draw(excircles$C, border = "orange")
+draw(NagelTriangle, lwd = 2, col = "red")
+draw(Line$new(t$A, NagelTriangle$A, FALSE, FALSE), col = "blue")
+draw(Line$new(t$B, NagelTriangle$B, FALSE, FALSE), col = "blue")
+draw(Line$new(t$C, NagelTriangle$C, FALSE, FALSE), col = "blue")
+points(rbind(NagelPoint), pch = 19)
+par(opar)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-NagelPoint"></a>}}
