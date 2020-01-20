@@ -25,6 +25,9 @@ circ
 
 Circle$new(c(0,0), 2)
 }
+\seealso{
+\code{link{radicalCenter}} for the radical center of three circles
+}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
@@ -40,6 +43,8 @@ Circle$new(c(0,0), 2)
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
 \item \href{#method-power}{\code{Circle$power()}}
+\item \href{#method-radicalCenter}{\code{Circle$radicalCenter()}}
+\item \href{#method-radicalAxis}{\code{Circle$radicalAxis()}}
 \item \href{#method-clone}{\code{Circle$clone()}}
 }
 }
@@ -117,6 +122,41 @@ Power of a point with respect to the circle.
 }
 \subsection{Returns}{
 A number.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-radicalCenter"></a>}}
+\subsection{Method \code{radicalCenter()}}{
+Radical center of two circles
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$radicalCenter(circ2)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ2}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-radicalAxis"></a>}}
+\subsection{Method \code{radicalAxis()}}{
+Radical axis of two circles
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$radicalAxis(circ2)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ2}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+a \code{Line} object
 }
 }
 \if{html}{\out{<hr>}}
