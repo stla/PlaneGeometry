@@ -5,7 +5,7 @@
 #'
 #' @return \code{NULL} if there is no intersection,
 #' a point if the circles touch, a list of two points if the circles meet at
-#' two points, a circle if the two circles are identical
+#' two points, a circle if the two circles are identical.
 #' @export
 intersectionCircleCircle <- function(circ1, circ2) {
   r1 <- circ1$radius; r2 <- circ2$radius
@@ -32,3 +32,26 @@ intersectionCircleCircle <- function(circ1, circ2) {
     P2 = center1 + r1 * c(cos(theta), sin(theta))
   )
 }
+
+
+#' Intersection of a circle and a line
+#' @description Return the intersection of a circle and a line.
+#'
+#' @param circ a \code{Circle} object
+#' @param line a \code{Line} object
+#'
+#' @return \code{NULL} if there is no intersection,
+#' a point if the line is tangent to the circle,
+#' a list of two points if the circle and the line meet at
+#' two points.
+#' @export
+intersectionCircleLine <- function(circ, line){
+  C <- circ$center
+  intersections <- .CircleLineIntersection00(line$A - C, line$B - C, circ$radius)
+  if(is.null(intersections)) return(NULL)
+  if(is.list(intersections)){
+    return(lapply(intersections, function(I){I + C}))
+  }
+  intersections + C
+}
+

@@ -21,3 +21,29 @@
   re <- Re(z); im <- Im(z)
   1 / (1 + im*im/re/re) >= 1 - tol
 }
+
+.CircleLineIntersection00 <- function(A1, A2, r) {
+  x1 <- A1[1L]; y1 <- A1[2L]
+  x2 <- A2[1L]; y2 <- A2[2L]
+  dx <- x2 - x1; dy <- y2 - y1
+  dr <- sqrt(dx*dx + dy*dy)
+  D <- det(cbind(A1,A2))
+  Delta <- r*r*dr*dr - D*D
+  if(Delta < 0){
+    return(NULL)
+  }
+  if(Delta < sqrt(.Machine$double.eps)){
+    return(D/dr/dr * c(dy, -dx))
+  }
+  sgn <- ifelse(dy < 0, -1, 1)
+  I1 <- c(
+    D*dy + sgn*dx * sqrt(Delta),
+    -D*dx + abs(dy)*sqrt(Delta)
+  ) / dr/dr
+  I2 <- c(
+    D*dy - sgn*dx * sqrt(Delta),
+    -D*dx - abs(dy)*sqrt(Delta)
+  ) / dr/dr
+  list(I1 = I1, I2 = I2)
+}
+

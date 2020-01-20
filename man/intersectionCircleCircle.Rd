@@ -12,7 +12,7 @@ intersectionCircleCircle(circ1, circ2)
 \value{
 \code{NULL} if there is no intersection,
 a point if the circles touch, a list of two points if the circles meet at
-two points, a circle if the two circles are identical
+two points, a circle if the two circles are identical.
 }
 \description{
 Return the intersection of two circles.
