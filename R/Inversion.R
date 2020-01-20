@@ -137,16 +137,20 @@ Inversion <- R6Class(
 #'
 #' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}.
 #' @export
-inversionMappingCircle2Circle <- function(circ1, circ2, positive = TRUE){
-  warning("This function does not work yet.")
+inversionMappingCircle2Circle <- function(circ1, circ2, positive = FALSE){
   c1 <- circ1$center; r1 <- circ1$radius
   c2 <- circ2$center; r2 <- circ2$radius
+  ok <- TRUE
+  if(positive && r1 == r2){
+    warning("`positive = TRUE` not possible; switching to `FALSE`")
+    ok <- FALSE
+  }
   a <- r1/r2
-  if(positive){
-    O <- c1 + a/abs(1 - a) * (c2 - c1) # issue if a = 1 !
+  if(positive && ok){
+    O <- -r2/(r1-r2) * c1 + r1/(r1-r2) * c2
     Inversion$new(O, a * abs(c(crossprod(O - c2)) - r2*r2))
   }else{
-    O <- c1 + a/(1 + a) * (c2 - c1)
+    O <- r2/(r1+r2) * c1 + r1/(r1+r2) * c2
     Inversion$new(O, -a * abs(c(crossprod(O - c2)) - r2*r2))
   }
 }

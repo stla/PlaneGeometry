@@ -1,11 +1,16 @@
 context("Inversions")
 
 test_that("inversionMappingCircle2Circle", {
-  circ1 <- Circle$new(c(0,0), 3)
-  circ2 <- Circle$new(c(2,2), 1)
-  iota <- inversionMappingCircle2Circle(circ1, circ2)
-  circ3 <- iota$invertCircle(circ1)
-  expect_true(circ2$isEqual(circ3))
+  circ1 <- Circle$new(c(0,2), 3)
+  circ2 <- Circle$new(c(4,5), 1)
+  #
+  iota <- inversionMappingCircle2Circle(circ1, circ2, TRUE)
+  expect_true(circ1$isEqual(iota$invertCircle(circ2)))
+  expect_true(circ2$isEqual(iota$invertCircle(circ1)))
+  #
+  iota <- inversionMappingCircle2Circle(circ1, circ2, FALSE)
+  expect_true(circ1$isEqual(iota$invertCircle(circ2)))
+  expect_true(circ2$isEqual(iota$invertCircle(circ1)))
 })
 
 test_that("inversionFixingTwoCircles", {
