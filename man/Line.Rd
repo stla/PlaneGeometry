@@ -26,6 +26,14 @@ l
 ## ------------------------------------------------
 
 Line$new(c(0,0), c(1,0), FALSE, TRUE)
+
+## ------------------------------------------------
+## Method `Line$includes`
+## ------------------------------------------------
+
+A <- c(0,0); B <- c(1,2); M <- c(3,6)
+l <- Line$new(A, B, FALSE, FALSE)
+l$includes(M, strict = TRUE)
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -46,6 +54,7 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \item \href{#method-new}{\code{Line$new()}}
 \item \href{#method-print}{\code{Line$print()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
+\item \href{#method-isEqual}{\code{Line$isEqual()}}
 \item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-projection}{\code{Line$projection()}}
@@ -130,20 +139,55 @@ and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isEqual"></a>}}
+\subsection{Method \code{isEqual()}}{
+Check whether the line equals a given line, without taking
+into account \code{extendA} and \code{extendB}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$isEqual(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} or \code{FALSE}.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-includes"></a>}}
 \subsection{Method \code{includes()}}{
-Whether a point belongs to the line
+Whether a point belongs to the line.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Line$includes(M)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Line$includes(M, strict = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{M}}{the point for which we want to test whether it belongs to the line}
+
+\item{\code{strict}}{logical, whether to take into account \code{extendA} and \code{extendB}}
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Returns}{
+\code{TRUE} or \code{FALSE}.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{A <- c(0,0); B <- c(1,2); M <- c(3,6)
+l <- Line$new(A, B, FALSE, FALSE)
+l$includes(M, strict = TRUE)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-perpendicular"></a>}}

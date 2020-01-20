@@ -140,7 +140,7 @@ Inversion <- R6Class(
     #' @return A \code{Circle} object or a \code{Line} object.
     invertLine = function(line){
       A <- line$A: B <- line$B
-      if(.collinear(A, B, pole)){
+      if(.collinear(A, B, private[[".pole"]])){
         line
       }else{
         Ap <- self$invert(A); Bp <- self$invert(B)

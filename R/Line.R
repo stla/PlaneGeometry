@@ -190,10 +190,53 @@ Line <- R6Class(
       }
     },
 
-    #' @description Whether a point belongs to the line
+    #' @description Check whether the line equals a given line, without taking
+    #' into account \code{extendA} and \code{extendB}.
+    #' @param line a \code{Line} object
+    #' @return \code{TRUE} or \code{FALSE}.
+    isEqual = function(line) {
+      do1 <- as.numeric(self$directionAndOffset())
+      do2 <- as.numeric(line$directionAndOffset())
+      do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
+      isTRUE(all.equal(do1, do2))
+    },
+
+    #' @description Whether a point belongs to the line.
     #' @param M the point for which we want to test whether it belongs to the line
-    includes = function(M){
-      .collinear(private[[".A"]], private[[".B"]], M)
+    #' @param strict logical, whether to take into account \code{extendA} and \code{extendB}
+    #' @return \code{TRUE} or \code{FALSE}.
+    #' @examples A <- c(0,0); B <- c(1,2); M <- c(3,6)
+    #' l <- Line$new(A, B, FALSE, FALSE)
+    #' l$includes(M, strict = TRUE)
+    includes = function(M, strict = FALSE){
+      A <- private[[".A"]]; B <- private[[".B"]]
+      test <- .collinear(A, B, M)
+      if(!test) return(FALSE)
+      extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
+      if(!strict || (extendA && extendB)) return(test)
+      if(!extendA && !extendB){
+        dotprod <- c(crossprod(A-M, B-M))
+        if(dotprod <= 0){
+          TRUE
+        } else {
+          message("The point is on the line (AB), but not on the segment [AB]")
+          FALSE
+        }
+      }else if(extendA){
+        if((M-B)[1L] / (A-B)[1L] > 0){
+          TRUE
+        }else{
+          message("The point is on the line (AB), but not on the half-line (AB]")
+          FALSE
+        }
+      }else{ # extendB
+        if((M-A)[1L] / (B-A)[1L] > 0){
+          TRUE
+        }else{
+          message("The point is on the line (AB), but not on the half-line [AB)")
+          FALSE
+        }
+      }
     },
 
     #' @description Perpendicular line passing through a given point.
