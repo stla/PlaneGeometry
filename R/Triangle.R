@@ -541,10 +541,10 @@ Triangle <- R6Class(
     #' @param v the vector of translation
     #' @return A \code{Triangle} object.
     translate = function(v){
-      O <- as.vector(v)
+      v <- as.vector(v)
       stopifnot(
         is.numeric(v),
-        length(M) == 2L,
+        length(v) == 2L,
         !any(is.na(v))
       )
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C

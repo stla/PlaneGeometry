@@ -45,6 +45,9 @@ Circle$new(c(0,0), 2)
 \item \href{#method-power}{\code{Circle$power()}}
 \item \href{#method-radicalCenter}{\code{Circle$radicalCenter()}}
 \item \href{#method-radicalAxis}{\code{Circle$radicalAxis()}}
+\item \href{#method-rotate}{\code{Circle$rotate()}}
+\item \href{#method-translate}{\code{Circle$translate()}}
+\item \href{#method-invert}{\code{Circle$invert()}}
 \item \href{#method-clone}{\code{Circle$clone()}}
 }
 }
@@ -157,6 +160,67 @@ Radical axis of two circles.
 }
 \subsection{Returns}{
 A \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-rotate"></a>}}
+\subsection{Method \code{rotate()}}{
+Rotate the circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$rotate(alpha, O, degrees = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha}}{angle of rotation}
+
+\item{\code{O}}{center of rotation}
+
+\item{\code{degrees}}{logical, whether `alpha` is given in degrees}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-translate"></a>}}
+\subsection{Method \code{translate()}}{
+Translate the circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$translate(v)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{v}}{the vector of translation}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invert"></a>}}
+\subsection{Method \code{invert()}}{
+Invert the circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$invert(inversion)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{inversion}}{an \code{Inversion} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}

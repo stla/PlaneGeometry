@@ -119,7 +119,55 @@ Circle <- R6Class(
       l <- Line$new(C1, C2)
       R <- self$radicalCenter(circ2)
       l$perpendicular(R, TRUE, TRUE)
+    },
+
+    #' @description Rotate the circle.
+    #' @param alpha angle of rotation
+    #' @param O center of rotation
+    #' @param degrees logical, whether `alpha` is given in degrees
+    #' @return A \code{Circle} object.
+    rotate = function(alpha, O, degrees = TRUE){
+      alpha <- as.vector(alpha)
+      stopifnot(
+        is.numeric(alpha),
+        length(alpha) == 1L,
+        !is.na(alpha)
+      )
+      O <- as.vector(O)
+      stopifnot(
+        is.numeric(O),
+        length(O) == 2L,
+        !any(is.na(O))
+      )
+      if(degrees){
+        alpha <- alpha * pi/180
+      }
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      At <- private[[".center"]] - O
+      RAt <- c(cosalpha*At[1L]-sinalpha*At[2L], sinalpha*At[1L]+cosalpha*At[2L])
+      Circle$new(RAt + O, private[[".radius"]])
+    },
+
+    #' @description Translate the circle.
+    #' @param v the vector of translation
+    #' @return A \code{Circle} object.
+    translate = function(v){
+      v <- as.vector(v)
+      stopifnot(
+        is.numeric(v),
+        length(v) == 2L,
+        !any(is.na(v))
+      )
+      Circle$new(private[[".center"]] + v, private[[".radius"]])
+    },
+
+    #' @description Invert the circle.
+    #' @param inversion an \code{Inversion} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    invert = function(inversion){
+      inversion$invertCircle(self)
     }
+
 
   )
 )
