@@ -40,7 +40,7 @@ intersectionCircleCircle <- function(circ1, circ2) {
 #' @param circ a \code{Circle} object
 #' @param line a \code{Line} object
 #' @param strict logical, whether to take into account \code{line$extendA} and
-#' \code{line$extendB}
+#' \code{line$extendB} if they are not both \code{TRUE}
 #'
 #' @return \code{NULL} if there is no intersection;
 #' a point if the infinite line is tangent to the circle, or \code{NULL}
@@ -48,6 +48,11 @@ intersectionCircleCircle <- function(circ1, circ2) {
 #' a list of two points if the circle and the infinite line meet at
 #' two points, when \code{strict=FALSE}; if \code{strict=TRUE} and the line is
 #' a segment or a half-line, this can return \code{NULL} or a single point.
+#'
+#' @examples circ <- Circle$new(c(1,1), 2)
+#' line <- Line$new(c(2,-2), c(1,2), FALSE, FALSE)
+#' intersectionCircleLine(circ, line)
+#' intersectionCircleLine(circ, line, strict = TRUE)
 #' @export
 intersectionCircleLine <- function(circ, line, strict = FALSE){
   C <- circ$center
@@ -120,3 +125,4 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
   }
 }
 
+# TODO intersectionLineLine with strict argument

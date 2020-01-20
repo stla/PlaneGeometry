@@ -12,7 +12,7 @@ intersectionCircleLine(circ, line, strict = FALSE)
 \item{line}{a \code{Line} object}
 
 \item{strict}{logical, whether to take into account \code{line$extendA} and
-\code{line$extendB}}
+\code{line$extendB} if they are not both \code{TRUE}}
 }
 \value{
 \code{NULL} if there is no intersection;
@@ -24,4 +24,10 @@ a segment or a half-line, this can return \code{NULL} or a single point.
 }
 \description{
 Return the intersection of a circle and a line.
+}
+\examples{
+circ <- Circle$new(c(1,1), 2)
+line <- Line$new(c(2,-2), c(1,2), FALSE, FALSE)
+intersectionCircleLine(circ, line)
+intersectionCircleLine(circ, line, strict = TRUE)
 }
