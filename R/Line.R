@@ -190,6 +190,12 @@ Line <- R6Class(
       }
     },
 
+    #' @description Whether a point belongs to the line
+    #' @param M the point for which we want to test whether it belongs to the line
+    includes = function(M){
+      .collinear(private[[".A"]], private[[".B"]], M)
+    },
+
     #' @description Perpendicular line passing through a given point.
     #' @param M the point through which the perpendicular passes.
     #' @param extendH logical, whether to extend the perpendicular line
@@ -202,7 +208,11 @@ Line <- R6Class(
       A <- private[[".A"]]; B <- private[[".B"]]
       A_B <- B - A
       v <- c(-A_B[2L], A_B[1L])
-      H <- .LineLineIntersection(A, B, M, M+v)
+      if(self$includes(M)){
+        message("M is on the line")
+        return(Line$new(M, M+v, TRUE, TRUE))
+      }
+      H <- .LineLineIntersection(A, B, M-v, M+v)
       Line$new(H, M, extendH, extendM)
     },
 

@@ -124,9 +124,13 @@ Circle <- R6Class(
       if(isTRUE(all.equal(C1,C2))){
         stop("The two circles must have distinct centers.")
       }
-      l <- Line$new(C1, C2, TRUE, TRUE)
+      C1_C2 <- C2 - C1
+      v <- c(-C1_C2[2L], C1_C2[1L])
       R <- self$radicalCenter(circ2)
-      l$perpendicular(R, TRUE, TRUE)
+      Line$new(R, R+v, TRUE, TRUE)
+      # l <- Line$new(C1, C2, TRUE, TRUE)
+      # R <- self$radicalCenter(circ2)
+      # l$perpendicular(R, TRUE, TRUE)
     },
 
     #' @description Rotate the circle.

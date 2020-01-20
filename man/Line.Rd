@@ -46,6 +46,7 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \item \href{#method-new}{\code{Line$new()}}
 \item \href{#method-print}{\code{Line$print()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
+\item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-projection}{\code{Line$projection()}}
 \item \href{#method-rotate}{\code{Line$rotate()}}
@@ -127,6 +128,22 @@ where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
 and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-includes"></a>}}
+\subsection{Method \code{includes()}}{
+Whether a point belongs to the line
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$includes(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{the point for which we want to test whether it belongs to the line}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-perpendicular"></a>}}
