@@ -215,14 +215,19 @@ Line <- R6Class(
     #' @description Whether a point belongs to the line.
     #' @param M the point for which we want to test whether it belongs to the line
     #' @param strict logical, whether to take into account \code{extendA} and \code{extendB}
+    #' @param checkCollinear logical, whether to check the collinearity of
+    #' \code{A}, \code{B}, \code{M}; set to \code{FALSE} only if you are sure that
+    #' \code{M} is on the line \code{(AB)} (if you use \code{strict=TRUE})
     #' @return \code{TRUE} or \code{FALSE}.
     #' @examples A <- c(0,0); B <- c(1,2); M <- c(3,6)
     #' l <- Line$new(A, B, FALSE, FALSE)
     #' l$includes(M, strict = TRUE)
-    includes = function(M, strict = FALSE){
+    includes = function(M, strict = FALSE, checkCollinear = TRUE){
       A <- private[[".A"]]; B <- private[[".B"]]
-      test <- .collinear(A, B, M)
-      if(!test) return(FALSE)
+      if(checkCollinear){
+        test <- .collinear(A, B, M)
+        if(!test) return(FALSE)
+      }
       extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
       if(!strict || (extendA && extendB)) return(test)
       if(!extendA && !extendB){

@@ -39,19 +39,84 @@ intersectionCircleCircle <- function(circ1, circ2) {
 #'
 #' @param circ a \code{Circle} object
 #' @param line a \code{Line} object
+#' @param strict logical, whether to take into account \code{line$extendA} and
+#' \code{line$extendB}
 #'
-#' @return \code{NULL} if there is no intersection,
-#' a point if the line is tangent to the circle,
-#' a list of two points if the circle and the line meet at
-#' two points.
+#' @return \code{NULL} if there is no intersection;
+#' a point if the infinite line is tangent to the circle, or \code{NULL}
+#' if \code{strict=TRUE} and the point is not on the line (segment or half-line);
+#' a list of two points if the circle and the infinite line meet at
+#' two points, when \code{strict=FALSE}; if \code{strict=TRUE} and the line is
+#' a segment or a half-line, this can return \code{NULL} or a single point.
 #' @export
-intersectionCircleLine <- function(circ, line){
+intersectionCircleLine <- function(circ, line, strict = FALSE){
   C <- circ$center
   intersections <- .CircleLineIntersection00(line$A - C, line$B - C, circ$radius)
   if(is.null(intersections)) return(NULL)
   if(is.list(intersections)){
-    return(lapply(intersections, function(I){I + C}))
+    I1I2 <- lapply(intersections, function(I){I + C})
+    if(strict && (!line$extendA || !line$extendB)){
+      I1 <- I1I2[[1L]]; I2 <- I1I2[[2L]]
+      ontheline1 <-
+        suppressMessages(line$includes(I1, strict = TRUE, checkCollinear = FALSE))
+      ontheline2 <-
+        suppressMessages(line$includes(I2, strict = TRUE, checkCollinear = FALSE))
+      if(ontheline1 && ontheline2){
+        return(I1I2)
+      }else if(ontheline1){
+        message(
+          sprintf(
+            paste0(
+              "The infinite line meets the circle at two points, but one of them",
+              " is not on the %s."
+            ), ifelse(line$extendA || line$extendB, "half-line", "segment")
+          )
+        )
+        return(I1)
+      }else if(ontheline2){
+        message(
+          sprintf(
+            paste0(
+              "The infinite line meets the circle at two points, but one of them",
+              " is not on the %s."
+            ), ifelse(line$extendA || line$extendB, "half-line", "segment")
+          )
+        )
+        return(I2)
+      }else{
+        message(
+          sprintf(
+            paste0(
+              "The infinite line meets the circle at two points, but none of them",
+              " is on the %s."
+            ), ifelse(line$extendA || line$extendB, "half-line", "segment")
+          )
+        )
+        return(NULL)
+      }
+    }else{
+      return(I1I2)
+    }
   }
-  intersections + C
+  I <- intersections + C
+  if(strict && (!line$extendA || !line$extendB)){
+    ontheline <-
+      suppressMessages(line$includes(I, strict = TRUE, checkCollinear = FALSE))
+    if(ontheline){
+      I
+    }else{
+      message(
+        sprintf(
+          paste0(
+            "The infinite line is tangent to the circle, but the tangency point",
+            " does not belong to the %s."
+          ), ifelse(line$extendA || line$extendB, "half-line", "segment")
+        )
+      )
+      NULL
+    }
+  }else{
+    I
+  }
 }
 

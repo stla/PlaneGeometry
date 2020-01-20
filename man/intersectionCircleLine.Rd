@@ -4,18 +4,23 @@
 \alias{intersectionCircleLine}
 \title{Intersection of a circle and a line}
 \usage{
-intersectionCircleLine(circ, line)
+intersectionCircleLine(circ, line, strict = FALSE)
 }
 \arguments{
 \item{circ}{a \code{Circle} object}
 
 \item{line}{a \code{Line} object}
+
+\item{strict}{logical, whether to take into account \code{line$extendA} and
+\code{line$extendB}}
 }
 \value{
-\code{NULL} if there is no intersection,
-a point if the line is tangent to the circle,
-a list of two points if the circle and the line meet at
-two points.
+\code{NULL} if there is no intersection;
+a point if the infinite line is tangent to the circle, or \code{NULL}
+if \code{strict=TRUE} and the point is not on the line (segment or half-line);
+a list of two points if the circle and the infinite line meet at
+two points, when \code{strict=FALSE}; if \code{strict=TRUE} and the line is
+a segment or a half-line, this can return \code{NULL} or a single point.
 }
 \description{
 Return the intersection of a circle and a line.
