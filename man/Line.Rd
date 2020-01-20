@@ -48,6 +48,9 @@ Line$new(c(0,0), c(1,0), FALSE, TRUE)
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-projection}{\code{Line$projection()}}
+\item \href{#method-rotate}{\code{Line$rotate()}}
+\item \href{#method-translate}{\code{Line$translate()}}
+\item \href{#method-invert}{\code{Line$invert()}}
 \item \href{#method-clone}{\code{Line$clone()}}
 }
 }
@@ -168,6 +171,67 @@ Orthogonal projection of a point to the line.
 }
 \subsection{Returns}{
 A point.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-rotate"></a>}}
+\subsection{Method \code{rotate()}}{
+Rotate the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$rotate(alpha, O, degrees = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha}}{angle of rotation}
+
+\item{\code{O}}{center of rotation}
+
+\item{\code{degrees}}{logical, whether \code{alpha} is given in degrees}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-translate"></a>}}
+\subsection{Method \code{translate()}}{
+Translate the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$translate(v)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{v}}{the vector of translation}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invert"></a>}}
+\subsection{Method \code{invert()}}{
+Invert the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$invert(inversion)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{inversion}}{an \code{Inversion} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}

@@ -124,7 +124,7 @@ Circle <- R6Class(
     #' @description Rotate the circle.
     #' @param alpha angle of rotation
     #' @param O center of rotation
-    #' @param degrees logical, whether `alpha` is given in degrees
+    #' @param degrees logical, whether \code{alpha} is given in degrees
     #' @return A \code{Circle} object.
     rotate = function(alpha, O, degrees = TRUE){
       alpha <- as.vector(alpha)

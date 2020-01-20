@@ -469,7 +469,7 @@ Rotate the triangle.
 
 \item{\code{O}}{center of rotation}
 
-\item{\code{degrees}}{logical, whether `alpha` is given in degrees}
+\item{\code{degrees}}{logical, whether \code{alpha} is given in degrees}
 }
 \if{html}{\out{</div>}}
 }

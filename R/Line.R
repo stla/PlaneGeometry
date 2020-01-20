@@ -214,6 +214,57 @@ Line <- R6Class(
       A_B <- B - A
       v <- c(-A_B[2L], A_B[1L])
       .LineLineIntersection(A, B, M, M+v)
+    },
+
+    #' @description Rotate the line.
+    #' @param alpha angle of rotation
+    #' @param O center of rotation
+    #' @param degrees logical, whether \code{alpha} is given in degrees
+    #' @return A \code{Line} object.
+    rotate = function(alpha, O, degrees = TRUE){
+      alpha <- as.vector(alpha)
+      stopifnot(
+        is.numeric(alpha),
+        length(alpha) == 1L,
+        !is.na(alpha)
+      )
+      O <- as.vector(O)
+      stopifnot(
+        is.numeric(O),
+        length(O) == 2L,
+        !any(is.na(O))
+      )
+      if(degrees){
+        alpha <- alpha * pi/180
+      }
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      At <- private[[".A"]] - O
+      RAt <- c(cosalpha*At[1L]-sinalpha*At[2L], sinalpha*At[1L]+cosalpha*At[2L])
+      Bt <- private[[".B"]] - O
+      RBt <- c(cosalpha*Bt[1L]-sinalpha*Bt[2L], sinalpha*Bt[1L]+cosalpha*Bt[2L])
+      Line$new(RAt + O, RBt + O, private[[".extendA"]], private[[".extendB"]])
+    },
+
+    #' @description Translate the line.
+    #' @param v the vector of translation
+    #' @return A \code{Line} object.
+    translate = function(v){
+      v <- as.vector(v)
+      stopifnot(
+        is.numeric(v),
+        length(v) == 2L,
+        !any(is.na(v))
+      )
+      Line$new(private[[".A"]] + v, private[[".B"]] + v,
+               private[[".extendA"]], private[[".extendB"]])
+    },
+
+    #' @description Invert the line.
+    #' @param inversion an \code{Inversion} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    invert = function(inversion){
+      inversion$invertLine(self)
     }
+
   )
 )

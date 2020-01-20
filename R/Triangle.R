@@ -510,7 +510,7 @@ Triangle <- R6Class(
     #' @description Rotate the triangle.
     #' @param alpha angle of rotation
     #' @param O center of rotation
-    #' @param degrees logical, whether `alpha` is given in degrees
+    #' @param degrees logical, whether \code{alpha} is given in degrees
     #' @return A \code{Triangle} object.
     rotate = function(alpha, O, degrees = TRUE){
       alpha <- as.vector(alpha)
