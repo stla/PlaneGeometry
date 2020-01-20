@@ -95,6 +95,30 @@ Inversion <- R6Class(
     #' @description Inversion of a circle.
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object or a \code{Line} object.
+    #' @examples # A Pappus chain
+    #' # https://www.cut-the-knot.org/Curriculum/Geometry/InversionInArbelos.shtml
+    #' opar <- par(mar = c(0,0,0,0))
+    #' plot(0, 0, type = "n", asp = 1, xlim = c(0,6), ylim = c(-4,4),
+    #'      xlab = NA, ylab = NA, axes = FALSE)
+    #' A <- c(0,0); B <- c(6,0)
+    #' ABsqr <- c(crossprod(A-B))
+    #' iota <- Inversion$new(A, ABsqr)
+    #' C <- iota$invert(c(8,0))
+    #' Sigma1 <- Circle$new((A+B)/2, sqrt(ABsqr)/2)
+    #' Sigma2 <- Circle$new((A+C)/2, sqrt(c(crossprod(A-C)))/2)
+    #' draw(Sigma1); draw(Sigma2)
+    #' circ0 <- Circle$new(c(7,0), 1)
+    #' iotacirc0 <- iota$invertCircle(circ0)
+    #' draw(iotacirc0)
+    #' for(i in 1:6){
+    #'   circ <- circ0$translate(c(0,2*i))
+    #'   iotacirc <- iota$invertCircle(circ)
+    #'   draw(iotacirc)
+    #'   circ <- circ0$translate(c(0,-2*i))
+    #'   iotacirc <- iota$invertCircle(circ)
+    #'   draw(iotacirc)
+    #' }
+    #' par(opar)
     invertCircle = function(circ){
       c0 <- private[[".pole"]]; k <- private[[".power"]]
       c1 <- circ$center
