@@ -91,7 +91,7 @@ Line <- R6Class(
     #' l$A
     #' l$A <- c(0,0)
     #' l
-    initialize = function(A, B, extendA, extendB) {
+    initialize = function(A, B, extendA = TRUE, extendB = TRUE) {
       A <- as.vector(A); B <- as.vector(B)
       stopifnot(
         is.numeric(A),
@@ -121,7 +121,7 @@ Line <- R6Class(
       private[[".extendB"]] <- extendB
     },
 
-    #' @description Show instance of a line object
+    #' @description Show instance of a line object.
     #' @param ... ignored
     #' @examples Line$new(c(0,0), c(1,0), FALSE, TRUE)
     print = function(...) {
@@ -163,7 +163,7 @@ Line <- R6Class(
         # intercept <-
         #   retistruct::line.line.intersection(A, B, c(0,0), c(0,1))[2L]
         theta <- -atan2(x, y) # if(y >= 0) atan2(y, x) else atan(y, x)
-        offset <- A[1]*cos(theta)+A[2]*sin(theta)
+        offset <- A[1L]*cos(theta) + A[2L]*sin(theta)
         if(offset < 0){
           theta <- theta + pi
           offset <- -offset
@@ -199,6 +199,17 @@ Line <- R6Class(
       do2 <- as.numeric(line$directionAndOffset())
       do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
       isTRUE(all.equal(do1, do2))
+    },
+
+    #' @description Check whether the line is parallel to a given line.
+    #' @param line a \code{Line} object
+    #' @return \code{TRUE} or \code{FALSE}.
+    isParallel = function(line) {
+      P1 <- private[[".A"]]; P2 <- private[[".B"]]
+      Q1 <- line$A; Q2 <- line$B
+      dx1 <- P1[1L] - P2[1L]; dx2 <- Q1[1L] - Q2[1L]
+      dy1 <- P1[2L] - P2[2L]; dy2 <- Q1[2L] - Q2[2L]
+      det(rbind(c(dx1, dy1), c(dx2, dy2))) == 0
     },
 
     #' @description Whether a point belongs to the line.

@@ -50,7 +50,8 @@ Triangle <- R6Class(
         stopifnot(
           is.numeric(A),
           length(A) == 2L,
-          !any(is.na(A))
+          !any(is.na(A)),
+          all(is.finite(A))
         )
         private[[".A"]] <- A
       }
@@ -65,7 +66,8 @@ Triangle <- R6Class(
         stopifnot(
           is.numeric(B),
           length(B) == 2L,
-          !any(is.na(B))
+          !any(is.na(B)),
+          all(is.finite(B))
         )
         private[[".B"]] <- B
       }
@@ -80,7 +82,8 @@ Triangle <- R6Class(
         stopifnot(
           is.numeric(C),
           length(C) == 2L,
-          !any(is.na(C))
+          !any(is.na(C)),
+          all(is.finite(C))
         )
         private[[".C"]] <- C
       }
@@ -102,17 +105,20 @@ Triangle <- R6Class(
       stopifnot(
         is.numeric(A),
         length(A) == 2L,
-        !any(is.na(A))
+        !any(is.na(A)),
+        all(is.finite(A))
       )
       stopifnot(
         is.numeric(B),
         length(B) == 2L,
-        !any(is.na(B))
+        !any(is.na(B)),
+        all(is.finite(B))
       )
       stopifnot(
         is.numeric(C),
         length(C) == 2L,
-        !any(is.na(C))
+        !any(is.na(C)),
+        all(is.finite(C))
       )
       private[[".A"]] <- A
       private[[".B"]] <- B
@@ -593,7 +599,10 @@ TriangleThreeLines <- function(line1, line2, line3){
   if(line1$isEqual(line3)) stop("`line1` equals `line3`.")
   if(line3$isEqual(line2)) stop("`line2` equals `line3`.")
   A <- .LineLineIntersection(line2$A, line2$B, line3$A, line3$B)
+  if(A[1L] == Inf) stop("`line2` is parallel to `line3`.")
   B <- .LineLineIntersection(line1$A, line1$B, line3$A, line3$B)
+  if(B[1L] == Inf) stop("`line1` is parallel to `line3`.")
   C <- .LineLineIntersection(line1$A, line1$B, line2$A, line2$B)
+  if(C[1L] == Inf) stop("`line1` is parallel to `line2`.")
   Triangle$new(A, B, C)
 }

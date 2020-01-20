@@ -55,6 +55,7 @@ l$includes(M, strict = TRUE)
 \item \href{#method-print}{\code{Line$print()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
 \item \href{#method-isEqual}{\code{Line$isEqual()}}
+\item \href{#method-isParallel}{\code{Line$isParallel()}}
 \item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-projection}{\code{Line$projection()}}
@@ -69,7 +70,7 @@ l$includes(M, strict = TRUE)
 \subsection{Method \code{new()}}{
 Create a new \code{Line} object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Line$new(A, B, extendA, extendB)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Line$new(A, B, extendA = TRUE, extendB = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -100,7 +101,7 @@ l
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
-Show instance of a line object
+Show instance of a line object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$print(...)}\if{html}{\out{</div>}}
 }
@@ -145,6 +146,25 @@ Check whether the line equals a given line, without taking
 into account \code{extendA} and \code{extendB}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$isEqual(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} or \code{FALSE}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isParallel"></a>}}
+\subsection{Method \code{isParallel()}}{
+Check whether the line is parallel to a given line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$isParallel(line)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
