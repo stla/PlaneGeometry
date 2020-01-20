@@ -13,7 +13,7 @@ possibly negative).
 ## Method `Inversion$print`
 ## ------------------------------------------------
 
-Circle$new(c(0,0), 2)
+Inversion$new(c(0,0), 2)
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -29,6 +29,9 @@ Circle$new(c(0,0), 2)
 \itemize{
 \item \href{#method-new}{\code{Inversion$new()}}
 \item \href{#method-print}{\code{Inversion$print()}}
+\item \href{#method-invert}{\code{Inversion$invert()}}
+\item \href{#method-invertCircle}{\code{Inversion$invertCircle()}}
+\item \href{#method-invertLine}{\code{Inversion$invertLine()}}
 \item \href{#method-clone}{\code{Inversion$clone()}}
 }
 }
@@ -56,7 +59,7 @@ A new \code{Inversion} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
-Show instance of a circle object
+Show instance of an inversion object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Inversion$print(...)}\if{html}{\out{</div>}}
 }
@@ -70,12 +73,69 @@ Show instance of a circle object
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{Circle$new(c(0,0), 2)
+\preformatted{Inversion$new(c(0,0), 2)
 }
 \if{html}{\out{</div>}}
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invert"></a>}}
+\subsection{Method \code{invert()}}{
+Inversion of a point.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$invert(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invertCircle"></a>}}
+\subsection{Method \code{invertCircle()}}{
+Inversion of a circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$invertCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invertLine"></a>}}
+\subsection{Method \code{invertLine()}}{
+Inversion of a line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$invertLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

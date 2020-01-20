@@ -39,6 +39,7 @@ Circle <- R6Class(
         stopifnot(
           is.numeric(radius),
           length(radius) == 1L,
+          radius >= 0,
           !is.na(radius)
         )
         private[[".radius"]] <- radius
@@ -74,7 +75,7 @@ Circle <- R6Class(
       private[[".radius"]] <- radius
     },
 
-    #' @description Show instance of a circle object
+    #' @description Show instance of a circle object.
     #' @param ... ignored
     #' @examples Circle$new(c(0,0), 2)
     print = function(...) {
@@ -91,9 +92,9 @@ Circle <- R6Class(
       c(crossprod(M - private[[".center"]])) - radius*radius
     },
 
-    #' @description Radical center of two circles
+    #' @description Radical center of two circles.
     #' @param circ2 a \code{Circle} object
-    #' @seealso \code{link{radicalCenter}} for the radical center of three circles
+    #' @seealso \code{\link{radicalCenter}} for the radical center of three circles.
     radicalCenter = function(circ2){
       C1 <- primitive[[".center"]]; C2 <- circ2$center
       k < primitive[[".radius"]]^2 - circ2$radius^2;
@@ -107,9 +108,9 @@ Circle <- R6Class(
       c(C1[1L], K/C1[1L]) # quid if C1[1] = 0 ?
     },
 
-    #' @description Radical axis of two circles
+    #' @description Radical axis of two circles.
     #' @param circ2 a \code{Circle} object
-    #' @return a \code{Line} object
+    #' @return A \code{Line} object.
     radicalAxis = function(circ2){
       C1 <- primitive[[".center"]]; C2 <- circ2$center
       if(isTRUE(all.equal(C1,C2))){

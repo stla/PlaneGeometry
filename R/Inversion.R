@@ -68,13 +68,54 @@ Inversion <- R6Class(
       private[[".power"]] <- power
     },
 
-    #' @description Show instance of a circle object
+    #' @description Show instance of an inversion object.
     #' @param ... ignored
-    #' @examples Circle$new(c(0,0), 2)
+    #' @examples Inversion$new(c(0,0), 2)
     print = function(...) {
       cat("Inversion:\n")
       cat("      pole: ", toString(private[[".pole"]]), "\n", sep = "")
       cat("     power: ", toString(private[[".power"]]), "\n", sep = "")
+    },
+
+    #' @description Inversion of a point.
+    #' @param M a point
+    #' @return A point.
+    invert = function(M) {
+      pole <- private[[".pole"]]; k <- private[[".power"]]
+      A_M <- M - A
+      pole + k/c(crossprod(A_M)) * A_M
+    },
+
+    #' @description Inversion of a circle.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    invertCircle = function(circ){
+      c0 <- private[[".pole"]]; k <- private[[".power"]]
+      c1 <- circ$center
+      r1 <- circ$radius
+      D1 <- (c1[1L] - c0[1L])^2 + (c1[2L] - c0[2L])^2 - r1*r1
+      if(D1 != 0){
+        s <- k / D1
+        Circle$new(c0 + s*(c1-c0), abs(s)*r1);
+      }else{
+        Ot <- c0 - c1
+        R180 <- -Ot + c1
+        R90 <- c(-Ot[2L], Ot[1L]) + c1
+        Line$new(self$invert(R180), sel$invert(R90), TRUE, TRUE)
+      }
+    },
+
+    #' @description Inversion of a line.
+    #' @param line a \code{Line} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    invertLine = function(line){
+      A <- line$A: B <- line$B
+      if(.collinear(A, B, pole)){
+        line
+      }else{
+        Ap <- self$invert(A); Bp <- self$invert(B)
+        Triangle$new(private[[".pole"]], Ap, Bp)$circumcircle()
+      }
     }
   )
 )

@@ -26,7 +26,7 @@ circ
 Circle$new(c(0,0), 2)
 }
 \seealso{
-\code{link{radicalCenter}} for the radical center of three circles
+\code{\link{radicalCenter}} for the radical center of three circles.
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -84,7 +84,7 @@ circ
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
-Show instance of a circle object
+Show instance of a circle object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$print(...)}\if{html}{\out{</div>}}
 }
@@ -127,7 +127,7 @@ A number.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-radicalCenter"></a>}}
 \subsection{Method \code{radicalCenter()}}{
-Radical center of two circles
+Radical center of two circles.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$radicalCenter(circ2)}\if{html}{\out{</div>}}
 }
@@ -143,7 +143,7 @@ Radical center of two circles
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-radicalAxis"></a>}}
 \subsection{Method \code{radicalAxis()}}{
-Radical axis of two circles
+Radical axis of two circles.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$radicalAxis(circ2)}\if{html}{\out{</div>}}
 }
@@ -156,7 +156,7 @@ Radical axis of two circles
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-a \code{Line} object
+A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}

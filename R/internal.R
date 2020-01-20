@@ -15,3 +15,9 @@
   ) / D
 }
 
+.collinear <- function(A, B, C, tol = 0) {
+  AB <- B-A; AC <- C-A
+  z <- (AB[1] - 1i*AB[2]) * (AC[1] + 1i*AC[2])
+  re <- Re(z); im <- Im(z)
+  1 / (1 + im*im/re/re) >= 1 - tol
+}
