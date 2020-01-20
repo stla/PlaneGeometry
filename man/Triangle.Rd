@@ -63,6 +63,9 @@ invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
   points(P[1], P[2], pch = 19)
 }))
 }
+\seealso{
+\code{\link{TriangleThreeLines}} to define a triangle by three lines.
+}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{

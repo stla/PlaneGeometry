@@ -2,6 +2,8 @@
 #'
 #' @description A triangle has three vertices. They are named A, B, C.
 #'
+#' @seealso \code{\link{TriangleThreeLines}} to define a triangle by three lines.
+#'
 #' @examples # incircle and excircles
 #' A <- c(0,0); B <- c(1,2); C <- c(3.5,1)
 #' t <- Triangle$new(A, B, C)
@@ -577,3 +579,21 @@ Triangle <- R6Class(
 
   )
 )
+
+
+#' Triangle defined by three lines
+#' @description Return the triangle formed by three lines.
+#'
+#' @param line1,line2,line3 \code{Line} objects
+#'
+#' @return A \code{Triangle} object.
+#' @export
+TriangleThreeLines <- function(line1, line2, line3){
+  if(line1$isEqual(line2)) stop("`line1` equals `line2`.")
+  if(line1$isEqual(line3)) stop("`line1` equals `line3`.")
+  if(line3$isEqual(line2)) stop("`line2` equals `line3`.")
+  A <- .LineLineIntersection(line2$A, line2$B, line3$A, line3$B)
+  B <- .LineLineIntersection(line1$A, line1$B, line3$A, line3$B)
+  C <- .LineLineIntersection(line1$A, line1$B, line2$A, line2$B)
+  Triangle$new(A, B, C)
+}
