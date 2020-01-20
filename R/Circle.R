@@ -89,6 +89,49 @@ Circle <- R6Class(
     power = function(M) {
       private[[".radius"]] -> radius
       c(crossprod(M - private[[".center"]])) - radius*radius
+    },
+
+    #' @description Radical center of two circles
+    #' @param circ2 a \code{Circle} object
+    #' @seealso \code{link{radicalCenter}} for the radical center of three circles
+    radicalCenter = function(circ2){
+      C1 <- primitive[[".center"]]; C2 <- circ2$center
+      k < primitive[[".radius"]]^2 - circ2$radius^2;
+      C1_C2 <- C2 - C1
+      C1C2sqr <- c(crossprod(C1_C2))
+      K <- if(C1C2sqr == 0){
+        c(Inf, Inf)
+      }else{
+        (C1+C2)/2 + k/2 * C1_C2/C1C2sqr
+      }
+      c(C1[1L], K/C1[1L]) # quid if C1[1] = 0 ?
+    },
+
+    #' @description Radical axis of two circles
+    #' @param circ2 a \code{Circle} object
+    #' @return a \code{Line} object
+    radicalAxis = function(circ2){
+      C1 <- primitive[[".center"]]; C2 <- circ2$center
+      if(isTRUE(all.equal(C1,C2))){
+        stop("The two circles must have distinct centers.")
+      }
+      l <- Line$new(C1, C2)
+      R <- self$radicalCenter(circ2)
+      l$perpendicular(R, TRUE, TRUE)
     }
+
   )
 )
+
+#' Radical center
+#' Returns the radical center of three circles.
+#'
+#' @param circ1,circ2,circ3 \code{Circle} objects
+#'
+#' @return A point.
+#' @export
+radicalCenter <- function(circ1, circ2, circ3){
+  l1 <- circ1$radicalAxis(circ2)
+  l2 <- circ1$radicalAxis(circ3)
+  .LineLineIntersection(l1$A, l1$B, l2$A, l2$B)
+}
