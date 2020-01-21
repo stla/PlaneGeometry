@@ -182,14 +182,15 @@ Arc <- R6Class(
     },
 
     #' @description Path defining the reference arc.
-    #' @return A list with two components \code{x} and \code{y}.
+    #' @param npoints number of points of the path
+    #' @return A list with two numeric vectors \code{x} and \code{y} of length \code{npoints}.
     #' See "Filling the lapping area of two circles" in the vignette for
     #' an example.
-    path = function() {
+    path = function(npoints = 100) {
       O <- private[[".center"]]
       DrawArc(O[1L], O[2L], rx = private[[".radius"]],
               theta.1 = private[[".alpha1"]], theta.2 = private[[".alpha2"]],
-              plot = FALSE)[[1L]]
+              nv = npoints, plot = FALSE)[[1L]]
     }
 
   )

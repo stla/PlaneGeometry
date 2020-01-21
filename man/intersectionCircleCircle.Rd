@@ -4,10 +4,12 @@
 \alias{intersectionCircleCircle}
 \title{Intersection of two circles}
 \usage{
-intersectionCircleCircle(circ1, circ2)
+intersectionCircleCircle(circ1, circ2, epsilon = sqrt(.Machine$double.eps))
 }
 \arguments{
 \item{circ1, circ2}{two \code{Circle} objects}
+
+\item{epsilon}{a small positive number used for the numerical accuracy}
 }
 \value{
 \code{NULL} if there is no intersection,
