@@ -20,6 +20,45 @@ knitr::opts_chunk$set(
 library(PlaneGeometry)
 ```
 
+# Exeter point
+
+The *Exeter point* is defined as follows on Wikipedia. 
+
+Let $ABC$ be any given triangle. Let the medians through the vertices $A$, $B$, 
+$C$ meet the circumcircle of triangle $ABC$ at $A'$, $B'$ and $C'$ respectively. 
+Let $DEF$ be the triangle formed by the tangents at $A$, $B$, and $C$ to the 
+circumcircle of triangle $ABC$. (Let $D$ be the vertex opposite to the side 
+formed by the tangent at the vertex $A$, let $E$ be the vertex opposite to the 
+side formed by the tangent at the vertex $B$, and let $F$ be the vertex 
+opposite to the side formed by the tangent at the vertex $C$.) 
+The lines through $DA'$, $EB'$ and $FC'$ are concurrent. 
+The point of concurrence is the Exeter point of triangle $ABC$.
+
+Let's construct it with the `PlaneGeometry` package. We do not need to 
+construct the triangle $DEF$: it is the *tangential triangle* of $ABC$, and 
+is provided by the `tangentialTriangle` method of the R6 class `Triangle`.
+
+```{r}
+A <- c(0,0); B <- c(5,5); C <- c(6,-2)
+t <- Triangle$new(A, B, C)
+circumcircle <- t$circumcircle()
+centroid <- t$centroid()
+medianA <- Line$new(A, centroid)
+medianB <- Line$new(B, centroid)
+medianC <- Line$new(C, centroid)
+Aprime <- intersectionCircleLine(circumcircle, medianA)[[1]]
+Bprime <- intersectionCircleLine(circumcircle, medianB)[[2]]
+Cprime <- intersectionCircleLine(circumcircle, medianC)[[1]]
+DEF <- t$tangentialTriangle()
+lineDAprime <- Line$new(DEF$A, Aprime)
+lineEBprime <- Line$new(DEF$B, Bprime)
+lineFCprime <- Line$new(DEF$C, Cprime)
+( ExeterPoint <- intersectionLineLine(lineDAprime, lineEBprime) )
+# check whether the Exeter point is also on (FC')
+lineFCprime$includes(ExeterPoint)
+```
+
+
 # Circles tangent to three circles
 
 Let $\mathcal{C_1}$, $\mathcal{C_2}$ and $\mathcal{C_3}$ be three circles with 
