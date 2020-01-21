@@ -122,7 +122,7 @@ Check whether the reference circle equals another circle.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{circ}}{a \code{Circle object}}
+\item{\code{circ}}{a \code{Circle} object}
 }
 \if{html}{\out{</div>}}
 }
@@ -143,7 +143,9 @@ Orthogonal circle passing through two points on the reference circle.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A \code{Circle} object.
+A \code{Circle} object or a \code{Line} object: the diameter
+of the reference circle defined by the two points in case when the two
+angles differ by \code{pi}.
 }
 }
 \if{html}{\out{<hr>}}

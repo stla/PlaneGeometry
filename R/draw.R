@@ -4,7 +4,7 @@
 #'
 #' @param x geometric object (\code{Triangle}, \code{Circle} or \code{Line})
 #' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
-#' object, to \code{\link[plotrix]{draw.circle}} for a \code{Circle} object,
+#' object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
 #' general graphical parameters for a \code{Line} object
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
@@ -36,11 +36,27 @@ draw.Triangle <- function(x, ...){
 }
 
 #' @rdname draw
-#' @importFrom plotrix draw.circle
+#' @importFrom DescTools DrawCircle
 #' @export
 draw.Circle = function(x, ...) {
   center <- x$center
-  draw.circle(center[1L], center[2L], x$radius, ...)
+  DrawCircle(center[1L], center[2L], r.out = x$radius,
+             theta.1 = 0, theta.2 = 2*pi, ...)
+}
+
+#' @rdname draw
+#' @importFrom DescTools DrawArc
+#' @export
+draw.Arc = function(x, ...) {
+  center <- x$center; r <- x$radius
+  # if((x$alpha1 - x$alpha2) %% pi == 0){
+  #   eialpha1 <- c(cos(x$alpha1), sin(x$alpha1))
+  #   A <- center + r*eialpha1; B <- center - r*eialpha1
+  #   draw(Line$new(A, B, FALSE, FALSE), ...) # NIMP !!
+  # }else{
+    DrawArc(center[1L], center[2L], rx = r, ry = r,
+            theta.1 = x$alpha1, theta.2 = x$alpha2, ...)
+  # }
 }
 
 #' @rdname draw

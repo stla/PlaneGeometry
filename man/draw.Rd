@@ -4,6 +4,7 @@
 \alias{draw}
 \alias{draw.Triangle}
 \alias{draw.Circle}
+\alias{draw.Arc}
 \alias{draw.Line}
 \title{Draw a geometric object}
 \usage{
@@ -13,13 +14,15 @@ draw(x, ...)
 
 \method{draw}{Circle}(x, ...)
 
+\method{draw}{Arc}(x, ...)
+
 \method{draw}{Line}(x, ...)
 }
 \arguments{
 \item{x}{geometric object (\code{Triangle}, \code{Circle} or \code{Line})}
 
 \item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle}
-object, to \code{\link[plotrix]{draw.circle}} for a \code{Circle} object,
+object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
 general graphical parameters for a \code{Line} object}
 }
 \description{

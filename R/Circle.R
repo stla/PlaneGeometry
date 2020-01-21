@@ -85,7 +85,7 @@ Circle <- R6Class(
     },
 
     #' @description Check whether the reference circle equals another circle.
-    #' @param circ a \code{Circle object}
+    #' @param circ a \code{Circle} object
     isEqual = function(circ){
       c0 <- private[[".center"]]; r0 <- private[[".radius"]]
       c1 <- circ$center; r1 <- circ$radius
@@ -94,11 +94,17 @@ Circle <- R6Class(
 
     #' @description Orthogonal circle passing through two points on the reference circle.
     #' @param alpha1,alpha2 two angles defining two points on the reference circle
-    #' @return A \code{Circle} object.
+    #' @return A \code{Circle} object or a \code{Line} object: the diameter
+    #' of the reference circle defined by the two points in case when the two
+    #' angles differ by \code{pi}.
     orthogonalThroughTwoPointsOnCircle = function(alpha1, alpha2) {
-      stopifnot((alpha1-alpha2) %% pi != 0) # sinon c'est un diamètre
       I <- private[[".center"]]; r <- private[[".radius"]]
       dalpha <- alpha1 - alpha2
+      if(dalpha %% pi == 0){
+        eialpha1 <- c(cos(alpha1), sin(alpha1))
+        A <- I + r*eialpha1; B <- I - r*eialpha1
+        return(Line$new(A, B, FALSE, FALSE))
+      }
       r0 <- r * abs(tan(dalpha/2))
       IO <- r / cos(dalpha/2)
       Ox <- IO * cos((alpha1+alpha2)/2)
