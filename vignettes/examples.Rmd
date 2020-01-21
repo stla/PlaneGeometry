@@ -20,6 +20,8 @@ knitr::opts_chunk$set(
 library(PlaneGeometry)
 ```
 
+# Circles tangent to three circles
+
 Let $\mathcal{C_1}$, $\mathcal{C_2}$ and $\mathcal{C_3}$ be three circles with 
 respective radii $r_1$, $r_2$ and $r_3$ such that $r_3 < r_1$ and $r_3 < r_2$. 
 How to construct some circles simultaneously tangent to these three circles?
@@ -60,7 +62,7 @@ T1p <- iota1$invert(T1); T1pp <- iota2$invert(T1)
 Csolution1 <- Triangle$new(T1, T1p, T1pp)$circumcircle()
 ```
 
-```{r plot, fig.width=5, fig.height=5}
+```{r tangentCircles, fig.width=5, fig.height=5}
 opar <- par(mar = c(0,0,0,0))
 plot(0, 0, type = "n", asp = 1, xlim = c(-4,9), ylim = c(-4,9),
      xlab = NA, ylab = NA, axes = FALSE)
@@ -69,6 +71,40 @@ draw(C2, col = "yellow", border = "red")
 draw(C3, col = "yellow", border = "red")
 draw(Csolution0, lwd = 2, border = "blue")
 draw(Csolution1, lwd = 2, border = "blue")
+par(opar)
+```
+
+
+# Filling the lapping area of two circles
+
+Let two circles intersecting at two points. 
+How to fill the lapping area of the two circles?
+
+```{r lappingArea, fig.width=5, fig.height=5}
+O1 <- c(2,5); circ1 <- Circle$new(O1, 2)
+O2 <- c(4,4); circ2 <- Circle$new(O2, 3)
+
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(0,8), ylim = c(0,8))
+draw(circ1, border = "purple", lwd = 2)
+draw(circ2, border = "forestgreen", lwd = 2)
+
+intersections <- intersectionCircleCircle(circ1, circ2)
+A <- intersections[[1]]; B <- intersections[[2]]
+points(rbind(A,B), pch = 19, col = c("red", "blue"))
+
+theta1 <- Arg((A-O1)[1] + 1i*(A-O1)[2])
+theta2 <- Arg((B-O1)[1] + 1i*(B-O1)[2])
+path1 <- Arc$new(O1, circ1$radius, theta1, theta2)$path()
+
+theta1 <- Arg((A-O2)[1] + 1i*(A-O2)[2])
+theta2 <- Arg((B-O2)[1] + 1i*(B-O2)[2])
+path2 <- Arc$new(O2, circ2$radius, theta2, theta1)$path()
+
+x <- c(path1$x, path2$x)
+y <- c(path1$y, path2$y)
+polypath(x, y, col = "yellow")
+
 par(opar)
 ```
 

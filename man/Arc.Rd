@@ -48,6 +48,7 @@ Arc$new(c(0,0), 2, pi/4, pi/2)
 \item \href{#method-endingPoint}{\code{Arc$endingPoint()}}
 \item \href{#method-isEqual}{\code{Arc$isEqual()}}
 \item \href{#method-complementaryArc}{\code{Arc$complementaryArc()}}
+\item \href{#method-path}{\code{Arc$path()}}
 \item \href{#method-clone}{\code{Arc$clone()}}
 }
 }
@@ -154,6 +155,20 @@ Complementary arc of the reference arc.
 \if{html}{\out{<div class="r">}}\preformatted{Arc$complementaryArc()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-path"></a>}}
+\subsection{Method \code{path()}}{
+Path defining the reference arc.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Arc$path()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with two components \code{x} and \code{y}.
+See "Filling the lapping area of two circles" in the vignette for
+an example.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

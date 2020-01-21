@@ -6,6 +6,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom DescTools DrawArc
 Arc <- R6Class(
 
   "Arc",
@@ -178,6 +179,17 @@ Arc <- R6Class(
     complementaryArc = function() {
       Arc$new(private[[".center"]], private[[".radius"]],
               private[[".alpha2"]], private[[".alpha1"]])
+    },
+
+    #' @description Path defining the reference arc.
+    #' @return A list with two components \code{x} and \code{y}.
+    #' See "Filling the lapping area of two circles" in the vignette for
+    #' an example.
+    path = function() {
+      O <- private[[".center"]]
+      DrawArc(O[1L], O[2L], rx = private[[".radius"]],
+              theta.1 = private[[".alpha1"]], theta.2 = private[[".alpha2"]],
+              plot = FALSE)[[1L]]
     }
 
   )
