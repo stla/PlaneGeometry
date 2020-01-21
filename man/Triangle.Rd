@@ -139,6 +139,7 @@ incircle$center
 \item \href{#method-NagelPoint}{\code{Triangle$NagelPoint()}}
 \item \href{#method-GergonneTriangle}{\code{Triangle$GergonneTriangle()}}
 \item \href{#method-GergonnePoint}{\code{Triangle$GergonnePoint()}}
+\item \href{#method-tangentialTriangle}{\code{Triangle$tangentialTriangle()}}
 \item \href{#method-circumcircle}{\code{Triangle$circumcircle()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
@@ -497,9 +498,23 @@ Gergonne point of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-tangentialTriangle"></a>}}
+\subsection{Method \code{tangentialTriangle()}}{
+Tangential triangle of the reference triangle.
+This is the triangle formed by the lines tangent to the circumcircle of
+the reference triangle at its vertices.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$tangentialTriangle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-circumcircle"></a>}}
 \subsection{Method \code{circumcircle()}}{
-Circumcircle of the triangle.
+Circumcircle of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$circumcircle()}\if{html}{\out{</div>}}
 }

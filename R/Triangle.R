@@ -473,7 +473,22 @@ Triangle <- R6Class(
       (tA*A + tB*B + tC*C) / (tA + tB + tC)
     },
 
-    #' @description Circumcircle of the triangle.
+    #' @description Tangential triangle of the reference triangle.
+    #' This is the triangle formed by the lines tangent to the circumcircle of
+    #' the reference triangle at its vertices.
+    #' @return A \code{Triangle} object.
+    tangentialTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      TA <- (-a2*A + b2*B + c2*C) / (-a2 + b2 + c2)
+      TB <- (a2*A - b2*B + c2*C) / (a2 - b2 + c2)
+      TC <- (a2*A + b2*B - c2*C) / (a2 + b2 - c2)
+      Triangle$new(TA, TB, TC)
+    },
+
+    #' @description Circumcircle of the reference triangle.
     #' @return A \code{Circle} object.
     circumcircle = function() {
       if(self$flatness() == 1){
