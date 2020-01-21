@@ -96,7 +96,7 @@ Circle <- R6Class(
     #' @param alpha1,alpha2 two angles defining two points on the reference circle
     #' @return A \code{Circle} object.
     orthogonalThroughTwoPointsOnCircle = function(alpha1, alpha2) {
-      stopifnot((alpha1-alpha2) %% pi != 0)
+      stopifnot((alpha1-alpha2) %% pi != 0) # sinon c'est un diamètre
       I <- private[[".center"]]; r <- private[[".radius"]]
       dalpha <- alpha1 - alpha2
       r0 <- r * abs(tan(dalpha/2))
@@ -147,7 +147,7 @@ Circle <- R6Class(
       }else{
         (C1+C2)/2 + k/2 * C1_C2/C1C2sqr
       }
-      K/C1[1L] # quid if C1[1] = 0 ?
+      K#/C1[1L] # quid if C1[1] = 0 ?
     },
 
     #' @description Radical axis of two circles.
@@ -177,13 +177,15 @@ Circle <- R6Class(
       stopifnot(
         is.numeric(alpha),
         length(alpha) == 1L,
-        !is.na(alpha)
+        !is.na(alpha),
+        is.finite(alpha)
       )
       O <- as.vector(O)
       stopifnot(
         is.numeric(O),
         length(O) == 2L,
-        !any(is.na(O))
+        !any(is.na(O)),
+        all(is.finite(O))
       )
       if(degrees){
         alpha <- alpha * pi/180
@@ -202,7 +204,8 @@ Circle <- R6Class(
       stopifnot(
         is.numeric(v),
         length(v) == 2L,
-        !any(is.na(v))
+        !any(is.na(v)),
+        all(is.finite(v))
       )
       Circle$new(private[[".center"]] + v, private[[".radius"]])
     },

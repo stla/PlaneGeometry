@@ -1,0 +1,60 @@
+---
+title: "Examples of the PlaneGeometry package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{examples}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(PlaneGeometry)
+```
+
+Let $\mathcal{C_1}$, $\mathcal{C_2}$ and $\mathcal{C_3}$ be three circles with 
+respective radii $r_1$, $r_2$ and $r_3$ such that $r_3 < r_1$ and $r_3 < r_2$. 
+How to construct some circles simultaneously tangent to these three circles?
+
+```{r}
+C1 <- Circle$new(c(0,0), 2)
+C2 <- Circle$new(c(5,5), 3)
+C3 <- Circle$new(c(6,-2), 1)
+iota1 <- inversionMappingCircle2Circle(C3, C1, positive = TRUE)
+iota2 <- inversionMappingCircle2Circle(C3, C2, positive = TRUE)
+M <- C3$center + C3$radius*c(1,0)
+M1 <- iota1$invert(M); M2 <- iota2$invert(M)
+cl <- Line$new(iota1$pole, iota2$pole)
+C <- Triangle$new(M,M1,M2)$circumcircle()
+L <- C$radicalAxis(C3)
+H <- intersectionLineLine(L, cl)
+O3 <- C3$center
+Cp <- Circle$new((H+O3)/2, sqrt(c(crossprod(H-O3)))/2)
+T0_and_T1 <- intersectionCircleCircle(C3, Cp)
+T0 <- T0_and_T1[[1L]]; T1 <- T0_and_T1[[2L]]
+T0p <- iota1$invert(T0); T0pp <- iota2$invert(T0)
+Csolution0 <- Triangle$new(T0, T0p, T0pp)$circumcircle()
+T1p <- iota1$invert(T1); T1pp <- iota2$invert(T1)
+Csolution1 <- Triangle$new(T1, T1p, T1pp)$circumcircle()
+```
+
+```{r plot, fig.width=5, fig.height=5}
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(-4,9), ylim = c(-4,9),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(C1, col = "yellow", border = "red")
+draw(C2, col = "yellow", border = "red")
+draw(C3, col = "yellow", border = "red")
+draw(Csolution0, lwd = 2, border = "blue")
+draw(Csolution1, lwd = 2, border = "blue")
+par(opar)
+```
+

@@ -4,7 +4,7 @@
 \alias{inversionMappingCircle2Circle}
 \title{Inversion mapping a circle to a circle}
 \usage{
-inversionMappingCircle2Circle(circ1, circ2, positive = FALSE)
+inversionMappingCircle2Circle(circ1, circ2, positive = TRUE)
 }
 \arguments{
 \item{circ1, circ2}{\code{Circle} objects}

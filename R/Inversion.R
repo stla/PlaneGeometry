@@ -161,7 +161,7 @@ Inversion <- R6Class(
 #'
 #' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}.
 #' @export
-inversionMappingCircle2Circle <- function(circ1, circ2, positive = FALSE){
+inversionMappingCircle2Circle <- function(circ1, circ2, positive = TRUE){
   c1 <- circ1$center; r1 <- circ1$radius
   c2 <- circ2$center; r2 <- circ2$radius
   ok <- TRUE

@@ -33,7 +33,6 @@ intersectionCircleCircle <- function(circ1, circ2) {
   )
 }
 
-
 #' Intersection of a circle and a line
 #' @description Return the intersection of a circle and a line.
 #'
@@ -126,3 +125,8 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 }
 
 # TODO intersectionLineLine with strict argument
+
+#' @export
+intersectionLineLine <- function(line1, line2, strict = FALSE){
+  .LineLineIntersection(line1$A, line1$B, line2$A, line2$B)
+}
