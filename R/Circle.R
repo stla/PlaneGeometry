@@ -94,10 +94,25 @@ Circle <- R6Class(
 
     #' @description Orthogonal circle passing through two points on the reference circle.
     #' @param alpha1,alpha2 two angles defining two points on the reference circle
-    #' @return A \code{Circle} object or a \code{Line} object: the diameter
+    #' @param arc logical, whether to return only the arc at the interior of the
+    #' reference circle
+    #' @return A \code{Circle} object if \code{arc=FALSE}, an \code{Arc} object
+    #' if \code{arc=TRUE}, or a \code{Line} object: the diameter
     #' of the reference circle defined by the two points in case when the two
     #' angles differ by \code{pi}.
-    orthogonalThroughTwoPointsOnCircle = function(alpha1, alpha2) {
+    #' @examples # hyperbolic triangle
+    #' circ <- Circle$new(c(5,5), 3)
+    #' arc1 <- circ$orthogonalThroughTwoPointsOnCircle(0, 2*pi/3, arc = TRUE)
+    #' arc2 <- circ$orthogonalThroughTwoPointsOnCircle(2*pi/3, 4*pi/3, arc = TRUE)
+    #' arc3 <- circ$orthogonalThroughTwoPointsOnCircle(4*pi/3, 0, arc = TRUE)
+    #' opar <- par(mar = c(0,0,0,0))
+    #' plot(0, 0, type = "n", asp = 1, xlim = c(2,8), ylim = c(2,8))
+    #' draw(circ)
+    #' draw(arc1, col = "red", lwd = 2)
+    #' draw(arc2, col = "green", lwd = 2)
+    #' draw(arc3, col = "blue", lwd = 2)
+    #' par(opar)
+    orthogonalThroughTwoPointsOnCircle = function(alpha1, alpha2, arc = FALSE) {
       I <- private[[".center"]]; r <- private[[".radius"]]
       dalpha <- alpha1 - alpha2
       if(dalpha %% pi == 0){
@@ -107,9 +122,19 @@ Circle <- R6Class(
       }
       r0 <- r * abs(tan(dalpha/2))
       IO <- r / cos(dalpha/2)
-      Ox <- IO * cos((alpha1+alpha2)/2)
-      Oy <- IO * sin((alpha1+alpha2)/2)
-      Circle$new(I+c(Ox,Oy), r0)
+      center <- I + IO * c(cos((alpha1+alpha2)/2), sin((alpha1+alpha2)/2))
+      # Oy <- IO * sin((alpha1+alpha2)/2)
+      if(arc){
+        dalpha <- (alpha2-alpha1)%%(2*pi)# - alpha1%%(2*pi)
+        delta <- ifelse(dalpha >= pi, pi, 0)
+        beta1 <- -pi/2 + delta
+        beta2 <- beta1 - pi + dalpha
+        theta1 <- beta1+alpha1 #%% (2*pi)
+        theta2 <- beta2+alpha1 #%% (2*pi)
+        return(Arc$new(center, r0, min(theta1,theta2), max(theta1,theta2)))
+      }
+      # Circle$new(I+c(Ox,Oy), r0)
+      Circle$new(center, r0)
     },
 
     #' @description Orthogonal circle passing through two points within the reference circle.

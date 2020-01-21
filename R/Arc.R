@@ -148,6 +148,18 @@ Arc <- R6Class(
       # }
     },
 
+    #' @description Starting point of the reference arc.
+    startingPoint = function() {
+      private[[".alpha1"]] -> alpha
+      private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
+    },
+
+    #' @description Ending point of the reference arc.
+    endingPoint = function() {
+      private[[".alpha2"]] -> alpha
+      private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
+    },
+
     #' @description Check whether the reference arc equals another arc.
     #' @param arc an \code{Arc} object
     isEqual = function(arc){

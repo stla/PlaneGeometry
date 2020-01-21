@@ -44,6 +44,8 @@ Arc$new(c(0,0), 2, pi/4, pi/2)
 \itemize{
 \item \href{#method-new}{\code{Arc$new()}}
 \item \href{#method-print}{\code{Arc$print()}}
+\item \href{#method-startingPoint}{\code{Arc$startingPoint()}}
+\item \href{#method-endingPoint}{\code{Arc$endingPoint()}}
 \item \href{#method-isEqual}{\code{Arc$isEqual()}}
 \item \href{#method-complementaryArc}{\code{Arc$complementaryArc()}}
 \item \href{#method-clone}{\code{Arc$clone()}}
@@ -107,6 +109,24 @@ Show instance of a circle object.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-startingPoint"></a>}}
+\subsection{Method \code{startingPoint()}}{
+Starting point of the reference arc.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Arc$startingPoint()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-endingPoint"></a>}}
+\subsection{Method \code{endingPoint()}}{
+Ending point of the reference arc.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Arc$endingPoint()}\if{html}{\out{</div>}}
 }
 
 }

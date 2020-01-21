@@ -24,6 +24,23 @@ circ
 ## ------------------------------------------------
 
 Circle$new(c(0,0), 2)
+
+## ------------------------------------------------
+## Method `Circle$orthogonalThroughTwoPointsOnCircle`
+## ------------------------------------------------
+
+# hyperbolic triangle
+circ <- Circle$new(c(5,5), 3)
+arc1 <- circ$orthogonalThroughTwoPointsOnCircle(0, 2*pi/3, arc = TRUE)
+arc2 <- circ$orthogonalThroughTwoPointsOnCircle(2*pi/3, 4*pi/3, arc = TRUE)
+arc3 <- circ$orthogonalThroughTwoPointsOnCircle(4*pi/3, 0, arc = TRUE)
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(2,8), ylim = c(2,8))
+draw(circ)
+draw(arc1, col = "red", lwd = 2)
+draw(arc2, col = "green", lwd = 2)
+draw(arc3, col = "blue", lwd = 2)
+par(opar)
 }
 \seealso{
 \code{\link{radicalCenter}} for the radical center of three circles.
@@ -132,21 +149,44 @@ Check whether the reference circle equals another circle.
 \subsection{Method \code{orthogonalThroughTwoPointsOnCircle()}}{
 Orthogonal circle passing through two points on the reference circle.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsOnCircle(alpha1, alpha2)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsOnCircle(alpha1, alpha2, arc = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{alpha1, alpha2}}{two angles defining two points on the reference circle}
+
+\item{\code{arc}}{logical, whether to return only the arc at the interior of the
+reference circle}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A \code{Circle} object or a \code{Line} object: the diameter
+A \code{Circle} object if \code{arc=FALSE}, an \code{Arc} object
+if \code{arc=TRUE}, or a \code{Line} object: the diameter
 of the reference circle defined by the two points in case when the two
 angles differ by \code{pi}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{# hyperbolic triangle
+circ <- Circle$new(c(5,5), 3)
+arc1 <- circ$orthogonalThroughTwoPointsOnCircle(0, 2*pi/3, arc = TRUE)
+arc2 <- circ$orthogonalThroughTwoPointsOnCircle(2*pi/3, 4*pi/3, arc = TRUE)
+arc3 <- circ$orthogonalThroughTwoPointsOnCircle(4*pi/3, 0, arc = TRUE)
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(2,8), ylim = c(2,8))
+draw(circ)
+draw(arc1, col = "red", lwd = 2)
+draw(arc2, col = "green", lwd = 2)
+draw(arc3, col = "blue", lwd = 2)
+par(opar)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-orthogonalThroughTwoPointsWithinCircle"></a>}}
