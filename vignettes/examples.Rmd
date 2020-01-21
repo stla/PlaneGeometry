@@ -108,3 +108,101 @@ polypath(x, y, col = "yellow")
 par(opar)
 ```
 
+
+# Hyperbolic tessellation 
+
+In the help page of the `Circle` R6 class (`?Circle`), we show how to draw 
+a hyperbolic triangle with the help of the method 
+`orthogonalThroughTwoPointsOnCircle()`. Here we will use this method to 
+draw a hyperbolic tessellation.
+
+```{r}
+tessellation <- function(depth, Thetas0, colors){
+  stopifnot(
+    depth >= 3, 
+    is.numeric(Thetas0),
+    length(Thetas0) == 3L,
+    is.character(colors), 
+    length(colors) >= depth
+  )
+  
+  circ <- Circle$new(c(0,0), 3)
+  
+  arcs <- lapply(seq_along(Thetas0), function(i){
+    ip1 <- ifelse(i == length(Thetas0), 1L, i+1L)
+    circ$orthogonalThroughTwoPointsOnCircle(Thetas0[i], Thetas0[ip1], 
+                                            arc = TRUE)
+  })
+  inversions <- lapply(arcs, function(arc){
+    Inversion$new(arc$center, arc$radius^2)
+  })
+  
+  Ms <- vector("list", depth)
+  
+  Ms[[1L]] <- lapply(Thetas0, function(theta) c(cos(theta), sin(theta)))
+  
+  Ms[[2L]] <- vector("list", 3L)
+  for(i in 1L:3L){
+    im1 <- ifelse(i == 1L, 3L, i-1L)
+    M <- inversions[[i]]$invert(Ms[[1L]][[im1]])
+    attr(M, "iota") <- i
+    Ms[[2L]][[i]] <- M
+  }
+  
+  for(d in 3L:depth){
+    n1 <- length(Ms[[d-1L]])
+    n2 <- 2L*n1
+    Ms[[d]] <- vector("list", n2)
+    k <- 0L
+    while(k < n2){
+      for(j in 1L:n1){
+        M <- Ms[[d-1L]][[j]]
+        for(i in 1L:3L){
+          if(i != attr(M, "iota")){
+            k <- k + 1L
+            newM <- inversions[[i]]$invert(M)
+            attr(newM, "iota") <- i
+            Ms[[d]][[k]] <- newM
+          }
+        }
+      }
+    }
+  }
+  
+  # plot ####
+  opar <- par(mar = c(0,0,0,0), bg = "black")
+  plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
+  draw(circ, border = "white")
+  invisible(lapply(arcs, draw, col = colors[1L], lwd = 2))
+  
+  Thetas <- lapply(
+    rapply(Ms, function(M){
+      Arg(M[1] + 1i*M[2])
+    }, how="replace"),
+    unlist)
+  
+  for(d in 2L:depth){
+    thetas <- sort(unlist(Thetas[1L:d]))
+    for(i in 1L:length(thetas)){
+      ip1 <- ifelse(i == length(thetas), 1L, i+1L)
+      arc <- circ$orthogonalThroughTwoPointsOnCircle(thetas[i], thetas[ip1],
+                                                     arc = TRUE)
+      draw(arc, lwd = 2, col = colors[d])
+    }
+  }
+  
+  par(opar)
+  
+  invisible()
+}
+```
+
+
+```{r tessellation, fig.width=5, fig.height=5}
+tessellation(
+  depth = 5L, 
+  Thetas0 = c(0, 2, 3.8), 
+  colors = viridisLite::viridis(5)
+)
+```
+

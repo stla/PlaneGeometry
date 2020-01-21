@@ -14,5 +14,6 @@ RoxygenNote: 7.0.2
 Suggests: 
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    viridisLite
 VignetteBuilder: knitr
