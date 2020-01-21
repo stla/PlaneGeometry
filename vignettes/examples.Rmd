@@ -39,14 +39,14 @@ construct the triangle $DEF$: it is the *tangential triangle* of $ABC$, and
 is provided by the `tangentialTriangle` method of the R6 class `Triangle`.
 
 ```{r}
-A <- c(0,0); B <- c(5,5); C <- c(6,-2)
+A <- c(0,2); B <- c(5,4); C <- c(5,-1)
 t <- Triangle$new(A, B, C)
 circumcircle <- t$circumcircle()
 centroid <- t$centroid()
 medianA <- Line$new(A, centroid)
 medianB <- Line$new(B, centroid)
 medianC <- Line$new(C, centroid)
-Aprime <- intersectionCircleLine(circumcircle, medianA)[[1]]
+Aprime <- intersectionCircleLine(circumcircle, medianA)[[2]]
 Bprime <- intersectionCircleLine(circumcircle, medianB)[[2]]
 Cprime <- intersectionCircleLine(circumcircle, medianC)[[1]]
 DEF <- t$tangentialTriangle()
@@ -56,6 +56,23 @@ lineFCprime <- Line$new(DEF$C, Cprime)
 ( ExeterPoint <- intersectionLineLine(lineDAprime, lineEBprime) )
 # check whether the Exeter point is also on (FC')
 lineFCprime$includes(ExeterPoint)
+```
+
+Let's draw a figure now.
+
+```{r Exeter, fig.width=5, fig.height=5}
+opar <- par(mar = c(0,0,0,0))
+plot(0, 0, type = "n", asp = 1, xlim = c(-2,9), ylim = c(-6,7),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2, col = "black")
+draw(circumcircle, lwd = 2, border = "cyan")
+draw(Triangle$new(Aprime,Bprime,Cprime), lwd = 2, col = "green")
+draw(DEF, lwd = 2, col = "blue")
+draw(Line$new(ExeterPoint, DEF$A, FALSE, FALSE), lwd = 2, col = "red")
+draw(Line$new(ExeterPoint, DEF$B, FALSE, FALSE), lwd = 2, col = "red")
+draw(Line$new(ExeterPoint, DEF$C, FALSE, FALSE), lwd = 2, col = "red")
+points(rbind(ExeterPoint), pch = 19, col = "red")
+par(opar)
 ```
 
 
