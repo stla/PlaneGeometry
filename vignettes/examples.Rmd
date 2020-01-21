@@ -28,21 +28,35 @@ How to construct some circles simultaneously tangent to these three circles?
 C1 <- Circle$new(c(0,0), 2)
 C2 <- Circle$new(c(5,5), 3)
 C3 <- Circle$new(c(6,-2), 1)
-iota1 <- inversionMappingCircle2Circle(C3, C1, positive = TRUE)
-iota2 <- inversionMappingCircle2Circle(C3, C2, positive = TRUE)
-M <- C3$center + C3$radius*c(1,0)
+# inversion swapping C1 and C3 with positive power
+iota1 <- inversionMappingCircle2Circle(C1, C3, positive = TRUE)
+# inversion swapping C2 and C3 with positive power
+iota2 <- inversionMappingCircle2Circle(C2, C3, positive = TRUE)
+# take an arbitrary point on C3
+M <- C3$center + c(C3$radius,0)
+# invert it with iota1 and iota2
 M1 <- iota1$invert(M); M2 <- iota2$invert(M)
-cl <- Line$new(iota1$pole, iota2$pole)
+# take the circle C passing through M, M1, M2
 C <- Triangle$new(M,M1,M2)$circumcircle()
+# take the line passing through the two inversion poles
+cl <- Line$new(iota1$pole, iota2$pole)
+# take the radical axis of C and C3
 L <- C$radicalAxis(C3)
+# let H bet the intersection of these two lines
 H <- intersectionLineLine(L, cl)
+# take the circle Cp with diameter [HO3]
 O3 <- C3$center
 Cp <- Circle$new((H+O3)/2, sqrt(c(crossprod(H-O3)))/2)
+# get the two intersection points T0 and T1 of C3 with Cp
 T0_and_T1 <- intersectionCircleCircle(C3, Cp)
 T0 <- T0_and_T1[[1L]]; T1 <- T0_and_T1[[2L]]
+# invert T0 with respect to the two inversions
 T0p <- iota1$invert(T0); T0pp <- iota2$invert(T0)
+# the circle passing through T0 and its two images is a solution
 Csolution0 <- Triangle$new(T0, T0p, T0pp)$circumcircle()
+# invert T1 with respect to the two inversions
 T1p <- iota1$invert(T1); T1pp <- iota2$invert(T1)
+# the circle passing through T1 and its two images is another solution
 Csolution1 <- Triangle$new(T1, T1p, T1pp)$circumcircle()
 ```
 
