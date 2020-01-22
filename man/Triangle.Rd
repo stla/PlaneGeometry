@@ -122,6 +122,7 @@ incircle$center
 \item \href{#method-b}{\code{Triangle$b()}}
 \item \href{#method-c}{\code{Triangle$c()}}
 \item \href{#method-edges}{\code{Triangle$edges()}}
+\item \href{#method-contains}{\code{Triangle$contains()}}
 \item \href{#method-isAcute}{\code{Triangle$isAcute()}}
 \item \href{#method-angleA}{\code{Triangle$angleA()}}
 \item \href{#method-angleB}{\code{Triangle$angleB()}}
@@ -258,9 +259,25 @@ A named numeric vector.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-contains"></a>}}
+\subsection{Method \code{contains()}}{
+Determines whether a point lies inside the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$contains(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isAcute"></a>}}
 \subsection{Method \code{isAcute()}}{
-Determines whether the triangle is acute.
+Determines whether the reference triangle is acute.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$isAcute()}\if{html}{\out{</div>}}
 }

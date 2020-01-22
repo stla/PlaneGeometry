@@ -178,7 +178,20 @@ Triangle <- R6Class(
       )
     },
 
-    #' @description Determines whether the triangle is acute.
+    #' @description Determines whether a point lies inside the reference triangle.
+    #' @param M a point
+    contains = function(M){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      dsArea <-
+        -B[2L]*C[1L] + A[2L]*(-B[1L] + C[1L]) + A[1L]*(B[2L] - C[2L]) + B[1L]*C[2L]
+      s <-
+        (A[2L]*C[1L] - A[1L]*C[2L] + (C[2L] - A[2L])*M[1L] + (A[1L] - C[1L])*M[2L]) / dsArea
+      t <-
+        (A[1L]*B[2L] - A[2L]*B[1L] + (A[2L] - B[2L])*M[1L] + (B[1L] - A[1L])*M[2L]) / dsArea
+      s > 0 && t > 0 && 1-s-t > 0
+    },
+
+    #' @description Determines whether the reference triangle is acute.
     #' @return `TRUE` if the triangle is acute (or right), `FALSE` otherwise.
     isAcute = function() {
       edges <- self$edges()
