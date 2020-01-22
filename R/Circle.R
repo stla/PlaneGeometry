@@ -101,6 +101,13 @@ Circle <- R6Class(
       isTRUE(all.equal(c(c0[1L],c0[2L],r0), c(c1[1L],c1[2L],r1)))
     },
 
+    #' @description Check whether a point belongs to the reference circle.
+    #' @param M a point
+    includes = function(M){
+      isTRUE(all.equal(private[[".radius"]]^2,
+                       c(crossprod(M-private[[".center"]]))))
+    },
+
     #' @description Orthogonal circle passing through two points on the reference circle.
     #' @param alpha1,alpha2 two angles defining two points on the reference circle
     #' @param arc logical, whether to return only the arc at the interior of the

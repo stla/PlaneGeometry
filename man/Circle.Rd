@@ -61,6 +61,7 @@ par(opar)
 \item \href{#method-print}{\code{Circle$print()}}
 \item \href{#method-pointFromAngle}{\code{Circle$pointFromAngle()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
+\item \href{#method-includes}{\code{Circle$includes()}}
 \item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
 \item \href{#method-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
 \item \href{#method-power}{\code{Circle$power()}}
@@ -162,6 +163,22 @@ Check whether the reference circle equals another circle.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-includes"></a>}}
+\subsection{Method \code{includes()}}{
+Check whether a point belongs to the reference circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$includes(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
 }
 \if{html}{\out{</div>}}
 }

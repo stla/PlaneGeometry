@@ -50,6 +50,7 @@ transformations.
 \item \href{#method-inverse}{\code{Mobius$inverse()}}
 \item \href{#method-transform}{\code{Mobius$transform()}}
 \item \href{#method-transformCircle}{\code{Mobius$transformCircle()}}
+\item \href{#method-transformLine}{\code{Mobius$transformLine()}}
 \item \href{#method-clone}{\code{Mobius$clone()}}
 }
 }
@@ -181,6 +182,25 @@ Transformation of a circle by the reference Möbius transformation.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformLine"></a>}}
+\subsection{Method \code{transformLine()}}{
+Transformation of a line by the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$transformLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
 }
 \if{html}{\out{</div>}}
 }

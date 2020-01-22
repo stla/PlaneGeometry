@@ -190,7 +190,7 @@ Mobius <- R6Class(
         w0 <- self$transform(.fromCplx(z))
         Circle$new(w0, Mod(.toCplx(w0 - self$transform(.fromCplx(z0+R)))))
       }else{
-        if(c != 0){
+        if(c != 0){ # NIMP
           A <- self$transform(.fromCplx(1-d/c))
           B <- self$transform(.fromCplx(10-d/c))
         }else{
@@ -198,6 +198,30 @@ Mobius <- R6Class(
           B <- self$transform(c(10,0))
         }
         Line$new(A, B)
+      }
+    },
+
+    #' @description Transformation of a line by the reference Möbius transformation.
+    #' @param line a \code{Line} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    transformLine = function(line) {
+      private[[".a"]] -> a
+      private[[".b"]] -> b
+      private[[".c"]] -> c
+      private[[".d"]] -> d
+      do <- line$directionAndOffset()
+      theta <- do$direction
+      gamma0 <- cos(theta) + 1i*sin(theta)
+      D0 <- 2 * do$offset
+      A <- -2 * Re(gamma0*c*Conj(d)) - D0*.Mod2(c)
+      gamma <- Conj(gamma0)*b*Conj(c) + gamma0*Conj(d)*a + D0*Conj(c)*a
+      D <- D0*.Mod2(a) + 2*Re(gamma0*Conj(b)*a)
+      if(A != 0){
+        Circle$new(.fromCplx(-gamma/A), sqrt(.Mod2(gamma)/A/A + D/A))
+      }else{
+        P <- self$transform(line$A)
+        Q <- self$transform(line$B)
+        Line$new(P, Q)
       }
     }
 
