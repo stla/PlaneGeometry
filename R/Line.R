@@ -143,7 +143,7 @@ Line <- R6Class(
     },
 
     #' @description Direction (angle between 0 and 2pi)
-    #' and offset (positive number) of the line.
+    #' and offset (positive number) of the reference line.
     #' @details The equation of the line is
     #' \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
     #' where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
@@ -190,8 +190,8 @@ Line <- R6Class(
       }
     },
 
-    #' @description Check whether the line equals a given line, without taking
-    #' into account \code{extendA} and \code{extendB}.
+    #' @description Check whether the reference line equals a given line,
+    #' without taking into account \code{extendA} and \code{extendB}.
     #' @param line a \code{Line} object
     #' @return \code{TRUE} or \code{FALSE}.
     isEqual = function(line) {
@@ -201,7 +201,7 @@ Line <- R6Class(
       isTRUE(all.equal(do1, do2))
     },
 
-    #' @description Check whether the line is parallel to a given line.
+    #' @description Check whether the reference line is parallel to a given line.
     #' @param line a \code{Line} object
     #' @return \code{TRUE} or \code{FALSE}.
     isParallel = function(line) {
@@ -212,7 +212,7 @@ Line <- R6Class(
       det(rbind(c(dx1, dy1), c(dx2, dy2))) == 0
     },
 
-    #' @description Whether a point belongs to the line.
+    #' @description Whether a point belongs to the reference line.
     #' @param M the point for which we want to test whether it belongs to the line
     #' @param strict logical, whether to take into account \code{extendA} and \code{extendB}
     #' @param checkCollinear logical, whether to check the collinearity of
@@ -275,7 +275,7 @@ Line <- R6Class(
       Line$new(H, M, extendH, extendM)
     },
 
-    #' @description Orthogonal projection of a point to the line.
+    #' @description Orthogonal projection of a point to the reference line.
     #' @param M a point
     #' @return A point.
     projection = function(M) {
@@ -285,7 +285,7 @@ Line <- R6Class(
       .LineLineIntersection(A, B, M, M+v)
     },
 
-    #' @description Rotate the line.
+    #' @description Rotate the reference line.
     #' @param alpha angle of rotation
     #' @param O center of rotation
     #' @param degrees logical, whether \code{alpha} is given in degrees
@@ -314,7 +314,7 @@ Line <- R6Class(
       Line$new(RAt + O, RBt + O, private[[".extendA"]], private[[".extendB"]])
     },
 
-    #' @description Translate the line.
+    #' @description Translate the reference line.
     #' @param v the vector of translation
     #' @return A \code{Line} object.
     translate = function(v){
@@ -328,7 +328,7 @@ Line <- R6Class(
                private[[".extendA"]], private[[".extendB"]])
     },
 
-    #' @description Invert the line.
+    #' @description Invert the reference line.
     #' @param inversion an \code{Inversion} object
     #' @return A \code{Circle} object or a \code{Line} object.
     invert = function(inversion){

@@ -130,5 +130,194 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 
 #' @export
 intersectionLineLine <- function(line1, line2, strict = FALSE){
-  .LineLineIntersection(line1$A, line1$B, line2$A, line2$B)
+  if(line1$isEqual(line2)){
+    if(line1$extendA && line1$extendB && line2$extendA && line2$extendB){
+      return(line1)
+    }else{
+      if(!strict){
+        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
+        return(line1)
+      }
+      # case 1: one bi-infinite line
+      if(line1$extendA && line1$extendB){
+        return(line2)
+      }
+      if(line2$extendA && line2$extendB){
+        return(line1)
+      }
+      # case 2: two half-lines
+      A <- line1$A; B <- line1$B; C <- line2$A; D <- line2$B
+      if(line1$extendA && line2$extendA){
+        # origin line1: B; origin line2 : D
+        extend1 <- A; extend2 <- C
+        origin1 <- B; origin2 <- D
+        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        if(sameDirection){
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(line2)
+          }
+          return(line1)
+        }else{
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(Line$new(origin1, origin2, FALSE, FALSE))
+          }
+          return(NULL)
+        }
+      }
+      if(line1$extendA && line2$extendB){
+        extend1 <- A; extend2 <- D
+        origin1 <- B; origin2 <- C
+        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        if(sameDirection){
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(line2)
+          }
+          return(line1)
+        }else{
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(Line$new(origin1, origin2, FALSE, FALSE))
+          }
+          return(NULL)
+        }
+      }
+      if(line1$extendB && line2$extendA){
+        extend1 <- B; extend2 <- C
+        origin1 <- A; origin2 <- D
+        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        if(sameDirection){
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(line2)
+          }
+          return(line1)
+        }else{
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(Line$new(origin1, origin2, FALSE, FALSE))
+          }
+          return(NULL)
+        }
+      }
+      if(line1$extendB && line2$extendB){
+        extend1 <- B; extend2 <- D
+        origin1 <- A; origin2 <- C
+        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        if(sameDirection){
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(line2)
+          }
+          return(line1)
+        }else{
+          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+            return(Line$new(origin1, origin2, FALSE, FALSE))
+          }
+          return(NULL)
+        }
+      }
+      # case 3: one half-line and one segment
+      if(line1$extendA){
+        extend <- A; origin <- B
+        S1 <- C; S2 <- D
+        line <- Line$new(extend, origin, TRUE, FALSE)
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, S2, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, origin, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S2, origin, FALSE, FALSE))
+        }
+        return(NULL)
+      }
+      if(line1$extendB){
+        extend <- B; origin <- A
+        S1 <- C; S2 <- D
+        line <- Line$new(extend, origin, TRUE, FALSE)
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, S2, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, origin, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S2, origin, FALSE, FALSE))
+        }
+        return(NULL)
+      }
+      if(line2$extendA){
+        extend <- C; origin <- D
+        S1 <- A; S2 <- B
+        line <- Line$new(extend, origin, TRUE, FALSE)
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, S2, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S1, origin, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+          return(Line$new(S2, origin, FALSE, FALSE))
+        }
+        return(NULL)
+      }
+      if(line2$extendB){
+        extend <- D; origin <- C
+        S1 <- A; S2 <- B
+        line <- Line$new(extend, origin, TRUE, FALSE)
+        if(suppressMessages(line$includes(S1, checkCollinear = FALSE)) &&
+           suppressMessages(line$includes(S2, checkCollinear = FALSE))){
+          return(Line$new(S1, S2, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S1, checkCollinear = FALSE))){
+          return(Line$new(S1, origin, FALSE, FALSE))
+        }
+        if(suppressMessages(line$includes(S2, checkCollinear = FALSE))){
+          return(Line$new(S2, origin, FALSE, FALSE))
+        }
+        return(NULL)
+      }
+      # case 4: two segments
+      # https://matlabgeeks.com/tips-tutorials/computational-geometry/find-intersection-of-two-lines-in-matlab/
+      p <- A; r <- B-A
+      q <- C; s <- D-C
+      p <- C; r <- D-C
+      q <- A; s <- B-A
+      cross <- function(A, B) det(cbind(A,B))
+      r_cross_s <- cross(r, s) # = 0
+      q_p_cross_r = cross(q-p, r)
+      if(abs(q_p_cross_r) > sqrt(.Machine$double.eps)){
+        return(NULL)
+      }
+      t0 <- abs(c(crossprod(q-p,r))) / c(crossprod(r))
+      u0 <- abs(c(crossprod(q-p,s))) / c(crossprod(s))
+      cat("t0: ", t0, "\n"); cat("u0: ", u0, "\n")
+      if(t0 <=1 && u0 <= 1){
+        return(Line$new(q+u0*s, p+t0*r, FALSE, FALSE))
+      }
+      return(NULL)
+      # if(suppressMessages(line1$includes(C, checkCollinear = FALSE)) &&
+      #    suppressMessages(line1$includes(D, checkCollinear = FALSE))){
+      #   return(line2)
+      # }
+      # if(suppressMessages(line2$includes(A, checkCollinear = FALSE)) &&
+      #    suppressMessages(line2$includes(B, checkCollinear = FALSE))){
+      #   return(line1)
+      # }
+    }
+  }
+  if(line1$isParallel(line2)){
+    message("Distinct parallel lines")
+    return(NULL)
+  }
+  I <- .LineLineIntersection(line1$A, line1$B, line2$A, line2$B)
+  if(!strict){
+    return(I)
+  }
+  if(suppressMessages(line1$includes(I, strict = TRUE, checkCollinear = FALSE)) &&
+     suppressMessages(line2$includes(I, strict = TRUE, checkCollinear = FALSE))){
+    I
+  }else{
+    NULL
+  }
 }
