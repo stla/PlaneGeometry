@@ -13,7 +13,7 @@ intersectionCircleCircle <- function(circ1, circ2,
   r1 <- circ1$radius; r2 <- circ2$radius
   center1 <- circ1$center; center2 <- circ2$center
   if(isTRUE(all.equal(c(center1,r1), c(center2,r2)))){
-    return(circ1)
+    return(circ1$clone(deep = TRUE))
   }
   d2 <- c(crossprod(center1 - center2))
   sumRadii2 <- (r1+r2)^2

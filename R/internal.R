@@ -56,7 +56,6 @@
 .SteinerChain_phi0 <- function(c0, n, shift){
   R <- c0$radius; O <- c0$center
   sine <- sin(pi/n)
-#  Coef <- 1/(1+sine)
   Cradius <- R / (1+sine)
   Cside <- Cradius*sine
   circles0 <- vector("list", n+1)
