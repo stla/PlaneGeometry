@@ -5,9 +5,7 @@ Version: 0.1.0
 Date: 2020-01-21
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description:  An extensive set of plane geometry routines. Provides R6 classes 
-representing triangles, circles, arcs and lines, and their plot methods. Also 
-provides a R6 class representing inversions. 
+Description: An extensive set of plane geometry routines. Provides R6 classes representing triangles, circles, arcs and lines, and their plot methods. Also provides a R6 class representing inversions. 
 License: GPL-3
 Encoding: UTF-8
 LazyData: true

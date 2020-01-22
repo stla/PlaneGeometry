@@ -84,10 +84,13 @@ Inversion <- R6Class(
     },
 
     #' @description Inversion of a point.
-    #' @param M a point
-    #' @return A point, the image of \code{M}.
+    #' @param M a point or \code{Inf}
+    #' @return A point or \code{Inf}, the image of \code{M}.
     invert = function(M) {
-      pole <- private[[".pole"]]; k <- private[[".power"]]
+      pole <- private[[".pole"]]
+      if(isTRUE(all.equal(pole, M))) return(Inf)
+      if(isTRUE(all.equal(Inf, M))) return(pole)
+      k <- private[[".power"]]
       pole_M <- M - pole
       pole + k/c(crossprod(pole_M)) * pole_M
     },

@@ -1,0 +1,62 @@
+#' @title R6 class representing a reflection
+#'
+#' @description A reflection is given by a line.
+#'
+#' @export
+#' @importFrom R6 R6Class
+Reflection <- R6Class(
+
+  "Reflection",
+
+  private = list(
+    .line = NULL
+  ),
+
+  active = list(
+    #' @field line get or set the line of the reflection
+    line = function(value) {
+      if (missing(value)) {
+        private[[".line"]]
+      } else {
+        stopifnot(
+          is(value, "Line")
+        )
+        private[[".line"]] <- Line$new(value$A, value$B, TRUE, TRUE)
+      }
+    }
+  ),
+
+  public = list(
+    #' @description Create a new \code{Reflection} object.
+    #' @param line a \code{Line} object
+    #' @return A new \code{Reflection} object.
+    #' @examples l <- Line$new(c(1,1), c(1.5,1.5), FALSE, TRUE)
+    #' Reflection$new(l)
+    initialize = function(line) {
+      stopifnot(
+        is(line, "Line")
+      )
+      private[[".line"]] <- Line$new(line$A, line$B, TRUE, TRUE)
+    },
+
+    #' @description Show instance of a reflection object.
+    #' @param ... ignored
+    print = function(...) {
+      line <- private[[".line"]]
+      cat("Reflection with respect to the line passing through A and B.\n")
+      cat("       A: ", toString(line$A), "\n", sep = "")
+      cat("       B: ", toString(line$B), "\n", sep = "")
+    },
+
+    #' @description Reflect a point.
+    #' @param M a point, \code{Inf} allowed
+    reflect = function(M) {
+      if(isTRUE(all.equal(M,Inf))) return(Inf)
+      line <- private[[".line"]]
+      if(line$includes(M)) return(M)
+      perp <- line$perpendicular(M, FALSE, FALSE)
+      M + 2 * (perp$A - perp$B)
+    }
+
+  )
+)

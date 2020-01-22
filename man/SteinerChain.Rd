@@ -9,7 +9,7 @@ SteinerChain(c0, n, phi, shift)
 \arguments{
 \item{c0}{exterior circle, a \code{Circle} object}
 
-\item{n}{number of circles, not including the inner circle}
+\item{n}{number of circles, not including the inner circle; at least \code{3}}
 
 \item{phi}{\code{-1 < phi < 1} controls the radii of the circles}
 

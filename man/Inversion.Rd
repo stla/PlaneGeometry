@@ -125,12 +125,12 @@ Inversion of a point.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{a point}
+\item{\code{M}}{a point or \code{Inf}}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A point, the image of \code{M}.
+A point or \code{Inf}, the image of \code{M}.
 }
 }
 \if{html}{\out{<hr>}}

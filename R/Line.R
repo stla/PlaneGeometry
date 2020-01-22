@@ -285,6 +285,11 @@ Line <- R6Class(
       .LineLineIntersection(A, B, M, M+v)
     },
 
+    # #' @description Reflection with respect to the reference line.
+    # reflection = function(M){
+    #
+    # },
+
     #' @description Rotate the reference line.
     #' @param alpha angle of rotation
     #' @param O center of rotation
