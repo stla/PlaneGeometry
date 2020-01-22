@@ -59,6 +59,7 @@ l$includes(M, strict = TRUE)
 \item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-projection}{\code{Line$projection()}}
+\item \href{#method-reflection}{\code{Line$reflection()}}
 \item \href{#method-rotate}{\code{Line$rotate()}}
 \item \href{#method-translate}{\code{Line$translate()}}
 \item \href{#method-invert}{\code{Line$invert()}}
@@ -245,6 +246,25 @@ meeting point and the point \code{M}.
 Orthogonal projection of a point to the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$projection(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-reflection"></a>}}
+\subsection{Method \code{reflection()}}{
+Reflection of a point with respect to the reference line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$reflection(M)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

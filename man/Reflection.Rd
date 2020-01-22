@@ -28,6 +28,8 @@ Reflection$new(l)
 \item \href{#method-new}{\code{Reflection$new()}}
 \item \href{#method-print}{\code{Reflection$print()}}
 \item \href{#method-reflect}{\code{Reflection$reflect()}}
+\item \href{#method-reflectCircle}{\code{Reflection$reflectCircle()}}
+\item \href{#method-reflectLine}{\code{Reflection$reflectLine()}}
 \item \href{#method-clone}{\code{Reflection$clone()}}
 }
 }
@@ -89,6 +91,44 @@ Reflect a point.
 \item{\code{M}}{a point, \code{Inf} allowed}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-reflectCircle"></a>}}
+\subsection{Method \code{reflectCircle()}}{
+Reflect a circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$reflectCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-reflectLine"></a>}}
+\subsection{Method \code{reflectLine()}}{
+Reflect a line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$reflectLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}

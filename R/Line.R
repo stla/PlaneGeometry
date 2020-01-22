@@ -285,10 +285,13 @@ Line <- R6Class(
       .LineLineIntersection(A, B, M, M+v)
     },
 
-    # #' @description Reflection with respect to the reference line.
-    # reflection = function(M){
-    #
-    # },
+    #' @description Reflection of a point with respect to the reference line.
+    #' @param M a point
+    #' @return A point.
+    reflection = function(M){
+      R <- Reflection$new(self)
+      R$reflect(M)
+    },
 
     #' @description Rotate the reference line.
     #' @param alpha angle of rotation

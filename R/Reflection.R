@@ -56,7 +56,23 @@ Reflection <- R6Class(
       if(line$includes(M)) return(M)
       perp <- line$perpendicular(M, FALSE, FALSE)
       M + 2 * (perp$A - perp$B)
+    },
+
+    #' @description Reflect a circle.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object.
+    reflectCircle = function(circ) {
+      Circle$new(self$reflect(circ$center), circ$radius)
+    },
+
+    #' @description Reflect a line.
+    #' @param line a \code{Line} object
+    #' @return A \code{Line} object.
+    reflectLine = function(line) {
+      Line$new(self$reflect(line$A), self$reflect(line$B),
+               line$extendA, line$extendB)
     }
+
 
   )
 )
