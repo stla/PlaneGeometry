@@ -66,6 +66,7 @@ par(opar)
 \item \href{#method-invert}{\code{Inversion$invert()}}
 \item \href{#method-invertCircle}{\code{Inversion$invertCircle()}}
 \item \href{#method-invertLine}{\code{Inversion$invertLine()}}
+\item \href{#method-compose}{\code{Inversion$compose()}}
 \item \href{#method-clone}{\code{Inversion$clone()}}
 }
 }
@@ -200,6 +201,29 @@ Inversion of a line.
 }
 \subsection{Returns}{
 A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-compose"></a>}}
+\subsection{Method \code{compose()}}{
+Compose the reference inversion with another inversion.
+The result is a Môbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$compose(iota1, left = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{iota1}}{an \code{Inversion} object}
+
+\item{\code{left}}{logical, whether to compose at left or at right (i.e.
+returns \code{iota1 o iota0} or \code{iota0 o iota1})}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Mobius} object.
 }
 }
 \if{html}{\out{<hr>}}

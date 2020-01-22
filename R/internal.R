@@ -77,3 +77,8 @@
   circles0
 }
 
+.inversion2conjugateMobius <- function(iota){
+  C <- .toCplx(iota$pole)
+  k <- iota$power
+  Mobius$new(rbind(c(C, k-C*Conj(C)), c(1, -Conj(C))))
+}

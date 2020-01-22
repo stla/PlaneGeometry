@@ -21,6 +21,7 @@ Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
 
 Mob <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
 Mob$transform(c(1,1))
+Mob$transform(Inf)
 }
 \seealso{
 \code{\link{MobiusFixingThreePoints}} to create some Möbius
@@ -160,6 +161,7 @@ A point or \code{Inf}, the image of \code{M}.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{Mob <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
 Mob$transform(c(1,1))
+Mob$transform(Inf)
 }
 \if{html}{\out{</div>}}
 

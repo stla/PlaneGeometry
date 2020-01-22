@@ -36,3 +36,12 @@ test_that("inversionFixingThreeCircles", {
   expect_true(circ3$isEqual(newcirc3))
 })
 
+test_that("Compose inversions", {
+  iota1 <- Inversion$new(c(1,1), 2)
+  iota2 <- Inversion$new(c(3,2), 4)
+  M <- c(4,5)
+  P <- iota1$invert(iota2$invert(M))
+  Mob <- iota2$compose(iota1)
+  Q <- Mob$transform(M)
+  expect_equal(P, Q)
+})

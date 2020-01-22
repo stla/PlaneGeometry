@@ -144,7 +144,12 @@ Mobius <- R6Class(
     #' @description Inverse the reference Möbius transformation.
     #' @return A \code{Mobius} object.
     inverse = function() {
-      Mobius$new(solve(self$getM()))
+      M <- matrix(NA_complex_, 2L, 2L)
+      private[[".a"]] -> M[2L,2L]
+      -private[[".b"]] -> M[1L,2L]
+      -private[[".c"]] -> M[2L,1L]
+      private[[".d"]] -> M[1L,1L]
+      Mobius$new(M)
     },
 
     #' @description Transformation of a point by the reference Möbius transformation.
@@ -152,6 +157,7 @@ Mobius <- R6Class(
     #' @return A point or \code{Inf}, the image of \code{M}.
     #' @examples Mob <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
     #' Mob$transform(c(1,1))
+    #' Mob$transform(Inf)
     transform = function(M) {
       private[[".a"]] -> a
       private[[".b"]] -> b
@@ -161,7 +167,7 @@ Mobius <- R6Class(
         if(c == 0) Inf else .fromCplx(a/c)
       }else{
         z <- .toCplx(M)
-        if(z == -d/c){
+        if(c != 0 && z == -d/c){
           Inf
         }else{
           .fromCplx((a*z+b)/(c*z+d))

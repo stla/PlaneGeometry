@@ -149,6 +149,21 @@ Inversion <- R6Class(
         Ap <- self$invert(A); Bp <- self$invert(B)
         Triangle$new(private[[".pole"]], Ap, Bp)$circumcircle()
       }
+    },
+
+    #' @description Compose the reference inversion with another inversion.
+    #' The result is a Môbius transformation.
+    #' @param iota1 an \code{Inversion} object
+    #' @param left logical, whether to compose at left or at right (i.e.
+    #' returns \code{iota1 o iota0} or \code{iota0 o iota1})
+    #' @return A \code{Mobius} object.
+    compose = function(iota1, left = TRUE) {
+      if(!left) return(iota1$compose(self))
+      Mob0 <- .inversion2conjugateMobius(self)
+      Mob1 <- .inversion2conjugateMobius(iota1)
+      M0 <- Mob0$getM()
+      Mob3 <- Mobius$new(Conj(M0))
+      Mob3$compose(Mob1)
     }
   )
 )
