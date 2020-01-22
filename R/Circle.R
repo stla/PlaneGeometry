@@ -263,3 +263,50 @@ radicalCenter <- function(circ1, circ2, circ3){
   l2 <- circ1$radicalAxis(circ3)
   .LineLineIntersection(l1$A, l1$B, l2$A, l2$B)
 }
+
+
+#' Steiner chain
+#' @description Return a Steiner chain of circles.
+#'
+#' @param c0 exterior circle, a \code{Circle} object
+#' @param n number of circles, not including the inner circle
+#' @param phi \code{-1 < phi < 1} controls the radii of the circles
+#' @param shift any number; it produces a kind of rotation around the inner
+#' circle; values between \code{0} and \code{n} cover all possibilities
+#'
+#' @return A list of \code{n+1} \code{Circle} objects. The inner circle is stored at the
+#' last position.
+#' @export
+#'
+#' @examples c0 <- Circle$new(c(1,1), 3)
+#' chain <- SteinerChain(c0, 5, 0.3, 0.5)
+#' plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
+#' invisible(lapply(chain, draw, lwd = 2, border = "blue"))
+#' draw(c0, lwd = 2)
+SteinerChain <- function(c0, n, phi, shift){
+  n <- as.vector(n)
+  phi <- as.vector(phi)
+  shift <- as.vector(shift)
+  stopifnot(
+    is(c0, "Circle"),
+    .isInteger(n),
+    length(n) == 1L,
+    n > 2,
+    is.numeric(phi),
+    length(phi) == 1L,
+    !is.na(phi),
+    -1 < phi && phi < 1,
+    is.numeric(shift),
+    length(shift) == 1L,
+    !is.na(shift),
+    is.finite(shift)
+  )
+  circles0 <- .SteinerChain_phi0(c0 = c0, n = n, shift = shift)
+  if(phi == 0) return(circles0)
+  R <- c0$radius; O <- c0$center
+  invphi <- 1/phi
+  I <- c(R*invphi, 0) + O
+  r2 <- R*R * (invphi*invphi-1)
+  iota <- Inversion$new(I, r2)
+  lapply(circles0, function(circle) iota$invertCircle(circle))
+}

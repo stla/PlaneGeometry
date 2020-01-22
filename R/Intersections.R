@@ -142,18 +142,18 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 intersectionLineLine <- function(line1, line2, strict = FALSE){
   if(line1$isEqual(line2)){
     if(line1$extendA && line1$extendB && line2$extendA && line2$extendB){
-      return(line1)
+      return(line1$clone(deep = TRUE))
     }else{
       if(!strict){
-        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
-        return(line1)
+#        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
+        return(Line$new(line1$A, line1$B, TRUE, TRUE))
       }
       # case 1: one bi-infinite line
       if(line1$extendA && line1$extendB){
-        return(line2)
+        return(line2$clone(deep = TRUE))
       }
       if(line2$extendA && line2$extendB){
-        return(line1)
+        return(line1$clone(deep = TRUE))
       }
       # case 2: two half-lines
       A <- line1$A; B <- line1$B; C <- line2$A; D <- line2$B
@@ -164,9 +164,9 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
-            return(line2)
+            return(line2$clone(deep = TRUE))
           }
-          return(line1)
+          return(line1$clone(deep = TRUE))
         }else{
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
@@ -180,9 +180,9 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
-            return(line2)
+            return(line2$clone(deep = TRUE))
           }
-          return(line1)
+          return(line1$clone(deep = TRUE))
         }else{
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
@@ -196,9 +196,9 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
-            return(line2)
+            return(line2$clone(deep = TRUE))
           }
-          return(line1)
+          return(line1$clone(deep = TRUE))
         }else{
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
@@ -212,9 +212,9 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
-            return(line2)
+            return(line2$clone(deep = TRUE))
           }
-          return(line1)
+          return(line1$clone(deep = TRUE))
         }else{
           if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
@@ -308,11 +308,11 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       # return(NULL)
       if(suppressMessages(line1$includes(C, strict = TRUE, checkCollinear = FALSE)) &&
          suppressMessages(line1$includes(D, strict = TRUE, checkCollinear = FALSE))){
-        return(line2)
+        return(line2$clone(deep = TRUE))
       }
       if(suppressMessages(line2$includes(A, strict = TRUE, checkCollinear = FALSE)) &&
          suppressMessages(line2$includes(B, strict = TRUE, checkCollinear = FALSE))){
-        return(line1)
+        return(line1$clone(deep = TRUE))
       }
       if(line1$directionAndOffset() %% pi == 0){
         p <- min(A[2L],B[2L]); q <- max(A[2L],B[2L])

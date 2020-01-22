@@ -1,3 +1,7 @@
+.isInteger <- function(x){
+  is.numeric(x) && all(is.finite(x)) && !any(is.na(x)) && all(trunc(x) == x)
+}
+
 .LineLineIntersection <- function (P1, P2, Q1, Q2) {
   dx1 <- P1[1L] - P2[1L]
   dx2 <- Q1[1L] - Q2[1L]
@@ -26,24 +30,43 @@
   x1 <- A1[1L]; y1 <- A1[2L]
   x2 <- A2[1L]; y2 <- A2[2L]
   dx <- x2 - x1; dy <- y2 - y1
-  dr <- sqrt(dx*dx + dy*dy)
+  dr2 <- dx*dx + dy*dy
   D <- det(cbind(A1,A2))
-  Delta <- r*r*dr*dr - D*D
+  Delta <- r*r*dr2 - D*D
   if(Delta < 0){
     return(NULL)
   }
   if(Delta < sqrt(.Machine$double.eps)){
-    return(D/dr/dr * c(dy, -dx))
+    return(D/dr2 * c(dy, -dx))
   }
   sgn <- ifelse(dy < 0, -1, 1)
+  Ddy <- D*dy
+  sqrtDelta <- sqrt(Delta)
   I1 <- c(
-    D*dy + sgn*dx * sqrt(Delta),
-    -D*dx + abs(dy)*sqrt(Delta)
-  ) / dr/dr
+    Ddy + sgn*dx * sqrtDelta,
+    -D*dx + abs(dy)*sqrtDelta
+  ) / dr2
   I2 <- c(
-    D*dy - sgn*dx * sqrt(Delta),
-    -D*dx - abs(dy)*sqrt(Delta)
-  ) / dr/dr
+    Ddy - sgn*dx * sqrtDelta,
+    -D*dx - abs(dy)*sqrtDelta
+  ) / dr2
   list(I1 = I1, I2 = I2)
+}
+
+.SteinerChain_phi0 <- function(c0, n, shift){
+  R <- c0$radius; O <- c0$center
+  sine <- sin(pi/n)
+#  Coef <- 1/(1+sine)
+  Cradius <- R / (1+sine)
+  Cside <- Cradius*sine
+  circles0 <- vector("list", n+1)
+  for(i in 1:n){
+    beta <- (i-1+shift)*2*pi/n
+    pti <- Cradius*c(cos(beta), sin(beta)) + O
+    circ1 <- Circle$new(pti, Cside)
+    circles0[[i]] <- circ1
+  }
+  circles0[[n+1]] <- Circle$new(O, R-2*Cside)
+  circles0
 }
 
