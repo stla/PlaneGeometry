@@ -2,6 +2,14 @@
   is.numeric(x) && all(is.finite(x)) && !any(is.na(x)) && all(trunc(x) == x)
 }
 
+.toCplx <- function(M){
+  complex(real = M[1L], imaginary = M[2L])
+}
+
+.fromCplx <- function(z){
+  c(Re(z), Im(z))
+}
+
 .LineLineIntersection <- function (P1, P2, Q1, Q2) {
   dx1 <- P1[1L] - P2[1L]
   dx2 <- Q1[1L] - Q2[1L]
