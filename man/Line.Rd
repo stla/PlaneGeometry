@@ -126,7 +126,7 @@ Show instance of a line object.
 \if{html}{\out{<a id="method-directionAndOffset"></a>}}
 \subsection{Method \code{directionAndOffset()}}{
 Direction (angle between 0 and 2pi)
-and offset (positive number) of the line.
+and offset (positive number) of the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$directionAndOffset()}\if{html}{\out{</div>}}
 }
@@ -142,8 +142,8 @@ and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isEqual"></a>}}
 \subsection{Method \code{isEqual()}}{
-Check whether the line equals a given line, without taking
-into account \code{extendA} and \code{extendB}.
+Check whether the reference line equals a given line,
+without taking into account \code{extendA} and \code{extendB}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$isEqual(line)}\if{html}{\out{</div>}}
 }
@@ -162,7 +162,7 @@ into account \code{extendA} and \code{extendB}.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isParallel"></a>}}
 \subsection{Method \code{isParallel()}}{
-Check whether the line is parallel to a given line.
+Check whether the reference line is parallel to a given line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$isParallel(line)}\if{html}{\out{</div>}}
 }
@@ -181,7 +181,7 @@ Check whether the line is parallel to a given line.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-includes"></a>}}
 \subsection{Method \code{includes()}}{
-Whether a point belongs to the line.
+Whether a point belongs to the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$includes(M, strict = FALSE, checkCollinear = TRUE)}\if{html}{\out{</div>}}
 }
@@ -242,7 +242,7 @@ meeting point and the point \code{M}.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-projection"></a>}}
 \subsection{Method \code{projection()}}{
-Orthogonal projection of a point to the line.
+Orthogonal projection of a point to the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$projection(M)}\if{html}{\out{</div>}}
 }
@@ -261,7 +261,7 @@ A point.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotate"></a>}}
 \subsection{Method \code{rotate()}}{
-Rotate the line.
+Rotate the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$rotate(alpha, O, degrees = TRUE)}\if{html}{\out{</div>}}
 }
@@ -284,7 +284,7 @@ A \code{Line} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-translate"></a>}}
 \subsection{Method \code{translate()}}{
-Translate the line.
+Translate the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$translate(v)}\if{html}{\out{</div>}}
 }
@@ -303,7 +303,7 @@ A \code{Line} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invert"></a>}}
 \subsection{Method \code{invert()}}{
-Invert the line.
+Invert the reference line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$invert(inversion)}\if{html}{\out{</div>}}
 }

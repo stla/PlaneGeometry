@@ -126,8 +126,18 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
   }
 }
 
-# TODO intersectionLineLine with strict argument
 
+#' Intersection of two lines
+#' @description Return the intersection of two lines.
+#'
+#' @param line1,line2 two \code{Line} objects
+#' @param strict logical, whether to take into account the extensions of the
+#' lines (\code{extendA} and \code{extendB})
+#' @return If \code{strict = FALSE} this returns either a point, or \code{NULL}
+#' if the lines are parallel, or a bi-infinite line if the two lines coincide.
+#' If \code{strict = TRUE}, this can also return a half-infinite line or
+#' a segment.
+#'
 #' @export
 intersectionLineLine <- function(line1, line2, strict = FALSE){
   if(line1$isEqual(line2)){
@@ -278,32 +288,67 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         return(NULL)
       }
       # case 4: two segments
-      # https://matlabgeeks.com/tips-tutorials/computational-geometry/find-intersection-of-two-lines-in-matlab/
-      p <- A; r <- B-A
-      q <- C; s <- D-C
-      p <- C; r <- D-C
-      q <- A; s <- B-A
-      cross <- function(A, B) det(cbind(A,B))
-      r_cross_s <- cross(r, s) # = 0
-      q_p_cross_r = cross(q-p, r)
-      if(abs(q_p_cross_r) > sqrt(.Machine$double.eps)){
-        return(NULL)
-      }
-      t0 <- abs(c(crossprod(q-p,r))) / c(crossprod(r))
-      u0 <- abs(c(crossprod(q-p,s))) / c(crossprod(s))
-      cat("t0: ", t0, "\n"); cat("u0: ", u0, "\n")
-      if(t0 <=1 && u0 <= 1){
-        return(Line$new(q+u0*s, p+t0*r, FALSE, FALSE))
-      }
-      return(NULL)
-      # if(suppressMessages(line1$includes(C, checkCollinear = FALSE)) &&
-      #    suppressMessages(line1$includes(D, checkCollinear = FALSE))){
-      #   return(line2)
+      # # https://matlabgeeks.com/tips-tutorials/computational-geometry/find-intersection-of-two-lines-in-matlab/
+      # p <- A; r <- B-A
+      # q <- C; s <- D-C
+      # p <- C; r <- D-C
+      # q <- A; s <- B-A
+      # cross <- function(A, B) det(cbind(A,B))
+      # r_cross_s <- cross(r, s) # = 0
+      # q_p_cross_r = cross(q-p, r)
+      # if(abs(q_p_cross_r) > sqrt(.Machine$double.eps)){
+      #   return(NULL)
       # }
-      # if(suppressMessages(line2$includes(A, checkCollinear = FALSE)) &&
-      #    suppressMessages(line2$includes(B, checkCollinear = FALSE))){
-      #   return(line1)
+      # t0 <- abs(c(crossprod(q-p,r))) / c(crossprod(r))
+      # u0 <- abs(c(crossprod(q-p,s))) / c(crossprod(s))
+      # cat("t0: ", t0, "\n"); cat("u0: ", u0, "\n")
+      # if(t0 <=1 && u0 <= 1){
+      #   return(Line$new(q+u0*s, p+t0*r, FALSE, FALSE))
       # }
+      # return(NULL)
+      if(suppressMessages(line1$includes(C, strict = TRUE, checkCollinear = FALSE)) &&
+         suppressMessages(line1$includes(D, strict = TRUE, checkCollinear = FALSE))){
+        return(line2)
+      }
+      if(suppressMessages(line2$includes(A, strict = TRUE, checkCollinear = FALSE)) &&
+         suppressMessages(line2$includes(B, strict = TRUE, checkCollinear = FALSE))){
+        return(line1)
+      }
+      if(line1$directionAndOffset() %% pi == 0){
+        p <- min(A[2L],B[2L]); q <- max(A[2L],B[2L])
+        i <- match(A[2L], p)
+        r <- min(C[2L],D[2L]); s <- max(C[2L],D[2L])
+        j <- match(C[2L], r)
+      }else{
+        p <- min(A[1L],B[1L]); q <- max(A[1L],B[1L])
+        i <- match(A[1L], p)
+        r <- min(C[1L],D[1L]); s <- max(C[1L],D[1L])
+        j <- match(C[1L], r)
+      }
+      if(q < r) return(NULL)
+      if(q == r){
+        if(i == 1L) return(B) else return(A)
+      }
+      if(i == 1L){
+        P <- A
+        Q <- B
+      }else{
+        P <- B
+        Q <- A
+      }
+      if(j == 1L){
+        R <- C
+        S <- D
+      }else{
+        R <- D
+        S <- C
+      }
+      if(suppressMessages(line1$includes(R, strict = TRUE, checkCollinear = FALSE))){
+        return(Line$new(R, Q, FALSE, FALSE))
+      }
+      if(suppressMessages(line1$includes(S, strict = TRUE, checkCollinear = FALSE))){
+        return(Line$new(P, S, FALSE, FALSE))
+      }
     }
   }
   if(line1$isParallel(line2)){
