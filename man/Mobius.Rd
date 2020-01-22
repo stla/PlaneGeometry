@@ -24,8 +24,9 @@ Mob$transform(c(1,1))
 Mob$transform(Inf)
 }
 \seealso{
-\code{\link{MobiusFixingThreePoints}} to create some Möbius
-transformations.
+\code{\link{MobiusMappingThreePoints}} to create a Möbius
+transformation, and also the \code{compose} method of the
+\code{\link{Inversion}} R6 class.
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}

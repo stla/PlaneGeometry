@@ -3,7 +3,11 @@
 }
 
 .toCplx <- function(M){
-  complex(real = M[1L], imaginary = M[2L])
+  if(isTRUE(all.equal(M, Inf))){
+    Inf
+  }else{
+    complex(real = M[1L], imaginary = M[2L])
+  }
 }
 
 .fromCplx <- function(z){
@@ -85,4 +89,20 @@
   C <- .toCplx(iota$pole)
   k <- iota$power
   Mobius$new(rbind(c(C, k-C*Conj(C)), c(1, -Conj(C))))
+}
+
+.MobiusMappingThreePoints2ZeroOneInf <- function(z1, z2, z3){
+  if(z1 == Inf){
+    K <- z2 - z3
+    return(Mobius$new(rbind(c(0,K),c(1,-z3))))
+  }
+  if(z2 == Inf){
+    return(Mobius$new(rbind(c(1,-z1),c(1,-z3))))
+  }
+  if(z3 == Inf){
+    K <- 1 / (z2 - z1)
+    return(Mobius$new(rbind(c(K, -K*z1),c(0,1))))
+  }
+  K <- (z2 - z3) / (z2 - z1)
+  Mobius$new(rbind(c(K, -K*z1),c(1,-z3)))
 }

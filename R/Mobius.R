@@ -3,8 +3,9 @@
 #' @description A Möbius transformation is given by a matrix of complex numbers
 #' with non-null determinant.
 #'
-#' @seealso \code{\link{MobiusFixingThreePoints}} to create some Möbius
-#' transformations.
+#' @seealso \code{\link{MobiusMappingThreePoints}} to create a Möbius
+#' transformation, and also the \code{compose} method of the
+#' \code{\link{Inversion}} R6 class.
 #'
 #' @export
 #' @importFrom R6 R6Class
@@ -159,11 +160,20 @@ Mobius <- R6Class(
     #' Mob$transform(c(1,1))
     #' Mob$transform(Inf)
     transform = function(M) {
+      M <- as.vector(M)
+      if(!(isinf <- isTRUE(all.equal(M, Inf)))){
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L,
+          !any(is.na(M)),
+          all(is.finite(M))
+        )
+      }
       private[[".a"]] -> a
       private[[".b"]] -> b
       private[[".c"]] -> c
       private[[".d"]] -> d
-      if(isTRUE(all.equal(M, Inf))){
+      if(isinf){
         if(c == 0) Inf else .fromCplx(a/c)
       }else{
         z <- .toCplx(M)
@@ -185,17 +195,31 @@ Mobius <- R6Class(
       z0 <- .toCplx(circ$center)
       x1 <- .Mod2(d+c*z0)
       x2 <- R*R*.Mod2(c)
-      if(x1 != x2){
+      if(x1 != x2){ # we are in this case if c=0
         z <- z0 - R^2/Conj(d/c+z0)
         w0 <- self$transform(.fromCplx(z))
         Circle$new(w0, Mod(.toCplx(w0 - self$transform(.fromCplx(z0+R)))))
       }else{
-        if(c != 0){ # NIMP
-          A <- self$transform(.fromCplx(1-d/c))
-          B <- self$transform(.fromCplx(10-d/c))
+        if(circ$includes(M <- .fromCplx(-d/c))){
+          alpha <- 0
+          while(TRUE){
+            P <- circ$pointFromAngle(alpha, degrees = FALSE)
+            if(!all(P == M)){
+              break
+            }
+            alpha <- alpha + 0.1
+          }
+          while(TRUE){
+            Q <- circ$pointFromAngle(alpha+3)
+            if(!all(Q == M)){
+              break
+            }
+            alpha <- alpha + 0.1
+          }
+          A <- self$transform(P); B <- self$transform(Q)
         }else{
-          A <- self$transform(c(0,0))
-          B <- self$transform(c(10,0))
+          A <- self$transform(circ$pointFromAngle(0))
+          B <- self$transform(circ$pointFromAngle(180))
         }
         Line$new(A, B)
       }
@@ -227,3 +251,26 @@ Mobius <- R6Class(
 
   )
 )
+
+#' Möbius transformation mapping three given points to three given points
+#' @description Return a Möbius transformation which sends
+#' \code{P1} to \code{Q1}, \code{P2} to \code{Q2} and \code{P3} to \code{Q3}.
+#'
+#' @param P1,P2,P3 three distinct points, \code{Inf} allowed
+#' @param Q1,Q2,Q3 three distinct points, \code{Inf} allowed
+#'
+#' @return A \code{Mobius} object.
+#' @export
+MobiusMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
+  z1 <- .toCplx(P1); z2 <- .toCplx(P2); z3 <- .toCplx(P3) # Inf allowed !
+  if(z1 == z2 || z1 == z3 || z2 == z3){
+    stop("`P1`, `P2` and `P3` must be distinct.")
+  }
+  Mob1 <- .MobiusMappingThreePoints2ZeroOneInf(z1, z2, z3)
+  w1 <- .toCplx(Q1); w2 <- .toCplx(Q2); w3 <- .toCplx(Q3)
+  if(w1 == w2 || w1 == w3 || w2 == w3){
+    stop("`Q1`, `Q2` and `Q3` must be distinct.")
+  }
+  Mob2 <- .MobiusMappingThreePoints2ZeroOneInf(w1, w2, w3)
+  Mob1$compose(Mob2$inverse())
+}
