@@ -269,7 +269,7 @@ radicalCenter <- function(circ1, circ2, circ3){
 #' @description Return a Steiner chain of circles.
 #'
 #' @param c0 exterior circle, a \code{Circle} object
-#' @param n number of circles, not including the inner circle
+#' @param n number of circles, not including the inner circle; at least \code{3}
 #' @param phi \code{-1 < phi < 1} controls the radii of the circles
 #' @param shift any number; it produces a kind of rotation around the inner
 #' circle; values between \code{0} and \code{n} cover all possibilities
