@@ -134,7 +134,7 @@ Circle <- R6Class(
       if(dalpha %% pi == 0){
         eialpha1 <- c(cos(alpha1), sin(alpha1))
         A <- I + r*eialpha1; B <- I - r*eialpha1
-        return(Line$new(A, B, FALSE, FALSE))
+        return(Line$new(A, B, !arc, !arc))
       }
       r0 <- r * abs(tan(dalpha/2))
       IO <- r / cos(dalpha/2)
@@ -154,15 +154,31 @@ Circle <- R6Class(
     },
 
     #' @description Orthogonal circle passing through two points within the reference circle.
-    #' @param P1,P2 two points in the interior of the reference circle
-    #' @return A \code{Circle} object.
-    orthogonalThroughTwoPointsWithinCircle = function(P1, P2) {
+    #' @param P1,P2 two distinct points in the interior of the reference circle
+    #' @param arc logical, whether to return the arc joining the two points
+    #' instead of the circle
+    #' @return A \code{Circle} object or an \code{Arc} object,
+    #' or a \code{Line} object if the two points are on a diameter.
+    #' @examples circ <- Circle$new(c(0,0),3)
+    #' P1 <- c(1,1); P2 <- c(1, 2)
+    #' ocirc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2)
+    #' arc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2, arc = TRUE)
+    #' plot(0, 0, type = "n", asp = 1, xlab = NA, ylab = NA,
+    #'      xlim = c(-3, 4), ylim = c(-3, 4))
+    #' draw(circ, lwd = 2)
+    #' draw(ocirc, lty = "dashed", lwd = 2)
+    #' draw(arc, lwd = 3, col = "blue")
+    orthogonalThroughTwoPointsWithinCircle = function(P1, P2, arc = FALSE) {
+      if(isTRUE(all.equal(P1, P2))) stop("`P1` and `P2` must be distinct.")
       I <- private[[".center"]]; r <- private[[".radius"]]; r2 <- r*r
       if(c(crossprod(P1-I)) >= r2){
-        stop("`P1` is not in the interior of the reference circle")
+        stop("`P1` is not in the interior of the reference circle.")
       }
       if(c(crossprod(P2-I)) >= r2){
-        stop("`P2` is not in the interior of the reference circle")
+        stop("`P2` is not in the interior of the reference circle.")
+      }
+      if(.collinear(I, P1, P2)){
+        return(Line$new(P1, P2, !arc, !arc))
       }
       iota <- Inversion$new(I, r2)
       P1prime <- iota$invert(P1); P2prime <- iota$invert(P2)
@@ -170,7 +186,14 @@ Circle <- R6Class(
       perp1 <- suppressMessages(line1$perpendicular((P1+P1prime)/2))
       perp2 <- suppressMessages(line2$perpendicular((P2+P2prime)/2))
       O <- .LineLineIntersection(perp1$A, perp1$B, perp2$A, perp2$B)
-      Circle$new(O, sqrt(c(crossprod(O-P1))))
+      if(arc){
+        theta1 <- atan2(P1[2L]-O[2L], P1[1L]-O[1L]) %% (2*pi)
+        theta2 <- atan2(P2[2L]-O[2L], P2[1L]-O[1L]) %% (2*pi)
+        Arc$new(O, sqrt(c(crossprod(O-P1))),
+                min(theta1,theta2), max(theta1,theta2))
+      }else{
+        Circle$new(O, sqrt(c(crossprod(O-P1))))
+      }
     },
 
     #' @description Power of a point with respect to the reference circle.

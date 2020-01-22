@@ -76,6 +76,4 @@ test_that("Intersection collinear segments", {
   S <- intersectionLineLine(S1, S2, strict = TRUE)
   expect_false(S$extendA || S$extendB)
   expect_true(set(S$A, S$B) == set(A, D))
-
-
 })

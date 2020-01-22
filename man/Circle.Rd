@@ -41,6 +41,20 @@ draw(arc1, col = "red", lwd = 2)
 draw(arc2, col = "green", lwd = 2)
 draw(arc3, col = "blue", lwd = 2)
 par(opar)
+
+## ------------------------------------------------
+## Method `Circle$orthogonalThroughTwoPointsWithinCircle`
+## ------------------------------------------------
+
+circ <- Circle$new(c(0,0),3)
+P1 <- c(1,1); P2 <- c(1, 2)
+ocirc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2)
+arc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2, arc = TRUE)
+plot(0, 0, type = "n", asp = 1, xlab = NA, ylab = NA,
+     xlim = c(-3, 4), ylim = c(-3, 4))
+draw(circ, lwd = 2)
+draw(ocirc, lty = "dashed", lwd = 2)
+draw(arc, lwd = 3, col = "blue")
 }
 \seealso{
 \code{\link{radicalCenter}} for the radical center of three circles.
@@ -232,19 +246,39 @@ par(opar)
 \subsection{Method \code{orthogonalThroughTwoPointsWithinCircle()}}{
 Orthogonal circle passing through two points within the reference circle.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsWithinCircle(P1, P2)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Circle$orthogonalThroughTwoPointsWithinCircle(P1, P2, arc = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{P1, P2}}{two points in the interior of the reference circle}
+\item{\code{P1, P2}}{two distinct points in the interior of the reference circle}
+
+\item{\code{arc}}{logical, whether to return the arc joining the two points
+instead of the circle}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A \code{Circle} object.
+A \code{Circle} object or an \code{Arc} object,
+or a \code{Line} object if the two points are on a diameter.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{circ <- Circle$new(c(0,0),3)
+P1 <- c(1,1); P2 <- c(1, 2)
+ocirc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2)
+arc <- circ$orthogonalThroughTwoPointsWithinCircle(P1, P2, arc = TRUE)
+plot(0, 0, type = "n", asp = 1, xlab = NA, ylab = NA,
+     xlim = c(-3, 4), ylim = c(-3, 4))
+draw(circ, lwd = 2)
+draw(ocirc, lty = "dashed", lwd = 2)
+draw(arc, lwd = 3, col = "blue")
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-power"></a>}}
