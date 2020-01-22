@@ -59,6 +59,7 @@ par(opar)
 \itemize{
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
+\item \href{#method-pointFromAngle}{\code{Circle$pointFromAngle()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
 \item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
 \item \href{#method-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
@@ -127,6 +128,27 @@ Show instance of a circle object.
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pointFromAngle"></a>}}
+\subsection{Method \code{pointFromAngle()}}{
+Get a point on the reference circle from its polar angle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$pointFromAngle(alpha, degrees = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha}}{a number, the angle}
+
+\item{\code{degrees}}{logical, whether \code{alpha} is given in degrees}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The point on the circle with polar angle \code{alpha}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isEqual"></a>}}

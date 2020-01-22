@@ -49,6 +49,7 @@ transformations.
 \item \href{#method-compose}{\code{Mobius$compose()}}
 \item \href{#method-inverse}{\code{Mobius$inverse()}}
 \item \href{#method-transform}{\code{Mobius$transform()}}
+\item \href{#method-transformCircle}{\code{Mobius$transformCircle()}}
 \item \href{#method-clone}{\code{Mobius$clone()}}
 }
 }
@@ -167,6 +168,25 @@ Mob$transform(Inf)
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformCircle"></a>}}
+\subsection{Method \code{transformCircle()}}{
+Transformation of a circle by the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$transformCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

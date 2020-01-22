@@ -84,6 +84,15 @@ Circle <- R6Class(
       cat(" radius: ", toString(private[[".radius"]]), "\n", sep = "")
     },
 
+    #' @description Get a point on the reference circle from its polar angle.
+    #' @param alpha a number, the angle
+    #' @param degrees logical, whether \code{alpha} is given in degrees
+    #' @return The point on the circle with polar angle \code{alpha}.
+    pointFromAngle = function(alpha, degrees = TRUE) {
+      if(degrees) alpha <- alpha * pi/180
+      private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
+    },
+
     #' @description Check whether the reference circle equals another circle.
     #' @param circ a \code{Circle} object
     isEqual = function(circ){

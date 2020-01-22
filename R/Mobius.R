@@ -173,6 +173,32 @@ Mobius <- R6Class(
           .fromCplx((a*z+b)/(c*z+d))
         }
       }
+    },
+
+    #' @description Transformation of a circle by the reference Möbius transformation.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    transformCircle = function(circ) {
+      private[[".c"]] -> c
+      private[[".d"]] -> d
+      R <- circ$radius
+      z0 <- .toCplx(circ$center)
+      x1 <- .Mod2(d+c*z0)
+      x2 <- R*R*.Mod2(c)
+      if(x1 != x2){
+        z <- z0 - R^2/Conj(d/c+z0)
+        w0 <- self$transform(.fromCplx(z))
+        Circle$new(w0, Mod(.toCplx(w0 - self$transform(.fromCplx(z0+R)))))
+      }else{
+        if(c != 0){
+          A <- self$transform(.fromCplx(1-d/c))
+          B <- self$transform(.fromCplx(10-d/c))
+        }else{
+          A <- self$transform(c(0,0))
+          B <- self$transform(c(10,0))
+        }
+        Line$new(A, B)
+      }
     }
 
   )

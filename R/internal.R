@@ -10,6 +10,10 @@
   c(Re(z), Im(z))
 }
 
+.Mod2 <- function(z){
+  Re(z)*Re(z) + Im(z)*Im(z)
+}
+
 .LineLineIntersection <- function (P1, P2, Q1, Q2) {
   dx1 <- P1[1L] - P2[1L]
   dx2 <- Q1[1L] - Q2[1L]
