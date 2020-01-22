@@ -130,6 +130,23 @@ Mobius <- R6Class(
       M
     },
 
+    #' @description Compose the reference Möbius transformation with another
+    #' Möbius transformation
+    #' @param M1 a \code{Mobius} object
+    #' @param left logical, whether to compose at left or at right (i.e.
+    #' returns \code{M1 o M0} or \code{M0 o M1})
+    #' @return A \code{Mobius} object.
+    compose = function(M1, left = TRUE) {
+      A <- self$getM(); B <- M1$getM()
+      if(left) Mobius$new(B %*% A) else Mobius$new(A %*% B)
+    },
+
+    #' @description Inverse the reference Möbius transformation.
+    #' @return A \code{Mobius} object.
+    inverse = function() {
+      Mobius$new(solve(self$getM()))
+    },
+
     #' @description Transformation of a point by the reference Möbius transformation.
     #' @param M a point or \code{Inf}
     #' @return A point or \code{Inf}, the image of \code{M}.

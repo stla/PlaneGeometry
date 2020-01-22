@@ -45,6 +45,8 @@ transformations.
 \item \href{#method-new}{\code{Mobius$new()}}
 \item \href{#method-print}{\code{Mobius$print()}}
 \item \href{#method-getM}{\code{Mobius$getM()}}
+\item \href{#method-compose}{\code{Mobius$compose()}}
+\item \href{#method-inverse}{\code{Mobius$inverse()}}
 \item \href{#method-transform}{\code{Mobius$transform()}}
 \item \href{#method-clone}{\code{Mobius$clone()}}
 }
@@ -100,6 +102,41 @@ Get the matrix corresponding to the Möbius transformation.
 \if{html}{\out{<div class="r">}}\preformatted{Mobius$getM()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-compose"></a>}}
+\subsection{Method \code{compose()}}{
+Compose the reference Möbius transformation with another
+Möbius transformation
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$compose(M1, left = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M1}}{a \code{Mobius} object}
+
+\item{\code{left}}{logical, whether to compose at left or at right (i.e.
+returns \code{M1 o M0} or \code{M0 o M1})}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Mobius} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-inverse"></a>}}
+\subsection{Method \code{inverse()}}{
+Inverse the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$inverse()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Mobius} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
