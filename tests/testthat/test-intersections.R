@@ -19,3 +19,63 @@ test_that("intersectionCircleCircle", {
   c1 <- Circle$new(c(4,0), 2); c2 <- Circle$new(c(5,0), 5)
   expect_null(intersectionCircleCircle(c1, c2))
 })
+
+test_that("Intersection collinear segments", {
+  library(sets)
+  #
+  A <- c(1,1); B <- c(8,8); C <- c(3,3); D <- c(5,5)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(S2$A, S2$B))
+  #
+  S1 <- Line$new(B, A, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(S2$A, S2$B))
+  #
+  A <- c(1,1); B <- c(5,5); C <- c(3,3); D <- c(8,8)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(C, B))
+  #
+  A <- c(3,3); B <- c(8,8); C <- c(1,1); D <- c(5,5)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(A, D))
+  #
+  A <- c(1,8); B <- c(8,1); C <- c(3,6); D <- c(5,4)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(C, D))
+  #
+  C <- c(1,8); B <- c(8,1); A <- c(3,6); D <- c(5,4)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(A, D))
+  #
+  A <- c(5,8); B <- c(5,1); C <- c(5,6); D <- c(5,4)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(C, D))
+  #
+  A <- c(5,6); B <- c(5,1); C <- c(5,8); D <- c(5,4)
+  S1 <- Line$new(A, B, FALSE, FALSE)
+  S2 <- Line$new(C, D, FALSE, FALSE)
+  S <- intersectionLineLine(S1, S2, strict = TRUE)
+  expect_false(S$extendA || S$extendB)
+  expect_true(set(S$A, S$B) == set(A, D))
+
+
+})

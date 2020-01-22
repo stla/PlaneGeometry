@@ -44,4 +44,10 @@ test_that("Compose inversions", {
   Mob <- iota2$compose(iota1)
   Q <- Mob$transform(M)
   expect_equal(P, Q)
+  # with a negative power
+  iota2 <- Inversion$new(c(3,2), -4)
+  P <- iota1$invert(iota2$invert(M))
+  Mob <- iota2$compose(iota1)
+  Q <- Mob$transform(M)
+  expect_equal(P, Q)
 })

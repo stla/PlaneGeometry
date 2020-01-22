@@ -314,16 +314,16 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
          suppressMessages(line2$includes(B, strict = TRUE, checkCollinear = FALSE))){
         return(line1$clone(deep = TRUE))
       }
-      if(line1$directionAndOffset() %% pi == 0){
+      if(line1$directionAndOffset()$direction %% pi == 0){
         p <- min(A[2L],B[2L]); q <- max(A[2L],B[2L])
-        i <- match(A[2L], p)
+        i <- match(p, c(A[2L],B[2L]))
         r <- min(C[2L],D[2L]); s <- max(C[2L],D[2L])
-        j <- match(C[2L], r)
+        j <- match(r, c(C[2L],D[2L]))
       }else{
         p <- min(A[1L],B[1L]); q <- max(A[1L],B[1L])
-        i <- match(A[1L], p)
+        i <- match(p, c(A[1L],B[1L]))
         r <- min(C[1L],D[1L]); s <- max(C[1L],D[1L])
-        j <- match(C[1L], r)
+        j <- match(r, c(C[1L],D[1L]))
       }
       if(q < r) return(NULL)
       if(q == r){
