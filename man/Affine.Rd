@@ -32,6 +32,7 @@ Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
 \item \href{#method-get3x3matrix}{\code{Affine$get3x3matrix()}}
 \item \href{#method-inverse}{\code{Affine$inverse()}}
 \item \href{#method-compose}{\code{Affine$compose()}}
+\item \href{#method-transform}{\code{Affine$transform()}}
 \item \href{#method-clone}{\code{Affine$clone()}}
 }
 }
@@ -119,6 +120,22 @@ returns \code{f1 o f0} or \code{f0 o f1})}
 }
 \subsection{Returns}{
 An \code{Affine} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transform"></a>}}
+\subsection{Method \code{transform()}}{
+Transform a point by the reference affine transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Affine$transform(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}

@@ -66,6 +66,7 @@ Affine <- R6Class(
         all(is.finite(A)),
         det(A) != 0
       )
+      b <- as.vector(b)
       stopifnot(
         is.numeric(b),
         length(b) == 2L,
@@ -113,6 +114,19 @@ Affine <- R6Class(
       M1 <- transfo$get3x3matrix()
       M <- if(left) M0 %*% M1 else M1 %*% M0
       Affine$new(M[-3L,-3L], M[-3L,3L])
+    },
+
+    #' @description Transform a point by the reference affine transformation.
+    #' @param M a point
+    transform = function(M){
+      M <- as.vector(M)
+      stopifnot(
+        is.numeric(M),
+        length(M) == 2L,
+        !any(is.na(M)),
+        all(is.finite(M))
+      )
+      c(private[[".A"]] %*% M) + private[[".b"]]
     }
   )
 )
