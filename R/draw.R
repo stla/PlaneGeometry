@@ -20,7 +20,7 @@
 #' draw(circ, col = "orange", border = "brown", lwd = 2)
 #' # draw an ellipse
 #' S <- Scaling$new(circ$center, direction = c(2,1), scale = 2)
-#' draw(S$scaleCircle(circ), border = "blue", lwd = 2)
+#' draw(S$scaleCircle(circ), border = "grey", lwd = 2)
 #' # draw a line
 #' l <- Line$new(c(1,1), c(1.5,1.5), FALSE, TRUE)
 #' draw(l, col = "red", lwd = 2)
