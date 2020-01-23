@@ -5,6 +5,7 @@
 #' @param x geometric object (\code{Triangle}, \code{Circle} or \code{Line})
 #' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
 #' object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
+#' to \code{\link[DescTools]{DrawEllipse}} for an \code{Ellipse} object,
 #' general graphical parameters for a \code{Line} object
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
@@ -16,7 +17,10 @@
 #' draw(t$rotate(90, t$C), col = "green", lwd = 2)
 #' # draw a circle
 #' circ <- t$incircle()
-#' draw(circ, col = "orange", border = "brown")
+#' draw(circ, col = "orange", border = "brown", lwd = 2)
+#' # draw an ellipse
+#' S <- Scaling$new(circ$center, direction = c(2,1), scale = 2)
+#' draw(S$scaleCircle(circ), border = "blue", lwd = 2)
 #' # draw a line
 #' l <- Line$new(c(1,1), c(1.5,1.5), FALSE, TRUE)
 #' draw(l, col = "red", lwd = 2)
@@ -41,7 +45,7 @@ draw.Triangle <- function(x, ...){
 draw.Circle = function(x, ...) {
   center <- x$center
   DrawCircle(center[1L], center[2L], r.out = x$radius,
-             theta.1 = 0, theta.2 = 2*pi, ...)
+             theta.1 = 0, theta.2 = 2*pi, plot = TRUE, ...)
 }
 
 #' @rdname draw
@@ -55,7 +59,7 @@ draw.Arc = function(x, ...) {
   #   draw(Line$new(A, B, FALSE, FALSE), ...) # NIMP !!
   # }else{
     DrawArc(center[1L], center[2L], rx = r, ry = r,
-            theta.1 = x$alpha1, theta.2 = x$alpha2, ...)
+            theta.1 = x$alpha1, theta.2 = x$alpha2, plot = TRUE, ...)
   # }
 }
 
@@ -69,11 +73,11 @@ draw.Ellipse = function(x, ...) {
   if("col" %in% names(list(...))){
     DrawEllipse(center[1L], center[2L],
                 radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha, ...)
+                rot = alpha, plot = TRUE, ...)
   }else{
     DrawEllipse(center[1L], center[2L],
                 radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha, col = "transparent", ...)
+                rot = alpha, plot = TRUE, col = "transparent", ...)
   }
 }
 

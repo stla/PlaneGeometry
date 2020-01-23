@@ -155,7 +155,23 @@ Scaling <- R6Class(
       M[,3L] <- M[3L,]
       M[3L,] <- c(0,0,1)
       M
+    },
 
+    #' @description Scale a circle. The result is an ellipse.
+    #' @param circ a \code{Circle} object
+    #' @return An \code{Ellipse} object.
+    scaleCircle = function(circ){
+      private[[".direction"]] -> w
+      C <- circ$center; R <- circ$radius
+      O <- self$transform(C)
+      lw <- sqrt(c(crossprod(w)))
+      A1 <- self$transform(C + R*w/lw)
+      wt <- c(-w[2L], w[1L])
+      A2 <- self$transform(C + R*wt/lw)
+      r1 <- sqrt(c(crossprod(A1-O)))
+      r2 <- sqrt(c(crossprod(A2-O)))
+      alpha <- atan2(s1[2]-s0[2],s1[1]-s0[1]) * 180/pi
+      Ellipse$new(O, r1, r2, alpha, degrees = TRUE)
     }
   )
 )

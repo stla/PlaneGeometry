@@ -42,6 +42,7 @@ S$getMatrix() \%*\% c(P,1)
 \item \href{#method-print}{\code{Scaling$print()}}
 \item \href{#method-transform}{\code{Scaling$transform()}}
 \item \href{#method-getMatrix}{\code{Scaling$getMatrix()}}
+\item \href{#method-scaleCircle}{\code{Scaling$scaleCircle()}}
 \item \href{#method-clone}{\code{Scaling$clone()}}
 }
 }
@@ -130,6 +131,25 @@ S$getMatrix() \%*\% c(P,1)
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-scaleCircle"></a>}}
+\subsection{Method \code{scaleCircle()}}{
+Scale a circle. The result is an ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Scaling$scaleCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An \code{Ellipse} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
