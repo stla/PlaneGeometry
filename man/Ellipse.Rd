@@ -35,6 +35,9 @@ Ellipse$new(c(1,1), 3, 2, 30)
 \itemize{
 \item \href{#method-new}{\code{Ellipse$new()}}
 \item \href{#method-print}{\code{Ellipse$print()}}
+\item \href{#method-equation}{\code{Ellipse$equation()}}
+\item \href{#method-includes}{\code{Ellipse$includes()}}
+\item \href{#method-contains}{\code{Ellipse$contains()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -85,6 +88,56 @@ Show instance of an \code{Ellipse} object.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{ignored}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-equation"></a>}}
+\subsection{Method \code{equation()}}{
+The coefficients of the implicit equation of the ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$equation()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+The implicit equation of the ellipse is
+\code{Ax² + Bxy + Cy² + Dx + Ey + F = 0}. This method returns
+A, B, C, D, E and F.
+}
+
+\subsection{Returns}{
+A named numeric vector.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-includes"></a>}}
+\subsection{Method \code{includes()}}{
+Check whether a point lies on the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$includes(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-contains"></a>}}
+\subsection{Method \code{contains()}}{
+Check whether a point is contained in the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$contains(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
 }
 \if{html}{\out{</div>}}
 }

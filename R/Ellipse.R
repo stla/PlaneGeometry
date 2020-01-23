@@ -40,12 +40,14 @@ Ellipse <- R6Class(
         private[[".rmajor"]]
       } else {
         rmajor <- as.vector(value)
+        rminor <- private[[".rminor"]]
         stopifnot(
           is.numeric(rmajor),
           length(rmajor) == 1L,
           !is.na(rmajor),
           is.finite(rmajor),
-          rmajor > 0
+          rmajor > 0,
+          rmajor >= rminor
         )
         private[[".rmajor"]] <- rmajor
       }
@@ -57,12 +59,14 @@ Ellipse <- R6Class(
         private[[".rminor"]]
       } else {
         rminor <- as.vector(value)
+        rmajor <- private[[".rmajor"]]
         stopifnot(
           is.numeric(rminor),
           length(rminor) == 1L,
           !is.na(rminor),
           is.finite(rminor),
-          rminor > 0
+          rminor > 0,
+          rminor <= rmajor
         )
         private[[".rminor"]] <- rminor
       }
@@ -131,7 +135,8 @@ Ellipse <- R6Class(
         length(rminor) == 1L,
         !is.na(rminor),
         is.finite(rminor),
-        rminor > 0
+        rminor > 0,
+        rminor <= rmajor
       )
       alpha <- as.vector(alpha)
       stopifnot(
@@ -171,6 +176,45 @@ Ellipse <- R6Class(
                          ifelse(theta %in% c(0,1), "degree", "degrees"),
                          ifelse(theta %in% c(0,1), "radian", "radians"))
           ), "\n", sep = "")
+    },
+
+    #' @description The coefficients of the implicit equation of the ellipse.
+    #' @return A named numeric vector.
+    #' @details The implicit equation of the ellipse is
+    #' \code{Ax² + Bxy + Cy² + Dx + Ey + F = 0}. This method returns
+    #' A, B, C, D, E and F.
+    equation = function(){
+      private[[".center"]] -> center
+      private[[".rmajor"]]^2 -> a2
+      private[[".rminor"]]^2 -> b2
+      private[[".alpha"]] -> alpha
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      x <- center[1L]; y <- center[2L]
+      sine <- sin(alpha); cosine <- cos(alpha)
+      sine2 <- sine*sine; cosine2 <- 1-sine2
+      A <- a2*sine2 + b2*cosine2
+      B <- 2*(b2-a2)*sine*cosine
+      C <- a2*cosine2 + b2*sine2
+      D <- -2*A*x - B*y
+      E <- -B*x - 2*C*y
+      F <- A*x*x + B*x*y + C*y*y - a2*b2
+      c(A = A, B = B, C = C, D = D, E = E, F = F)
+    },
+
+    #' @description Check whether a point lies on the reference ellipse.
+    #' @param M a point
+    includes = function(M){
+      ABCDEF <- as.list(self$equation())
+      zero <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
+      isTRUE(all.equal(0, zero))
+    },
+
+    #' @description Check whether a point is contained in the reference ellipse.
+    #' @param M a point
+    contains = function(M){
+      ABCDEF <- as.list(self$equation())
+      value <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
+      value <= 0
     }
   )
 )

@@ -178,9 +178,15 @@ Scaling <- R6Class(
       A1 <- self$transform(C + R*w/lw)
       wt <- c(-w[2L], w[1L])
       A2 <- self$transform(C + R*wt/lw)
-      r1 <- sqrt(c(crossprod(A1-O)))
-      r2 <- sqrt(c(crossprod(A2-O)))
-      alpha <- atan2(A1[2L]-O[2L],A1[1L]-O[1L]) * 180/pi
+      if(private[[".scale"]] >= 1){
+        r1 <- sqrt(c(crossprod(A1-O)))
+        r2 <- sqrt(c(crossprod(A2-O)))
+        alpha <- atan2(A1[2L]-O[2L],A1[1L]-O[1L]) * 180/pi
+      }else{
+        r1 <- sqrt(c(crossprod(A2-O)))
+        r2 <- sqrt(c(crossprod(A1-O)))
+        alpha <- atan2(A2[2L]-O[2L],A2[1L]-O[1L]) * 180/pi
+      }
       Ellipse$new(O, r1, r2, alpha, degrees = TRUE)
     }
   )
