@@ -116,3 +116,21 @@ Affine <- R6Class(
     }
   )
 )
+
+
+#' Affine transformation mapping three given points to three given points
+#' @description Return the affine transformation which sends
+#' \code{P1} to \code{Q1}, \code{P2} to \code{Q2} and \code{P3} to \code{Q3}.
+#'
+#' @param P1,P2,P3 three non-collinear points
+#' @param Q1,Q2,Q3 three non-collinear points
+#'
+#' @return An \code{Affine} object.
+#' @export
+AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
+  if(.collinear(P1,P2,P3)) stop("P1, P2 and P3 are collinear.")
+  if(.collinear(Q1,Q2,Q3)) stop("Q1, Q2 and Q3 are collinear.")
+  f1 <- Affine$new(cbind(P2-P1, P3-P1), P1)
+  f2 <- Affine$new(cbind(Q2-Q1, Q3-Q1), Q1)
+  f1$inverse()$compose(f2)
+}
