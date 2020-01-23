@@ -43,6 +43,7 @@ R$getMatrix() \%*\% c(P,1)
 \item \href{#method-rotateCircle}{\code{Rotation$rotateCircle()}}
 \item \href{#method-rotateLine}{\code{Rotation$rotateLine()}}
 \item \href{#method-getMatrix}{\code{Rotation$getMatrix()}}
+\item \href{#method-asAffine}{\code{Rotation$asAffine()}}
 \item \href{#method-clone}{\code{Rotation$clone()}}
 }
 }
@@ -167,6 +168,15 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference rotation to an \code{Affine} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$asAffine()}\if{html}{\out{</div>}}
 }
 
 }

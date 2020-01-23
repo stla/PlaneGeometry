@@ -163,6 +163,12 @@ Rotation <- R6Class(
         -O[1]*sintheta + O[2]*(1-costheta)
       )
       cbind(c(costheta, sintheta, 0), c(-sintheta, costheta, 0), c(W, 1))
+    },
+
+    #' @description Convert the reference rotation to an \code{Affine} object.
+    asAffine = function(){
+      M <- self$getMatrix()
+      Affine$new(M[-3L,-3L], M[-3L,3L])
     }
 
 

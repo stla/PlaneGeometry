@@ -161,6 +161,12 @@ Scaling <- R6Class(
       M
     },
 
+    #' @description Convert the reference scaling to an \code{Affine} object.
+    asAffine = function(){
+      M <- self$getMatrix()
+      Affine$new(M[-3L,-3L], M[-3L,3L])
+    },
+
     #' @description Scale a circle. The result is an ellipse.
     #' @param circ a \code{Circle} object
     #' @return An \code{Ellipse} object.

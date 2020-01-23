@@ -62,6 +62,7 @@ and the length of the second vector, perpendicular to the first one}
 \item \href{#method-print}{\code{Shear$print()}}
 \item \href{#method-transform}{\code{Shear$transform()}}
 \item \href{#method-getMatrix}{\code{Shear$getMatrix()}}
+\item \href{#method-asAffine}{\code{Shear$asAffine()}}
 \item \href{#method-clone}{\code{Shear$clone()}}
 }
 }
@@ -151,6 +152,15 @@ S$getMatrix()
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference shear to an \code{Affine} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Shear$asAffine()}\if{html}{\out{</div>}}
 }
 
 }

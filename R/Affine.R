@@ -112,7 +112,7 @@ Affine <- R6Class(
     compose = function(transfo, left = TRUE){
       M0 <- self$get3x3matrix()
       M1 <- transfo$get3x3matrix()
-      M <- if(left) M0 %*% M1 else M1 %*% M0
+      M <- if(left) M1 %*% M0 else M0 %*% M1
       Affine$new(M[-3L,-3L], M[-3L,3L])
     },
 

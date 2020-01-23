@@ -239,6 +239,13 @@ Shear <- R6Class(
       M <- solve(M1) %*% M2
       M[,3L] <- M[3L,]; M[3L,] <- c(0,0,1)
       M
+    },
+
+    #' @description Convert the reference shear to an \code{Affine} object.
+    asAffine = function(){
+      M <- self$getMatrix()
+      Affine$new(M[-3L,-3L], M[-3L,3L])
     }
+
   )
 )

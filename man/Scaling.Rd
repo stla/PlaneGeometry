@@ -47,6 +47,7 @@ CRC Press, 2009.
 \item \href{#method-print}{\code{Scaling$print()}}
 \item \href{#method-transform}{\code{Scaling$transform()}}
 \item \href{#method-getMatrix}{\code{Scaling$getMatrix()}}
+\item \href{#method-asAffine}{\code{Scaling$asAffine()}}
 \item \href{#method-scaleCircle}{\code{Scaling$scaleCircle()}}
 \item \href{#method-clone}{\code{Scaling$clone()}}
 }
@@ -134,6 +135,15 @@ S$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference scaling to an \code{Affine} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Scaling$asAffine()}\if{html}{\out{</div>}}
 }
 
 }

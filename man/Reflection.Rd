@@ -40,6 +40,7 @@ R$getMatrix() \%*\% c(P,1)
 \item \href{#method-reflectCircle}{\code{Reflection$reflectCircle()}}
 \item \href{#method-reflectLine}{\code{Reflection$reflectLine()}}
 \item \href{#method-getMatrix}{\code{Reflection$getMatrix()}}
+\item \href{#method-asAffine}{\code{Reflection$asAffine()}}
 \item \href{#method-clone}{\code{Reflection$clone()}}
 }
 }
@@ -161,6 +162,15 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference reflection to an \code{Affine} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$asAffine()}\if{html}{\out{</div>}}
 }
 
 }
