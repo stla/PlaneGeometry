@@ -14,6 +14,15 @@ A reflection is given by a line.
 
 l <- Line$new(c(1,1), c(1.5,1.5), FALSE, TRUE)
 Reflection$new(l)
+
+## ------------------------------------------------
+## Method `Reflection$getMatrix`
+## ------------------------------------------------
+
+R <- Reflection$new(Line$new(c(2,2), c(4,5)))
+P <- c(1,5)
+R$reflect(P)
+R$getMatrix() \%*\% c(P,1)
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -30,6 +39,7 @@ Reflection$new(l)
 \item \href{#method-reflect}{\code{Reflection$reflect()}}
 \item \href{#method-reflectCircle}{\code{Reflection$reflectCircle()}}
 \item \href{#method-reflectLine}{\code{Reflection$reflectLine()}}
+\item \href{#method-getMatrix}{\code{Reflection$getMatrix()}}
 \item \href{#method-clone}{\code{Reflection$clone()}}
 }
 }
@@ -130,6 +140,29 @@ Reflect a line.
 \subsection{Returns}{
 A \code{Line} object.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMatrix"></a>}}
+\subsection{Method \code{getMatrix()}}{
+Augmented matrix of the reflection.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$getMatrix()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A 3x3 matrix.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{R <- Reflection$new(Line$new(c(2,2), c(4,5)))
+P <- c(1,5)
+R$reflect(P)
+R$getMatrix() \%*\% c(P,1)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

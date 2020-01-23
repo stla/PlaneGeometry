@@ -71,8 +71,23 @@ Reflection <- R6Class(
     reflectLine = function(line) {
       Line$new(self$reflect(line$A), self$reflect(line$B),
                line$extendA, line$extendB)
+    },
+
+    #' @description Augmented matrix of the reflection.
+    #' @return A 3x3 matrix.
+    #' @examples R <- Reflection$new(Line$new(c(2,2), c(4,5)))
+    #' P <- c(1,5)
+    #' R$reflect(P)
+    #' R$getMatrix() %*% c(P,1)
+    getMatrix = function(){
+      private[[".line"]] -> line
+      Q <- line$A; w <- line$B - line$A
+      wt <- c(-w[2L], w[1L])
+      M1 <- cbind(rbind(w,wt,Q),c(0,0,1))
+      M2 <- cbind(rbind(w,-wt,Q),c(0,0,1))
+      M <- solve(M1) %*% M2
+      M[,3L] <- M[3L,]; M[3L,] <- c(0,0,1)
+      M
     }
-
-
   )
 )
