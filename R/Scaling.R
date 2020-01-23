@@ -3,6 +3,10 @@
 #' @description A (non-uniform) scaling is given by a center, a direction,
 #'  and a scale factor.
 #'
+#' @references R. Goldman,
+#' \emph{An Integrated Introduction to Computer Graphics and Geometric Modeling}.
+#' CRC Press, 2009.
+#'
 #' @export
 #' @importFrom R6 R6Class
 Scaling <- R6Class(
@@ -151,7 +155,7 @@ Scaling <- R6Class(
       # M2 <- cbind(rbind(s*c(w1,w2),c(-w2,w1),c(0,0)), c(Q,1))
       M1 <- cbind(rbind(c(w1,w2),c(-w2,w1),Q), c(0,0,1))
       M2 <- cbind(rbind(s*c(w1,w2),c(-w2,w1),Q), c(0,0,1))
-      M <- solve(M1) %*% M2
+      M <- solve(M1) %*% M2 # top-left corner always symmetric ?
       M[,3L] <- M[3L,]
       M[3L,] <- c(0,0,1)
       M

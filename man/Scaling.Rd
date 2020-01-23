@@ -24,6 +24,11 @@ P <- c(1,5)
 S$transform(P)
 S$getMatrix() \%*\% c(P,1)
 }
+\references{
+R. Goldman,
+\emph{An Integrated Introduction to Computer Graphics and Geometric Modeling}.
+CRC Press, 2009.
+}
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
