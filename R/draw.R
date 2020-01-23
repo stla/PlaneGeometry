@@ -60,6 +60,24 @@ draw.Arc = function(x, ...) {
 }
 
 #' @rdname draw
+#' @importFrom DescTools DrawEllipse
+#' @export
+draw.Ellipse = function(x, ...) {
+  center <- x$center
+  alpha <- x$alpha
+  if(x$degrees) alpha <- alpha * pi/180
+  if("col" %in% names(list(...))){
+    DrawEllipse(center[1L], center[2L],
+                radius.x = x$rmajor, radius.y = x$rminor,
+                rot = alpha, ...)
+  }else{
+    DrawEllipse(center[1L], center[2L],
+                radius.x = x$rmajor, radius.y = x$rminor,
+                rot = alpha, col = "transparent", ...)
+  }
+}
+
+#' @rdname draw
 #' @export
 draw.Line = function(x, ...) {
   extendA <- x$extendA; extendB <- x$extendB

@@ -5,6 +5,7 @@
 \alias{draw.Triangle}
 \alias{draw.Circle}
 \alias{draw.Arc}
+\alias{draw.Ellipse}
 \alias{draw.Line}
 \title{Draw a geometric object}
 \usage{
@@ -15,6 +16,8 @@ draw(x, ...)
 \method{draw}{Circle}(x, ...)
 
 \method{draw}{Arc}(x, ...)
+
+\method{draw}{Ellipse}(x, ...)
 
 \method{draw}{Line}(x, ...)
 }

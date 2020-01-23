@@ -2,6 +2,7 @@
 
 S3method(draw,Arc)
 S3method(draw,Circle)
+S3method(draw,Ellipse)
 S3method(draw,Line)
 S3method(draw,Triangle)
 export(Arc)
@@ -28,4 +29,5 @@ export(inversionMappingCircle2Circle)
 export(radicalCenter)
 importFrom(DescTools,DrawArc)
 importFrom(DescTools,DrawCircle)
+importFrom(DescTools,DrawEllipse)
 importFrom(R6,R6Class)
