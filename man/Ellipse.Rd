@@ -25,6 +25,17 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell)
 invisible(lapply(diameters, draw))
+
+## ------------------------------------------------
+## Method `Ellipse$tangent`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, col = "yellow")
+invisible(lapply(tangents, draw, col = "blue"))
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -51,6 +62,7 @@ invisible(lapply(diameters, draw))
 \item \href{#method-contains}{\code{Ellipse$contains()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-tangent}{\code{Ellipse$tangent()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -186,7 +198,8 @@ Diameter and conjugate diameter of the reference ellipse.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{t}}{a number; the diameter only depends on \code{t} modulo \code{pi}}
+\item{\code{t}}{a number, the diameter only depends on \code{t} modulo
+\code{pi}; the axes correspond to \code{t=0} and \code{t=pi/2}}
 
 \item{\code{conjugate}}{logical, whether to return the conjugate diameter as well}
 }
@@ -204,6 +217,37 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell)
 invisible(lapply(diameters, draw))
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-tangent"></a>}}
+\subsection{Method \code{tangent()}}{
+Tangents of the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$tangent(t)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{t}}{an angle, there is one tangent for each value of \code{t}
+modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
+tangents at the vertices of the ellipse.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
+tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, col = "yellow")
+invisible(lapply(tangents, draw, col = "blue"))
 }
 \if{html}{\out{</div>}}
 

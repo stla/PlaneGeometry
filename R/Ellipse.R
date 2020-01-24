@@ -241,7 +241,8 @@ Ellipse <- R6Class(
     },
 
     #' @description Diameter and conjugate diameter of the reference ellipse.
-    #' @param t a number; the diameter only depends on \code{t} modulo \code{pi}
+    #' @param t a number, the diameter only depends on \code{t} modulo
+    #' \code{pi}; the axes correspond to \code{t=0} and \code{t=pi/2}
     #' @param conjugate logical, whether to return the conjugate diameter as well
     #' @return A \code{Line} object or a list of two \code{Line} objects if
     #' \code{conjugate = TRUE}.
@@ -275,6 +276,35 @@ Ellipse <- R6Class(
       }else{
         Line$new(pts[1L,], pts[2L,], FALSE, FALSE)
       }
+    },
+
+    #' @description Tangents of the reference ellipse.
+    #' @param t an angle, there is one tangent for each value of \code{t}
+    #' modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
+    #' tangents at the vertices of the ellipse.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
+    #' tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #'      xlab = NA, ylab = NA)
+    #' draw(ell, col = "yellow")
+    #' invisible(lapply(tangents, draw, col = "blue"))
+    tangent = function(t){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]; b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      x <- a*cos(t); y <- b*sin(t)
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      T <- c(
+        O[1] + cosalpha*x - sinalpha*y,
+        O[2] + sinalpha*x + cosalpha*y
+      )
+      x <- -a*sin(t); y <- b*cos(t)
+      v <- c(
+        cosalpha*x - sinalpha*y,
+        sinalpha*x + cosalpha*y
+      )
+      Line$new(T, T+v)
     }
   )
 )
