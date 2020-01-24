@@ -161,7 +161,7 @@ Complementary arc of the reference arc.
 \subsection{Method \code{path()}}{
 Path defining the reference arc.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Arc$path(npoints = 100)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Arc$path(npoints = 100L)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -172,7 +172,7 @@ Path defining the reference arc.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list with two numeric vectors \code{x} and \code{y} of length \code{npoints}.
+A matrix with two columns \code{x} and \code{y} of length \code{npoints}.
 See "Filling the lapping area of two circles" in the vignette for
 an example.
 }

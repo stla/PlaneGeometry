@@ -6,7 +6,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
-#' @importFrom DescTools DrawArc
+# #' @importFrom DescTools DrawArc
 Arc <- R6Class(
 
   "Arc",
@@ -183,14 +183,27 @@ Arc <- R6Class(
 
     #' @description Path defining the reference arc.
     #' @param npoints number of points of the path
-    #' @return A list with two numeric vectors \code{x} and \code{y} of length \code{npoints}.
+    #' @return A matrix with two columns \code{x} and \code{y} of length \code{npoints}.
     #' See "Filling the lapping area of two circles" in the vignette for
     #' an example.
-    path = function(npoints = 100) {
-      O <- private[[".center"]]
-      DrawArc(O[1L], O[2L], rx = private[[".radius"]],
-              theta.1 = private[[".alpha1"]], theta.2 = private[[".alpha2"]],
-              nv = npoints, plot = FALSE)[[1L]]
+    path = function(npoints = 100L) {
+      alpha1 <- private[[".alpha1"]] %% (2*pi)
+      alpha2 <- private[[".alpha2"]] %% (2*pi)
+      dalpha <- alpha2 - alpha1
+      theta <- alpha1 +
+        seq(
+          from = 0,
+          to = ifelse(dalpha < 0, dalpha + 2*pi, dalpha),
+          length.out = npoints
+        )
+      .circlePoints(
+        theta,
+        private[[".center"]], private[[".radius"]]
+      )
+      # O <- private[[".center"]]
+      # DrawArc(O[1L], O[2L], rx = private[[".radius"]],
+      #         theta.1 = private[[".alpha1"]], theta.2 = private[[".alpha2"]],
+      #         nv = npoints, plot = FALSE)[[1L]]
     }
 
   )

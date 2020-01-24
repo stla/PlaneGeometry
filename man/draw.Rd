@@ -13,9 +13,9 @@ draw(x, ...)
 
 \method{draw}{Triangle}(x, ...)
 
-\method{draw}{Circle}(x, ...)
+\method{draw}{Circle}(x, npoints = 100L, ...)
 
-\method{draw}{Arc}(x, ...)
+\method{draw}{Arc}(x, npoints = 100L, ...)
 
 \method{draw}{Ellipse}(x, npoints = 100L, ...)
 
@@ -24,12 +24,12 @@ draw(x, ...)
 \arguments{
 \item{x}{geometric object (\code{Triangle}, \code{Circle} or \code{Line})}
 
-\item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle}
-object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
-to \code{\link{polypath}} for an \code{Ellipse} object,
+\item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle} or
+an \code{Arc} object, to \code{\link{polypath}} for a \code{Circle} object
+or an \code{Ellipse} object,
 general graphical parameters for a \code{Line} object}
 
-\item{npoints}{integer, the number of points to draw the ellipse}
+\item{npoints}{integer, the number of points of the path}
 }
 \description{
 Draw a geometric object on the current plot.

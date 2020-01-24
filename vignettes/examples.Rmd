@@ -149,17 +149,15 @@ intersections <- intersectionCircleCircle(circ1, circ2)
 A <- intersections[[1]]; B <- intersections[[2]]
 points(rbind(A,B), pch = 19, col = c("red", "blue"))
 
-theta1 <- Arg((A-O1)[1] + 1i*(A-O1)[2])
-theta2 <- Arg((B-O1)[1] + 1i*(B-O1)[2])
+theta1 <- Arg((A-O1)[1] + 1i*(A-O1)[2]) 
+theta2 <- Arg((B-O1)[1] + 1i*(B-O1)[2]) 
 path1 <- Arc$new(O1, circ1$radius, theta1, theta2)$path()
 
-theta1 <- Arg((A-O2)[1] + 1i*(A-O2)[2])
-theta2 <- Arg((B-O2)[1] + 1i*(B-O2)[2])
+theta1 <- Arg((A-O2)[1] + 1i*(A-O2)[2]) 
+theta2 <- Arg((B-O2)[1] + 1i*(B-O2)[2]) 
 path2 <- Arc$new(O2, circ2$radius, theta2, theta1)$path()
 
-x <- c(path1$x, path2$x)
-y <- c(path1$y, path2$y)
-polypath(x, y, col = "yellow")
+polypath(rbind(path1,path2), col = "yellow")
 
 par(opar)
 ```
@@ -321,10 +319,10 @@ tessellation2 <- function(depth, Thetas0, colors){
   opar <- par(mar = c(0,0,0,0), bg = "black")
   plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
 
-  paths <- lapply(rev(arcs), function(arc) arc$path())
-  x <- unlist(lapply(paths, "[[", "x"))
-  y <- unlist(lapply(paths, "[[", "y"))
-  polypath(x, y, col = colors[1L])
+  path <- do.call(rbind, lapply(rev(arcs), function(arc) arc$path()))
+  # x <- unlist(lapply(paths, "[[", "x"))
+  # y <- unlist(lapply(paths, "[[", "y"))
+  polypath(path, col = colors[1L])
   
   invisible(lapply(arcs, function(arc){
     path1 <- arc$path()
@@ -333,8 +331,8 @@ tessellation2 <- function(depth, Thetas0, colors){
     alpha1 <- Arg(A[1L] + 1i*A[2L])
     alpha2 <- Arg(B[1L] + 1i*B[2L])
     path2 <- Arc$new(c(0,0), 3, alpha1, alpha2)$path()
-    x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
-    polypath(x, y, col = colors[2L])
+    #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
+    polypath(rbind(path1,path2), col = colors[2L])
   }))
   
   Thetas <- lapply(
@@ -355,8 +353,8 @@ tessellation2 <- function(depth, Thetas0, colors){
       alpha1 <- Arg(A[1L] + 1i*A[2L])
       alpha2 <- Arg(B[1L] + 1i*B[2L])
       path2 <- Arc$new(c(0,0), 3, alpha1, alpha2)$path()
-      x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
-      polypath(x, y, col = colors[d+1L])
+      #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
+      polypath(rbind(path1,path2), col = colors[d+1L])
     }
   }
 

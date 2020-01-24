@@ -3,10 +3,10 @@
 #' @description Draw a geometric object on the current plot.
 #'
 #' @param x geometric object (\code{Triangle}, \code{Circle} or \code{Line})
-#' @param npoints integer, the number of points to draw the ellipse
-#' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
-#' object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
-#' to \code{\link{polypath}} for an \code{Ellipse} object,
+#' @param npoints integer, the number of points of the path
+#' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle} or
+#' an \code{Arc} object, to \code{\link{polypath}} for a \code{Circle} object
+#' or an \code{Ellipse} object,
 #' general graphical parameters for a \code{Line} object
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
@@ -41,27 +41,31 @@ draw.Triangle <- function(x, ...){
 }
 
 #' @rdname draw
-#' @importFrom DescTools DrawCircle
+# #' @importFrom DescTools DrawCircle
 #' @export
-draw.Circle = function(x, ...) {
-  center <- x$center
-  DrawCircle(center[1L], center[2L], r.out = x$radius,
-             theta.1 = 0, theta.2 = 2*pi, plot = TRUE, ...)
+draw.Circle = function(x, npoints = 100L, ...) {
+  path <- .circlePoints(
+    seq(0, 2*pi, length.out = npoints+1L)[-1L],
+    x$center, x$radius
+  )
+  polypath(path, ...)
+  # center <- x$center
+  # DrawCircle(center[1L], center[2L], r.out = x$radius,
+  #            theta.1 = 0, theta.2 = 2*pi, plot = TRUE, ...)
 }
 
 #' @rdname draw
-#' @importFrom DescTools DrawArc
+# #' @importFrom DescTools DrawArc
 #' @export
-draw.Arc = function(x, ...) {
-  center <- x$center; r <- x$radius
-  # if((x$alpha1 - x$alpha2) %% pi == 0){
-  #   eialpha1 <- c(cos(x$alpha1), sin(x$alpha1))
-  #   A <- center + r*eialpha1; B <- center - r*eialpha1
-  #   draw(Line$new(A, B, FALSE, FALSE), ...) # NIMP !!
-  # }else{
-    DrawArc(center[1L], center[2L], rx = r, ry = r,
-            theta.1 = x$alpha1, theta.2 = x$alpha2, plot = TRUE, ...)
-  # }
+draw.Arc = function(x, npoints = 100L, ...) {
+  path <- .circlePoints(
+    seq(x$alpha1, x$alpha2, length.out = npoints),
+    x$center, x$radius
+  )
+  lines(path, ...)
+  # center <- x$center; r <- x$radius
+  # DrawArc(center[1L], center[2L], rx = r, ry = r,
+  #         theta.1 = x$alpha1, theta.2 = x$alpha2, plot = TRUE, ...)
 }
 
 #' @rdname draw
