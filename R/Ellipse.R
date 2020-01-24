@@ -215,8 +215,24 @@ Ellipse <- R6Class(
     #' @param M a point
     contains = function(M){
       ABCDEF <- as.list(self$equation())
-      value <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
-      value <= 0
+      with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F) <= 0
+    },
+
+    #' @description Returns the 2x2 matrix \code{S} associated to the reference
+    #' ellipse. The equation of the ellipse is \code{t(M-O) \%*\% S \%*\% (M-O) = 1}.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 1, 30)
+    #' S <- ell$matrix()
+    #' O <- ell$center
+    #' pts <- ell$path(4L) # four points on the ellipse
+    #' apply(pts, 1L, function(M) t(M-O) %*% S %*% (M-O))
+    matrix = function(){
+      ABCDEF <- as.list(self$equation())
+      X <- with(ABCDEF, cbind(
+        c(A, B/2, D/2),
+        c(B/2, C, E/2),
+        c(D/2, E/2, F)))
+      K <- -det(X) / with(ABCDEF, A*C - B*B/4)
+      X[-3L,-3L] / K
     },
 
     #' @description Path that forms the reference ellipse.

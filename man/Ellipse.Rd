@@ -16,6 +16,16 @@ and the angle (\code{alpha}) between the major axis and the horizontal direction
 Ellipse$new(c(1,1), 3, 2, 30)
 
 ## ------------------------------------------------
+## Method `Ellipse$matrix`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 1, 30)
+S <- ell$matrix()
+O <- ell$center
+pts <- ell$path(4L) # four points on the ellipse
+apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
+
+## ------------------------------------------------
 ## Method `Ellipse$diameter`
 ## ------------------------------------------------
 
@@ -60,6 +70,7 @@ invisible(lapply(tangents, draw, col = "blue"))
 \item \href{#method-equation}{\code{Ellipse$equation()}}
 \item \href{#method-includes}{\code{Ellipse$includes()}}
 \item \href{#method-contains}{\code{Ellipse$contains()}}
+\item \href{#method-matrix}{\code{Ellipse$matrix()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
@@ -169,6 +180,28 @@ Check whether a point is contained in the reference ellipse.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-matrix"></a>}}
+\subsection{Method \code{matrix()}}{
+Returns the 2x2 matrix \code{S} associated to the reference
+ellipse. The equation of the ellipse is \code{t(M-O) \%*\% S \%*\% (M-O) = 1}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$matrix()}\if{html}{\out{</div>}}
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 1, 30)
+S <- ell$matrix()
+O <- ell$center
+pts <- ell$path(4L) # four points on the ellipse
+apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-path"></a>}}
 \subsection{Method \code{path()}}{
 Path that forms the reference ellipse.
@@ -227,7 +260,7 @@ invisible(lapply(diameters, draw))
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-foci"></a>}}
 \subsection{Method \code{foci()}}{
-Foci of the reference ellipse
+Foci of the reference ellipse.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Ellipse$foci()}\if{html}{\out{</div>}}
 }
