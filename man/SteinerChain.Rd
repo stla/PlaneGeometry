@@ -4,7 +4,7 @@
 \alias{SteinerChain}
 \title{Steiner chain}
 \usage{
-SteinerChain(c0, n, phi, shift)
+SteinerChain(c0, n, phi, shift, ellipse = FALSE)
 }
 \arguments{
 \item{c0}{exterior circle, a \code{Circle} object}
@@ -15,6 +15,10 @@ SteinerChain(c0, n, phi, shift)
 
 \item{shift}{any number; it produces a kind of rotation around the inner
 circle; values between \code{0} and \code{n} cover all possibilities}
+
+\item{ellipse}{logical; the centers of the circles of the Steiner chain lie
+on an ellipse, and this ellipse is returned as an attribute if you set this
+argument to \code{TRUE}}
 }
 \value{
 A list of \code{n+1} \code{Circle} objects. The inner circle is stored at the
@@ -25,8 +29,9 @@ Return a Steiner chain of circles.
 }
 \examples{
 c0 <- Circle$new(c(1,1), 3)
-chain <- SteinerChain(c0, 5, 0.3, 0.5)
+chain <- SteinerChain(c0, 5, 0.3, 0.5, ellipse = TRUE)
 plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
 invisible(lapply(chain, draw, lwd = 2, border = "blue"))
 draw(c0, lwd = 2)
+draw(attr(chain, "ellipse"), lwd = 2, border = "red")
 }

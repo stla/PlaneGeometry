@@ -318,17 +318,21 @@ radicalCenter <- function(circ1, circ2, circ3){
 #' @param phi \code{-1 < phi < 1} controls the radii of the circles
 #' @param shift any number; it produces a kind of rotation around the inner
 #' circle; values between \code{0} and \code{n} cover all possibilities
+#' @param ellipse logical; the centers of the circles of the Steiner chain lie
+#' on an ellipse, and this ellipse is returned as an attribute if you set this
+#' argument to \code{TRUE}
 #'
 #' @return A list of \code{n+1} \code{Circle} objects. The inner circle is stored at the
 #' last position.
 #' @export
 #'
 #' @examples c0 <- Circle$new(c(1,1), 3)
-#' chain <- SteinerChain(c0, 5, 0.3, 0.5)
+#' chain <- SteinerChain(c0, 5, 0.3, 0.5, ellipse = TRUE)
 #' plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
 #' invisible(lapply(chain, draw, lwd = 2, border = "blue"))
 #' draw(c0, lwd = 2)
-SteinerChain <- function(c0, n, phi, shift){
+#' draw(attr(chain, "ellipse"), lwd = 2, border = "red")
+SteinerChain <- function(c0, n, phi, shift, ellipse = FALSE){
   n <- as.vector(n)
   phi <- as.vector(phi)
   shift <- as.vector(shift)
@@ -353,5 +357,14 @@ SteinerChain <- function(c0, n, phi, shift){
   I <- c(R*invphi, 0) + O
   r2 <- R*R * (invphi*invphi-1)
   iota <- Inversion$new(I, r2)
-  lapply(circles0, function(circle) iota$invertCircle(circle))
+  out <- lapply(circles0, function(circle) iota$invertCircle(circle))
+  if(ellipse){
+    O2 <- out[[n+1L]]$center
+    r <- out[[n+1L]]$radius
+    c <- (O2[1L] - O[1L])/2
+    a <- (r + R)/2
+    b <- sqrt(a*a - c*c)
+    attr(out, "ellipse") <- Ellipse$new((O+O2)/2, a, b, 0)
+  }
+  return(out)
 }
