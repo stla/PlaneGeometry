@@ -205,6 +205,7 @@ Ellipse <- R6Class(
     #' @param M a point
     includes = function(M){
       ABCDEF <- as.list(self$equation())
+      x <- M[1L]; y <- M[2L]
       zero <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
       isTRUE(all.equal(0, zero))
     },

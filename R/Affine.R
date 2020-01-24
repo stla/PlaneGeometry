@@ -127,6 +127,34 @@ Affine <- R6Class(
         all(is.finite(M))
       )
       c(private[[".A"]] %*% M) + private[[".b"]]
+    },
+
+    #' @description Transform an ellipse by the reference affine transformation.
+    #' The result is an ellipse.
+    #' @param ell an \code{Ellipse} object
+    #' @return An \code{Ellipse} object.
+    transformEllipse = function(ell){
+      ABCDEF <- as.list(ell$equation())
+      X <- with(ABCDEF, cbind(
+        c(A, B/2, D/2),
+        c(B/2, C, E/2),
+        c(D/2, E/2, F)))
+      Mat <- solve(self$get3x3matrix())
+      Y <- t(Mat) %*% X %*% Mat
+      A <- Y[1L,1L]
+      B <- 2*Y[1L,2L]
+      C <- Y[2L,2L]
+      D <- 2*Y[1L,3L]
+      E <- 2*Y[2L,3L]
+      F <- Y[3L,3L]
+      Delta <- B*B-4*A*C
+      a_and_b <-
+        sqrt(2*(A*E*E+C*D*D-B*D*E+Delta*F)*((A+C)+c(1,-1)*sqrt((A-C)^2+B*B)))
+      a <- a_and_b[1L]; b <- a_and_b[2L]
+      x0 <- (2*C*D-B*E)/Delta
+      y0 <- (2*A*E-B*D)/Delta
+      theta <- atan2(C-A-sqrt((A-C)^2+B*B), B)
+      Ellipse$new(c(x0,y0), a, b, theta, degrees = FALSE)
     }
   )
 )

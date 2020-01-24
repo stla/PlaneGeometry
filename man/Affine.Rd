@@ -33,6 +33,7 @@ Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
 \item \href{#method-inverse}{\code{Affine$inverse()}}
 \item \href{#method-compose}{\code{Affine$compose()}}
 \item \href{#method-transform}{\code{Affine$transform()}}
+\item \href{#method-transformEllipse}{\code{Affine$transformEllipse()}}
 \item \href{#method-clone}{\code{Affine$clone()}}
 }
 }
@@ -136,6 +137,26 @@ Transform a point by the reference affine transformation.
 \item{\code{M}}{a point}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformEllipse"></a>}}
+\subsection{Method \code{transformEllipse()}}{
+Transform an ellipse by the reference affine transformation.
+The result is an ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Affine$transformEllipse(ell)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ell}}{an \code{Ellipse} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An \code{Ellipse} object.
 }
 }
 \if{html}{\out{<hr>}}
