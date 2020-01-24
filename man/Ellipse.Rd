@@ -14,6 +14,17 @@ and the angle (\code{alpha}) between the major axis and the horizontal direction
 ## ------------------------------------------------
 
 Ellipse$new(c(1,1), 3, 2, 30)
+
+## ------------------------------------------------
+## Method `Ellipse$diameter`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell)
+invisible(lapply(diameters, draw))
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -39,6 +50,7 @@ Ellipse$new(c(1,1), 3, 2, 30)
 \item \href{#method-includes}{\code{Ellipse$includes()}}
 \item \href{#method-contains}{\code{Ellipse$contains()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
+\item \href{#method-diameter}{\code{Ellipse$diameter()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -162,6 +174,41 @@ Path that forms the reference ellipse.
 A matrix with two columns \code{x} and \code{y} of
 length \code{npoints}.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-diameter"></a>}}
+\subsection{Method \code{diameter()}}{
+Diameter and conjugate diameter of the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$diameter(t, conjugate = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{t}}{a number; the diameter only depends on \code{t} modulo \code{pi}}
+
+\item{\code{conjugate}}{logical, whether to return the conjugate diameter as well}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object or a list of two \code{Line} objects if
+\code{conjugate = TRUE}.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
+diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell)
+invisible(lapply(diameters, draw))
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

@@ -154,7 +154,9 @@ intersectionEllipseLine <- function(ell, line, strict = FALSE){
     Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell$center)
   invf <- f$inverse() # maps ell to unit circle
   line2 <- invf$transformLine(line)
-  Is <- intersectionCircleLine(Circle$new(c(0,0),1), line2)
+  Is <- suppressMessages(
+    intersectionCircleLine(Circle$new(c(0,0),1), line2, strict = strict)
+  )
   if(is.null(Is)){
     NULL
   }else if(is.list(Is)){

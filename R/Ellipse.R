@@ -238,6 +238,43 @@ Ellipse <- R6Class(
       #             radius.x = private[[".rmajor"]],
       #             radius.y = private[[".rminor"]],
       #             rot = alpha, plot = FALSE)
+    },
+
+    #' @description Diameter and conjugate diameter of the reference ellipse.
+    #' @param t a number; the diameter only depends on \code{t} modulo \code{pi}
+    #' @param conjugate logical, whether to return the conjugate diameter as well
+    #' @return A \code{Line} object or a list of two \code{Line} objects if
+    #' \code{conjugate = TRUE}.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
+    #' diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #'      xlab = NA, ylab = NA)
+    #' draw(ell)
+    #' invisible(lapply(diameters, draw))
+    diameter = function(t, conjugate = FALSE){
+      center <- private[[".center"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      ts <- if(conjugate){
+        c(t, t+pi, t+pi/2, t-pi/2)
+      }else{
+        c(t, t+pi)
+      }
+      pts <- .ellipsePoints(
+        ts,
+        private[[".center"]],
+        private[[".rmajor"]],
+        private[[".rminor"]],
+        alpha
+      )
+      if(conjugate){
+        list(
+          Line$new(pts[1L,], pts[2L,], FALSE, FALSE),
+          Line$new(pts[3L,], pts[4L,], FALSE, FALSE)
+        )
+      }else{
+        Line$new(pts[1L,], pts[2L,], FALSE, FALSE)
+      }
     }
   )
 )
