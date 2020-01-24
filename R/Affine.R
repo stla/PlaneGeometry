@@ -129,6 +129,19 @@ Affine <- R6Class(
       c(private[[".A"]] %*% M) + private[[".b"]]
     },
 
+    #' @description Transform a line by the reference affine transformation.
+    #' @param line a \code{Line} object
+    #' @return A \code{Line} object.
+    transformLine = function(line){
+      stopifnot(is(line, "Line"))
+      A <- private[[".A"]]; b <- private[[".b"]]
+      Line$new(
+        c(A %*% line$A) + b,
+        c(A %*% line$B) + b,
+        line$extendA, line$extendB
+      )
+    },
+
     #' @description Transform an ellipse by the reference affine transformation.
     #' The result is an ellipse.
     #' @param ell an \code{Ellipse} object

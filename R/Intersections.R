@@ -126,6 +126,43 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
   }
 }
 
+#' Intersection of an ellipse and a line
+#' @description Return the intersection of an ellipse and a line.
+#'
+#' @param ell an \code{Ellipse} object
+#' @param line a \code{Line} object
+#' @param strict logical, whether to take into account \code{line$extendA} and
+#' \code{line$extendB} if they are not both \code{TRUE}
+#'
+#' @return \code{NULL} if there is no intersection;
+#' a point if the infinite line is tangent to the ellipse, or \code{NULL}
+#' if \code{strict=TRUE} and the point is not on the line (segment or half-line);
+#' a list of two points if the ellipse and the infinite line meet at
+#' two points, when \code{strict=FALSE}; if \code{strict=TRUE} and the line is
+#' a segment or a half-line, this can return \code{NULL} or a single point.
+#'
+#' @examples ell <- Ellipse$new(c(1,1), 5, 1, 30)
+#' line <- Line$new(c(2,-2), c(0,4))
+#' ( Is <- intersectionEllipseLine(ell, line) )
+#' ell$includes(Is$I1); ell$includes(Is$I2)
+#' @export
+intersectionEllipseLine <- function(ell, line, strict = FALSE){
+  a <- ell$rmajor; b <- ell$rminor; theta <- ell$alpha
+  if(ell$degrees) theta <- theta * pi/180
+  costheta <- cos(theta); sintheta <- sin(theta)
+  f <- # maps unit circle to ell
+    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell$center)
+  invf <- f$inverse() # maps ell to unit circle
+  line2 <- invf$transformLine(line)
+  Is <- intersectionCircleLine(Circle$new(c(0,0),1), line2)
+  if(is.null(Is)){
+    NULL
+  }else if(is.list(Is)){
+    lapply(Is, f$transform)
+  }else{
+    f$transform(Is)
+  }
+}
 
 #' Intersection of two lines
 #' @description Return the intersection of two lines.
@@ -145,7 +182,7 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       return(line1$clone(deep = TRUE))
     }else{
       if(!strict){
-#        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
+        #        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
         return(Line$new(line1$A, line1$B, TRUE, TRUE))
       }
       # case 1: one bi-infinite line

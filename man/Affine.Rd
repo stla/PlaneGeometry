@@ -33,6 +33,7 @@ Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
 \item \href{#method-inverse}{\code{Affine$inverse()}}
 \item \href{#method-compose}{\code{Affine$compose()}}
 \item \href{#method-transform}{\code{Affine$transform()}}
+\item \href{#method-transformLine}{\code{Affine$transformLine()}}
 \item \href{#method-transformEllipse}{\code{Affine$transformEllipse()}}
 \item \href{#method-clone}{\code{Affine$clone()}}
 }
@@ -137,6 +138,25 @@ Transform a point by the reference affine transformation.
 \item{\code{M}}{a point}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformLine"></a>}}
+\subsection{Method \code{transformLine()}}{
+Transform a line by the reference affine transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Affine$transformLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
