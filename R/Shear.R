@@ -202,7 +202,7 @@ Shear <- R6Class(
       cat("  first vector: ", toString(vector), "\n", sep = "")
       cat(" second vector: ", toString(ratio*c(-vector[2L],vector[1L])), "\n", sep = "")
       cat("         angle: ",
-          sprintf("%s %s", alpha,
+          sprintf("%s %s", angle,
                   ifelse(private[[".degrees"]],
                          ifelse(angle %in% c(0,1), "degree", "degrees"),
                          ifelse(angle %in% c(0,1), "radian", "radians"))

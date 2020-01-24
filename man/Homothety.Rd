@@ -40,6 +40,7 @@ H$getMatrix() \%*\% c(P,1)
 \item \href{#method-transform}{\code{Homothety$transform()}}
 \item \href{#method-rotateCircle}{\code{Homothety$rotateCircle()}}
 \item \href{#method-getMatrix}{\code{Homothety$getMatrix()}}
+\item \href{#method-asAffine}{\code{Homothety$asAffine()}}
 \item \href{#method-clone}{\code{Homothety$clone()}}
 }
 }
@@ -143,6 +144,15 @@ H$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference homothety to an \code{Affine} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Homothety$asAffine()}\if{html}{\out{</div>}}
 }
 
 }

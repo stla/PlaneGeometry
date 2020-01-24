@@ -115,6 +115,12 @@ Homothety <- R6Class(
       private[[".scale"]] -> s
       W <- (1-s)*O
       cbind(rbind(diag(c(s,s)), 0), c(W, 1))
+    },
+
+    #' @description Convert the reference homothety to an \code{Affine} object.
+    asAffine = function(){
+      M <- self$getMatrix()
+      Affine$new(M[-3L,-3L], M[-3L,3L])
     }
   )
 )
