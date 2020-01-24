@@ -106,3 +106,19 @@
   K <- (z2 - z3) / (z2 - z1)
   Mobius$new(rbind(c(K, -K*z1),c(1,-z3)))
 }
+
+.ellipsePoints <- function(t, O, a, b, alpha){
+  x <- a*cos(t); y <- b*sin(t)
+  cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+  cbind(
+    x = O[1] + cosalpha*x - sinalpha*y,
+    y = O[2] + sinalpha*x + cosalpha*y
+  )
+}
+
+.circlePoints <- function(t, O, r){
+  cbind(
+    x = O[1] + r*cos(t),
+    y = O[2] + r*sin(t)
+  )
+}

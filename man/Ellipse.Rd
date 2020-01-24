@@ -148,7 +148,7 @@ Check whether a point is contained in the reference ellipse.
 \subsection{Method \code{path()}}{
 Path that forms the reference ellipse.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Ellipse$path(npoints = 100)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$path(npoints = 100L)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -159,7 +159,7 @@ Path that forms the reference ellipse.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A list with two numeric vectors \code{x} and \code{y} of
+A matrix with two columns \code{x} and \code{y} of
 length \code{npoints}.
 }
 }

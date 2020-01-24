@@ -17,7 +17,7 @@ draw(x, ...)
 
 \method{draw}{Arc}(x, ...)
 
-\method{draw}{Ellipse}(x, ...)
+\method{draw}{Ellipse}(x, npoints = 100L, ...)
 
 \method{draw}{Line}(x, ...)
 }
@@ -26,8 +26,10 @@ draw(x, ...)
 
 \item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle}
 object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
-to \code{\link[DescTools]{DrawEllipse}} for an \code{Ellipse} object,
+to \code{\link{polypath}} for an \code{Ellipse} object,
 general graphical parameters for a \code{Line} object}
+
+\item{npoints}{integer, the number of points to draw the ellipse}
 }
 \description{
 Draw a geometric object on the current plot.

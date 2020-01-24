@@ -3,9 +3,10 @@
 #' @description Draw a geometric object on the current plot.
 #'
 #' @param x geometric object (\code{Triangle}, \code{Circle} or \code{Line})
+#' @param npoints integer, the number of points to draw the ellipse
 #' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
 #' object, to \code{\link[DescTools]{DrawCircle}} for a \code{Circle} object,
-#' to \code{\link[DescTools]{DrawEllipse}} for an \code{Ellipse} object,
+#' to \code{\link{polypath}} for an \code{Ellipse} object,
 #' general graphical parameters for a \code{Line} object
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
@@ -64,22 +65,31 @@ draw.Arc = function(x, ...) {
 }
 
 #' @rdname draw
-#' @importFrom DescTools DrawEllipse
+# #' @importFrom DescTools DrawEllipse
 #' @export
-draw.Ellipse = function(x, ...) {
-  center <- x$center
+draw.Ellipse = function(x, npoints = 100L, ...) {
   alpha <- x$alpha
   if(x$degrees) alpha <- alpha * pi/180
-  if("col" %in% names(list(...))){
-    DrawEllipse(center[1L], center[2L],
-                radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha %% pi, plot = TRUE, ...)
-  }else{
-    DrawEllipse(center[1L], center[2L],
-                radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha %% pi, plot = TRUE, col = "transparent", ...)
-  }
+  path <- .ellipsePoints(
+    seq(0, 2*pi, length.out = npoints+1L)[-1L],
+    x$center, x$rmajor, x$rminor, alpha
+  )
+  polypath(path, ...)
 }
+# draw.Ellipse = function(x, ...) {
+#   center <- x$center
+#   alpha <- x$alpha
+#   if(x$degrees) alpha <- alpha * pi/180
+#   if("col" %in% names(list(...))){
+#     DrawEllipse(center[1L], center[2L],
+#                 radius.x = x$rmajor, radius.y = x$rminor,
+#                 rot = alpha %% pi, plot = TRUE, ...)
+#   }else{
+#     DrawEllipse(center[1L], center[2L],
+#                 radius.x = x$rmajor, radius.y = x$rminor,
+#                 rot = alpha %% pi, plot = TRUE, col = "transparent", ...)
+#   }
+# }
 
 #' @rdname draw
 #' @export
