@@ -278,6 +278,18 @@ Ellipse <- R6Class(
       }
     },
 
+    #' @description Foci of the reference ellipse.
+    #' @return A list with the two foci.
+    foci = function(){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]; b <- private[[".rminor"]]
+      e <- sqrt(1 - b*b/a/a)
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      O_A <- a * c(cos(alpha), sin(alpha))
+      list(F1 = O + e*O_A, F2 = O - e*O_A)
+    },
+
     #' @description Tangents of the reference ellipse.
     #' @param t an angle, there is one tangent for each value of \code{t}
     #' modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
@@ -296,8 +308,8 @@ Ellipse <- R6Class(
       x <- a*cos(t); y <- b*sin(t)
       cosalpha <- cos(alpha); sinalpha <- sin(alpha)
       T <- c(
-        O[1] + cosalpha*x - sinalpha*y,
-        O[2] + sinalpha*x + cosalpha*y
+        O[1L] + cosalpha*x - sinalpha*y,
+        O[2L] + sinalpha*x + cosalpha*y
       )
       x <- -a*sin(t); y <- b*cos(t)
       v <- c(

@@ -18,6 +18,14 @@
   Re(z)*Re(z) + Im(z)*Im(z)
 }
 
+.distance <- function(A, B){
+  sqrt(c(crossprod(A-B)))
+}
+
+.dot <- function(u, w = NULL){
+  c(crossprod(u, w))
+}
+
 .LineLineIntersection <- function (P1, P2, Q1, Q2) {
   dx1 <- P1[1L] - P2[1L]
   dx2 <- Q1[1L] - Q2[1L]

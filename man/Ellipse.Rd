@@ -62,6 +62,7 @@ invisible(lapply(tangents, draw, col = "blue"))
 \item \href{#method-contains}{\code{Ellipse$contains()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
@@ -222,6 +223,18 @@ invisible(lapply(diameters, draw))
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-foci"></a>}}
+\subsection{Method \code{foci()}}{
+Foci of the reference ellipse
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$foci()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with the two foci.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-tangent"></a>}}
