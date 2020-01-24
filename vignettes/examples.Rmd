@@ -376,3 +376,60 @@ tessellation2(
 ```
 
 
+# Director circle of an ellipse 
+
+Let's draw the [director circle](https://en.wikipedia.org/wiki/Director_circle) 
+of an ellipse. We start by constructing the minimum bounding box of the ellipse.
+
+```{r}
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+majorAxis <- ell$diameter(0)
+minorAxis <- ell$diameter(pi/2)
+v1 <- (majorAxis$B - majorAxis$A) / 2
+v2 <- (minorAxis$B - minorAxis$A) / 2
+# sides of the minimum bounding box
+side1 <- majorAxis$translate(v2)
+side2 <- majorAxis$translate(-v2)
+side3 <- minorAxis$translate(v1)
+side4 <- minorAxis$translate(-v1)
+# take a vertex of the bounding box
+A <- side1$A
+# radius of the director circle
+R <- sqrt(c(crossprod(A - ell$center)))
+# director circle
+circ <- Circle$new(ell$center, R)
+```
+
+Now let's take a tangent $T_1$ to the ellipse, construct the half-line 
+directed by $T_1$ with origin the point of tangency, determine the intersection 
+point of this half-line with the director circle, and draw the perpendicular 
+$T_2$ of $T_1$ passing by this intersection point. 
+Then $T_2$ is another tangent to the ellipse.
+
+```{r, message=FALSE}
+T1 <- ell$tangent(0.3)
+halfT1 <- T1$clone(deep = TRUE)
+halfT1$extendA <- FALSE
+I <- intersectionCircleLine(circ, halfT1, strict = TRUE)
+T2 <- T1$perpendicular(I)
+```
+
+```{r directorCircle, fig.width=5, fig.height=5}
+opar <- par(mar=c(0,0,0,0))
+plot(NULL, type = "n", asp = 1, 
+     xlim = c(-3,6), ylim = c(-5,7), xlab = NA, ylab = NA)
+# draw the ellipse
+draw(ell, col = "blue")
+# draw the bounding box
+draw(side1, lwd = 2, col = "green")
+draw(side2, lwd = 2, col = "green")
+draw(side3, lwd = 2, col = "green")
+draw(side4, lwd = 2, col = "green")
+# draw the director circle
+draw(circ, lwd = 2, border = "red")
+# draw the two tangents
+draw(T1); draw(T2)
+# restore the graphical parameters
+par(opar)
+```
+
