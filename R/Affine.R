@@ -149,7 +149,8 @@ Affine <- R6Class(
       F <- Y[3L,3L]
       Delta <- B*B-4*A*C
       a_and_b <-
-        sqrt(2*(A*E*E+C*D*D-B*D*E+Delta*F)*((A+C)+c(1,-1)*sqrt((A-C)^2+B*B)))
+        - sqrt(2*(A*E*E+C*D*D-B*D*E+Delta*F)*((A+C)+c(1,-1)*sqrt((A-C)^2+B*B))) /
+        Delta
       a <- a_and_b[1L]; b <- a_and_b[2L]
       x0 <- (2*C*D-B*E)/Delta
       y0 <- (2*A*E-B*D)/Delta

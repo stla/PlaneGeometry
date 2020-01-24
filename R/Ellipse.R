@@ -5,6 +5,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom DescTools DrawEllipse
 Ellipse <- R6Class(
 
   "Ellipse",
@@ -216,6 +217,20 @@ Ellipse <- R6Class(
       ABCDEF <- as.list(self$equation())
       value <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
       value <= 0
+    },
+
+    #' @description Path that forms the reference ellipse.
+    #' @param npoints number of points of the path
+    #' @return A list with two numeric vectors \code{x} and \code{y} of
+    #' length \code{npoints}.
+    path = function(npoints = 100){
+      center <- private[[".center"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      DrawEllipse(center[1L], center[2L],
+                  radius.x = private[[".rmajor"]],
+                  radius.y = private[[".rminor"]],
+                  rot = alpha, plot = FALSE)
     }
   )
 )

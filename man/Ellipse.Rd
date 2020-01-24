@@ -38,6 +38,7 @@ Ellipse$new(c(1,1), 3, 2, 30)
 \item \href{#method-equation}{\code{Ellipse$equation()}}
 \item \href{#method-includes}{\code{Ellipse$includes()}}
 \item \href{#method-contains}{\code{Ellipse$contains()}}
+\item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -140,6 +141,26 @@ Check whether a point is contained in the reference ellipse.
 \item{\code{M}}{a point}
 }
 \if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-path"></a>}}
+\subsection{Method \code{path()}}{
+Path that forms the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$path(npoints = 100)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{npoints}}{number of points of the path}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A list with two numeric vectors \code{x} and \code{y} of
+length \code{npoints}.
 }
 }
 \if{html}{\out{<hr>}}
