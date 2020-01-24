@@ -84,6 +84,7 @@ draw(arc, lwd = 3, col = "blue")
 \item \href{#method-rotate}{\code{Circle$rotate()}}
 \item \href{#method-translate}{\code{Circle$translate()}}
 \item \href{#method-invert}{\code{Circle$invert()}}
+\item \href{#method-asEllipse}{\code{Circle$asEllipse()}}
 \item \href{#method-clone}{\code{Circle$clone()}}
 }
 }
@@ -394,6 +395,15 @@ Invert the reference circle.
 \subsection{Returns}{
 A \code{Circle} object or a \code{Line} object.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asEllipse"></a>}}
+\subsection{Method \code{asEllipse()}}{
+Convert the reference circle to an \code{Ellipse} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$asEllipse()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

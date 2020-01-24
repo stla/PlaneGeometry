@@ -285,6 +285,12 @@ Circle <- R6Class(
     #' @return A \code{Circle} object or a \code{Line} object.
     invert = function(inversion){
       inversion$invertCircle(self)
+    },
+
+    #' @description Convert the reference circle to an \code{Ellipse} object.
+    asEllipse = function(){
+      r <- private[[".radius"]]
+      Ellipse$new(private[[".center"]], r, r, 0)
     }
 
   )

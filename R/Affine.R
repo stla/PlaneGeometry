@@ -155,7 +155,7 @@ Affine <- R6Class(
       x0 <- (2*C*D-B*E)/Delta
       y0 <- (2*A*E-B*D)/Delta
       theta <- atan2(C-A-sqrt((A-C)^2+B*B), B)
-      Ellipse$new(c(x0,y0), a, b, theta, degrees = FALSE)
+      Ellipse$new(c(x0,y0), a, b, theta*180/pi, degrees = TRUE)
     }
   )
 )
@@ -175,5 +175,36 @@ AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
   if(.collinear(Q1,Q2,Q3)) stop("Q1, Q2 and Q3 are collinear.")
   f1 <- Affine$new(cbind(P2-P1, P3-P1), P1)
   f2 <- Affine$new(cbind(Q2-Q1, Q3-Q1), Q1)
+  f1$inverse()$compose(f2)
+}
+
+#' Affine transformation mapping a given ellipse to a given ellipse
+#' @description Return the affine transformation which transforms
+#' \code{ell1} to \code{ell2}.
+#'
+#' @param ell1,ell2 two \code{Ellipse} objects
+#'
+#' @return An \code{Affine} object.
+#' @export
+#'
+#' @examples ell1 <- Ellipse$new(c(1,1), 5, 1, 30)
+#' ( ell2 <- Ellipse$new(c(4,-1), 3, 2, 50) )
+#' f <- AffineMappingEllipse2Ellipse(ell1, ell2)
+#' f$transformEllipse(ell1)
+
+
+AffineMappingEllipse2Ellipse <- function(ell1, ell2){
+  a <- ell1$rmajor; b <- ell1$rminor; theta <- ell1$alpha
+  if(ell1$degrees) theta <- theta * pi/180
+  costheta <- cos(theta); sintheta <- sin(theta)
+  f1 <-
+    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell1$center)
+  #
+  a <- ell2$rmajor; b <- ell2$rminor; theta <- ell2$alpha
+  if(ell2$degrees) theta <- theta * pi/180
+  costheta <- cos(theta); sintheta <- sin(theta)
+  f2 <-
+    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell2$center)
+  #
   f1$inverse()$compose(f2)
 }

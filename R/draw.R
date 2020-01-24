@@ -73,11 +73,11 @@ draw.Ellipse = function(x, ...) {
   if("col" %in% names(list(...))){
     DrawEllipse(center[1L], center[2L],
                 radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha, plot = TRUE, ...)
+                rot = alpha %% pi, plot = TRUE, ...)
   }else{
     DrawEllipse(center[1L], center[2L],
                 radius.x = x$rmajor, radius.y = x$rminor,
-                rot = alpha, plot = TRUE, col = "transparent", ...)
+                rot = alpha %% pi, plot = TRUE, col = "transparent", ...)
   }
 }
 
