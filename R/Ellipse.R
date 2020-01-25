@@ -333,6 +333,38 @@ Ellipse <- R6Class(
         sinalpha*x + cosalpha*y
       )
       Line$new(T, T+v)
+    },
+
+    #' @description Regression lines. The regression line of y on x intersects
+    #' the ellipse at its rightmost point and its leftmost point.
+    #' The tangents at these points are vertical.
+    #' The regression line of x on y intersects the ellipse at its
+    #' topmost point and its bottommost point.
+    #' The tangents at these points are horizontal.
+    #' @return A list with two \code{Line} objects:
+    #' the regression line of y on x and the regression line of x on y.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
+    #' reglines <- ell$regressionLines()
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #'      xlab = NA, ylab = NA)
+    #' draw(ell, lwd = 2)
+    #' draw(reglines$YonX, lwd = 2, col = "blue")
+    #' draw(reglines$XonY, lwd = 2, col = "green")
+    regressionLines = function(){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]; b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      A <- -b*sinalpha; B <- -a*cosalpha
+      t1 <- .solveTrigonometricEquation(A, B)
+      A <- b*cosalpha; B <- -a*sinalpha
+      t2 <- .solveTrigonometricEquation(A, B)
+      pts <- .ellipsePoints(c(t1,t2), O, a, b, alpha)
+      list(
+        YonX = Line$new(pts[1,], pts[2,], FALSE, FALSE),
+        XonY = Line$new(pts[3,], pts[4,], FALSE, FALSE)
+      )
     }
   )
 )

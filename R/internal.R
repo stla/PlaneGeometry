@@ -134,3 +134,11 @@
     y = O[2] + r*sin(t)
   )
 }
+
+.solveTrigonometricEquation <- function(a, b, D = 0){
+  # a*cos(x) + b*sin(x) = D
+  if(D == 0){
+    atan2(b, a) + c(pi/2 , -pi/2)
+  }
+  # https://socratic.org/questions/how-do-you-use-linear-combinations-to-solve-trigonometric-equations
+}

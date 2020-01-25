@@ -46,6 +46,18 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
+
+## ------------------------------------------------
+## Method `Ellipse$regressionLines`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+reglines <- ell$regressionLines()
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, lwd = 2)
+draw(reglines$YonX, lwd = 2, col = "blue")
+draw(reglines$XonY, lwd = 2, col = "green")
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -75,6 +87,7 @@ invisible(lapply(tangents, draw, col = "blue"))
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
+\item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -294,6 +307,38 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-regressionLines"></a>}}
+\subsection{Method \code{regressionLines()}}{
+Regression lines. The regression line of y on x intersects
+the ellipse at its rightmost point and its leftmost point.
+The tangents at these points are vertical.
+The regression line of x on y intersects the ellipse at its
+topmost point and its bottommost point.
+The tangents at these points are horizontal.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$regressionLines()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with two \code{Line} objects:
+the regression line of y on x and the regression line of x on y.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
+reglines <- ell$regressionLines()
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, lwd = 2)
+draw(reglines$YonX, lwd = 2, col = "blue")
+draw(reglines$XonY, lwd = 2, col = "green")
 }
 \if{html}{\out{</div>}}
 
