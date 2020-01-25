@@ -326,7 +326,13 @@ Ellipse <- R6Class(
       alpha <- private[[".alpha"]]
       if(private[[".degrees"]]) alpha <- alpha * pi/180
       if(degrees) theta <- theta * pi/180
-      t <- atan(a/b * tan(theta))
+      #t <- sort(atan2(a * tan(theta), b) %% (2*pi))
+      t <- atan2(a/b,1/tan(theta)) + theta - theta %% pi
+      # t <- ifelse(theta <= pi,
+      #             atan2(a/b,1/tan(theta)),
+      #             ifelse(theta <= 2*pi,
+      #                    atan2(a/b,1/tan(theta)) + pi,
+      #                    atan2(a/b,1/tan(theta)) + 2*pi))
       out <- .ellipsePoints(t, O, a, b, alpha)
       if(length(theta) == 1L) out <- c(out)
       out
