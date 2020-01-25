@@ -14,7 +14,7 @@ an ending angle. They are respectively named \code{center}, \code{radius},
 ## Method `Arc$new`
 ## ------------------------------------------------
 
-arc <- Arc$new(c(1,1), 1, pi/4, pi/2)
+arc <- Arc$new(c(1,1), 1, 45, 90)
 arc
 arc$center
 arc$center <- c(0,0)
@@ -24,7 +24,17 @@ arc
 ## Method `Arc$print`
 ## ------------------------------------------------
 
-Arc$new(c(0,0), 2, pi/4, pi/2)
+Arc$new(c(0,0), 2, pi/4, pi/2, FALSE)
+
+## ------------------------------------------------
+## Method `Arc$complementaryArc`
+## ------------------------------------------------
+
+arc <- Arc$new(c(0,0), 1, 30, 60)
+plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
+     xlab = NA, ylab = NA)
+draw(arc, lwd = 3, col = "red")
+draw(arc$complementaryArc(), lwd = 3, col = "green")
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -36,6 +46,8 @@ Arc$new(c(0,0), 2, pi/4, pi/2)
 \item{\code{alpha1}}{get or set the starting angle}
 
 \item{\code{alpha2}}{get or set the ending angle}
+
+\item{\code{degrees}}{get or set the \code{degrees} field}
 }
 \if{html}{\out{</div>}}
 }
@@ -57,7 +69,7 @@ Arc$new(c(0,0), 2, pi/4, pi/2)
 \subsection{Method \code{new()}}{
 Create a new \code{Arc} object.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Arc$new(center, radius, alpha1, alpha2)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Arc$new(center, radius, alpha1, alpha2, degrees = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -70,6 +82,9 @@ Create a new \code{Arc} object.
 \item{\code{alpha1}}{the starting angle}
 
 \item{\code{alpha2}}{the ending angle}
+
+\item{\code{degrees}}{logical, whether \code{alpha1} and \code{alpha2} are
+given in degrees}
 }
 \if{html}{\out{</div>}}
 }
@@ -78,7 +93,7 @@ A new \code{Arc} object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{arc <- Arc$new(c(1,1), 1, pi/4, pi/2)
+\preformatted{arc <- Arc$new(c(1,1), 1, 45, 90)
 arc
 arc$center
 arc$center <- c(0,0)
@@ -92,7 +107,7 @@ arc
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
-Show instance of a circle object.
+Show instance of an \code{Arc} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Arc$print(...)}\if{html}{\out{</div>}}
 }
@@ -106,7 +121,7 @@ Show instance of a circle object.
 }
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{Arc$new(c(0,0), 2, pi/4, pi/2)
+\preformatted{Arc$new(c(0,0), 2, pi/4, pi/2, FALSE)
 }
 \if{html}{\out{</div>}}
 
@@ -155,11 +170,23 @@ Complementary arc of the reference arc.
 \if{html}{\out{<div class="r">}}\preformatted{Arc$complementaryArc()}\if{html}{\out{</div>}}
 }
 
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{arc <- Arc$new(c(0,0), 1, 30, 60)
+plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
+     xlab = NA, ylab = NA)
+draw(arc, lwd = 3, col = "red")
+draw(arc$complementaryArc(), lwd = 3, col = "green")
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-path"></a>}}
 \subsection{Method \code{path()}}{
-Path defining the reference arc.
+The reference arc as a path.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Arc$path(npoints = 100L)}\if{html}{\out{</div>}}
 }
@@ -172,9 +199,9 @@ Path defining the reference arc.
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-A matrix with two columns \code{x} and \code{y} of length \code{npoints}.
-See "Filling the lapping area of two circles" in the vignette for
-an example.
+A matrix with two columns \code{x} and \code{y} of length
+\code{npoints}. See "Filling the lapping area of two circles" in the
+vignette for an example.
 }
 }
 \if{html}{\out{<hr>}}

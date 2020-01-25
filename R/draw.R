@@ -58,8 +58,13 @@ draw.Circle = function(x, npoints = 100L, ...) {
 # #' @importFrom DescTools DrawArc
 #' @export
 draw.Arc = function(x, npoints = 100L, ...) {
+  alpha1 <- x$alpha1; alpha2 <- x$alpha2
+  if(x$degrees){
+    alpha1 <- alpha1 * pi/180
+    alpha2 <- alpha2 * pi/180
+  }
   path <- .circlePoints(
-    seq(x$alpha1, x$alpha2, length.out = npoints),
+    seq(alpha1, alpha2, length.out = npoints),
     x$center, x$radius
   )
   lines(path, ...)

@@ -174,8 +174,8 @@ Ellipse <- R6Class(
       cat("        angle: ",
           sprintf("%s %s", alpha,
                   ifelse(degrees,
-                         ifelse(alpha %in% c(0,1), "degree", "degrees"),
-                         ifelse(alpha %in% c(0,1), "radian", "radians"))
+                         ifelse(alpha %in% c(0,1,-1), "degree", "degrees"),
+                         ifelse(alpha %in% c(0,1,-1), "radian", "radians"))
           ), "\n", sep = "")
     },
 

@@ -151,11 +151,11 @@ points(rbind(A,B), pch = 19, col = c("red", "blue"))
 
 theta1 <- Arg((A-O1)[1] + 1i*(A-O1)[2]) 
 theta2 <- Arg((B-O1)[1] + 1i*(B-O1)[2]) 
-path1 <- Arc$new(O1, circ1$radius, theta1, theta2)$path()
+path1 <- Arc$new(O1, circ1$radius, theta1, theta2, FALSE)$path()
 
 theta1 <- Arg((A-O2)[1] + 1i*(A-O2)[2]) 
 theta2 <- Arg((B-O2)[1] + 1i*(B-O2)[2]) 
-path2 <- Arc$new(O2, circ2$radius, theta2, theta1)$path()
+path2 <- Arc$new(O2, circ2$radius, theta2, theta1, FALSE)$path()
 
 polypath(rbind(path1,path2), col = "yellow")
 
@@ -330,7 +330,7 @@ tessellation2 <- function(depth, Thetas0, colors){
     A <- arc$endingPoint()
     alpha1 <- Arg(A[1L] + 1i*A[2L])
     alpha2 <- Arg(B[1L] + 1i*B[2L])
-    path2 <- Arc$new(c(0,0), 3, alpha1, alpha2)$path()
+    path2 <- Arc$new(c(0,0), 3, alpha1, alpha2, FALSE)$path()
     #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
     polypath(rbind(path1,path2), col = colors[2L])
   }))
@@ -352,7 +352,7 @@ tessellation2 <- function(depth, Thetas0, colors){
       A <- arc$endingPoint()
       alpha1 <- Arg(A[1L] + 1i*A[2L])
       alpha2 <- Arg(B[1L] + 1i*B[2L])
-      path2 <- Arc$new(c(0,0), 3, alpha1, alpha2)$path()
+      path2 <- Arc$new(c(0,0), 3, alpha1, alpha2, FALSE)$path()
       #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
       polypath(rbind(path1,path2), col = colors[d+1L])
     }

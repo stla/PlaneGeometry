@@ -147,7 +147,9 @@ Circle <- R6Class(
         beta2 <- beta1 - pi + dalpha
         theta1 <- beta1+alpha1 #%% (2*pi)
         theta2 <- beta2+alpha1 #%% (2*pi)
-        return(Arc$new(center, r0, min(theta1,theta2), max(theta1,theta2)))
+        return(
+          Arc$new(center, r0, min(theta1,theta2), max(theta1,theta2), FALSE)
+        )
       }
       # Circle$new(I+c(Ox,Oy), r0)
       Circle$new(center, r0)
@@ -190,7 +192,7 @@ Circle <- R6Class(
         theta1 <- atan2(P1[2L]-O[2L], P1[1L]-O[1L]) %% (2*pi)
         theta2 <- atan2(P2[2L]-O[2L], P2[1L]-O[1L]) %% (2*pi)
         Arc$new(O, sqrt(c(crossprod(O-P1))),
-                min(theta1,theta2), max(theta1,theta2))
+                min(theta1,theta2), max(theta1,theta2), FALSE)
       }else{
         Circle$new(O, sqrt(c(crossprod(O-P1))))
       }
