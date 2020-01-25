@@ -2,12 +2,15 @@
 #'
 #' @description Draw a geometric object on the current plot.
 #'
-#' @param x geometric object (\code{Triangle}, \code{Circle} or \code{Line})
+#' @param x geometric object (\code{Triangle}, \code{Circle}, \code{Line},
+#' \code{Ellipse}, \code{Arc}, \code{EllipticalArc})
 #' @param npoints integer, the number of points of the path
-#' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle} or
-#' an \code{Arc} object, to \code{\link{polypath}} for a \code{Circle} object
-#' or an \code{Ellipse} object,
-#' general graphical parameters for a \code{Line} object
+#' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
+#' object, an \code{Arc} object or an \code{ElipticalArc} object,
+#' to \code{\link{polypath}} for a \code{Circle} object or an
+#' \code{Ellipse} object, general graphical parameters for a \code{Line}
+#' object, passed to \code{\link{lines}}, \code{\link{curve}}, or
+#' \code{\link{abline}}.
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
 #'      xlab = NA, ylab = NA)
@@ -99,6 +102,12 @@ draw.Ellipse = function(x, npoints = 100L, ...) {
 #                 rot = alpha %% pi, plot = TRUE, col = "transparent", ...)
 #   }
 # }
+
+#' @rdname draw
+#' @export
+draw.EllipticalArc = function(x, npoints = 100L, ...) {
+  lines(x$path(npoints), ...)
+}
 
 #' @rdname draw
 #' @export

@@ -1,55 +1,33 @@
-#' @title R6 class representing a circular arc
+#' @title R6 class representing an elliptical arc
 #'
-#' @description An arc is given by a center, a radius, a starting angle and
-#' an ending angle. They are respectively named \code{center}, \code{radius},
-#' \code{alpha1} and \code{alpha2}.
+#' @description An arc is given by an ellipse (\code{Ellipse} object),
+#' a starting angle and an ending angle. They are respectively named
+#' \code{ell}, \code{alpha1} and \code{alpha2}.
 #'
 #' @export
 #' @importFrom R6 R6Class
 # #' @importFrom DescTools DrawArc
-Arc <- R6Class(
+EllipticalArc <- R6Class(
 
-  "Arc",
+  "EllipticalArc",
 
   private = list(
-    .center = c(NA_real_, NA_real_),
-    .radius = NA_real_,
+    .ell = NULL,
     .alpha1 = NA_real_,
     .alpha2 = NA_real_,
     .degrees = TRUE
   ),
 
   active = list(
-    #' @field center get or set the center
-    center = function(value) {
+    #' @field ell get or set the ellipse
+    ell = function(value) {
       if (missing(value)) {
-        private[[".center"]]
+        private[[".ell"]]
       } else {
-        center <- as.vector(value)
         stopifnot(
-          is.numeric(center),
-          length(center) == 2L,
-          !any(is.na(center)),
-          all(is.finite(center))
+          is(value, "Ellipse")
         )
-        private[[".center"]] <- center
-      }
-    },
-
-    #' @field radius get or set the radius
-    radius = function(value) {
-      if (missing(value)) {
-        private[[".radius"]]
-      } else {
-        radius <- as.vector(value)
-        stopifnot(
-          is.numeric(radius),
-          length(radius) == 1L,
-          radius >= 0,
-          !is.na(radius),
-          is.finite(radius)
-        )
-        private[[".radius"]] <- radius
+        private[[".ell"]] <- value
       }
     },
 
@@ -102,34 +80,18 @@ Arc <- R6Class(
   ),
 
   public = list(
-    #' @description Create a new \code{Arc} object.
-    #' @param center the center
-    #' @param radius the radius
+    #' @description Create a new \code{EllipticalArc} object.
+    #' @param ell the ellipse
     #' @param alpha1 the starting angle
     #' @param alpha2 the ending angle
     #' @param degrees logical, whether \code{alpha1} and \code{alpha2} are
     #' given in degrees
-    #' @return A new \code{Arc} object.
-    #' @examples arc <- Arc$new(c(1,1), 1, 45, 90)
-    #' arc
-    #' arc$center
-    #' arc$center <- c(0,0)
-    #' arc
-    initialize = function(center, radius, alpha1, alpha2, degrees = TRUE) {
-      center <- as.vector(center)
+    #' @return A new \code{EllipticalArc} object.
+    #' @examples ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+    #' EllipticalArc$new(ell, 45, 90)
+    initialize = function(ell, alpha1, alpha2, degrees = TRUE) {
       stopifnot(
-        is.numeric(center),
-        length(center) == 2L,
-        !any(is.na(center)),
-        all(is.finite(center))
-      )
-      radius <- as.vector(radius)
-      stopifnot(
-        is.numeric(radius),
-        length(radius) == 1L,
-        radius >= 0,
-        !is.na(radius),
-        is.finite(radius)
+        is(ell, "Ellipse")
       )
       alpha1 <- as.vector(alpha1)
       stopifnot(
@@ -151,16 +113,14 @@ Arc <- R6Class(
         length(degrees) == 1L,
         !is.na(degrees)
       )
-      private[[".center"]] <- center
-      private[[".radius"]] <- radius
+      private[[".ell"]] <- ell
       private[[".alpha1"]] <- alpha1
       private[[".alpha2"]] <- alpha2
       private[[".degrees"]] <- degrees
     },
 
-    #' @description Show instance of an \code{Arc} object.
+    #' @description Show instance of an \code{EllipticalArc} object.
     #' @param ... ignored
-    #' @examples Arc$new(c(0,0), 2, pi/4, pi/2, FALSE)
     print = function(...) {
       alpha1 <- private[[".alpha1"]]
       alpha2 <- private[[".alpha2"]]
@@ -172,67 +132,71 @@ Arc <- R6Class(
         )
       s1 <- ifelse(alpha1 %in% c(-1,0,1), "", "s")
       s2 <- ifelse(alpha2 %in% c(-1,0,1), "", "s")
-      cat("Arc:\n")
-      cat(" center: ", toString(private[[".center"]]), "\n", sep = "")
-      cat(" radius: ", toString(private[[".radius"]]), "\n", sep = "")
+      capt <- sapply(capture.output(ell), function(x) paste0(" ", x))
+      cat("EllipticalArc:\n")
+      cat(capt, "\n", sep = "\n")
       cat(" alpha1: ", sprintf("%s %s%s", alpha1, unit, s1), "\n", sep = "")
       cat(" alpha2: ", sprintf("%s %s%s", alpha2, unit, s2), "\n", sep = "")
     },
 
-    #' @description Starting point of the reference arc.
+    #' @description Starting point of the reference elliptical arc.
     startingPoint = function() {
+      private[[".ell"]] -> ell
       private[[".alpha1"]] -> alpha
       if(private[[".degrees"]]) alpha <- alpha * pi/180
-      private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
+      ell$pointFromAngle(alpha, FALSE)
     },
 
-    #' @description Ending point of the reference arc.
+    #' @description Ending point of the reference elliptical arc.
     endingPoint = function() {
+      private[[".ell"]] -> ell
       private[[".alpha2"]] -> alpha
       if(private[[".degrees"]]) alpha <- alpha * pi/180
-      private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
+      ell$pointFromAngle(alpha, FALSE)
     },
 
-    #' @description Check whether the reference arc equals another arc.
-    #' @param arc an \code{Arc} object
+    #' @description Check whether the reference elliptical arc equals
+    #' another elliptical arc.
+    #' @param arc an \code{EllipticalArc} object
     isEqual = function(arc){
-      c0 <- private[[".center"]]; r0 <- private[[".radius"]]
-      alpha10 <- private[[".alpha1"]]
-      alpha20 <- private[[".alpha2"]]
+      ell0 <- private[[".ell"]]
+      alpha10 <- private[[".alpha1"]]; alpha20 <- private[[".alpha2"]]
       if(!private[[".degrees"]]){
         alpha10 <- alpha10 * 180/pi
         alpha20 <- alpha20 * 180/pi
       }
-      c1 <- arc$center; r1 <- arc$radius
+      ell1 <- arc$ell
       alpha11 <- arc$alpha1; alpha21 <- arc$alpha2
       if(!arc$degrees){
         alpha11 <- alpha11 * 180/pi
         alpha21 <- alpha21 * 180/pi
       }
-      isTRUE(all.equal(
-        c(c0, r0, alpha10 %% 360, alpha20 %% 360),
-        c(c1, r1, alpha11 %% 360, alpha21 %% 360)
+      ell0$isEqual(ell1) && isTRUE(all.equal(
+        c(alpha10 %% 360, alpha20 %% 360),
+        c(alpha11 %% 360, alpha21 %% 360)
       ))
     },
 
-    #' @description Complementary arc of the reference arc.
-    #' @examples arc <- Arc$new(c(0,0), 1, 30, 60)
+    #' @description Complementary elliptical arc of the reference elliptical arc.
+    #' @examples ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+    #' arc <- EllipticalArc$new(ell, 30, 60)
     #' plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
     #'      xlab = NA, ylab = NA)
     #' draw(arc, lwd = 3, col = "red")
     #' draw(arc$complementaryArc(), lwd = 3, col = "green")
     complementaryArc = function() {
-      Arc$new(private[[".center"]], private[[".radius"]],
-              private[[".alpha2"]],
-              private[[".alpha1"]] + ifelse(private[[".degrees"]], 360, 2*pi),
-              private[[".degrees"]])
+      EllipticalArc$new(
+        private[[".ell"]],
+        private[[".alpha2"]],
+        private[[".alpha1"]] + ifelse(private[[".degrees"]], 360, 2*pi),
+        private[[".degrees"]]
+      )
     },
 
-    #' @description The reference arc as a path.
+    #' @description The reference elliptical arc as a path.
     #' @param npoints number of points of the path
     #' @return A matrix with two columns \code{x} and \code{y} of length
-    #' \code{npoints}. See "Filling the lapping area of two circles" in the
-    #' vignette for an example.
+    #' \code{npoints}.
     path = function(npoints = 100L) {
       k <- ifelse(private[[".degrees"]], pi/180, 1)
       alpha1 <- (private[[".alpha1"]]*k) %% (2*pi)
@@ -244,10 +208,7 @@ Arc <- R6Class(
           to = ifelse(dalpha < 0, dalpha + 2*pi, dalpha),
           length.out = npoints
         )
-      .circlePoints(
-        theta,
-        private[[".center"]], private[[".radius"]]
-      )
+      private[[".ell"]]$pointFromAngle(theta, FALSE)
     }
   )
 )

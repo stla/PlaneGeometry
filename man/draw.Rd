@@ -6,6 +6,7 @@
 \alias{draw.Circle}
 \alias{draw.Arc}
 \alias{draw.Ellipse}
+\alias{draw.EllipticalArc}
 \alias{draw.Line}
 \title{Draw a geometric object}
 \usage{
@@ -19,15 +20,20 @@ draw(x, ...)
 
 \method{draw}{Ellipse}(x, npoints = 100L, ...)
 
+\method{draw}{EllipticalArc}(x, npoints = 100L, ...)
+
 \method{draw}{Line}(x, ...)
 }
 \arguments{
-\item{x}{geometric object (\code{Triangle}, \code{Circle} or \code{Line})}
+\item{x}{geometric object (\code{Triangle}, \code{Circle}, \code{Line},
+\code{Ellipse}, \code{Arc}, \code{EllipticalArc})}
 
-\item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle} or
-an \code{Arc} object, to \code{\link{polypath}} for a \code{Circle} object
-or an \code{Ellipse} object,
-general graphical parameters for a \code{Line} object}
+\item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle}
+object, an \code{Arc} object or an \code{ElipticalArc} object,
+to \code{\link{polypath}} for a \code{Circle} object or an
+\code{Ellipse} object, general graphical parameters for a \code{Line}
+object, passed to \code{\link{lines}}, \code{\link{curve}}, or
+\code{\link{abline}}.}
 
 \item{npoints}{integer, the number of points of the path}
 }

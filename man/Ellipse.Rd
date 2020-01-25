@@ -296,13 +296,15 @@ invisible(lapply(diameters, draw))
 Intersection point of the ellipse with the half-line
 starting at the ellipse center and with director angle \code{theta}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Ellipse$pointFromAngle(theta)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$pointFromAngle(theta, degrees = TRUE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{theta}}{a number, the angle, or a numeric vector}
+
+\item{\code{degrees}}{logical, whether \code{theta} is given in degrees}
 }
 \if{html}{\out{</div>}}
 }
