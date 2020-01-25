@@ -9,6 +9,6 @@
 unitCircle
 }
 \description{
-Circle centered at the origin withh radius 1.
+Circle centered at the origin with radius 1.
 }
 \keyword{datasets}

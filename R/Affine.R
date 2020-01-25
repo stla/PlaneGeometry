@@ -5,6 +5,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom stringr str_trim
 Affine <- R6Class(
 
   "Affine",
@@ -82,11 +83,11 @@ Affine <- R6Class(
     #' @examples Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
     print = function(...) {
       captA <- capture.output(private[[".A"]])[-1L]
-      captA[1L] <- substring(captA[1L], 6L)
-      captA[2L] <- substring(captA[2L], 6L)
+      captA[1L] <- stringr::str_trim(substring(captA[1L], 6L), "left")
+      captA[2L] <- stringr::str_trim(substring(captA[2L], 6L), "left")
       captB <- capture.output(cbind(private[[".b"]]))[-1L]
-      captB[1L] <- substring(captB[1L], 6L)
-      captB[2L] <- substring(captB[2L], 6L)
+      captB[1L] <- stringr::str_trim(substring(captB[1L], 6L), "left")
+      captB[2L] <- stringr::str_trim(substring(captB[2L], 6L), "left")
       cat("Affine transformation Ax+b\n")
       cat(" A: / ", captA[1L], " \\\n    \\ ", captA[2L], " /\n", sep = "")
       cat(" b: / ", captB[1L], " \\\n    \\ ", captB[2L], " /\n", sep = "")

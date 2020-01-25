@@ -384,6 +384,6 @@ CircleOA <- function(O, A){
 }
 
 #' Unit circle
-#' @description Circle centered at the origin withh radius 1.
+#' @description Circle centered at the origin with radius 1.
 #' @export
 unitCircle <- Circle$new(c(0,0), 1)

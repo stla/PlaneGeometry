@@ -2,7 +2,7 @@
 % Please edit documentation in R/Scaling.R
 \name{Scaling}
 \alias{Scaling}
-\title{R6 class representing a scaling}
+\title{R6 class representing a (non-uniform) scaling}
 \description{
 A (non-uniform) scaling is given by a center, a direction,
  and a scale factor.

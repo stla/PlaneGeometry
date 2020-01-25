@@ -179,6 +179,24 @@ Ellipse <- R6Class(
           ), "\n", sep = "")
     },
 
+    #' @description Check whether the reference ellipse equals an ellipse.
+    #' @param ell An \code{Ellipse} object.
+    isEqual = function(ell){
+      if(is(ell, "Circle")) ell <- .circleAsEllipse(ell)
+      private[[".center"]] -> center0
+      private[[".rmajor"]] -> rmajor0
+      private[[".rminor"]] -> rminor0
+      private[[".alpha"]] -> alpha0
+      private[[".degrees"]] -> degrees
+      if(!degrees) alpha0 <- (alpha0 * 180/pi)
+      alpha1 <- ell$alpha
+      if(!ell$degrees) alpha1 <- (alpha1 * 180/pi)
+      isTRUE(all.equal(
+        c(center0, rmajor0, rminor0, alpha0 %% 180),
+        c(ell$center, ell$rmajor, ell$rminor, alpha1 %% 180)
+      ))
+    },
+
     #' @description The coefficients of the implicit equation of the ellipse.
     #' @return A named numeric vector.
     #' @details The implicit equation of the ellipse is

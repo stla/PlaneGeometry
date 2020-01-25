@@ -79,6 +79,7 @@ draw(reglines$XonY, lwd = 2, col = "green")
 \itemize{
 \item \href{#method-new}{\code{Ellipse$new()}}
 \item \href{#method-print}{\code{Ellipse$print()}}
+\item \href{#method-isEqual}{\code{Ellipse$isEqual()}}
 \item \href{#method-equation}{\code{Ellipse$equation()}}
 \item \href{#method-includes}{\code{Ellipse$includes()}}
 \item \href{#method-contains}{\code{Ellipse$contains()}}
@@ -138,6 +139,22 @@ Show instance of an \code{Ellipse} object.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{ignored}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isEqual"></a>}}
+\subsection{Method \code{isEqual()}}{
+Check whether the reference ellipse equals an ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$isEqual(ell)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ell}}{An \code{Ellipse} object.}
 }
 \if{html}{\out{</div>}}
 }
