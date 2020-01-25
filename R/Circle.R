@@ -382,3 +382,8 @@ SteinerChain <- function(c0, n, phi, shift, ellipse = FALSE){
 CircleOA <- function(O, A){
   Circle$new(O, .distance(O,A))
 }
+
+#' Unit circle
+#' @description Circle centered at the origin withh radius 1.
+#' @export
+unitCircle <- Circle$new(c(0,0), 1)

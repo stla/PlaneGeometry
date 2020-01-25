@@ -147,6 +147,9 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 #' ell$includes(Is$I1); ell$includes(Is$I2)
 #' @export
 intersectionEllipseLine <- function(ell, line, strict = FALSE){
+  if(is(ell, "Circle")){
+    return(intersectionCircleLine(.circleAsEllipse(ell), line, strict))
+  }
   a <- ell$rmajor; b <- ell$rminor; theta <- ell$alpha
   if(ell$degrees) theta <- theta * pi/180
   costheta <- cos(theta); sintheta <- sin(theta)

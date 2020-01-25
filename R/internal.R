@@ -142,3 +142,7 @@
   }
   # https://socratic.org/questions/how-do-you-use-linear-combinations-to-solve-trigonometric-equations
 }
+
+.circleAsEllipse <- function(circ){
+  Ellipse$new(circ$center, circ$radius, circ$radius, 0)
+}

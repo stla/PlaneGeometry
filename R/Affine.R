@@ -147,6 +147,7 @@ Affine <- R6Class(
     #' @param ell an \code{Ellipse} object
     #' @return An \code{Ellipse} object.
     transformEllipse = function(ell){
+      if(is(ell, "Circle")) ell <- .circleAsEllipse(ell)
       ABCDEF <- as.list(ell$equation())
       X <- with(ABCDEF, cbind(
         c(A, B/2, D/2),
@@ -207,15 +208,25 @@ AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
 
 
 AffineMappingEllipse2Ellipse <- function(ell1, ell2){
-  a <- ell1$rmajor; b <- ell1$rminor; theta <- ell1$alpha
-  if(ell1$degrees) theta <- theta * pi/180
-  costheta <- cos(theta); sintheta <- sin(theta)
+  if(is(ell1, "Circle")){
+    a <- b <- ell1$radius
+    costheta <- 1; sintheta <- 0
+  }else{
+    a <- ell1$rmajor; b <- ell1$rminor; theta <- ell1$alpha
+    if(ell1$degrees) theta <- theta * pi/180
+    costheta <- cos(theta); sintheta <- sin(theta)
+  }
   f1 <-
     Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell1$center)
   #
-  a <- ell2$rmajor; b <- ell2$rminor; theta <- ell2$alpha
-  if(ell2$degrees) theta <- theta * pi/180
-  costheta <- cos(theta); sintheta <- sin(theta)
+  if(is(ell2, "Circle")){
+    a <- b <- ell2$radius
+    costheta <- 1; sintheta <- 0
+  }else{
+    a <- ell2$rmajor; b <- ell2$rminor; theta <- ell2$alpha
+    if(ell2$degrees) theta <- theta * pi/180
+    costheta <- cos(theta); sintheta <- sin(theta)
+  }
   f2 <-
     Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell2$center)
   #
