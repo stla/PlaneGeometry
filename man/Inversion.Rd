@@ -45,7 +45,7 @@ for(i in 1:6){
 par(opar)
 }
 \seealso{
-\code{\link{inversionMappingCircle2Circle}},
+\code{\link{inversionSwappingTwoCircles}},
 \code{\link{inversionFixingTwoCircles}},
 \code{\link{inversionFixingThreeCircles}} to create some inversions.
 }

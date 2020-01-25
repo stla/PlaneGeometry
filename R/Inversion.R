@@ -3,7 +3,7 @@
 #' @description An inversion is given by a pole (a point) and a power (a number,
 #' possibly negative, but not zero).
 #'
-#' @seealso \code{\link{inversionMappingCircle2Circle}},
+#' @seealso \code{\link{inversionSwappingTwoCircles}},
 #' \code{\link{inversionFixingTwoCircles}},
 #' \code{\link{inversionFixingThreeCircles}} to create some inversions.
 #'
@@ -169,17 +169,17 @@ Inversion <- R6Class(
 )
 
 
-#' Inversion mapping a circle to a circle
-#' @description Return the inversion which maps a given circle to another given
-#' circle.
+#' Inversion swapping two circles
+#' @description Return the inversion which swaps two given circles.
 #'
 #' @param circ1,circ2 \code{Circle} objects
 #' @param positive logical, whether the sign of the desired inversion power
 #' must be positive or negative
 #'
-#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}.
+#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}
+#' and \code{circ2} to \code{circ1}.
 #' @export
-inversionMappingCircle2Circle <- function(circ1, circ2, positive = TRUE){
+inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
   c1 <- circ1$center; r1 <- circ1$radius
   c2 <- circ2$center; r2 <- circ2$radius
   ok <- TRUE
