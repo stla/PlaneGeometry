@@ -87,9 +87,9 @@ C1 <- Circle$new(c(0,0), 2)
 C2 <- Circle$new(c(5,5), 3)
 C3 <- Circle$new(c(6,-2), 1)
 # inversion swapping C1 and C3 with positive power
-iota1 <- inversionMappingCircle2Circle(C1, C3, positive = TRUE)
+iota1 <- inversionSwappingTwoCircles(C1, C3, positive = TRUE)
 # inversion swapping C2 and C3 with positive power
-iota2 <- inversionMappingCircle2Circle(C2, C3, positive = TRUE)
+iota2 <- inversionSwappingTwoCircles(C2, C3, positive = TRUE)
 # take an arbitrary point on C3
 M <- C3$center + c(C3$radius,0)
 # invert it with iota1 and iota2
@@ -433,3 +433,65 @@ draw(T1); draw(T2)
 par(opar)
 ```
 
+
+# Playing with Steiner chains
+
+The `PlaneGeometry` package has a function `SteinerChain` which generates 
+a Steiner chain of circles.
+
+## Elliptical Steiner chain
+
+By applying an affine transformation to a Steiner chain, we can get an 
+elliptical Steiner chain.
+
+```{r}
+c0 <- Circle$new(c(3,0), 3) # exterior circle
+circles <- SteinerChain(c0, 3, -0.2, 0.5)
+# take an ellipse 
+ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+# take the affine transformation which maps the exterior circle to this ellipse
+f <- AffineMappingEllipse2Ellipse(c0, ell)
+# take the images of the Steiner circles by this transformation
+ellipses <- lapply(circles, f$transformEllipse)
+```
+
+```{r ellipticalSteiner, fig.width=6, fig.height=4}
+opar <- par(mar = c(0,0,0,0))
+plot(NULL, type = "n", asp = 1, xlim = c(-8,6), ylim = c(-4,4), 
+     xlab = NA, ylab = NA, axes = FALSE)
+# draw the Steiner chain
+invisible(lapply(circles, draw, lwd = 2, col = "blue"))
+draw(c0, lwd = 2)
+# draw the elliptical Steiner chain
+invisible(lapply(ellipses, draw, lwd = 2, col = "red", border = "forestgreen"))
+draw(ell, lwd = 2, border = "forestgreen")
+par(opar)
+```
+
+## Nested Steiner chains
+
+We can choose the exterior circle of the Steiner chain. Therefore, given a 
+circle of a Steiner chain, we can nest another Steiner chain in this circle.
+
+```{r}
+c0 <- Circle$new(c(3,0), 3) # exterior circle
+circles <- SteinerChain(c0, 3, -0.2, 0.5)
+# Steiner chain for each circle, except the small one (it is too small)
+chains <- lapply(circles[1:3], function(c0){
+  SteinerChain(c0, 3, -0.2, 0.5)
+})
+```
+
+```{r nestedSteiner, fig.width=5, fig.height=5}
+opar <- par(mar = c(0,0,0,0))
+plot(NULL, type = "n", asp = 1, xlim = c(0,6), ylim = c(-4,4), 
+     xlab = NA, ylab = NA, axes = FALSE)
+# draw the big Steiner chain
+invisible(lapply(circles, draw, lwd = 2, border = "blue"))
+draw(c0, lwd = 2)
+# draw the nested Steiner chain
+invisible(lapply(chains, function(circles){
+  lapply(circles, draw, lwd = 2, border = "red")
+}))
+par(opar)
+```

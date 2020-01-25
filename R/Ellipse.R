@@ -426,9 +426,10 @@ Ellipse <- R6Class(
 #' EllipseFromCenterAndMatrix(ell$center, S)
 EllipseFromCenterAndMatrix <- function(center, S){
   stopifnot(isSymmetric(S))
-  e <- eigen(chol2inv(chol(S)), symmetric = TRUE)
+  #e <- eigen(chol2inv(chol(S)), symmetric = TRUE)
+  e <- eigen(S, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`S` is not positive.")
-  v <- e$vectors[,1L]
+  v <- e$vectors[,2L]
   alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
   a <- .vlength(v/sqrt(c(t(v) %*% S %*% v)))
   b <- a * sqrt(e$values[2L]/e$values[1L])
