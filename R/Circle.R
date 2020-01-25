@@ -368,3 +368,17 @@ SteinerChain <- function(c0, n, phi, shift, ellipse = FALSE){
   }
   return(out)
 }
+
+
+#' Circle given by its center and a point
+#' @description Return the circle given by its center and a point it
+#' passes through.
+#'
+#' @param O the center of the circle
+#' @param A a point of the circle
+#'
+#' @return A \code{Circle} object.
+#' @export
+CircleOA <- function(O, A){
+  Circle$new(O, .distance(O,A))
+}
