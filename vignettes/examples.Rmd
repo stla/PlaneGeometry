@@ -468,6 +468,42 @@ draw(ell, lwd = 2, border = "forestgreen")
 par(opar)
 ```
 
+Here is how I got the animation below, by varying the `shift` parameter of 
+the Steiner chain.
+
+```{r, eval=FALSE}
+library(gifski)
+
+c0 <- Circle$new(c(3,0), 3)
+ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+f <- AffineMappingEllipse2Ellipse(c0, ell)
+
+fplot <- function(shift){
+  circles <- SteinerChain(c0, 3, -0.2, shift)
+  ellipses <- lapply(circles, f$transformEllipse)
+  opar <- par(mar = c(0,0,0,0))
+  plot(0, 0, type = "n", asp = 1, xlim = c(-8,0), ylim = c(-4,4),
+       xlab = NA, ylab = NA, axes = FALSE)
+  invisible(lapply(ellipses, draw, lwd = 2, col = "blue", border = "black"))
+  draw(ell, lwd = 2)
+  par(opar)
+  invisible()
+}
+
+shift_ <- seq(0, 3, length.out = 100)[-1]
+
+save_gif(
+  for(shift in shift_){
+    fplot(shift)
+  },
+  "SteinerChainElliptical.gif",
+  512, 512, 1/12, res = 144
+)
+```
+
+
+![](https://thumbs.gfycat.com/ContentZestyCutworm-size_restricted.gif)
+
 ## Nested Steiner chains
 
 We can choose the exterior circle of the Steiner chain. Therefore, given a 
@@ -495,3 +531,6 @@ invisible(lapply(chains, function(circles){
 }))
 par(opar)
 ```
+
+Of course you can also nest elliptical Steiner chains, and animate the 
+picture!
