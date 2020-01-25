@@ -86,6 +86,7 @@ draw(reglines$XonY, lwd = 2, col = "green")
 \item \href{#method-matrix}{\code{Ellipse$matrix()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-pointFromAngle}{\code{Ellipse$pointFromAngle()}}
 \item \href{#method-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
 \item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
@@ -288,6 +289,28 @@ invisible(lapply(diameters, draw))
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pointFromAngle"></a>}}
+\subsection{Method \code{pointFromAngle()}}{
+Intersection point of the ellipse with the half-line
+starting at the ellipse center and with director angle \code{theta}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$pointFromAngle(theta)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{theta}}{a number, the angle, or a numeric vector}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point of the ellipse if \code{length(theta)==1} or a
+two-column matrix of points of the ellipse if
+\code{length(theta) > 1} (one point per row).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-semiMajorAxis"></a>}}

@@ -61,13 +61,15 @@ Inversion <- R6Class(
       stopifnot(
         is.numeric(pole),
         length(pole) == 2L,
-        !any(is.na(pole))
+        !any(is.na(pole)),
+        all(is.finite(pole))
       )
       power <- as.vector(power)
       stopifnot(
         is.numeric(power),
         length(power) == 1L,
         !is.na(power),
+        is.finite(power),
         power != 0
       )
       private[[".pole"]] <- pole
@@ -88,11 +90,25 @@ Inversion <- R6Class(
     #' @return A point or \code{Inf}, the image of \code{M}.
     invert = function(M) {
       pole <- private[[".pole"]]
-      if(isTRUE(all.equal(pole, M))) return(Inf)
       if(isTRUE(all.equal(Inf, M))) return(pole)
+      M <- as.vector(M)
+      stopifnot(
+        is.numeric(M),
+        length(M) == 2L,
+        !any(is.na(M)),
+        all(is.finite(M))
+      )
+      if(isTRUE(all.equal(pole, M))) return(Inf)
       k <- private[[".power"]]
       pole_M <- M - pole
       pole + k/c(crossprod(pole_M)) * pole_M
+    },
+
+    #' @description An alias of \code{invert}.
+    #' @param M a point or \code{Inf}
+    #' @return A point or \code{Inf}, the image of \code{M}.
+    transform = function(M){
+      self$invert(M)
     },
 
     #' @description Inversion of a circle.
@@ -138,6 +154,13 @@ Inversion <- R6Class(
       }
     },
 
+    #' @description An alias of \code{invertCircle}.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    transformCircle = function(circ){
+      self$invertCircle(circ)
+    },
+
     #' @description Inversion of a line.
     #' @param line a \code{Line} object
     #' @return A \code{Circle} object or a \code{Line} object.
@@ -149,6 +172,13 @@ Inversion <- R6Class(
         Ap <- self$invert(A); Bp <- self$invert(B)
         Triangle$new(private[[".pole"]], Ap, Bp)$circumcircle()
       }
+    },
+
+    #' @description An alias of \code{invertLine}.
+    #' @param line a \code{Line} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    transformLine = function(line){
+      self$invertLine(line)
     },
 
     #' @description Compose the reference inversion with another inversion.

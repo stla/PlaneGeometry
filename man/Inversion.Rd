@@ -64,8 +64,11 @@ par(opar)
 \item \href{#method-new}{\code{Inversion$new()}}
 \item \href{#method-print}{\code{Inversion$print()}}
 \item \href{#method-invert}{\code{Inversion$invert()}}
+\item \href{#method-transform}{\code{Inversion$transform()}}
 \item \href{#method-invertCircle}{\code{Inversion$invertCircle()}}
+\item \href{#method-transformCircle}{\code{Inversion$transformCircle()}}
 \item \href{#method-invertLine}{\code{Inversion$invertLine()}}
+\item \href{#method-transformLine}{\code{Inversion$transformLine()}}
 \item \href{#method-compose}{\code{Inversion$compose()}}
 \item \href{#method-clone}{\code{Inversion$clone()}}
 }
@@ -135,6 +138,25 @@ A point or \code{Inf}, the image of \code{M}.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transform"></a>}}
+\subsection{Method \code{transform()}}{
+An alias of \code{invert}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$transform(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point or \code{Inf}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point or \code{Inf}, the image of \code{M}.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invertCircle"></a>}}
 \subsection{Method \code{invertCircle()}}{
 Inversion of a circle.
@@ -185,11 +207,49 @@ par(opar)
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformCircle"></a>}}
+\subsection{Method \code{transformCircle()}}{
+An alias of \code{invertCircle}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$transformCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invertLine"></a>}}
 \subsection{Method \code{invertLine()}}{
 Inversion of a line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Inversion$invertLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformLine"></a>}}
+\subsection{Method \code{transformLine()}}{
+An alias of \code{invertLine}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$transformLine(line)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

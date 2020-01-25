@@ -312,6 +312,24 @@ Ellipse <- R6Class(
       }
     },
 
+    #' @description Intersection point of the ellipse with the half-line
+    #' starting at the ellipse center and with director angle \code{theta}.
+    #' @param theta a number, the angle, or a numeric vector
+    #' @return A point of the ellipse if \code{length(theta)==1} or a
+    #' two-column matrix of points of the ellipse if
+    #' \code{length(theta) > 1} (one point per row).
+    pointFromAngle = function(theta){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]
+      b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      t <- atan(a/b * tan(theta))
+      out <- .ellipsePoints(t, O, a, b, alpha)
+      if(length(t) == 1L) out <- c(out)
+      out
+    },
+
     #' @description Semi-major axis of the ellipse.
     #' @return A segment (\code{Line} object).
     semiMajorAxis = function(){
