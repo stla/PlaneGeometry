@@ -26,6 +26,10 @@
   c(crossprod(u, w))
 }
 
+.vlength <- function(v){
+  sqrt(c(crossprod(v)))
+}
+
 .LineLineIntersection <- function (P1, P2, Q1, Q2) {
   dx1 <- P1[1L] - P2[1L]
   dx2 <- Q1[1L] - Q2[1L]
