@@ -1,5 +1,14 @@
 context("Affine transformations")
 
+test_that("Transform several points", {
+  f <- Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
+  Ms <- matrix(rpois(6, 10), 3L, 2L)
+  Ps <- f$transform(Ms)
+  expect_equal(Ps[1L,], f$transform(Ms[1L,]))
+  expect_equal(Ps[2L,], f$transform(Ms[2L,]))
+  expect_equal(Ps[3L,], f$transform(Ms[3L,]))
+})
+
 test_that("AffineMappingThreePoints", {
   P1 <- c(1,2); P2 <- c(3,4); P3 <- c(7,7)
   Q1 <- c(2,1); Q2 <- c(4,4); Q3 <- c(-7,7)

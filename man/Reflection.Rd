@@ -37,8 +37,11 @@ R$getMatrix() \%*\% c(P,1)
 \item \href{#method-new}{\code{Reflection$new()}}
 \item \href{#method-print}{\code{Reflection$print()}}
 \item \href{#method-reflect}{\code{Reflection$reflect()}}
+\item \href{#method-transform}{\code{Reflection$transform()}}
 \item \href{#method-reflectCircle}{\code{Reflection$reflectCircle()}}
+\item \href{#method-transformCircle}{\code{Reflection$transformCircle()}}
 \item \href{#method-reflectLine}{\code{Reflection$reflectLine()}}
+\item \href{#method-transformLine}{\code{Reflection$transformLine()}}
 \item \href{#method-getMatrix}{\code{Reflection$getMatrix()}}
 \item \href{#method-asAffine}{\code{Reflection$asAffine()}}
 \item \href{#method-clone}{\code{Reflection$clone()}}
@@ -105,6 +108,22 @@ Reflect a point.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transform"></a>}}
+\subsection{Method \code{transform()}}{
+An alias of \code{reflect}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$transform(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point, \code{Inf} allowed}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reflectCircle"></a>}}
 \subsection{Method \code{reflectCircle()}}{
 Reflect a circle.
@@ -124,11 +143,49 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformCircle"></a>}}
+\subsection{Method \code{transformCircle()}}{
+An alias of \code{reflectCircle}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$transformCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reflectLine"></a>}}
 \subsection{Method \code{reflectLine()}}{
 Reflect a line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Reflection$reflectLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformLine"></a>}}
+\subsection{Method \code{transformLine()}}{
+An alias of \code{reflectLine}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Reflection$transformLine(line)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

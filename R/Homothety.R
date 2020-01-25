@@ -81,25 +81,37 @@ Homothety <- R6Class(
       cat("     scale: ", toString(scale), "\n", sep = "")
     },
 
-    #' @description Transform a point by the reference homothety.
-    #' @param M a point
+    #' @description Transform a point or several points by the reference homothety.
+    #' @param M a point or a two-column matrix of points, one point per row
     transform = function(M) {
-      M <- as.vector(M)
+      if(is.matrix(M)){
+        stopifnot(
+          ncol(M) == 2L,
+          is.numeric(M)
+        )
+      }else{
+        M <- as.vector(M)
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L
+        )
+        M <- rbind(M)
+      }
       stopifnot(
-        is.numeric(M),
-        length(M) == 2L,
         !any(is.na(M)),
         all(is.finite(M))
       )
       private[[".center"]] -> O
       private[[".scale"]] -> s
-      (1-s)*O + s*M
+      out <- t((1-s)*O + s*t(M))
+      if(nrow(out) == 1L) out <- c(out)
+      out
     },
 
     #' @description Transform a circle by the reference homothety.
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object.
-    rotateCircle = function(circ) {
+    transformCircle = function(circ) {
       Circle$new(self$transform(circ$center),
                  abs(private[[".scale"]])*circ$radius)
     },

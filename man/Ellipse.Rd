@@ -86,6 +86,8 @@ draw(reglines$XonY, lwd = 2, col = "green")
 \item \href{#method-matrix}{\code{Ellipse$matrix()}}
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
+\item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
 \item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
@@ -286,6 +288,30 @@ invisible(lapply(diameters, draw))
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-semiMajorAxis"></a>}}
+\subsection{Method \code{semiMajorAxis()}}{
+Semi-major axis of the ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$semiMajorAxis()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A segment (\code{Line} object).
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-semiMinorAxis"></a>}}
+\subsection{Method \code{semiMinorAxis()}}{
+Semi-minor axis of the ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$semiMinorAxis()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A segment (\code{Line} object).
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-foci"></a>}}

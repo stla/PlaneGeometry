@@ -209,18 +209,30 @@ Shear <- R6Class(
           ), "\n", sep = "")
     },
 
-    #' @description Transform a point by the reference shear.
-    #' @param M a point
+    #' @description Transform a point or several points by the reference shear.
+    #' @param M a point or a two-column matrix of points, one point per row
     transform = function(M) {
-      M <- as.vector(M)
+      if(is.matrix(M)){
+        stopifnot(
+          ncol(M) == 2L,
+          is.numeric(M)
+        )
+      }else{
+        M <- as.vector(M)
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L
+        )
+        M <- rbind(M)
+      }
       stopifnot(
-        is.numeric(M),
-        length(M) == 2L,
         !any(is.na(M)),
         all(is.finite(M))
       )
       Mat <- self$getMatrix()
-      as.vector(Mat %*% c(M,1))[1L:2L]
+      out <- t((Mat %*% rbind(t(M),1))[1L:2L,])
+      if(nrow(out) == 1L) out <- c(out)
+      out
     },
 
     #' @description Augmented matrix of the shear.

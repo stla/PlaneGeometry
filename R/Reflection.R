@@ -58,11 +58,24 @@ Reflection <- R6Class(
       M + 2 * (perp$A - perp$B)
     },
 
+    #' @description An alias of \code{reflect}.
+    #' @param M a point, \code{Inf} allowed
+    transform = function(M){
+      self$reflect(M)
+    },
+
     #' @description Reflect a circle.
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object.
     reflectCircle = function(circ) {
       Circle$new(self$reflect(circ$center), circ$radius)
+    },
+
+    #' @description An alias of \code{reflectCircle}.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object.
+    transformCircle = function(circ) {
+      self$reflectCircle(circ)
     },
 
     #' @description Reflect a line.
@@ -71,6 +84,13 @@ Reflection <- R6Class(
     reflectLine = function(line) {
       Line$new(self$reflect(line$A), self$reflect(line$B),
                line$extendA, line$extendB)
+    },
+
+    #' @description An alias of \code{reflectLine}.
+    #' @param line a \code{Line} object
+    #' @return A \code{Line} object.
+    transformLine = function(line) {
+      self$reflectLine(line)
     },
 
     #' @description Augmented matrix of the reflection.

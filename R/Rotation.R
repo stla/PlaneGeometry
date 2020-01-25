@@ -112,23 +112,46 @@ Rotation <- R6Class(
       cat("   center: ", toString(center), "\n", sep = "")
     },
 
-    #' @description Rotate a point.
-    #' @param M a point
+    #' @description Rotate a point or several points.
+    #' @param M a point or a two-column matrix of points, one point per row
     rotate = function(M) {
-      M <- as.vector(M)
+      if(is.matrix(M)){
+        stopifnot(
+          ncol(M) == 2L,
+          is.numeric(M)
+        )
+      }else{
+        M <- as.vector(M)
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L
+        )
+        M <- rbind(M)
+      }
       stopifnot(
-        is.numeric(M),
-        length(M) == 2L,
         !any(is.na(M)),
         all(is.finite(M))
       )
       private[[".theta"]] -> theta
       private[[".center"]] -> O
       private[[".degrees"]] -> degrees
-      if(degrees) theta <- theta * pi / 180
+      if(degrees) theta <- theta * pi/180
       costheta <- cos(theta); sintheta <- sin(theta)
-      Mt <- M - O
-      O + c(costheta*Mt[1L]-sintheta*Mt[2L], sintheta*Mt[1L]+costheta*Mt[2L])
+      Mt <- sweep(M, 2L, O)
+      out <- sweep(
+        cbind(
+          costheta*Mt[,1L]-sintheta*Mt[,2L],
+          sintheta*Mt[,1L]+costheta*Mt[,2L]
+        ),
+        2L, O, "+")
+      if(nrow(out) == 1L) out <- c(out)
+      out
+    },
+
+    #' @description An alias of \code{rotate}.
+    #' @param M a point or a two-column matrix of points, one point per row
+    transform = function(M){
+      self$rotate(M)
     },
 
     #' @description Rotate a circle.
@@ -138,12 +161,26 @@ Rotation <- R6Class(
       Circle$new(self$rotate(circ$center), circ$radius)
     },
 
+    #' @description An alias of \code{rotateCircle}.
+    #' @param circ a \code{Circle} object
+    #' @return A \code{Circle} object.
+    transformCircle = function(circ) {
+      self$rotateCircle(circ)
+    },
+
     #' @description Rotate a line.
     #' @param line a \code{Line} object
     #' @return A \code{Line} object.
     rotateLine = function(line) {
       Line$new(self$rotate(line$A), self$rotate(line$B),
                line$extendA, line$extendB)
+    },
+
+    #' @description An alias of \code{rotateLine}.
+    #' @param line a \code{Line} object
+    #' @return A \code{Line} object.
+    transformLine = function(line) {
+      self$rotateLine(line)
     },
 
     #' @description Augmented matrix of the rotation.

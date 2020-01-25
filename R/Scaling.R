@@ -1,7 +1,7 @@
 #' @title R6 class representing a (non-uniform) scaling
 #'
 #' @description A (non-uniform) scaling is given by a center, a direction,
-#'  and a scale factor.
+#' and a scale factor.
 #'
 #' @references R. Goldman,
 #' \emph{An Integrated Introduction to Computer Graphics and Geometric Modeling}.
@@ -53,7 +53,7 @@ Scaling <- R6Class(
       }
     },
 
-    #' @field scale get or set the scale factor of the homothety
+    #' @field scale get or set the scale factor
     scale = function(value) {
       if (missing(value)) {
         private[[".scale"]]
@@ -74,7 +74,7 @@ Scaling <- R6Class(
     #' @description Create a new \code{Scaling} object.
     #' @param center a point, the center of the scaling
     #' @param direction a vector, the direction of the scaling
-    #' @param scale a number, the scale factor of the homothety
+    #' @param scale a number, the scale factor
     #' @return A new \code{Scaling} object.
     #' @examples Scaling$new(c(1,1), c(1,3), 2)
     initialize = function(center, direction, scale) {
@@ -116,13 +116,23 @@ Scaling <- R6Class(
       cat("     scale: ", toString(scale), "\n", sep = "")
     },
 
-    #' @description Transform a point by the reference scaling.
-    #' @param M a point
+    #' @description Transform a point or several points by the reference scaling.
+    #' @param M a point or a two-column matrix of points, one point per row
     transform = function(M) {
-      M <- as.vector(M)
+      if(is.matrix(M)){
+        stopifnot(
+          ncol(M) == 2L,
+          is.numeric(M)
+        )
+      }else{
+        M <- as.vector(M)
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L
+        )
+        M <- rbind(M)
+      }
       stopifnot(
-        is.numeric(M),
-        length(M) == 2L,
         !any(is.na(M)),
         all(is.finite(M))
       )
@@ -131,13 +141,17 @@ Scaling <- R6Class(
       private[[".scale"]] -> s
       wQ <- -Q
       theta <- -atan2(w[2L], w[1L])
-      M <- M + wQ
+      M <- sweep(M, 2L, wQ, "+")
       costheta <- cos(theta); sintheta <- sin(theta)
-      M <- c(costheta*M[1L]-sintheta*M[2L], sintheta*M[1L]+costheta*M[2L])
-      M <- c(s*M[1L], M[2L])
+      M <-
+        cbind(costheta*M[,1L]-sintheta*M[,2L], sintheta*M[,1L]+costheta*M[,2L])
+      M <- cbind(s*M[,1L], M[,2L])
       sintheta <- -sintheta
-      M <- c(costheta*M[1L]-sintheta*M[2L], sintheta*M[1L]+costheta*M[2L])
-      M - wQ
+      M <-
+        cbind(costheta*M[,1L]-sintheta*M[,2L], sintheta*M[,1L]+costheta*M[,2L])
+      out <- sweep(M, 2L, wQ)
+      if(nrow(out) == 1L) out <- c(out)
+      out
     },
 
     #' @description Augmented matrix of the scaling.

@@ -121,7 +121,7 @@ Show instance of a \code{Shear} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
 \subsection{Method \code{transform()}}{
-Transform a point by the reference shear.
+Transform a point or several points by the reference shear.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Shear$transform(M)}\if{html}{\out{</div>}}
 }
@@ -129,7 +129,7 @@ Transform a point by the reference shear.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{a point}
+\item{\code{M}}{a point or a two-column matrix of points, one point per row}
 }
 \if{html}{\out{</div>}}
 }

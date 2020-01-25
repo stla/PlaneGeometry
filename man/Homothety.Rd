@@ -38,7 +38,7 @@ H$getMatrix() \%*\% c(P,1)
 \item \href{#method-new}{\code{Homothety$new()}}
 \item \href{#method-print}{\code{Homothety$print()}}
 \item \href{#method-transform}{\code{Homothety$transform()}}
-\item \href{#method-rotateCircle}{\code{Homothety$rotateCircle()}}
+\item \href{#method-transformCircle}{\code{Homothety$transformCircle()}}
 \item \href{#method-getMatrix}{\code{Homothety$getMatrix()}}
 \item \href{#method-asAffine}{\code{Homothety$asAffine()}}
 \item \href{#method-clone}{\code{Homothety$clone()}}
@@ -92,7 +92,7 @@ Show instance of a \code{Homothety} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
 \subsection{Method \code{transform()}}{
-Transform a point by the reference homothety.
+Transform a point or several points by the reference homothety.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Homothety$transform(M)}\if{html}{\out{</div>}}
 }
@@ -100,17 +100,17 @@ Transform a point by the reference homothety.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{a point}
+\item{\code{M}}{a point or a two-column matrix of points, one point per row}
 }
 \if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rotateCircle"></a>}}
-\subsection{Method \code{rotateCircle()}}{
+\if{html}{\out{<a id="method-transformCircle"></a>}}
+\subsection{Method \code{transformCircle()}}{
 Transform a circle by the reference homothety.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Homothety$rotateCircle(circ)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Homothety$transformCircle(circ)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

@@ -5,7 +5,7 @@
 \title{R6 class representing a (non-uniform) scaling}
 \description{
 A (non-uniform) scaling is given by a center, a direction,
- and a scale factor.
+and a scale factor.
 }
 \examples{
 
@@ -36,7 +36,7 @@ CRC Press, 2009.
 
 \item{\code{direction}}{get or set the direction}
 
-\item{\code{scale}}{get or set the scale factor of the homothety}
+\item{\code{scale}}{get or set the scale factor}
 }
 \if{html}{\out{</div>}}
 }
@@ -67,7 +67,7 @@ Create a new \code{Scaling} object.
 
 \item{\code{direction}}{a vector, the direction of the scaling}
 
-\item{\code{scale}}{a number, the scale factor of the homothety}
+\item{\code{scale}}{a number, the scale factor}
 }
 \if{html}{\out{</div>}}
 }
@@ -102,7 +102,7 @@ Show instance of a \code{Scaling} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
 \subsection{Method \code{transform()}}{
-Transform a point by the reference scaling.
+Transform a point or several points by the reference scaling.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Scaling$transform(M)}\if{html}{\out{</div>}}
 }
@@ -110,7 +110,7 @@ Transform a point by the reference scaling.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{a point}
+\item{\code{M}}{a point or a two-column matrix of points, one point per row}
 }
 \if{html}{\out{</div>}}
 }

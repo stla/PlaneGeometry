@@ -117,17 +117,29 @@ Affine <- R6Class(
       Affine$new(M[-3L,-3L], M[-3L,3L])
     },
 
-    #' @description Transform a point by the reference affine transformation.
-    #' @param M a point
+    #' @description Transform a point or several points by the reference affine transformation.
+    #' @param M a point or a two-column matrix of points, one point per row
     transform = function(M){
-      M <- as.vector(M)
+      if(is.matrix(M)){
+        stopifnot(
+          ncol(M) == 2L,
+          is.numeric(M)
+        )
+      }else{
+        M <- as.vector(M)
+        stopifnot(
+          is.numeric(M),
+          length(M) == 2L
+        )
+        M <- rbind(M)
+      }
       stopifnot(
-        is.numeric(M),
-        length(M) == 2L,
         !any(is.na(M)),
         all(is.finite(M))
       )
-      c(private[[".A"]] %*% M) + private[[".b"]]
+      out <- t(private[[".A"]] %*% t(M) + private[[".b"]])
+      if(nrow(out) == 1L) out <- c(out)
+      out
     },
 
     #' @description Transform a line by the reference affine transformation.

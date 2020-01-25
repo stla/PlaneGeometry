@@ -40,8 +40,11 @@ R$getMatrix() \%*\% c(P,1)
 \item \href{#method-new}{\code{Rotation$new()}}
 \item \href{#method-print}{\code{Rotation$print()}}
 \item \href{#method-rotate}{\code{Rotation$rotate()}}
+\item \href{#method-transform}{\code{Rotation$transform()}}
 \item \href{#method-rotateCircle}{\code{Rotation$rotateCircle()}}
+\item \href{#method-transformCircle}{\code{Rotation$transformCircle()}}
 \item \href{#method-rotateLine}{\code{Rotation$rotateLine()}}
+\item \href{#method-transformLine}{\code{Rotation$transformLine()}}
 \item \href{#method-getMatrix}{\code{Rotation$getMatrix()}}
 \item \href{#method-asAffine}{\code{Rotation$asAffine()}}
 \item \href{#method-clone}{\code{Rotation$clone()}}
@@ -97,7 +100,7 @@ Show instance of a \code{Rotation} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotate"></a>}}
 \subsection{Method \code{rotate()}}{
-Rotate a point.
+Rotate a point or several points.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Rotation$rotate(M)}\if{html}{\out{</div>}}
 }
@@ -105,7 +108,23 @@ Rotate a point.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{a point}
+\item{\code{M}}{a point or a two-column matrix of points, one point per row}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transform"></a>}}
+\subsection{Method \code{transform()}}{
+An alias of \code{rotate}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$transform(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point or a two-column matrix of points, one point per row}
 }
 \if{html}{\out{</div>}}
 }
@@ -130,11 +149,49 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformCircle"></a>}}
+\subsection{Method \code{transformCircle()}}{
+An alias of \code{rotateCircle}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$transformCircle(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotateLine"></a>}}
 \subsection{Method \code{rotateLine()}}{
 Rotate a line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Rotation$rotateLine(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformLine"></a>}}
+\subsection{Method \code{transformLine()}}{
+An alias of \code{rotateLine}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$transformLine(line)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

@@ -312,6 +312,29 @@ Ellipse <- R6Class(
       }
     },
 
+    #' @description Semi-major axis of the ellipse.
+    #' @return A segment (\code{Line} object).
+    semiMajorAxis = function(){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      O_A <- a * c(cos(alpha), sin(alpha))
+      Line$new(O, O + O_A, FALSE, FALSE)
+    },
+
+    #' @description Semi-minor axis of the ellipse.
+    #' @return A segment (\code{Line} object).
+    semiMinorAxis = function(){
+      O <- private[[".center"]]
+      b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      O_B <- b * c(-sin(alpha), cos(alpha))
+      Line$new(O, O + O_B, FALSE, FALSE)
+    },
+
+
     #' @description Foci of the reference ellipse.
     #' @return A list with the two foci.
     foci = function(){
