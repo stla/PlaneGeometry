@@ -82,12 +82,24 @@ Affine <- R6Class(
     #' @param ... ignored
     #' @examples Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
     print = function(...) {
-      captA <- capture.output(private[[".A"]])[-1L]
+      A <- private[[".A"]]
+      captA <- capture.output(A)[-1L]
       captA[1L] <- stringr::str_trim(substring(captA[1L], 6L), "left")
       captA[2L] <- stringr::str_trim(substring(captA[2L], 6L), "left")
-      captB <- capture.output(cbind(private[[".b"]]))[-1L]
+      if(A[1L,1L] >= 0 && A[2L,1L] < 0){
+        captA[1L] <- paste0(" ", captA[1L])
+      }else if(A[1L,1L] < 0 && A[2L,1L] >= 0){
+        captA[2L] <- paste0(" ", captA[2L])
+      }
+      b <- private[[".b"]]
+      captB <- capture.output(cbind(b))[-1L]
       captB[1L] <- stringr::str_trim(substring(captB[1L], 6L), "left")
       captB[2L] <- stringr::str_trim(substring(captB[2L], 6L), "left")
+      if(b[1L] >= 0 && b[2L] < 0){
+        captB[1L] <- paste0(" ", captB[1L])
+      }else if(b[1L] < 0 && b[2L] >= 0){
+        captB[2L] <- paste0(" ", captB[2L])
+      }
       cat("Affine transformation Ax+b\n")
       cat(" A: / ", captA[1L], " \\\n    \\ ", captA[2L], " /\n", sep = "")
       cat(" b: / ", captB[1L], " \\\n    \\ ", captB[2L], " /\n", sep = "")
