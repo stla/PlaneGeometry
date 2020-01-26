@@ -9,7 +9,7 @@ Description: An extensive set of plane geometry routines. Provides R6 classes re
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: R6, methods, graphics, stringr
+Imports: R6, methods, graphics, stringr, gsl
 RoxygenNote: 7.0.2
 Suggests: 
     testthat,

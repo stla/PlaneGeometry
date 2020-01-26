@@ -6,7 +6,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
-# #' @importFrom DescTools DrawArc
+#' @importFrom gsl ellint_Ecomp
 EllipticalArc <- R6Class(
 
   "EllipticalArc",
@@ -180,7 +180,7 @@ EllipticalArc <- R6Class(
     #' @description Complementary elliptical arc of the reference elliptical arc.
     #' @examples ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
     #' arc <- EllipticalArc$new(ell, 30, 60)
-    #' plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
+    #' plot(NULL, type = "n", asp = 1, xlim = c(-8,0), ylim = c(-3.2,3.2),
     #'      xlab = NA, ylab = NA)
     #' draw(arc, lwd = 3, col = "red")
     #' draw(arc$complementaryArc(), lwd = 3, col = "green")
@@ -205,10 +205,65 @@ EllipticalArc <- R6Class(
       theta <- alpha1 +
         seq(
           from = 0,
-          to = ifelse(dalpha < 0, dalpha + 2*pi, dalpha),
+          to = ifelse(dalpha <= 0, dalpha + 2*pi, dalpha),
           length.out = npoints
         )
       private[[".ell"]]$pointFromAngle(theta, FALSE)
+    },
+
+    #' @description The length of the elliptical arc.
+    #' @param ... passed to \code{\link{integrate}}
+    #' @return The output of \code{\link{integrate}}, or a number in
+    #' special cases.
+    length = function(...){
+      a <- private[[".ell"]]$rmajor
+      b <- private[[".ell"]]$rminor
+      alpha1 <- private[[".alpha1"]]
+      alpha2 <- private[[".alpha2"]]
+      degrees <- private[[".degrees"]]
+      if(degrees){
+        if(abs(alpha1-alpha2) == 180){
+          return(2*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+        }
+        if(abs(alpha1-alpha2) == 360){
+          return(4*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+        }
+        flatAngle <- 180
+        k <- pi/180
+      }else{
+        if(abs(alpha1-alpha2) == pi){
+          return(2*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+        }
+        if(abs(alpha1-alpha2) == 2*pi){
+          return(4*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+        }
+        flatAngle <- pi
+        k <- 1
+      }
+      # t1 <- atan(a/b*tan(theta1)) %% (2*pi)
+      # t2 <- atan(a/b*tan(theta2)) %% (2*pi)
+      # d1 <- t1 - t1 %% (pi/2)
+      # d2 <- t2 - t2 %% (pi/2)
+      # d <- abs(d1-d2)
+      # if(d == 0){ # t1 and t2 in same quadrant
+      #   integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2)$value
+      # }else{
+      #   quadrantLength <- a * gsl::ellint_Ecomp(sqrt(1-b^2/a^2))
+      #   if(d2 == 3*pi/2){ # t1 and t2 in adjacent quadrants
+      #     quadrantLength -
+      #     integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), 0, t1 %% (pi/2))$value +
+      #       integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), 3*pi/2, t2)$value
+      #   }
+      # }
+      if(alpha1 > alpha2) alpha1 <- alpha1 - 2*flatAngle
+      delta <- alpha1 - alpha1 %% flatAngle
+      alpha1 <- alpha1 + delta
+      alpha2 <- alpha2 + delta
+      theta1 <- alpha1*k
+      theta2 <- alpha2*k
+      t1 <- atan2(a/b, 1/tan(theta1)) + theta1 - theta1 %% pi
+      t2 <- atan2(a/b, 1/tan(theta2)) + theta2 - theta2 %% pi
+      integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2, ...)
     }
   )
 )

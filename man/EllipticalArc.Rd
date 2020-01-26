@@ -23,7 +23,7 @@ EllipticalArc$new(ell, 45, 90)
 
 ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
 arc <- EllipticalArc$new(ell, 30, 60)
-plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
+plot(NULL, type = "n", asp = 1, xlim = c(-8,0), ylim = c(-3.2,3.2),
      xlab = NA, ylab = NA)
 draw(arc, lwd = 3, col = "red")
 draw(arc$complementaryArc(), lwd = 3, col = "green")
@@ -51,6 +51,7 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 \item \href{#method-isEqual}{\code{EllipticalArc$isEqual()}}
 \item \href{#method-complementaryArc}{\code{EllipticalArc$complementaryArc()}}
 \item \href{#method-path}{\code{EllipticalArc$path()}}
+\item \href{#method-length}{\code{EllipticalArc$length()}}
 \item \href{#method-clone}{\code{EllipticalArc$clone()}}
 }
 }
@@ -152,7 +153,7 @@ Complementary elliptical arc of the reference elliptical arc.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
 arc <- EllipticalArc$new(ell, 30, 60)
-plot(NULL, type = "n", asp = 1, xlim = c(-1,1), ylim = c(-1,1),
+plot(NULL, type = "n", asp = 1, xlim = c(-8,0), ylim = c(-3.2,3.2),
      xlab = NA, ylab = NA)
 draw(arc, lwd = 3, col = "red")
 draw(arc$complementaryArc(), lwd = 3, col = "green")
@@ -180,6 +181,26 @@ The reference elliptical arc as a path.
 \subsection{Returns}{
 A matrix with two columns \code{x} and \code{y} of length
 \code{npoints}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-length"></a>}}
+\subsection{Method \code{length()}}{
+The length of the elliptical arc.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{EllipticalArc$length(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{passed to \code{\link{integrate}}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The output of \code{\link{integrate}}, or a number in
+special cases.
 }
 }
 \if{html}{\out{<hr>}}
