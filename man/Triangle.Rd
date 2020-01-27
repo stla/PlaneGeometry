@@ -149,6 +149,7 @@ incircle$center
 \item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
+\item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
 }
 }
@@ -686,6 +687,28 @@ Translate the triangle.
 }
 \subsection{Returns}{
 A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-randomPoints"></a>}}
+\subsection{Method \code{randomPoints()}}{
+Random points on or in the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$randomPoints(n, where = "in")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{n}}{an integer, the desired number of points}
+
+\item{\code{where}}{\code{"in"} to generate inside the triangle,
+\code{"on"} to generate on the triangle}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The generated points in a two columns matrix with \code{n} rows.
 }
 }
 \if{html}{\out{<hr>}}

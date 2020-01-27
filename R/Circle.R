@@ -316,8 +316,23 @@ Circle <- R6Class(
     asEllipse = function(){
       r <- private[[".radius"]]
       Ellipse$new(private[[".center"]], r, r, 0)
-    }
+    },
 
+    #' @description Random points on or in the reference circle.
+    #' @param n an integer, the desired number of points
+    #' @param where \code{"in"} to generate inside the circle,
+    #' \code{"on"} to generate on the circle
+    #' @return The generated points in a two columns matrix with \code{n} rows.
+    randomPoints = function(n, where = "in"){
+      where <- match.arg(where, c("in", "on"))
+      if(where == "in"){
+        sims <- uniformly::runif_in_sphere(n, 2, private[[".radius"]])
+        sweep(sims, 2L, private[[".center"]], "+")
+      }else{
+        sims <- uniformly::runif_on_sphere(n, 2, private[[".radius"]])
+        sweep(sims, 2L, private[[".center"]], "+")
+      }
+    }
   )
 )
 

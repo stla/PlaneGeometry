@@ -58,6 +58,17 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
 draw(ell, lwd = 2)
 draw(reglines$YonX, lwd = 2, col = "blue")
 draw(reglines$XonY, lwd = 2, col = "green")
+
+## ------------------------------------------------
+## Method `Ellipse$randomPoints`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+pts <- ell$randomPoints(100)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, lwd = 2)
+points(pts, pch = 19, col = "blue")
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -92,6 +103,7 @@ draw(reglines$XonY, lwd = 2, col = "green")
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
 \item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
+\item \href{#method-randomPoints}{\code{Ellipse$randomPoints()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
 }
@@ -407,6 +419,41 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
 draw(ell, lwd = 2)
 draw(reglines$YonX, lwd = 2, col = "blue")
 draw(reglines$XonY, lwd = 2, col = "green")
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-randomPoints"></a>}}
+\subsection{Method \code{randomPoints()}}{
+Random points on or in the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$randomPoints(n, where = "in")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{n}}{an integer, the desired number of points}
+
+\item{\code{where}}{\code{"in"} to generate inside the ellipse,
+\code{"on"} to generate on the ellipse}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The generated points in a two columns matrix with \code{n} rows.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
+pts <- ell$randomPoints(100)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+     xlab = NA, ylab = NA)
+draw(ell, lwd = 2)
+points(pts, pch = 19, col = "blue")
 }
 \if{html}{\out{</div>}}
 

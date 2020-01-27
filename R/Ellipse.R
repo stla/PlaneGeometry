@@ -232,6 +232,7 @@ Ellipse <- R6Class(
     #' @description Check whether a point is contained in the reference ellipse.
     #' @param M a point
     contains = function(M){
+      x <- M[1L]; y <- M[2L]
       ABCDEF <- as.list(self$equation())
       with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F) <= 0
     },
@@ -442,6 +443,29 @@ Ellipse <- R6Class(
         YonX = Line$new(pts[1,], pts[2,], FALSE, FALSE),
         XonY = Line$new(pts[3,], pts[4,], FALSE, FALSE)
       )
+    },
+
+    #' @description Random points on or in the reference ellipse.
+    #' @param n an integer, the desired number of points
+    #' @param where \code{"in"} to generate inside the ellipse,
+    #' \code{"on"} to generate on the ellipse
+    #' @return The generated points in a two columns matrix with \code{n} rows.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
+    #' pts <- ell$randomPoints(100)
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #'      xlab = NA, ylab = NA)
+    #' draw(ell, lwd = 2)
+    #' points(pts, pch = 19, col = "blue")
+    randomPoints = function(n, where = "in"){
+      where <- match.arg(where, c("in", "on"))
+      S <- self$matrix()
+      if(where == "in"){
+        sims <- uniformly::runif_in_ellipsoid(n, S, 1)
+        sweep(sims, 2L, private[[".center"]], "+")
+      }else{
+        sims <- uniformly::runif_on_ellipsoid(n, S, 1)
+        sweep(sims, 2L, private[[".center"]], "+")
+      }
     }
   )
 )

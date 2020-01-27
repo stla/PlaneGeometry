@@ -97,6 +97,7 @@ draw(arc, lwd = 3, col = "blue")
 \item \href{#method-translate}{\code{Circle$translate()}}
 \item \href{#method-invert}{\code{Circle$invert()}}
 \item \href{#method-asEllipse}{\code{Circle$asEllipse()}}
+\item \href{#method-randomPoints}{\code{Circle$randomPoints()}}
 \item \href{#method-clone}{\code{Circle$clone()}}
 }
 }
@@ -446,6 +447,28 @@ Convert the reference circle to an \code{Ellipse} object.
 \if{html}{\out{<div class="r">}}\preformatted{Circle$asEllipse()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-randomPoints"></a>}}
+\subsection{Method \code{randomPoints()}}{
+Random points on or in the reference circle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$randomPoints(n, where = "in")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{n}}{an integer, the desired number of points}
+
+\item{\code{where}}{\code{"in"} to generate inside the circle,
+\code{"on"} to generate on the circle}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The generated points in a two columns matrix with \code{n} rows.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

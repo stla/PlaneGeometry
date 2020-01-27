@@ -685,6 +685,22 @@ Triangle <- R6Class(
       )
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       Triangle$new(A + v, B + v, C + v)
+    },
+
+    #' @description Random points on or in the reference triangle.
+    #' @param n an integer, the desired number of points
+    #' @param where \code{"in"} to generate inside the triangle,
+    #' \code{"on"} to generate on the triangle
+    #' @return The generated points in a two columns matrix with \code{n} rows.
+    randomPoints = function(n, where = "in"){
+      where <- match.arg(where, c("in", "on"))
+      if(where == "in"){
+        uniformly::runif_in_triangle(n, private[[".A"]], private[[".B"]],
+                                     private[[".C"]])
+      }else{
+        uniformly::runif_on_triangle(n, private[[".A"]], private[[".B"]],
+                                     private[[".C"]])
+      }
     }
 
   )
