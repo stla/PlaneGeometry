@@ -18,7 +18,7 @@ C <- shear$transform(R)
 D <- shear$transform(S)
 plot(0, 0, type = "n", asp = 1, xlim = c(0,1), ylim = c(0,2))
 lines(rbind(P,Q,R,S,P), lwd = 2) # unit square
-lines(rbind(A,B,C,D,A), lwd = 2, col = "blue") # image by shear
+lines(rbind(A,B,C,D,A), lwd = 2, col = "blue") # image by the shear
 
 
 ## ------------------------------------------------
@@ -33,6 +33,12 @@ Shear$new(c(1,1), c(1,3), 0.5, 30)
 
 S <- Shear$new(c(1,1), c(1,3), 0.5, 30)
 S$getMatrix()
+
+## ------------------------------------------------
+## Method `Shear$asAffine`
+## ------------------------------------------------
+
+Shear$new(c(0,0), c(1,0), 1, atan(30), FALSE)$asAffine()
 }
 \references{
 R. Goldman,
@@ -161,6 +167,14 @@ S$getMatrix()
 Convert the reference shear to an \code{Affine} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Shear$asAffine()}\if{html}{\out{</div>}}
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{Shear$new(c(0,0), c(1,0), 1, atan(30), FALSE)$asAffine()
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

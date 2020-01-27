@@ -13,7 +13,7 @@
 #' D <- shear$transform(S)
 #' plot(0, 0, type = "n", asp = 1, xlim = c(0,1), ylim = c(0,2))
 #' lines(rbind(P,Q,R,S,P), lwd = 2) # unit square
-#' lines(rbind(A,B,C,D,A), lwd = 2, col = "blue") # image by shear
+#' lines(rbind(A,B,C,D,A), lwd = 2, col = "blue") # image by the shear
 #'
 #' @references R. Goldman,
 #' \emph{An Integrated Introduction to Computer Graphics and Geometric Modeling}.
@@ -254,6 +254,7 @@ Shear <- R6Class(
     },
 
     #' @description Convert the reference shear to an \code{Affine} object.
+    #' @examples Shear$new(c(0,0), c(1,0), 1, atan(30), FALSE)$asAffine()
     asAffine = function(){
       M <- self$getMatrix()
       Affine$new(M[-3L,-3L], M[-3L,3L])
