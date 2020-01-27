@@ -73,6 +73,13 @@ Projection <- R6Class(
 
     #' @description Project a point.
     #' @param M a point
+    #' @examples D <- Line$new(c(1,1), c(5,5))
+    #' Delta <- Line$new(c(0,0), c(3,4))
+    #' P <- Projection$new(D, Delta)
+    #' M <- c(1,3)
+    #' Mprime <- P$project(M)
+    #' D$includes(Mprime) # should be TRUE
+    #' Delta$isParallel(Line$new(M, Mprime)) # should be TRUE
     project = function(M) {
       D <- private[[".D"]]
       if(D$includes(M)) return(M)
@@ -102,13 +109,6 @@ Projection <- R6Class(
       col1 <- self$project(c(1,0)) - b
       col2 <- self$project(c(0,1)) - b
       cbind(rbind(cbind(col1,col2),0), c(b,1))
-    },
-
-    #' @description Convert the reference projection to an \code{Affine} object.
-    asAffine = function(){
-      M <- self$getMatrix()
-      Affine$new(M[-3L,-3L], M[-3L,3L])
     }
-
   )
 )

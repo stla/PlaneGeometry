@@ -209,7 +209,7 @@ Line <- R6Class(
       Q1 <- line$A; Q2 <- line$B
       dx1 <- P1[1L] - P2[1L]; dx2 <- Q1[1L] - Q2[1L]
       dy1 <- P1[2L] - P2[2L]; dy2 <- Q1[2L] - Q2[2L]
-      det(rbind(c(dx1, dy1), c(dx2, dy2))) == 0
+      abs(det(rbind(c(dx1, dy1), c(dx2, dy2)))) < sqrt(.Machine$double.eps)
     },
 
     #' @description Whether a point belongs to the reference line.

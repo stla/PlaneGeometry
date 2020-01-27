@@ -19,6 +19,18 @@ Delta <- Line$new(c(0,0), c(3,4))
 Projection$new(D, Delta)
 
 ## ------------------------------------------------
+## Method `Projection$project`
+## ------------------------------------------------
+
+D <- Line$new(c(1,1), c(5,5))
+Delta <- Line$new(c(0,0), c(3,4))
+P <- Projection$new(D, Delta)
+M <- c(1,3)
+Mprime <- P$project(M)
+D$includes(Mprime) # should be TRUE
+Delta$isParallel(Line$new(M, Mprime)) # should be TRUE
+
+## ------------------------------------------------
 ## Method `Projection$getMatrix`
 ## ------------------------------------------------
 
@@ -44,7 +56,6 @@ P$getMatrix() \%*\% c(M,1)
 \item \href{#method-project}{\code{Projection$project()}}
 \item \href{#method-transform}{\code{Projection$transform()}}
 \item \href{#method-getMatrix}{\code{Projection$getMatrix()}}
-\item \href{#method-asAffine}{\code{Projection$asAffine()}}
 \item \href{#method-clone}{\code{Projection$clone()}}
 }
 }
@@ -108,6 +119,20 @@ Project a point.
 }
 \if{html}{\out{</div>}}
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{D <- Line$new(c(1,1), c(5,5))
+Delta <- Line$new(c(0,0), c(3,4))
+P <- Projection$new(D, Delta)
+M <- c(1,3)
+Mprime <- P$project(M)
+D$includes(Mprime) # should be TRUE
+Delta$isParallel(Line$new(M, Mprime)) # should be TRUE
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
@@ -145,15 +170,6 @@ P$getMatrix() \%*\% c(M,1)
 }
 \if{html}{\out{</div>}}
 
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\subsection{Method \code{asAffine()}}{
-Convert the reference projection to an \code{Affine} object.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Projection$asAffine()}\if{html}{\out{</div>}}
 }
 
 }
