@@ -6,6 +6,9 @@
 \usage{
 EllipseFromEquation(A, B, C, D, E, F)
 }
+\arguments{
+\item{A, B, C, D, E, F}{the coefficients of the equation}
+}
 \value{
 An \code{Ellipse} object.
 }

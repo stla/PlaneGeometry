@@ -6,6 +6,9 @@
 \usage{
 EllipseEquationFromFivePoints(P1, P2, P3, P4, P5)
 }
+\arguments{
+\item{P1, P2, P3, P4, P5}{the five points}
+}
 \value{
 A named numeric vector.
 }

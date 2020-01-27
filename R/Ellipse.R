@@ -499,6 +499,7 @@ EllipseFromCenterAndMatrix <- function(center, S){
 #' Ellipse equation from five points
 #' @description The coefficients of the implicit equation of an ellipse from
 #' five points on this ellipse.
+#' @param P1,P2,P3,P4,P5 the five points
 #' @return A named numeric vector.
 #' @export
 #' @details The implicit equation of the ellipse is
@@ -528,6 +529,7 @@ EllipseEquationFromFivePoints <- function(P1, P2, P3, P4, P5){
 
 #' Ellipse from its implicit equation
 #' @description Return an ellipse from the coefficients of its implicit equation.
+#' @param A,B,C,D,E,F the coefficients of the equation
 #' @return An \code{Ellipse} object.
 #' @export
 #' @details The implicit equation of the ellipse is
@@ -554,6 +556,7 @@ EllipseFromEquation <- function(A, B, C, D, E, F){
 
 #' Ellipse from five points
 #' @description Return an ellipse from five given points on this ellipse.
+#' @param P1,P2,P3,P4,P5 the five points
 #' @return An \code{Ellipse} object.
 #' @export
 #' @examples ell <- Ellipse$new(c(2,3), 5, 4, 30)
