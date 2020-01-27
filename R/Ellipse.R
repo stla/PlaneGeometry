@@ -376,7 +376,7 @@ Ellipse <- R6Class(
     #' @description Tangents of the reference ellipse.
     #' @param t an angle, there is one tangent for each value of \code{t}
     #' modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
-    #' tangents at the vertices of the ellipse.
+    #' tangents at the vertices of the ellipse
     #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
     #' tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
     #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
@@ -384,6 +384,13 @@ Ellipse <- R6Class(
     #' draw(ell, col = "yellow")
     #' invisible(lapply(tangents, draw, col = "blue"))
     tangent = function(t){
+      t <- as.vector(t)
+      stopifnot(
+        is.numeric(t),
+        length(t) == 1L,
+        !is.na(t),
+        is.finite(t)
+      )
       O <- private[[".center"]]
       a <- private[[".rmajor"]]; b <- private[[".rminor"]]
       alpha <- private[[".alpha"]]

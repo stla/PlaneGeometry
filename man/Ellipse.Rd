@@ -363,7 +363,7 @@ Tangents of the reference ellipse.
 \describe{
 \item{\code{t}}{an angle, there is one tangent for each value of \code{t}
 modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
-tangents at the vertices of the ellipse.}
+tangents at the vertices of the ellipse}
 }
 \if{html}{\out{</div>}}
 }

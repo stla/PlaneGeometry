@@ -26,6 +26,17 @@ circ
 Circle$new(c(0,0), 2)
 
 ## ------------------------------------------------
+## Method `Circle$tangent`
+## ------------------------------------------------
+
+circ <- Circle$new(c(1,1), 5)
+tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), circ$tangent)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-4,6),
+     xlab = NA, ylab = NA)
+draw(circ, lwd = 2, col = "yellow")
+invisible(lapply(tangents, draw, col = "blue"))
+
+## ------------------------------------------------
 ## Method `Circle$orthogonalThroughTwoPointsOnCircle`
 ## ------------------------------------------------
 
@@ -74,6 +85,7 @@ draw(arc, lwd = 3, col = "blue")
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
 \item \href{#method-pointFromAngle}{\code{Circle$pointFromAngle()}}
+\item \href{#method-tangent}{\code{Circle$tangent()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
 \item \href{#method-includes}{\code{Circle$includes()}}
 \item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
@@ -165,6 +177,36 @@ Get a point on the reference circle from its polar angle.
 \subsection{Returns}{
 The point on the circle with polar angle \code{alpha}.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-tangent"></a>}}
+\subsection{Method \code{tangent()}}{
+Tangent of the reference circle at a given polar angle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$tangent(alpha)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha}}{an angle in radians, there is one tangent for each value of
+\code{alpha} modulo \code{2*pi}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{circ <- Circle$new(c(1,1), 5)
+tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), circ$tangent)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-4,6),
+     xlab = NA, ylab = NA)
+draw(circ, lwd = 2, col = "yellow")
+invisible(lapply(tangents, draw, col = "blue"))
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isEqual"></a>}}

@@ -93,6 +93,29 @@ Circle <- R6Class(
       private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
     },
 
+    #' @description Tangent of the reference circle at a given polar angle.
+    #' @param alpha an angle in radians, there is one tangent for each value of
+    #' \code{alpha} modulo \code{2*pi}
+    #' @examples circ <- Circle$new(c(1,1), 5)
+    #' tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), circ$tangent)
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
+    #'      xlab = NA, ylab = NA)
+    #' draw(circ, lwd = 2, col = "yellow")
+    #' invisible(lapply(tangents, draw, col = "blue"))
+    tangent = function(alpha){
+      t <- as.vector(alpha)
+      stopifnot(
+        is.numeric(t),
+        length(t) == 1L,
+        !is.na(t),
+        is.finite(t)
+      )
+      r <- private[[".radius"]]
+      cost <- cos(t); sint <- sin(t)
+      T <- private[[".center"]] + r*c(cost, sint)
+      Line$new(T, T + c(-sint,cost))
+    },
+
     #' @description Check whether the reference circle equals another circle.
     #' @param circ a \code{Circle} object
     isEqual = function(circ){
