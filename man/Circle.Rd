@@ -31,7 +31,7 @@ Circle$new(c(0,0), 2)
 
 circ <- Circle$new(c(1,1), 5)
 tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), circ$tangent)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-4,6),
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
      xlab = NA, ylab = NA)
 draw(circ, lwd = 2, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
@@ -198,7 +198,7 @@ Tangent of the reference circle at a given polar angle.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{circ <- Circle$new(c(1,1), 5)
 tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), circ$tangent)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-4,6),
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
      xlab = NA, ylab = NA)
 draw(circ, lwd = 2, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))

@@ -201,6 +201,11 @@ EllipticalArc <- R6Class(
       k <- ifelse(private[[".degrees"]], pi/180, 1)
       alpha1 <- (private[[".alpha1"]]*k) #%% (2*pi)
       alpha2 <- (private[[".alpha2"]]*k) #%% (2*pi)
+      if((alpha2 - alpha1) %% (2*pi) < sqrt(.Machine$double.eps)){
+        path <- private[[".ell"]]$path(npoints-1L)
+        path <- rbind(path, path[1L,])
+        return(path)
+      }
       dalpha <- alpha2 %% (2*pi) - alpha1 %% (2*pi)
       theta <- alpha1 +
         seq(
