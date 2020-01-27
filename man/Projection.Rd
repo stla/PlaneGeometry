@@ -8,6 +8,10 @@ A projection on a line \code{D} parallel to another line
 \code{Delta} is given by the line of projection (\code{D})
 and the directrix line (\code{Delta}).
 }
+\note{
+For an orthogonal projection, you can use the \code{projection}
+method of the \code{\link{Line}} R6 class.
+}
 \examples{
 
 ## ------------------------------------------------

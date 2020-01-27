@@ -4,6 +4,9 @@
 #' \code{Delta} is given by the line of projection (\code{D})
 #' and the directrix line (\code{Delta}).
 #'
+#' @note For an orthogonal projection, you can use the \code{projection}
+#' method of the \code{\link{Line}} R6 class.
+#'
 #' @export
 #' @importFrom R6 R6Class
 Projection <- R6Class(
@@ -81,6 +84,13 @@ Projection <- R6Class(
     #' D$includes(Mprime) # should be TRUE
     #' Delta$isParallel(Line$new(M, Mprime)) # should be TRUE
     project = function(M) {
+      M <- as.vector(M)
+      stopifnot(
+        is.numeric(M),
+        length(M) == 2L,
+        !any(is.na(M)),
+        all(is.finite(M))
+      )
       D <- private[[".D"]]
       if(D$includes(M)) return(M)
       Delta <- private[[".Delta"]]
