@@ -77,7 +77,6 @@ draw.Arc = function(x, npoints = 100L, ...) {
 }
 
 #' @rdname draw
-# #' @importFrom DescTools DrawEllipse
 #' @export
 draw.Ellipse = function(x, npoints = 100L, ...) {
   alpha <- x$alpha
