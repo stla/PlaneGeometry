@@ -229,7 +229,7 @@ Line <- R6Class(
         if(!test) return(FALSE)
       }
       extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
-      if(!strict || (extendA && extendB)) return(test)
+      if(!strict || (extendA && extendB)) return(.collinear(A, B, M))
       if(!extendA && !extendB){
         dotprod <- c(crossprod(A-M, B-M))
         if(dotprod <= 0){
@@ -239,14 +239,14 @@ Line <- R6Class(
           FALSE
         }
       }else if(extendA){
-        if((M-B)[1L] / (A-B)[1L] > 0){
+        if(any((M-B)*(A-B)>0)){ #(M-B)[1L] * (A-B)[1L] > 0){
           TRUE
         }else{
           message("The point is on the line (AB), but not on the half-line (AB]")
           FALSE
         }
       }else{ # extendB
-        if((M-A)[1L] / (B-A)[1L] > 0){
+        if(any((M-A)*(B-A)>0)){#(M-A)[1L] * (B-A)[1L] >= 0){
           TRUE
         }else{
           message("The point is on the line (AB), but not on the half-line [AB)")

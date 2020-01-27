@@ -311,22 +311,26 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
+        if(isTRUE(all.equal(origin, A))) return(A)
+        if(isTRUE(all.equal(origin, B))) return(B)
         return(NULL)
       }
       if(line2$extendB){
         extend <- D; origin <- C
         S1 <- A; S2 <- B
         line <- Line$new(extend, origin, TRUE, FALSE)
-        if(suppressMessages(line$includes(S1, checkCollinear = FALSE)) &&
-           suppressMessages(line$includes(S2, checkCollinear = FALSE))){
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, S2, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S1, checkCollinear = FALSE))){
+        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, origin, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S2, checkCollinear = FALSE))){
+        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
+        if(isTRUE(all.equal(origin, A))) return(A)
+        if(isTRUE(all.equal(origin, B))) return(B)
         return(NULL)
       }
       # case 4: two segments

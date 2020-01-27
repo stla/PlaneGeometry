@@ -48,6 +48,9 @@
 }
 
 .collinear <- function(A, B, C, tol = 0) {
+  notdistinct <-
+    isTRUE(all.equal(A,B)) || isTRUE(all.equal(A,C)) || isTRUE(all.equal(B,C))
+  if(notdistinct) return(TRUE)
   AB <- B-A; AC <- C-A
   z <- (AB[1] - 1i*AB[2]) * (AC[1] + 1i*AC[2])
   re <- Re(z); im <- Im(z)
