@@ -2,7 +2,7 @@
 % Please edit documentation in R/Ellipse.R
 \name{EllipseEquationFromFivePoints}
 \alias{EllipseEquationFromFivePoints}
-\title{Ellipse equation from five points.}
+\title{Ellipse equation from five points}
 \usage{
 EllipseEquationFromFivePoints(P1, P2, P3, P4, P5)
 }

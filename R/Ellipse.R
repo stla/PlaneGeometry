@@ -496,7 +496,7 @@ EllipseFromCenterAndMatrix <- function(center, S){
   Ellipse$new(center, a, b, alpha)
 }
 
-#' Ellipse equation from five points.
+#' Ellipse equation from five points
 #' @description The coefficients of the implicit equation of an ellipse from
 #' five points on this ellipse.
 #' @return A named numeric vector.
@@ -518,9 +518,50 @@ EllipseEquationFromFivePoints <- function(P1, P2, P3, P4, P5){
   A <- det(M[,-1L])
   B <- -det(M[,-2L])
   C <- det(M[,-3L])
-  if(B*B-4*A*C >= 0) stop("The five points do not lie on an ellipse")
+  if(B*B-4*A*C >= 0) stop("The five points do not lie on an ellipse.")
   D <- -det(M[,-4L])
   E <- det(M[,-5L])
   F <- -det(M[,-6L])
   c(A = A, B = B, C = C, D = D, E = E, F = F)
+}
+
+
+#' Ellipse from its implicit equation
+#' @description Return an ellipse from the coefficients of its implicit equation.
+#' @return An \code{Ellipse} object.
+#' @export
+#' @details The implicit equation of the ellipse is
+#' \code{Ax² + Bxy + Cy² + Dx + Ey + F = 0}. This function returns the ellipse
+#' given A, B, C, D, E and F.
+#' @examples ell <- Ellipse$new(c(2,3), 5, 4, 30)
+#' cf <- ell$equation()
+#' ell2 <- EllipseFromEquation(cf[1], cf[2], cf[3], cf[4], cf[5], cf[6])
+#' ell$isEqual(ell2)
+EllipseFromEquation <- function(A, B, C, D, E, F){
+  if(B*B-4*A*C >= 0) stop("These parameters do not define an ellipse.")
+  M0 <- matrix(c(F, D/2, E/2, D/2, A, B/2, E/2, B/2, C), 3L, 3L)
+  M <- matrix(c(A, B/2, B/2, C), 2L, 2L)
+  lambda <- eigen(M, symmetric = TRUE)$values
+  if(abs(lambda[1L] - A) >= abs(lambda[1L] - C)) lambda <- rev(lambda)
+  detM0 <- det(M0); detM <- det(M)
+  a <- sqrt(-detM0 / (detM*lambda[1L]))
+  b <- sqrt(-detM0 / (detM*lambda[2L]))
+  x <- B*E - 2*C*D
+  y <- B*D - 2*A*E
+  phi <- pi/2 - atan((A-C)/B)*2
+  Ellipse$new(c(x,y)/(4*A*C - B*B), a, b, phi*180/pi)
+}
+
+#' Ellipse from five points
+#' @description Return an ellipse from five given points on this ellipse.
+#' @return An \code{Ellipse} object.
+#' @export
+#' @examples ell <- Ellipse$new(c(2,3), 5, 4, 30)
+#' set.seed(666)
+#' pts <- ell$randomPoints(5, "on")
+#' ell2 <- EllipseFromFivePoints(pts[1,],pts[2,],pts[3,],pts[4,],pts[5,])
+#' ell$isEqual(ell2)
+EllipseFromFivePoints <- function(P1, P2, P3, P4, P5){
+  cf <- EllipseEquationFromFivePoints(P1, P2, P3, P4, P5)
+  EllipseFromEquation(cf[1L], cf[2L], cf[3L], cf[4L], cf[5L], cf[6L])
 }
