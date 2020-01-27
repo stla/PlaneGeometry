@@ -1,7 +1,18 @@
 #' @title R6 class representing a (non-uniform) scaling
 #'
-#' @description A (non-uniform) scaling is given by a center, a direction,
+#' @description A (non-uniform) scaling is given by a center, a direction vector,
 #' and a scale factor.
+#'
+#' @examples Q <- c(1,1); w <- c(1,3); s <- 2
+#' S <- Scaling$new(Q, w, s)
+#' # the center is mapped to itself:
+#' S$transform(Q)
+#' # any vector \code{u} parallel to the direction vector is mapped to \code{s*u}:
+#' u <- 3*w
+#' all.equal(s*u, S$transform(u) - S$transform(c(0,0)))
+#' # any vector perpendicular to the direction vector is mapped to itself
+#' wt <- 3*c(-w[2], w[1])
+#' all.equal(wt, S$transform(wt) - S$transform(c(0,0)))
 #'
 #' @references R. Goldman,
 #' \emph{An Integrated Introduction to Computer Graphics and Geometric Modeling}.
