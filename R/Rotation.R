@@ -168,6 +168,28 @@ Rotation <- R6Class(
       self$rotateCircle(circ)
     },
 
+    #' @description Rotate an ellipse.
+    #' @param ell an \code{Ellipse} object
+    #' @return An \code{Ellipse} object.
+    rotateEllipse = function(ell) {
+      degrees <- ell$degrees
+      theta <- private[[".theta"]]
+      if(degrees && !private[[".degrees"]]){
+        theta <- theta * 180/pi
+      }else if(!degrees && private[[".degrees"]]){
+        theta <- theta * pi/180
+      }
+      Ellipse$new(self$rotate(ell$center), ell$rmajor, ell$rminor,
+                  ell$alpha + theta, degrees)
+    },
+
+    #' @description An alias of \code{rotateEllipse}.
+    #' @param ell an \code{Ellipse} object
+    #' @return An \code{Ellipse} object.
+    transformEllipse = function(ell) {
+      self$rotateEllipse(ell)
+    },
+
     #' @description Rotate a line.
     #' @param line a \code{Line} object
     #' @return A \code{Line} object.
@@ -192,12 +214,11 @@ Rotation <- R6Class(
     getMatrix = function(){
       private[[".theta"]] -> theta
       private[[".center"]] -> O
-      private[[".degrees"]] -> degrees
-      if(degrees) theta <- theta * pi / 180
+      if(private[[".degrees"]]) theta <- theta * pi / 180
       costheta <- cos(theta); sintheta <- sin(theta)
       W <- c(
-        O[1]*(1-costheta) + O[2]*sintheta,
-        -O[1]*sintheta + O[2]*(1-costheta)
+        O[1L]*(1-costheta) + O[2L]*sintheta,
+        -O[1L]*sintheta + O[2L]*(1-costheta)
       )
       cbind(c(costheta, sintheta, 0), c(-sintheta, costheta, 0), c(W, 1))
     },
@@ -207,7 +228,5 @@ Rotation <- R6Class(
       M <- self$getMatrix()
       Affine$new(M[-3L,-3L], M[-3L,3L])
     }
-
-
   )
 )

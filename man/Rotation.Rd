@@ -43,6 +43,8 @@ R$getMatrix() \%*\% c(P,1)
 \item \href{#method-transform}{\code{Rotation$transform()}}
 \item \href{#method-rotateCircle}{\code{Rotation$rotateCircle()}}
 \item \href{#method-transformCircle}{\code{Rotation$transformCircle()}}
+\item \href{#method-rotateEllipse}{\code{Rotation$rotateEllipse()}}
+\item \href{#method-transformEllipse}{\code{Rotation$transformEllipse()}}
 \item \href{#method-rotateLine}{\code{Rotation$rotateLine()}}
 \item \href{#method-transformLine}{\code{Rotation$transformLine()}}
 \item \href{#method-getMatrix}{\code{Rotation$getMatrix()}}
@@ -165,6 +167,44 @@ An alias of \code{rotateCircle}.
 }
 \subsection{Returns}{
 A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-rotateEllipse"></a>}}
+\subsection{Method \code{rotateEllipse()}}{
+Rotate an ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$rotateEllipse(ell)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ell}}{an \code{Ellipse} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An \code{Ellipse} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformEllipse"></a>}}
+\subsection{Method \code{transformEllipse()}}{
+An alias of \code{rotateEllipse}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Rotation$transformEllipse(ell)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ell}}{an \code{Ellipse} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+An \code{Ellipse} object.
 }
 }
 \if{html}{\out{<hr>}}

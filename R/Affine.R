@@ -194,7 +194,9 @@ Affine <- R6Class(
       x0 <- (2*C*D-B*E)/Delta
       y0 <- (2*A*E-B*D)/Delta
       theta <- atan2(C-A-sqrt((A-C)^2+B*B), B)
-      Ellipse$new(c(x0,y0), a, b, (theta*180/pi) %% 180, degrees = TRUE)
+      degrees <- ell$degrees
+      theta <- if(degrees) (theta*180/pi) %% 180 else theta %% pi
+      Ellipse$new(c(x0,y0), a, b, theta, degrees = degrees)
     }
   )
 )
