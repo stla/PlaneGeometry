@@ -7,7 +7,7 @@
 AffineMappingEllipse2Ellipse(ell1, ell2)
 }
 \arguments{
-\item{ell1, ell2}{two \code{Ellipse} objects}
+\item{ell1, ell2}{\code{Ellipse} or \code{Circle} objects}
 }
 \value{
 An \code{Affine} object.

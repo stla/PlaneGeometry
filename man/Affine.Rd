@@ -171,7 +171,7 @@ The result is an ellipse.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{ell}}{an \code{Ellipse} object}
+\item{\code{ell}}{an \code{Ellipse} object or a \code{Circle} object}
 }
 \if{html}{\out{</div>}}
 }

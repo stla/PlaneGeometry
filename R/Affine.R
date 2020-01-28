@@ -169,7 +169,7 @@ Affine <- R6Class(
 
     #' @description Transform an ellipse by the reference affine transformation.
     #' The result is an ellipse.
-    #' @param ell an \code{Ellipse} object
+    #' @param ell an \code{Ellipse} object or a \code{Circle} object
     #' @return An \code{Ellipse} object.
     transformEllipse = function(ell){
       if(is(ell, "Circle")) ell <- .circleAsEllipse(ell)
@@ -221,7 +221,7 @@ AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
 #' @description Return the affine transformation which transforms
 #' \code{ell1} to \code{ell2}.
 #'
-#' @param ell1,ell2 two \code{Ellipse} objects
+#' @param ell1,ell2 \code{Ellipse} or \code{Circle} objects
 #'
 #' @return An \code{Affine} object.
 #' @export
@@ -230,8 +230,6 @@ AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
 #' ( ell2 <- Ellipse$new(c(4,-1), 3, 2, 50) )
 #' f <- AffineMappingEllipse2Ellipse(ell1, ell2)
 #' f$transformEllipse(ell1)
-
-
 AffineMappingEllipse2Ellipse <- function(ell1, ell2){
   if(is(ell1, "Circle")){
     a <- b <- ell1$radius
