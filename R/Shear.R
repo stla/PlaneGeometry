@@ -200,12 +200,13 @@ Shear <- R6Class(
       cat("Shear:\n")
       cat("        vertex: ", toString(vertex), "\n", sep = "")
       cat("  first vector: ", toString(vector), "\n", sep = "")
-      cat(" second vector: ", toString(ratio*c(-vector[2L],vector[1L])), "\n", sep = "")
+      cat(" second vector: ",
+          toString(ratio*c(-vector[2L],vector[1L])), "\n", sep = "")
       cat("         angle: ",
           sprintf("%s %s", angle,
                   ifelse(private[[".degrees"]],
-                         ifelse(angle %in% c(0,1), "degree", "degrees"),
-                         ifelse(angle %in% c(0,1), "radian", "radians"))
+                         ifelse(angle %in% c(0,1,-1), "degree", "degrees"),
+                         ifelse(angle %in% c(0,1,-1), "radian", "radians"))
           ), "\n", sep = "")
     },
 
@@ -245,9 +246,9 @@ Shear <- R6Class(
       private[[".ratio"]] -> ratio
       private[[".angle"]] -> angle
       if(private[[".degrees"]]) angle <- angle * pi/180
-      wt <- ratio*c(-w[2L],w[1L])
+      wt <- ratio * c(-w[2L],w[1L])
       M1 <- cbind(rbind(w,wt,Q), c(0,0,1))
-      M2 <- cbind(rbind(w, tan(angle)*w+wt,Q), c(0,0,1))
+      M2 <- cbind(rbind(w, tan(angle)*w+wt, Q), c(0,0,1))
       M <- solve(M1) %*% M2
       M[,3L] <- M[3L,]; M[3L,] <- c(0,0,1)
       M
