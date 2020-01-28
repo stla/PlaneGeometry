@@ -109,8 +109,9 @@ ScalingXY <- R6Class(
       cat("   y-scale: ", toString(sy), "\n", sep = "")
     },
 
-    #' @description Transform a point or several poinys by the reference axis-scaling.
+    #' @description Transform a point or several points by the reference axis-scaling.
     #' @param M a point or a two-column matrix of points, one point per row
+    #' @return A point or a two-column matrix of points.
     transform = function(M) {
       if(is.matrix(M)){
         stopifnot(

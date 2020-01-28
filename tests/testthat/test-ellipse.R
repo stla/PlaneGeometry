@@ -23,12 +23,6 @@ test_that("Affine$transformEllipse", {
   expect_true(ell1$includes(Q))
   Q <- f$transform(path0[3L,])
   expect_true(ell1$includes(Q))
-  # Q <- f$transform(c(path0$x[70L], path0$y[70L]))
-  # expect_true(ell1$includes(Q))
-  # Q <- f$transform(c(path0$x[10L], path0$y[10L]))
-  # expect_true(ell1$includes(Q))
-  # Q <- f$transform(c(path0$x[40L], path0$y[40L]))
-  # expect_true(ell1$includes(Q))
 })
 
 test_that("LownerJohnEllipse", {

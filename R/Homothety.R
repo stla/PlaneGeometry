@@ -101,9 +101,8 @@ Homothety <- R6Class(
         !any(is.na(M)),
         all(is.finite(M))
       )
-      private[[".center"]] -> O
       private[[".scale"]] -> s
-      out <- t((1-s)*O + s*t(M))
+      out <- t((1-s)*private[[".center"]] + s*t(M))
       if(nrow(out) == 1L) out <- c(out)
       out
     },
@@ -123,10 +122,8 @@ Homothety <- R6Class(
     #' H$transform(P)
     #' H$getMatrix() %*% c(P,1)
     getMatrix = function(){
-      private[[".center"]] -> O
       private[[".scale"]] -> s
-      W <- (1-s)*O
-      cbind(rbind(diag(c(s,s)), 0), c(W, 1))
+      cbind(rbind(diag(c(s,s)), 0), c((1-s)*private[[".center"]], 1))
     },
 
     #' @description Convert the reference homothety to an \code{Affine} object.
