@@ -60,6 +60,16 @@ draw(reglines$YonX, lwd = 2, col = "blue")
 draw(reglines$XonY, lwd = 2, col = "green")
 
 ## ------------------------------------------------
+## Method `Ellipse$boundingbox`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(2,2), 5, 3, 40)
+box <- ell$boundingbox()
+plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
+draw(ell, col = "seaShell", border = "blue")
+abline(v = box$x, lty = 2); abline(h = box$y, lty = 2)
+
+## ------------------------------------------------
 ## Method `Ellipse$randomPoints`
 ## ------------------------------------------------
 
@@ -103,6 +113,7 @@ points(pts, pch = 19, col = "blue")
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
 \item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
+\item \href{#method-boundingbox}{\code{Ellipse$boundingbox()}}
 \item \href{#method-randomPoints}{\code{Ellipse$randomPoints()}}
 \item \href{#method-clone}{\code{Ellipse$clone()}}
 }
@@ -419,6 +430,32 @@ plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
 draw(ell, lwd = 2)
 draw(reglines$YonX, lwd = 2, col = "blue")
 draw(reglines$XonY, lwd = 2, col = "green")
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-boundingbox"></a>}}
+\subsection{Method \code{boundingbox()}}{
+Return the smallest rectangle parallel to the axes
+which contains the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$boundingbox()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list with two components: the x-limits in \code{x} and the
+y-limits in \code{y}.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(2,2), 5, 3, 40)
+box <- ell$boundingbox()
+plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
+draw(ell, col = "seaShell", border = "blue")
+abline(v = box$x, lty = 2); abline(h = box$y, lty = 2)
 }
 \if{html}{\out{</div>}}
 

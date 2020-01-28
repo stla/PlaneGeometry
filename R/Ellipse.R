@@ -440,10 +440,37 @@ Ellipse <- R6Class(
       t2 <- .solveTrigonometricEquation(A, B)
       pts <- .ellipsePoints(c(t1,t2), O, a, b, alpha)
       list(
-        YonX = Line$new(pts[1,], pts[2,], FALSE, FALSE),
-        XonY = Line$new(pts[3,], pts[4,], FALSE, FALSE)
+        YonX = Line$new(pts[1L,], pts[2L,], FALSE, FALSE),
+        XonY = Line$new(pts[3L,], pts[4L,], FALSE, FALSE)
       )
     },
+
+    #' @description Return the smallest rectangle parallel to the axes
+    #' which contains the reference ellipse.
+    #' @return A list with two components: the x-limits in \code{x} and the
+    #' y-limits in \code{y}.
+    #' @examples ell <- Ellipse$new(c(2,2), 5, 3, 40)
+    #' box <- ell$boundingbox()
+    #' plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
+    #' draw(ell, col = "seaShell", border = "blue")
+    #' abline(v = box$x, lty = 2); abline(h = box$y, lty = 2)
+    boundingbox = function(){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]; b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      A <- -b*sinalpha; B <- -a*cosalpha
+      t1 <- .solveTrigonometricEquation(A, B)
+      A <- b*cosalpha; B <- -a*sinalpha
+      t2 <- .solveTrigonometricEquation(A, B)
+      pts <- .ellipsePoints(c(t1,t2), O, a, b, alpha)
+      list(
+        x = sort(c(pts[1L,1L], pts[2L,1L])),
+        y = sort(c(pts[3L,2L], pts[4L,2L]))
+      )
+    },
+
 
     #' @description Random points on or in the reference ellipse.
     #' @param n an integer, the desired number of points
