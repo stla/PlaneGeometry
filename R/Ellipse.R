@@ -490,10 +490,42 @@ EllipseFromCenterAndMatrix <- function(center, S){
   e <- eigen(S, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`S` is not positive.")
   v <- e$vectors[,2L]
-  alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
-  a <- .vlength(v/sqrt(c(t(v) %*% S %*% v)))
-  b <- a * sqrt(e$values[2L]/e$values[1L])
-  Ellipse$new(center, a, b, alpha)
+  .EllipseFromCenterAndEigen(center, e, sqrt(c(t(v) %*% S %*% v)))
+  # v <- e$vectors[,2L]
+  # alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
+  # a <- .vlength(v/sqrt(c(t(v) %*% S %*% v)))
+  # b <- a * sqrt(e$values[2L]/e$values[1L])
+  # Ellipse$new(center, a, b, alpha)
+}
+
+
+#' Gaussian ellipse
+#' @description Return the ellipse equal to the highest \emph{pdf} region of
+#' a bivariate Gaussian distribution with a given probability.
+#'
+#' @param mean numeric vector of length 2, the mean of the bivariate Gaussian
+#' distribution; this is the center of the ellipse
+#' @param Sigma covariance matrix of the bivariate Gaussian distribution
+#' @param p desired probability level, a number between 0 and 1 (strictly)
+#'
+#' @return An \code{Ellipse} object.
+#' @export
+GaussianEllipse <- function(mean, Sigma, p){
+  stopifnot(
+    isSymmetric(Sigma),
+    p > 0, p < 1
+  )
+  e <- eigen(Sigma, symmetric = TRUE)
+  if(any(e$values <= 0)) stop("`Sigma` is not positive.")
+  v <- e$vectors[,1L]
+  r <- -2 * log1p(-p)
+  S <- chol2inv(chol(Sigma)) / r
+  #e <- eigen(S, symmetric = TRUE)
+  e <- list(
+    values = rev(1/e$values)/r,
+    vectors = e$vectors %*% cbind(c(0,1),c(-1,0))
+  )
+  .EllipseFromCenterAndEigen(mean, e, sqrt(c(t(v) %*% S %*% v)))
 }
 
 #' Ellipse equation from five points
