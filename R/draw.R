@@ -31,6 +31,7 @@
 #' perp <- l$perpendicular(c(2,1))
 #' draw(perp, col = "yellow", lwd = 2)
 #' @export
+#' @importFrom graphics abline curve lines par polypath
 draw <- function(x, ...){
   UseMethod("draw")
 }

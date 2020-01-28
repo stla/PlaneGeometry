@@ -1,4 +1,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
-^inst$
 ^README\.md$
+^doc$
+^Meta$
+^inst/tests$

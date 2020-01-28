@@ -635,13 +635,13 @@ EllipseFromFivePoints <- function(P1, P2, P3, P4, P5){
 #' three distinct points
 #' @return An \code{Ellipse} object.
 #' @export
-#' @examples pts <- cbind(rnorm(30, sd=2), rnorm(30))
+#' @examples \donttest{pts <- cbind(rnorm(30, sd=2), rnorm(30))
 #' ell <- LownerJohnEllipse(pts)
 #' box <- ell$boundingbox()
 #' plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
 #' draw(ell, col = "seaShell")
 #' points(pts, pch = 19)
-#' all(apply(pts, 1, ell$contains)) # should be TRUE
+#' all(apply(pts, 1, ell$contains)) # should be TRUE}
 LownerJohnEllipse <- function(pts){
   stopifnot(
     is.matrix(pts),

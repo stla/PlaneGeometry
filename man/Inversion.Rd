@@ -267,7 +267,7 @@ A \code{Circle} object or a \code{Line} object.
 \if{html}{\out{<a id="method-compose"></a>}}
 \subsection{Method \code{compose()}}{
 Compose the reference inversion with another inversion.
-The result is a Môbius transformation.
+The result is a Möbius transformation.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Inversion$compose(iota1, left = TRUE)}\if{html}{\out{</div>}}
 }

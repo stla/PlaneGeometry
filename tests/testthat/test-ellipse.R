@@ -30,3 +30,10 @@ test_that("Affine$transformEllipse", {
   # Q <- f$transform(c(path0$x[40L], path0$y[40L]))
   # expect_true(ell1$includes(Q))
 })
+
+test_that("LownerJohnEllipse", {
+  set.seed(666)
+  pts <- cbind(rnorm(30, sd=2), rnorm(30))
+  ell <- LownerJohnEllipse(pts)
+  expect_true(all(apply(pts, 1L, ell$contains)))
+})

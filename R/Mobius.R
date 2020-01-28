@@ -114,7 +114,7 @@ Mobius <- R6Class(
     #' @param ... ignored
     #' @examples Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
     print = function(...) {
-      cat("Möbius transformation (az+b)/(cz+d)\n")
+      cat("M\u00f6bius transformation (az+b)/(cz+d)\n")
       cat(" a: ", toString(private[[".a"]]), "\n", sep = "")
       cat(" b: ", toString(private[[".b"]]), "\n", sep = "")
       cat(" c: ", toString(private[[".c"]]), "\n", sep = "")

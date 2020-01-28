@@ -17,11 +17,11 @@ An \code{Ellipse} object.
 Minimum area ellipse containing a set of points.
 }
 \examples{
-pts <- cbind(rnorm(30, sd=2), rnorm(30))
+\donttest{pts <- cbind(rnorm(30, sd=2), rnorm(30))
 ell <- LownerJohnEllipse(pts)
 box <- ell$boundingbox()
 plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
 draw(ell, col = "seaShell")
 points(pts, pch = 19)
-all(apply(pts, 1, ell$contains)) # should be TRUE
+all(apply(pts, 1, ell$contains)) # should be TRUE}
 }

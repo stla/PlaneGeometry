@@ -182,7 +182,7 @@ Inversion <- R6Class(
     },
 
     #' @description Compose the reference inversion with another inversion.
-    #' The result is a Môbius transformation.
+    #' The result is a Möbius transformation.
     #' @param iota1 an \code{Inversion} object
     #' @param left logical, whether to compose at left or at right (i.e.
     #' returns \code{iota1 o iota0} or \code{iota0 o iota1})
