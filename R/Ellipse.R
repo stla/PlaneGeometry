@@ -627,3 +627,33 @@ EllipseFromFivePoints <- function(P1, P2, P3, P4, P5){
   cf <- EllipseEquationFromFivePoints(P1, P2, P3, P4, P5)
   EllipseFromEquation(cf[1L], cf[2L], cf[3L], cf[4L], cf[5L], cf[6L])
 }
+
+
+#' Löwner-John ellipse (ellipse hull)
+#' @description Minimum area ellipse containing a set of points.
+#' @param pts the points in a two-columns matrix (one point per row); at least
+#' three distinct points
+#' @return An \code{Ellipse} object.
+#' @export
+#' @examples pts <- cbind(rnorm(30, sd=2), rnorm(30))
+#' ell <- LownerJohnEllipse(pts)
+#' box <- ell$boundingbox()
+#' plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
+#' draw(ell, col = "seaShell")
+#' points(pts, pch = 19)
+#' all(apply(pts, 1, ell$contains)) # should be TRUE
+LownerJohnEllipse <- function(pts){
+  stopifnot(
+    is.matrix(pts),
+    is.numeric(pts),
+    ncol(pts) == 2L,
+    nrow(pts[!duplicated(pts),]) >= 3L,
+    !any(is.na(pts)),
+    all(is.finite(pts))
+  )
+  y <- sdpt3r::minelips(pts)$y
+  B <- diag(y[c(1L,2L)])
+  B[2L,1L] <- B[1L,2L] <- y[3L]
+  EllipseFromCenterAndMatrix(-c(chol2inv(chol(B)) %*% y[c(4L,5L)]),
+                             tcrossprod(B))
+}
