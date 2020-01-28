@@ -150,10 +150,10 @@
   Ellipse$new(circ$center, circ$radius, circ$radius, 0)
 }
 
-.EllipseFromCenterAndEigen <- function(center, e, r){
+.EllipseFromCenterAndEigen <- function(center, e){
   v <- e$vectors[,2L]
   alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
-  a <- .vlength(v/r)
+  a <- 1/sqrt(e$values[2L])#.vlength(v/r)
   b <- a * sqrt(e$values[2L]/e$values[1L])
   Ellipse$new(center, a, b, alpha)
 }

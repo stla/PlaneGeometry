@@ -489,8 +489,8 @@ EllipseFromCenterAndMatrix <- function(center, S){
   #e <- eigen(chol2inv(chol(S)), symmetric = TRUE)
   e <- eigen(S, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`S` is not positive.")
-  v <- e$vectors[,2L]
-  .EllipseFromCenterAndEigen(center, e, sqrt(c(t(v) %*% S %*% v)))
+#  v <- e$vectors[,2L]
+  .EllipseFromCenterAndEigen(center, e)#, sqrt(e$values[2L]))#sqrt(c(t(v) %*% S %*% v)))
   # v <- e$vectors[,2L]
   # alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
   # a <- .vlength(v/sqrt(c(t(v) %*% S %*% v)))
@@ -517,15 +517,15 @@ GaussianEllipse <- function(mean, Sigma, p){
   )
   e <- eigen(Sigma, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`Sigma` is not positive.")
-  v <- e$vectors[,1L]
+  # v <- e$vectors[,1L]
   r <- -2 * log1p(-p)
-  S <- chol2inv(chol(Sigma)) / r
-  #e <- eigen(S, symmetric = TRUE)
+  # S <- chol2inv(chol(Sigma)) / r
+  # #e <- eigen(S, symmetric = TRUE)
   e <- list(
     values = rev(1/e$values)/r,
     vectors = e$vectors %*% cbind(c(0,1),c(-1,0))
   )
-  .EllipseFromCenterAndEigen(mean, e, sqrt(c(t(v) %*% S %*% v)))
+  .EllipseFromCenterAndEigen(mean, e)#, sqrt(c(t(v) %*% S %*% v)))
 }
 
 #' Ellipse equation from five points
