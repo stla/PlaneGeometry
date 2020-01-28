@@ -74,7 +74,9 @@ Create a new \code{Projection} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{D, Delta}}{two \code{Line} objects; they must meet (not parallel)}
+\item{\code{D, Delta}}{two \code{Line} objects such that the two lines meet
+(not parallel); or \code{Delta = NULL} for orthogonal projection onto
+\code{D}}
 }
 \if{html}{\out{</div>}}
 }

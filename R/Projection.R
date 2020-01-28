@@ -47,7 +47,9 @@ Projection <- R6Class(
 
   public = list(
     #' @description Create a new \code{Projection} object.
-    #' @param D,Delta two \code{Line} objects; they must meet (not parallel)
+    #' @param D,Delta two \code{Line} objects such that the two lines meet
+    #' (not parallel); or \code{Delta = NULL} for orthogonal projection onto
+    #' \code{D}
     #' @return A new \code{Projection} object.
     #' @examples D <- Line$new(c(1,1), c(5,5))
     #' Delta <- Line$new(c(0,0), c(3,4))
@@ -55,23 +57,32 @@ Projection <- R6Class(
     initialize = function(D, Delta) {
       stopifnot(
         is(D, "Line"),
-        is(Delta, "Line"),
-        !D$isParallel(Delta)
+        is.null(Delta) || is(Delta, "Line"),
+        is.null(Delta) || !D$isParallel(Delta)
       )
       private[[".D"]] <- Line$new(D$A, D$B, TRUE, TRUE)
-      private[[".Delta"]] <- Line$new(Delta$A, Delta$B, TRUE, TRUE)
+      if(is.null(Delta)){
+        v <- D$B - D$A
+        private[[".Delta"]] <- Line$new(c(0,0), c(-v[2L], v[1L]), TRUE, TRUE)
+      }else{
+        private[[".Delta"]] <- Line$new(Delta$A, Delta$B, TRUE, TRUE)
+      }
     },
 
     #' @description Show instance of a reflection object.
     #' @param ... ignored
     print = function(...) {
       D <- private[[".D"]]
+      Delta <- private[[".Delta"]]
       cat("Projection onto the line D passing through A and B parallel to ",
           "the line Delta passing through P and Q.\n", sep = "")
       cat("       A: ", toString(D$A), "\n", sep = "")
       cat("       B: ", toString(D$B), "\n", sep = "")
       cat("       P: ", toString(Delta$A), "\n", sep = "")
       cat("       Q: ", toString(Delta$B), "\n", sep = "")
+      if(.dot(D$A-D$B,Delta$A-Delta$B) == 0){
+        cat("This is an orthogonal projection (D and Delta are perpendicular).\n")
+      }
     },
 
     #' @description Project a point.
