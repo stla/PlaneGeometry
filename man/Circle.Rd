@@ -26,6 +26,17 @@ circ
 Circle$new(c(0,0), 2)
 
 ## ------------------------------------------------
+## Method `Circle$diameter`
+## ------------------------------------------------
+
+circ <- Circle$new(c(1,1), 5)
+diams <- lapply(c(0, pi/3, 2*pi/3), circ$diameter)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
+     xlab = NA, ylab = NA)
+draw(circ, lwd = 2, col = "yellow")
+invisible(lapply(diams, draw, col = "blue"))
+
+## ------------------------------------------------
 ## Method `Circle$tangent`
 ## ------------------------------------------------
 
@@ -85,6 +96,7 @@ draw(arc, lwd = 3, col = "blue")
 \item \href{#method-new}{\code{Circle$new()}}
 \item \href{#method-print}{\code{Circle$print()}}
 \item \href{#method-pointFromAngle}{\code{Circle$pointFromAngle()}}
+\item \href{#method-diameter}{\code{Circle$diameter()}}
 \item \href{#method-tangent}{\code{Circle$tangent()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
 \item \href{#method-includes}{\code{Circle$includes()}}
@@ -178,6 +190,39 @@ Get a point on the reference circle from its polar angle.
 \subsection{Returns}{
 The point on the circle with polar angle \code{alpha}.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-diameter"></a>}}
+\subsection{Method \code{diameter()}}{
+Diameter of the reference circle for a given polar angle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$diameter(alpha)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{alpha}}{an angle in radians, there is one diameter for each value of
+\code{alpha} modulo \code{pi}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A segment (\code{Line} object).
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{circ <- Circle$new(c(1,1), 5)
+diams <- lapply(c(0, pi/3, 2*pi/3), circ$diameter)
+plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
+     xlab = NA, ylab = NA)
+draw(circ, lwd = 2, col = "yellow")
+invisible(lapply(diams, draw, col = "blue"))
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-tangent"></a>}}

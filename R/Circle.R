@@ -93,6 +93,29 @@ Circle <- R6Class(
       private[[".center"]] + private[[".radius"]] * c(cos(alpha), sin(alpha))
     },
 
+    #' @description Diameter of the reference circle for a given polar angle.
+    #' @param alpha an angle in radians, there is one diameter for each value of
+    #' \code{alpha} modulo \code{pi}
+    #' @return A segment (\code{Line} object).
+    #' @examples circ <- Circle$new(c(1,1), 5)
+    #' diams <- lapply(c(0, pi/3, 2*pi/3), circ$diameter)
+    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-5,7),
+    #'      xlab = NA, ylab = NA)
+    #' draw(circ, lwd = 2, col = "yellow")
+    #' invisible(lapply(diams, draw, col = "blue"))
+    diameter = function(alpha){
+      t <- as.vector(alpha)
+      stopifnot(
+        is.numeric(t),
+        length(t) == 1L,
+        !is.na(t),
+        is.finite(t)
+      )
+      O <- private[[".center"]]
+      v <- private[[".radius"]] * c(cos(t), sin(t))
+      Line$new(O+v, O-v, FALSE, FALSE)
+    },
+
     #' @description Tangent of the reference circle at a given polar angle.
     #' @param alpha an angle in radians, there is one tangent for each value of
     #' \code{alpha} modulo \code{2*pi}
