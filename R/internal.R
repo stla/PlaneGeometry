@@ -157,3 +157,13 @@
   b <- 1/sqrt(e$values[1L])
   Ellipse$new(center, a, b, alpha)
 }
+
+# elliptic integral of second kind allowing negative m (k²)
+.ellint2 <- function(phi, m){
+  sine <- sin(phi)
+  sine2 <- sine*sine
+  cosine2 <- 1 - sine2
+  oneminusmsine2 <- 1 - m*sine2
+  sine * gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
+    m * sine*sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3
+}
