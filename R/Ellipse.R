@@ -599,18 +599,26 @@ EllipseEquationFromFivePoints <- function(P1, P2, P3, P4, P5){
 #' ell2 <- EllipseFromEquation(cf[1], cf[2], cf[3], cf[4], cf[5], cf[6])
 #' ell$isEqual(ell2)
 EllipseFromEquation <- function(A, B, C, D, E, F){
+  stopifnot(A*C > 0)
   if(B*B-4*A*C >= 0) stop("These parameters do not define an ellipse.")
+  if(D*D + E*E <= 4*(A+C)*F) stop("These parameters do not define an ellipse.")
+  Q <- rbind(c(2*A, B, D), c(B, 2*C, E), c(D, E, 2*F))
+  if(det(Q) == 0) stop("These parameters do not define an ellipse.")
   M0 <- matrix(c(F, D/2, E/2, D/2, A, B/2, E/2, B/2, C), 3L, 3L)
   M <- matrix(c(A, B/2, B/2, C), 2L, 2L)
   lambda <- eigen(M, symmetric = TRUE)$values
-  if(abs(lambda[1L] - A) >= abs(lambda[1L] - C)) lambda <- rev(lambda)
+  #if(abs(lambda[1L] - A) >= abs(lambda[1L] - C)) lambda <- rev(lambda)
   detM0 <- det(M0); detM <- det(M)
   a <- sqrt(-detM0 / (detM*lambda[1L]))
   b <- sqrt(-detM0 / (detM*lambda[2L]))
   x <- B*E - 2*C*D
   y <- B*D - 2*A*E
-  phi <- pi/2 - atan((A-C)/B)*2
-  Ellipse$new(c(x,y)/(4*A*C - B*B), a, b, phi*180/pi)
+  phi <- if(is.nan(B/(A-C))){
+    0
+  }else{
+    if(C > A) atan(B/(A-C))/2 else (pi/2 - atan(-B/(A-C))/2)
+  }
+  Ellipse$new(c(x,y)/(4*A*C - B*B), max(a,b), min(a,b), (phi*180/pi) %% 180)
 }
 
 #' Ellipse from five points

@@ -96,7 +96,7 @@ Show instance of a \code{ScalingXY} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
 \subsection{Method \code{transform()}}{
-Transform a point or several poinys by the reference axis-scaling.
+Transform a point or several points by the reference axis-scaling.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{ScalingXY$transform(M)}\if{html}{\out{</div>}}
 }
@@ -107,6 +107,9 @@ Transform a point or several poinys by the reference axis-scaling.
 \item{\code{M}}{a point or a two-column matrix of points, one point per row}
 }
 \if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point or a two-column matrix of points.
 }
 }
 \if{html}{\out{<hr>}}

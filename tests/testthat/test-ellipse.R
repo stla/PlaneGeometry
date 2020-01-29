@@ -31,3 +31,18 @@ test_that("LownerJohnEllipse", {
   ell <- LownerJohnEllipse(pts)
   expect_true(all(apply(pts, 1L, ell$contains)))
 })
+
+test_that("EllipseFromFivePoints", {
+  ell <- Ellipse$new(c(2,3), 5, 4, 50)
+  set.seed(314)
+  pts <- ell$randomPoints(5, "on")
+  ell2 <- EllipseFromFivePoints(pts[1,],pts[2,],pts[3,],pts[4,],pts[5,])
+  expect_true(ell$isEqual(ell2))
+})
+
+test_that("EllipseFromEquation", {
+  ell <- Ellipse$new(c(4,3), 5, 1, 100)
+  cf <- ell$equation()
+  ell2 <- EllipseFromEquation(cf[1], cf[2], cf[3], cf[4], cf[5], cf[6])
+  expect_true(ell$isEqual(ell2))
+})
