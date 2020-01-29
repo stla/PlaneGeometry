@@ -269,7 +269,20 @@ EllipticalArc <- R6Class(
       t1 <- atan2(a/b, 1/tan(theta1)) + theta1 - theta1 %% pi
       t2 <- atan2(a/b, 1/tan(theta2)) + theta2 - theta2 %% pi
       m <- 1 - a*a/b/b
-      b * (.ellint2(t2, m) - .ellint2(t1,m))
+      u1 <- t1
+      while(u1 > pi/2){
+        u1 <- u1 - pi
+      }
+      u2 <- t2
+      while(u2 > pi/2){
+        u2 <- u2 - pi
+      }
+      # tt1 <- atan(a/b*tan(theta1))
+      # tt2 <- atan(a/b*tan(theta2))
+      x <- b * abs(.ellint2(u2, m) - .ellint2(u1,m))
+      if(t2 - t1 > pi) x <- 4*a * gsl::ellint_Ecomp(sqrt(1-b^2/a^2)) - x
+      x
+      # no
 #      integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2, ...)
     }
   )

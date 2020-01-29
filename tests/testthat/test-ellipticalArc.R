@@ -10,7 +10,7 @@ test_that("Length", {
   for(i in 2L:nrow(path)){
     perim <- perim + sqrt(c(crossprod(path[i-1,]-path[i,])))
   }
-  expect_equal(perim, arc$length()$value, tolerance = 1e-3)
+  expect_equal(perim, arc$length(), tolerance = 1e-3)
   #
   alpha1 <- 330; alpha2 <- 60
   arc <- EllipticalArc$new(ell, alpha1, alpha2)
@@ -19,7 +19,7 @@ test_that("Length", {
   for(i in 2L:nrow(path)){
     perim <- perim + sqrt(c(crossprod(path[i-1,]-path[i,])))
   }
-  expect_equal(perim, arc$length()$value, tolerance = 1e-3)
+  expect_equal(perim, arc$length(), tolerance = 1e-3)
   #
   alpha1 <- -30; alpha2 <- 60
   arc <- EllipticalArc$new(ell, alpha1, alpha2)
@@ -28,7 +28,7 @@ test_that("Length", {
   for(i in 2L:nrow(path)){
     perim <- perim + sqrt(c(crossprod(path[i-1,]-path[i,])))
   }
-  expect_equal(perim, arc$length()$value, tolerance = 1e-3)
+  expect_equal(perim, arc$length(), tolerance = 1e-3)
   #
   arc <- EllipticalArc$new(ell, 0, 180)
   expect_equal(
