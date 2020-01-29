@@ -60,6 +60,7 @@ P$getMatrix() \%*\% c(M,1)
 \item \href{#method-project}{\code{Projection$project()}}
 \item \href{#method-transform}{\code{Projection$transform()}}
 \item \href{#method-getMatrix}{\code{Projection$getMatrix()}}
+\item \href{#method-asAffine}{\code{Projection$asAffine()}}
 \item \href{#method-clone}{\code{Projection$clone()}}
 }
 }
@@ -176,6 +177,16 @@ P$getMatrix() \%*\% c(M,1)
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-asAffine"></a>}}
+\subsection{Method \code{asAffine()}}{
+Convert the reference projection to an \code{Affine}
+object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Projection$asAffine()}\if{html}{\out{</div>}}
 }
 
 }

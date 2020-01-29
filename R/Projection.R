@@ -130,6 +130,14 @@ Projection <- R6Class(
       col1 <- self$project(c(1,0)) - b
       col2 <- self$project(c(0,1)) - b
       cbind(rbind(cbind(col1,col2),0), c(b,1))
+    },
+
+    #' @description Convert the reference projection to an \code{Affine}
+    #' object.
+    asAffine = function(){
+      M <- self$getMatrix()
+      Affine$new(M[-3L,-3L], M[-3L,3L])
     }
+
   )
 )

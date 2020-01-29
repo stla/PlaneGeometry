@@ -1,6 +1,6 @@
-#' @title R6 class representing an affine transformation.
+#' @title R6 class representing an affine map.
 #'
-#' @description An affine transformation is given by an invertible 2x2 matrix
+#' @description An affine map is given by a 2x2 matrix
 #' (a linear transformation) and a vector (the "intercept").
 #'
 #' @export
@@ -28,8 +28,7 @@ Affine <- R6Class(
           nrow(A) == 2L,
           ncol(A) == 2L,
           !any(is.na(A)),
-          all(is.finite(A)),
-          det(A) != 0
+          all(is.finite(A))
         )
         private[[".A"]] <- A
       }
@@ -54,8 +53,8 @@ Affine <- R6Class(
 
   public = list(
     #' @description Create a new \code{Affine} object.
-    #' @param A the 2x2 invertible matrix of the affine transformation
-    #' @param b the shift vector of the affine transformation
+    #' @param A the 2x2 matrix of the affine map
+    #' @param b the shift vector of the affine map
     #' @return A new \code{Affine} object.
     initialize = function(A, b) {
       stopifnot(
@@ -64,8 +63,7 @@ Affine <- R6Class(
         nrow(A) == 2L,
         ncol(A) == 2L,
         !any(is.na(A)),
-        all(is.finite(A)),
-        det(A) != 0
+        all(is.finite(A))
       )
       b <- as.vector(b)
       stopifnot(
@@ -84,8 +82,8 @@ Affine <- R6Class(
     print = function(...) {
       A <- private[[".A"]]
       captA <- capture.output(A)[-1L]
-      captA[1L] <- stringr::str_trim(substring(captA[1L], 6L), "left")
-      captA[2L] <- stringr::str_trim(substring(captA[2L], 6L), "left")
+      captA[1L] <- str_trim(substring(captA[1L], 6L), "left")
+      captA[2L] <- str_trim(substring(captA[2L], 6L), "left")
       if(A[1L,1L] >= 0 && A[2L,1L] < 0){
         captA[1L] <- paste0(" ", captA[1L])
       }else if(A[1L,1L] < 0 && A[2L,1L] >= 0){
@@ -93,31 +91,37 @@ Affine <- R6Class(
       }
       b <- private[[".b"]]
       captB <- capture.output(cbind(b))[-1L]
-      captB[1L] <- stringr::str_trim(substring(captB[1L], 6L), "left")
-      captB[2L] <- stringr::str_trim(substring(captB[2L], 6L), "left")
+      captB[1L] <- str_trim(substring(captB[1L], 6L), "left")
+      captB[2L] <- str_trim(substring(captB[2L], 6L), "left")
       if(b[1L] >= 0 && b[2L] < 0){
         captB[1L] <- paste0(" ", captB[1L])
       }else if(b[1L] < 0 && b[2L] >= 0){
         captB[2L] <- paste0(" ", captB[2L])
       }
-      cat("Affine transformation Ax+b\n")
+      cat("Affine map Ax+b\n")
       cat(" A: / ", captA[1L], " \\\n    \\ ", captA[2L], " /\n", sep = "")
       cat(" b: / ", captB[1L], " \\\n    \\ ", captB[2L], " /\n", sep = "")
+      if(det(A) == 0){
+        cat("It is singular.\n")
+      }
     },
 
-    #' @description The 3x3 matrix representing the affine transformation.
+    #' @description The 3x3 matrix representing the affine map.
     get3x3matrix = function(){
-      rbind(cbind(private[[".A"]],private[[".b"]]), c(0,0,1))
+      rbind(cbind(private[[".A"]], private[[".b"]]), c(0,0,1))
     },
 
-    #' @description The inverse affine transformation.
+    #' @description The inverse affine transformation, if it exists.
     inverse = function(){
+      if(det(private[[".A"]]) == 0){
+        stop("The affine map is singular.")
+      }
       M <- solve(self$get3x3matrix())
       Affine$new(M[-3L,-3L], M[-3L,3L])
     },
 
-    #' @description Compose the reference affine transformation with another
-    #' affine transformation.
+    #' @description Compose the reference affine map with another
+    #' affine map.
     #' @param transfo an \code{Affine} object
     #' @param left logical, whether to compose at left or at right (i.e.
     #' returns \code{f1 o f0} or \code{f0 o f1})
@@ -129,7 +133,7 @@ Affine <- R6Class(
       Affine$new(M[-3L,-3L], M[-3L,3L])
     },
 
-    #' @description Transform a point or several points by the reference affine transformation.
+    #' @description Transform a point or several points by the reference affine map.
     #' @param M a point or a two-column matrix of points, one point per row
     transform = function(M){
       if(is.matrix(M)){
@@ -154,12 +158,16 @@ Affine <- R6Class(
       out
     },
 
-    #' @description Transform a line by the reference affine transformation.
+    #' @description Transform a line by the reference affine transformation
+    #' (only for invertible affine maps).
     #' @param line a \code{Line} object
     #' @return A \code{Line} object.
     transformLine = function(line){
       stopifnot(is(line, "Line"))
-      A <- private[[".A"]]; b <- private[[".b"]]
+      if(det(A <- private[[".A"]]) == 0){
+        stop("The affine map is singular.")
+      }
+      b <- private[[".b"]]
       Line$new(
         c(A %*% line$A) + b,
         c(A %*% line$B) + b,
@@ -167,11 +175,15 @@ Affine <- R6Class(
       )
     },
 
-    #' @description Transform an ellipse by the reference affine transformation.
+    #' @description Transform an ellipse by the reference affine transformation
+    #' (only for an invertible affine map).
     #' The result is an ellipse.
     #' @param ell an \code{Ellipse} object or a \code{Circle} object
     #' @return An \code{Ellipse} object.
     transformEllipse = function(ell){
+      if(det(private[[".A"]]) == 0){
+        stop("The affine map is singular.")
+      }
       if(is(ell, "Circle")) ell <- .circleAsEllipse(ell)
       ABCDEF <- as.list(ell$equation())
       X <- with(ABCDEF, cbind(

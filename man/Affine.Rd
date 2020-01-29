@@ -2,9 +2,9 @@
 % Please edit documentation in R/Affine.R
 \name{Affine}
 \alias{Affine}
-\title{R6 class representing an affine transformation.}
+\title{R6 class representing an affine map.}
 \description{
-An affine transformation is given by an invertible 2x2 matrix
+An affine map is given by a 2x2 matrix
 (a linear transformation) and a vector (the "intercept").
 }
 \examples{
@@ -49,9 +49,9 @@ Create a new \code{Affine} object.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{A}}{the 2x2 invertible matrix of the affine transformation}
+\item{\code{A}}{the 2x2 matrix of the affine map}
 
-\item{\code{b}}{the shift vector of the affine transformation}
+\item{\code{b}}{the shift vector of the affine map}
 }
 \if{html}{\out{</div>}}
 }
@@ -86,7 +86,7 @@ Show instance of an \code{Affine} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-get3x3matrix"></a>}}
 \subsection{Method \code{get3x3matrix()}}{
-The 3x3 matrix representing the affine transformation.
+The 3x3 matrix representing the affine map.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$get3x3matrix()}\if{html}{\out{</div>}}
 }
@@ -95,7 +95,7 @@ The 3x3 matrix representing the affine transformation.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inverse"></a>}}
 \subsection{Method \code{inverse()}}{
-The inverse affine transformation.
+The inverse affine transformation, if it exists.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$inverse()}\if{html}{\out{</div>}}
 }
@@ -104,8 +104,8 @@ The inverse affine transformation.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-compose"></a>}}
 \subsection{Method \code{compose()}}{
-Compose the reference affine transformation with another
-affine transformation.
+Compose the reference affine map with another
+affine map.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$compose(transfo, left = TRUE)}\if{html}{\out{</div>}}
 }
@@ -127,7 +127,7 @@ An \code{Affine} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
 \subsection{Method \code{transform()}}{
-Transform a point or several points by the reference affine transformation.
+Transform a point or several points by the reference affine map.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$transform(M)}\if{html}{\out{</div>}}
 }
@@ -143,7 +143,8 @@ Transform a point or several points by the reference affine transformation.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
 \subsection{Method \code{transformLine()}}{
-Transform a line by the reference affine transformation.
+Transform a line by the reference affine transformation
+(only for invertible affine maps).
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$transformLine(line)}\if{html}{\out{</div>}}
 }
@@ -162,7 +163,8 @@ A \code{Line} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformEllipse"></a>}}
 \subsection{Method \code{transformEllipse()}}{
-Transform an ellipse by the reference affine transformation.
+Transform an ellipse by the reference affine transformation
+(only for an invertible affine map).
 The result is an ellipse.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Affine$transformEllipse(ell)}\if{html}{\out{</div>}}
