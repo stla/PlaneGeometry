@@ -226,7 +226,7 @@ Ellipse <- R6Class(
       ABCDEF <- as.list(self$equation())
       x <- M[1L]; y <- M[2L]
       zero <- with(ABCDEF, A*x*x + B*x*y + C*y*y + D*x + E*y + F)
-      isTRUE(all.equal(0, zero))
+      isTRUE(all.equal(0, zero, check.attributes=FALSE))
     },
 
     #' @description Check whether a point is contained in the reference ellipse.

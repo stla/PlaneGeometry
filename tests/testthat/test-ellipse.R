@@ -46,3 +46,12 @@ test_that("EllipseFromEquation", {
   ell2 <- EllipseFromEquation(cf[1], cf[2], cf[3], cf[4], cf[5], cf[6])
   expect_true(ell$isEqual(ell2))
 })
+
+test_that("Gaussian ellipse", {
+  mean <- c(2, 1)
+  Sigma <- cbind(c(3,2),c(2,5))
+  p <- 0.9
+  ell <- GaussianEllipse(mean, Sigma, p)
+  pts <- ellipse::ellipse(Sigma, centre = mean, level = p)
+  expect_true(all(apply(pts, 1L, ell$includes)))
+})
