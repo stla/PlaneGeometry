@@ -188,19 +188,11 @@ A matrix with two columns \code{x} and \code{y} of length
 \subsection{Method \code{length()}}{
 The length of the elliptical arc.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{EllipticalArc$length(...)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{EllipticalArc$length()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{passed to \code{\link{integrate}}}
-}
-\if{html}{\out{</div>}}
-}
 \subsection{Returns}{
-The output of \code{\link{integrate}}, or a number in
-special cases.
+A number, the arc length.
 }
 }
 \if{html}{\out{<hr>}}

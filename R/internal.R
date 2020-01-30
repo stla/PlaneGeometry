@@ -159,11 +159,38 @@
 }
 
 # elliptic integral of second kind allowing negative m (k²)
-.ellint2 <- function(phi, m){
-  sine <- sin(phi)
-  sine2 <- sine*sine
-  cosine2 <- 1 - sine2
-  oneminusmsine2 <- 1 - m*sine2
-  sine * gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
-    m * sine*sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3
-}
+# .ellint2 <- function(phi, m){
+#   sine <- sin(phi)
+#   sine2 <- sine*sine
+#   cosine2 <- 1 - sine2
+#   oneminusmsine2 <- 1 - m*sine2
+#   sine * gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
+#     m * sine*sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3
+# }
+
+# .ellint2 <- function(phi, m){
+#   if(phi == 0){
+#     0
+#   }else if(phi >= -pi/2 && phi <= pi/2){
+#     sine <- sin(phi)
+#     sine2 <- sine*sine
+#     cosine2 <- 1 - sine2
+#     oneminusmsine2 <- 1 - m*sine2
+#     sine * (gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
+#               m * sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3)
+#   }else if(phi > pi/2){
+#     k <- 0
+#     while(phi > pi/2){
+#       phi <- phi - pi
+#       k <- k + 1
+#     }
+#     2*k*ellint2(pi/2, m) + ellint2(phi, m)
+#   }else{
+#     k <- 0
+#     while(phi < -pi/2){
+#       phi <- phi + pi
+#       k <- k - 1
+#     }
+#     2*k*ellint2(pi/2, m) + ellint2(phi, m)
+#   }
+# }
