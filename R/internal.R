@@ -141,9 +141,18 @@
 .solveTrigonometricEquation <- function(a, b, D = 0){
   # a*cos(x) + b*sin(x) = D
   if(D == 0){
-    atan2(b, a) + c(pi/2 , -pi/2)
+    return((atan2(b, a) + c(pi, -pi)/2) %% (2*pi))
   }
+  d <- sqrt(a*a+b*b)
+  if(abs(D)/d > 1) return(NULL)
+  if(D == d) return(atan2(b,a) %% (2*pi))
+  if(D == -d) return((atan2(b,a)+pi) %% (2*pi))
+  e <- acos(D/d)
+  (atan2(b,a) + c(e, -e)) %% (2*pi)
   # https://socratic.org/questions/how-do-you-use-linear-combinations-to-solve-trigonometric-equations
+  # D = sqrt(a*a+b*b) * cos(x - atan2(b,a))
+  # cos(x - atan2(b,a)) = D / sqrt(a*a+b*b)
+  # x - atan2(b,a) = acos(D / sqrt(a*a+b*b)) or -acos(D / sqrt(a*a+b*b))
 }
 
 .circleAsEllipse <- function(circ){
