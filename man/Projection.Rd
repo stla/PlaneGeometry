@@ -98,7 +98,7 @@ Projection$new(D, Delta)
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
-Show instance of a reflection object.
+Show instance of a projection object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Projection$print(...)}\if{html}{\out{</div>}}
 }

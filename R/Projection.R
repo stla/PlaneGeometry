@@ -69,7 +69,7 @@ Projection <- R6Class(
       }
     },
 
-    #' @description Show instance of a reflection object.
+    #' @description Show instance of a projection object.
     #' @param ... ignored
     print = function(...) {
       D <- private[[".D"]]
