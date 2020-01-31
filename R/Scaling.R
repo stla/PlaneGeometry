@@ -196,6 +196,7 @@ Scaling <- R6Class(
     #' @param circ a \code{Circle} object
     #' @return An \code{Ellipse} object.
     scaleCircle = function(circ){
+      stopifnot(is(circ, "Circle"))
       private[[".direction"]] -> w
       C <- circ$center; R <- circ$radius
       O <- self$transform(C)

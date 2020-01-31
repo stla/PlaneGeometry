@@ -243,8 +243,12 @@ AffineMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
 #' @examples ell1 <- Ellipse$new(c(1,1), 5, 1, 30)
 #' ( ell2 <- Ellipse$new(c(4,-1), 3, 2, 50) )
 #' f <- AffineMappingEllipse2Ellipse(ell1, ell2)
-#' f$transformEllipse(ell1)
+#' f$transformEllipse(ell1) # should be ell2
 AffineMappingEllipse2Ellipse <- function(ell1, ell2){
+  stopifnot(
+    is(ell1, "Circle") || is(ell1, "Ellipse"),
+    is(ell2, "Circle") || is(ell2, "Ellipse")
+  )
   if(is(ell1, "Circle")){
     a <- b <- ell1$radius
     costheta <- 1; sintheta <- 0

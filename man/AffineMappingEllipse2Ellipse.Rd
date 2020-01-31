@@ -20,5 +20,5 @@ Return the affine transformation which transforms
 ell1 <- Ellipse$new(c(1,1), 5, 1, 30)
 ( ell2 <- Ellipse$new(c(4,-1), 3, 2, 50) )
 f <- AffineMappingEllipse2Ellipse(ell1, ell2)
-f$transformEllipse(ell1)
+f$transformEllipse(ell1) # should be ell2
 }

@@ -111,6 +111,7 @@ Homothety <- R6Class(
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object.
     transformCircle = function(circ) {
+      stopifnot(is(circ, "Circle"))
       Circle$new(self$transform(circ$center),
                  abs(private[[".scale"]])*circ$radius)
     },

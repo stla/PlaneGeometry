@@ -106,8 +106,8 @@ Rotation <- R6Class(
       cat("    theta: ",
           sprintf("%s %s", theta,
                   ifelse(degrees,
-                         ifelse(theta %in% c(0,1), "degree", "degrees"),
-                         ifelse(theta %in% c(0,1), "radian", "radians"))
+                         ifelse(theta %in% c(0,1,-1), "degree", "degrees"),
+                         ifelse(theta %in% c(0,1,-1), "radian", "radians"))
           ), "\n", sep = "")
       cat("   center: ", toString(center), "\n", sep = "")
     },
@@ -158,6 +158,7 @@ Rotation <- R6Class(
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object.
     rotateCircle = function(circ) {
+      stopifnot(is(circ, "Circle"))
       Circle$new(self$rotate(circ$center), circ$radius)
     },
 
@@ -172,6 +173,7 @@ Rotation <- R6Class(
     #' @param ell an \code{Ellipse} object
     #' @return An \code{Ellipse} object.
     rotateEllipse = function(ell) {
+      stopifnot(is(ell, "Ellipse"))
       degrees <- ell$degrees
       theta <- private[[".theta"]]
       if(degrees && !private[[".degrees"]]){
@@ -194,6 +196,7 @@ Rotation <- R6Class(
     #' @param line a \code{Line} object
     #' @return A \code{Line} object.
     rotateLine = function(line) {
+      stopifnot(is(line, "Line"))
       Line$new(self$rotate(line$A), self$rotate(line$B),
                line$extendA, line$extendB)
     },
