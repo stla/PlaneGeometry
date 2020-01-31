@@ -28,7 +28,8 @@ Line <- R6Class(
         stopifnot(
           is.numeric(A),
           length(A) == 2L,
-          !any(is.na(A))
+          !any(is.na(A)),
+          all(is.finite(A))
         )
         private[[".A"]] <- A
       }
@@ -43,7 +44,8 @@ Line <- R6Class(
         stopifnot(
           is.numeric(B),
           length(B) == 2L,
-          !any(is.na(B))
+          !any(is.na(B)),
+          all(is.finite(B))
         )
         private[[".B"]] <- B
       }
@@ -96,12 +98,14 @@ Line <- R6Class(
       stopifnot(
         is.numeric(A),
         length(A) == 2L,
-        !any(is.na(A))
+        !any(is.na(A)),
+        all(is.finite(A))
       )
       stopifnot(
         is.numeric(B),
         length(B) == 2L,
-        !any(is.na(B))
+        !any(is.na(B)),
+        all(is.finite(B))
       )
       stopifnot(any(A != B))
       extendA <- as.vector(extendA); extendB <- as.vector(extendB)
@@ -231,7 +235,7 @@ Line <- R6Class(
       extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
       if(!strict || (extendA && extendB)) return(.collinear(A, B, M))
       if(!extendA && !extendB){
-        dotprod <- c(crossprod(A-M, B-M))
+        dotprod <- .dot(A-M, B-M)
         if(dotprod <= 0){
           TRUE
         } else {
@@ -303,13 +307,15 @@ Line <- R6Class(
       stopifnot(
         is.numeric(alpha),
         length(alpha) == 1L,
-        !is.na(alpha)
+        !is.na(alpha),
+        is.finite(alpha)
       )
       O <- as.vector(O)
       stopifnot(
         is.numeric(O),
         length(O) == 2L,
-        !any(is.na(O))
+        !any(is.na(O)),
+        all(is.finite(O))
       )
       if(degrees){
         alpha <- alpha * pi/180
@@ -330,7 +336,8 @@ Line <- R6Class(
       stopifnot(
         is.numeric(v),
         length(v) == 2L,
-        !any(is.na(v))
+        !any(is.na(v)),
+        all(is.finite(v))
       )
       Line$new(private[[".A"]] + v, private[[".B"]] + v,
                private[[".extendA"]], private[[".extendB"]])

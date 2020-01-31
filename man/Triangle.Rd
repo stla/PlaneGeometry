@@ -104,11 +104,11 @@ incircle$center
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{A}}{get or set the vertex A}
+\item{\code{A}}{get or set the vertex \code{A}}
 
-\item{\code{B}}{get or set the vertex B}
+\item{\code{B}}{get or set the vertex \code{B}}
 
-\item{\code{C}}{get or set the vertex C}
+\item{\code{C}}{get or set the vertex \code{C}}
 }
 \if{html}{\out{</div>}}
 }
@@ -223,7 +223,7 @@ A number between 0 and 1. A triangle is flat when its flatness is 1.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-a"></a>}}
 \subsection{Method \code{a()}}{
-Length of the side BC.
+Length of the side \code{BC}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$a()}\if{html}{\out{</div>}}
 }
@@ -232,7 +232,7 @@ Length of the side BC.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-b"></a>}}
 \subsection{Method \code{b()}}{
-Length of the side AC.
+Length of the side \code{AC}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$b()}\if{html}{\out{</div>}}
 }
@@ -241,7 +241,7 @@ Length of the side AC.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-c"></a>}}
 \subsection{Method \code{c()}}{
-Length of the side AB.
+Length of the side \code{AB}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$c()}\if{html}{\out{</div>}}
 }
