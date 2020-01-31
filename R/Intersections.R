@@ -10,6 +10,7 @@
 #' @export
 intersectionCircleCircle <- function(circ1, circ2,
                                      epsilon = sqrt(.Machine$double.eps)) {
+  stopifnot(is(circ1, "Circle"), is(circ2, "Circle"))
   r1 <- circ1$radius; r2 <- circ2$radius
   center1 <- circ1$center; center2 <- circ2$center
   if(isTRUE(all.equal(c(center1,r1), c(center2,r2)))){
@@ -56,25 +57,29 @@ intersectionCircleCircle <- function(circ1, circ2,
 #' intersectionCircleLine(circ, line, strict = TRUE)
 #' @export
 intersectionCircleLine <- function(circ, line, strict = FALSE){
+  stopifnot(is(circ, "Circle"), is(line, "Line"))
   C <- circ$center
-  intersections <- .CircleLineIntersection00(line$A - C, line$B - C, circ$radius)
+  intersections <-
+    .CircleLineIntersection00(line$A - C, line$B - C, circ$radius)
   if(is.null(intersections)) return(NULL)
   if(is.list(intersections)){
     I1I2 <- lapply(intersections, function(I){I + C})
     if(strict && (!line$extendA || !line$extendB)){
       I1 <- I1I2[[1L]]; I2 <- I1I2[[2L]]
       ontheline1 <-
-        suppressMessages(line$includes(I1, strict = TRUE, checkCollinear = FALSE))
+        suppressMessages(line$includes(I1, strict = TRUE,
+                                       checkCollinear = FALSE))
       ontheline2 <-
-        suppressMessages(line$includes(I2, strict = TRUE, checkCollinear = FALSE))
+        suppressMessages(line$includes(I2, strict = TRUE,
+                                       checkCollinear = FALSE))
       if(ontheline1 && ontheline2){
         return(I1I2)
       }else if(ontheline1){
         message(
           sprintf(
             paste0(
-              "The infinite line meets the circle at two points, but one of them",
-              " is not on the %s."
+              "The infinite line meets the circle at two points, but one of ",
+              "them is not on the %s."
             ), ifelse(line$extendA || line$extendB, "half-line", "segment")
           )
         )
@@ -83,8 +88,8 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
         message(
           sprintf(
             paste0(
-              "The infinite line meets the circle at two points, but one of them",
-              " is not on the %s."
+              "The infinite line meets the circle at two points, but one of ",
+              "them is not on the %s."
             ), ifelse(line$extendA || line$extendB, "half-line", "segment")
           )
         )
@@ -93,8 +98,8 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
         message(
           sprintf(
             paste0(
-              "The infinite line meets the circle at two points, but none of them",
-              " is on the %s."
+              "The infinite line meets the circle at two points, but none of ",
+              "them is on the %s."
             ), ifelse(line$extendA || line$extendB, "half-line", "segment")
           )
         )
@@ -114,8 +119,8 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
       message(
         sprintf(
           paste0(
-            "The infinite line is tangent to the circle, but the tangency point",
-            " does not belong to the %s."
+            "The infinite line is tangent to the circle, but the tangency ",
+            "point does not belong to the %s."
           ), ifelse(line$extendA || line$extendB, "half-line", "segment")
         )
       )
@@ -129,7 +134,7 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 #' Intersection of an ellipse and a line
 #' @description Return the intersection of an ellipse and a line.
 #'
-#' @param ell an \code{Ellipse} object
+#' @param ell an \code{Ellipse} object or a \code{Circle} object
 #' @param line a \code{Line} object
 #' @param strict logical, whether to take into account \code{line$extendA} and
 #' \code{line$extendB} if they are not both \code{TRUE}
@@ -147,6 +152,7 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 #' ell$includes(Is$I1); ell$includes(Is$I2)
 #' @export
 intersectionEllipseLine <- function(ell, line, strict = FALSE){
+  stopifnot(is(ell, "Ellipse") || is(ell, "Circle"), is(line, "Line"))
   if(is(ell, "Circle")){
     return(intersectionCircleLine(.circleAsEllipse(ell), line, strict))
   }
@@ -154,7 +160,8 @@ intersectionEllipseLine <- function(ell, line, strict = FALSE){
   if(ell$degrees) theta <- theta * pi/180
   costheta <- cos(theta); sintheta <- sin(theta)
   f <- # maps unit circle to ell
-    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell$center)
+    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)),
+               ell$center)
   invf <- f$inverse() # maps ell to unit circle
   line2 <- invf$transformLine(line)
   Is <- suppressMessages(
@@ -182,6 +189,7 @@ intersectionEllipseLine <- function(ell, line, strict = FALSE){
 #'
 #' @export
 intersectionLineLine <- function(line1, line2, strict = FALSE){
+  stopifnot(is(line1, "Line"), is(line2, "Line"))
   if(line1$isEqual(line2)){
     if(line1$extendA && line1$extendB && line2$extendA && line2$extendB){
       return(line1$clone(deep = TRUE))
@@ -205,12 +213,14 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         origin1 <- B; origin2 <- D
         sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(line2$clone(deep = TRUE))
           }
           return(line1$clone(deep = TRUE))
         }else{
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
           }
           return(NULL)
@@ -219,14 +229,16 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       if(line1$extendA && line2$extendB){
         extend1 <- A; extend2 <- D
         origin1 <- B; origin2 <- C
-        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        sameDirection <- .dot(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(line2$clone(deep = TRUE))
           }
           return(line1$clone(deep = TRUE))
         }else{
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
           }
           return(NULL)
@@ -235,14 +247,16 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       if(line1$extendB && line2$extendA){
         extend1 <- B; extend2 <- C
         origin1 <- A; origin2 <- D
-        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        sameDirection <- .dot(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(line2$clone(deep = TRUE))
           }
           return(line1$clone(deep = TRUE))
         }else{
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
           }
           return(NULL)
@@ -251,14 +265,16 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       if(line1$extendB && line2$extendB){
         extend1 <- B; extend2 <- D
         origin1 <- A; origin2 <- C
-        sameDirection <- crossprod(extend1-origin1, extend2-origin2) > 0
+        sameDirection <- .dot(extend1-origin1, extend2-origin2) > 0
         if(sameDirection){
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(line2$clone(deep = TRUE))
           }
           return(line1$clone(deep = TRUE))
         }else{
-          if(suppressMessages(line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
+          if(suppressMessages(
+            line1$includes(origin2, strict = TRUE, checkCollinear = FALSE))){
             return(Line$new(origin1, origin2, FALSE, FALSE))
           }
           return(NULL)
@@ -269,14 +285,18 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         extend <- A; origin <- B
         S1 <- C; S2 <- D
         line <- Line$new(extend, origin, TRUE, FALSE)
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
-           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+          suppressMessages(
+            line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, S2, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, origin, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
         return(NULL)
@@ -285,14 +305,18 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         extend <- B; origin <- A
         S1 <- C; S2 <- D
         line <- Line$new(extend, origin, TRUE, FALSE)
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
-           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+          suppressMessages(
+            line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, S2, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, origin, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
         return(NULL)
@@ -301,14 +325,18 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         extend <- C; origin <- D
         S1 <- A; S2 <- B
         line <- Line$new(extend, origin, TRUE, FALSE)
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
-           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+          suppressMessages(
+            line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, S2, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, origin, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
         if(isTRUE(all.equal(origin, A))) return(A)
@@ -319,14 +347,18 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         extend <- D; origin <- C
         S1 <- A; S2 <- B
         line <- Line$new(extend, origin, TRUE, FALSE)
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
-           suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE)) &&
+          suppressMessages(
+            line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, S2, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S1, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S1, origin, FALSE, FALSE))
         }
-        if(suppressMessages(line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
+        if(suppressMessages(
+          line$includes(S2, strict = TRUE, checkCollinear = FALSE))){
           return(Line$new(S2, origin, FALSE, FALSE))
         }
         if(isTRUE(all.equal(origin, A))) return(A)
@@ -352,12 +384,16 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       #   return(Line$new(q+u0*s, p+t0*r, FALSE, FALSE))
       # }
       # return(NULL)
-      if(suppressMessages(line1$includes(C, strict = TRUE, checkCollinear = FALSE)) &&
-         suppressMessages(line1$includes(D, strict = TRUE, checkCollinear = FALSE))){
+      if(suppressMessages(
+        line1$includes(C, strict = TRUE, checkCollinear = FALSE)) &&
+        suppressMessages(
+          line1$includes(D, strict = TRUE, checkCollinear = FALSE))){
         return(line2$clone(deep = TRUE))
       }
-      if(suppressMessages(line2$includes(A, strict = TRUE, checkCollinear = FALSE)) &&
-         suppressMessages(line2$includes(B, strict = TRUE, checkCollinear = FALSE))){
+      if(suppressMessages(
+        line2$includes(A, strict = TRUE, checkCollinear = FALSE)) &&
+        suppressMessages(
+          line2$includes(B, strict = TRUE, checkCollinear = FALSE))){
         return(line1$clone(deep = TRUE))
       }
       if(line1$directionAndOffset()$direction %% pi == 0){
@@ -389,10 +425,12 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         R <- D
         S <- C
       }
-      if(suppressMessages(line1$includes(R, strict = TRUE, checkCollinear = FALSE))){
+      if(suppressMessages(
+        line1$includes(R, strict = TRUE, checkCollinear = FALSE))){
         return(Line$new(R, Q, FALSE, FALSE))
       }
-      if(suppressMessages(line1$includes(S, strict = TRUE, checkCollinear = FALSE))){
+      if(suppressMessages(
+        line1$includes(S, strict = TRUE, checkCollinear = FALSE))){
         return(Line$new(P, S, FALSE, FALSE))
       }
     }
@@ -405,8 +443,10 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
   if(!strict){
     return(I)
   }
-  if(suppressMessages(line1$includes(I, strict = TRUE, checkCollinear = FALSE)) &&
-     suppressMessages(line2$includes(I, strict = TRUE, checkCollinear = FALSE))){
+  if(suppressMessages(
+    line1$includes(I, strict = TRUE, checkCollinear = FALSE)) &&
+    suppressMessages(
+      line2$includes(I, strict = TRUE, checkCollinear = FALSE))){
     I
   }else{
     NULL

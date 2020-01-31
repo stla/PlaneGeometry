@@ -139,7 +139,7 @@
 }
 
 .solveTrigonometricEquation <- function(a, b, D = 0){
-  # a*cos(x) + b*sin(x) = D
+  # solve a*cos(x) + b*sin(x) = D
   if(D == 0){
     return((atan2(b, a) + c(pi, -pi)/2) %% (2*pi))
   }
