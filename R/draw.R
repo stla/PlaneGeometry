@@ -45,7 +45,6 @@ draw.Triangle <- function(x, ...){
 }
 
 #' @rdname draw
-# #' @importFrom DescTools DrawCircle
 #' @export
 draw.Circle = function(x, npoints = 100L, ...) {
   path <- .circlePoints(
@@ -53,13 +52,9 @@ draw.Circle = function(x, npoints = 100L, ...) {
     x$center, x$radius
   )
   polypath(path, ...)
-  # center <- x$center
-  # DrawCircle(center[1L], center[2L], r.out = x$radius,
-  #            theta.1 = 0, theta.2 = 2*pi, plot = TRUE, ...)
 }
 
 #' @rdname draw
-# #' @importFrom DescTools DrawArc
 #' @export
 draw.Arc = function(x, npoints = 100L, ...) {
   alpha1 <- x$alpha1; alpha2 <- x$alpha2
@@ -72,9 +67,6 @@ draw.Arc = function(x, npoints = 100L, ...) {
     x$center, x$radius
   )
   lines(path, ...)
-  # center <- x$center; r <- x$radius
-  # DrawArc(center[1L], center[2L], rx = r, ry = r,
-  #         theta.1 = x$alpha1, theta.2 = x$alpha2, plot = TRUE, ...)
 }
 
 #' @rdname draw
@@ -88,20 +80,6 @@ draw.Ellipse = function(x, npoints = 100L, ...) {
   )
   polypath(path, ...)
 }
-# draw.Ellipse = function(x, ...) {
-#   center <- x$center
-#   alpha <- x$alpha
-#   if(x$degrees) alpha <- alpha * pi/180
-#   if("col" %in% names(list(...))){
-#     DrawEllipse(center[1L], center[2L],
-#                 radius.x = x$rmajor, radius.y = x$rminor,
-#                 rot = alpha %% pi, plot = TRUE, ...)
-#   }else{
-#     DrawEllipse(center[1L], center[2L],
-#                 radius.x = x$rmajor, radius.y = x$rminor,
-#                 rot = alpha %% pi, plot = TRUE, col = "transparent", ...)
-#   }
-# }
 
 #' @rdname draw
 #' @export
