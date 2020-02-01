@@ -355,6 +355,25 @@ Triangle <- R6Class(
       )
     },
 
+    #' @description Orthic triangle. Its vertices are the feet of the altitudes
+    #' of the reference triangle.
+    orthicTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      AC <- C-A; AB <- B-A
+      BC <- C-B; BA <- A-B
+      CA <- A-C; CB <- B-C
+      x <- 1 / (.dot(AC,AB) / b / c)
+      y <- 1 / (.dot(BC,BA) / a / c)
+      z <- 1 / (.dot(CA,CB) / a / b)
+      HA <- (b*y*B + c*z*C) / (b*y + c*z)
+      HB <- (a*x*A + c*z*C) / (a*x + c*z)
+      HC <- (a*x*A + b*y*B) / (a*x + b*y)
+      Triangle$new(HA, HB, HC)
+    },
+
     #' @description Incentral triangle.
     #' @return A \code{Triangle} object.
     #' @details It is the triangle whose vertices are the intersections of the

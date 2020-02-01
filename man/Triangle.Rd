@@ -135,6 +135,7 @@ incircle$center
 \item \href{#method-area}{\code{Triangle$area()}}
 \item \href{#method-incircle}{\code{Triangle$incircle()}}
 \item \href{#method-excircles}{\code{Triangle$excircles()}}
+\item \href{#method-orthicTriangle}{\code{Triangle$orthicTriangle()}}
 \item \href{#method-incentralTriangle}{\code{Triangle$incentralTriangle()}}
 \item \href{#method-NagelTriangle}{\code{Triangle$NagelTriangle()}}
 \item \href{#method-NagelPoint}{\code{Triangle$NagelPoint()}}
@@ -407,6 +408,16 @@ Excircles of the triangle.
 \subsection{Returns}{
 A list with the three excircles, \code{Circle} objects.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-orthicTriangle"></a>}}
+\subsection{Method \code{orthicTriangle()}}{
+Orthic triangle. Its vertices are the feet of the altitudes
+of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$orthicTriangle()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-incentralTriangle"></a>}}
