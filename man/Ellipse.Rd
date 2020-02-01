@@ -4,8 +4,9 @@
 \alias{Ellipse}
 \title{R6 class representing an ellipse}
 \description{
-An ellipse is given by a center, two radii (\code{rmajor} and \code{rminor}),
-and the angle (\code{alpha}) between the major axis and the horizontal direction.
+An ellipse is given by a center, two radii (\code{rmajor}
+and \code{rminor}), and the angle (\code{alpha}) between the major axis and
+the horizontal direction.
 }
 \examples{
 
@@ -31,7 +32,7 @@ apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
 
 ell <- Ellipse$new(c(1,1), 5, 2, 30)
 diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell)
 invisible(lapply(diameters, draw))
@@ -42,7 +43,7 @@ invisible(lapply(diameters, draw))
 
 ell <- Ellipse$new(c(1,1), 5, 2, 30)
 tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
@@ -53,7 +54,7 @@ invisible(lapply(tangents, draw, col = "blue"))
 
 ell <- Ellipse$new(c(1,1), 5, 2, 30)
 reglines <- ell$regressionLines()
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, lwd = 2)
 draw(reglines$YonX, lwd = 2, col = "blue")
@@ -135,7 +136,8 @@ Create a new \code{Ellipse} object.
 
 \item{\code{rminor}}{positive number, the minor radius}
 
-\item{\code{alpha}}{a number, the angle between the major axis and the horizontal direction}
+\item{\code{alpha}}{a number, the angle between the major axis and the
+horizontal direction}
 
 \item{\code{degrees}}{logical, whether \code{alpha} is given in degrees}
 }
@@ -303,7 +305,7 @@ A \code{Line} object or a list of two \code{Line} objects if
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
 diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell)
 invisible(lapply(diameters, draw))
@@ -394,7 +396,7 @@ tangents at the vertices of the ellipse}
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
 tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
@@ -425,7 +427,7 @@ the regression line of y on x and the regression line of x on y.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
 reglines <- ell$regressionLines()
-plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, lwd = 2)
 draw(reglines$YonX, lwd = 2, col = "blue")

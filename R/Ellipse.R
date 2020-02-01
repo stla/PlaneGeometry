@@ -1,7 +1,8 @@
 #' @title R6 class representing an ellipse
 #'
-#' @description An ellipse is given by a center, two radii (\code{rmajor} and \code{rminor}),
-#' and the angle (\code{alpha}) between the major axis and the horizontal direction.
+#' @description An ellipse is given by a center, two radii (\code{rmajor}
+#' and \code{rminor}), and the angle (\code{alpha}) between the major axis and
+#' the horizontal direction.
 #'
 #' @export
 #' @importFrom R6 R6Class
@@ -110,7 +111,8 @@ Ellipse <- R6Class(
     #' @param center a point, the center of the rotation
     #' @param rmajor positive number, the major radius
     #' @param rminor positive number, the minor radius
-    #' @param alpha a number, the angle between the major axis and the horizontal direction
+    #' @param alpha a number, the angle between the major axis and the
+    #' horizontal direction
     #' @param degrees logical, whether \code{alpha} is given in degrees
     #' @return A new \code{Ellipse} object.
     #' @examples Ellipse$new(c(1,1), 3, 2, 30)
@@ -269,10 +271,6 @@ Ellipse <- R6Class(
         private[[".rminor"]],
         alpha
       )
-      # DrawEllipse(center[1L], center[2L],
-      #             radius.x = private[[".rmajor"]],
-      #             radius.y = private[[".rminor"]],
-      #             rot = alpha, plot = FALSE)
     },
 
     #' @description Diameter and conjugate diameter of the reference ellipse.
@@ -283,7 +281,7 @@ Ellipse <- R6Class(
     #' \code{conjugate = TRUE}.
     #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
     #' diameters <- lapply(c(0, pi/3, 2*pi/3), ell$diameter)
-    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #' plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
     #'      xlab = NA, ylab = NA)
     #' draw(ell)
     #' invisible(lapply(diameters, draw))
@@ -383,7 +381,7 @@ Ellipse <- R6Class(
     #' tangents at the vertices of the ellipse
     #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
     #' tangents <- lapply(c(0, pi/3, 2*pi/3, pi, 4*pi/3, 5*pi/3), ell$tangent)
-    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #' plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
     #'      xlab = NA, ylab = NA)
     #' draw(ell, col = "yellow")
     #' invisible(lapply(tangents, draw, col = "blue"))
@@ -423,7 +421,7 @@ Ellipse <- R6Class(
     #' the regression line of y on x and the regression line of x on y.
     #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
     #' reglines <- ell$regressionLines()
-    #' plot(NULL, type="n", asp=1, xlim = c(-4,6), ylim = c(-2,4),
+    #' plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
     #'      xlab = NA, ylab = NA)
     #' draw(ell, lwd = 2)
     #' draw(reglines$YonX, lwd = 2, col = "blue")
@@ -471,7 +469,6 @@ Ellipse <- R6Class(
       )
     },
 
-
     #' @description Random points on or in the reference ellipse.
     #' @param n an integer, the desired number of points
     #' @param where \code{"in"} to generate inside the ellipse,
@@ -513,16 +510,9 @@ Ellipse <- R6Class(
 #' EllipseFromCenterAndMatrix(ell$center, S)
 EllipseFromCenterAndMatrix <- function(center, S){
   stopifnot(isSymmetric(S))
-  #e <- eigen(chol2inv(chol(S)), symmetric = TRUE)
   e <- eigen(S, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`S` is not positive.")
-#  v <- e$vectors[,2L]
-  .EllipseFromCenterAndEigen(center, e)#, sqrt(e$values[2L]))#sqrt(c(t(v) %*% S %*% v)))
-  # v <- e$vectors[,2L]
-  # alpha <- (atan2(v[2L],v[1L]) * 180/pi) %% 180
-  # a <- .vlength(v/sqrt(c(t(v) %*% S %*% v)))
-  # b <- a * sqrt(e$values[2L]/e$values[1L])
-  # Ellipse$new(center, a, b, alpha)
+  .EllipseFromCenterAndEigen(center, e)
 }
 
 
@@ -544,15 +534,12 @@ GaussianEllipse <- function(mean, Sigma, p){
   )
   e <- eigen(Sigma, symmetric = TRUE)
   if(any(e$values <= 0)) stop("`Sigma` is not positive.")
-  # v <- e$vectors[,1L]
   r <- -2 * log1p(-p)
-  # S <- chol2inv(chol(Sigma)) / r
-  # #e <- eigen(S, symmetric = TRUE)
   e <- list(
     values = rev(1/e$values)/r,
     vectors = e$vectors %*% cbind(c(0,1),c(-1,0))
   )
-  .EllipseFromCenterAndEigen(mean, e)#, sqrt(c(t(v) %*% S %*% v)))
+  .EllipseFromCenterAndEigen(mean, e)
 }
 
 #' Ellipse equation from five points

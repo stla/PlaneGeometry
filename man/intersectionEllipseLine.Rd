@@ -7,7 +7,7 @@
 intersectionEllipseLine(ell, line, strict = FALSE)
 }
 \arguments{
-\item{ell}{an \code{Ellipse} object}
+\item{ell}{an \code{Ellipse} object or a \code{Circle} object}
 
 \item{line}{a \code{Line} object}
 

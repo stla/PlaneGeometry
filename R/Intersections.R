@@ -195,7 +195,6 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
       return(line1$clone(deep = TRUE))
     }else{
       if(!strict){
-        #        line1$extendA <- line1$extendB <- TRUE # should I do "clone" ?
         return(Line$new(line1$A, line1$B, TRUE, TRUE))
       }
       # case 1: one bi-infinite line
@@ -366,24 +365,6 @@ intersectionLineLine <- function(line1, line2, strict = FALSE){
         return(NULL)
       }
       # case 4: two segments
-      # # https://matlabgeeks.com/tips-tutorials/computational-geometry/find-intersection-of-two-lines-in-matlab/
-      # p <- A; r <- B-A
-      # q <- C; s <- D-C
-      # p <- C; r <- D-C
-      # q <- A; s <- B-A
-      # cross <- function(A, B) det(cbind(A,B))
-      # r_cross_s <- cross(r, s) # = 0
-      # q_p_cross_r = cross(q-p, r)
-      # if(abs(q_p_cross_r) > sqrt(.Machine$double.eps)){
-      #   return(NULL)
-      # }
-      # t0 <- abs(c(crossprod(q-p,r))) / c(crossprod(r))
-      # u0 <- abs(c(crossprod(q-p,s))) / c(crossprod(s))
-      # cat("t0: ", t0, "\n"); cat("u0: ", u0, "\n")
-      # if(t0 <=1 && u0 <= 1){
-      #   return(Line$new(q+u0*s, p+t0*r, FALSE, FALSE))
-      # }
-      # return(NULL)
       if(suppressMessages(
         line1$includes(C, strict = TRUE, checkCollinear = FALSE)) &&
         suppressMessages(

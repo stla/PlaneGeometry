@@ -84,7 +84,6 @@ Mobius <- R6Class(
         private[[".d"]] <- as.complex(d)
       }
     }
-
   ),
 
   public = list(
@@ -189,6 +188,7 @@ Mobius <- R6Class(
     #' @param circ a \code{Circle} object
     #' @return A \code{Circle} object or a \code{Line} object.
     transformCircle = function(circ) {
+      stopifnot(is(circ, "Circle"))
       private[[".c"]] -> c
       private[[".d"]] -> d
       R <- circ$radius
@@ -229,6 +229,7 @@ Mobius <- R6Class(
     #' @param line a \code{Line} object
     #' @return A \code{Circle} object or a \code{Line} object.
     transformLine = function(line) {
+      stopifnot(is(line, "Line"))
       private[[".a"]] -> a
       private[[".b"]] -> b
       private[[".c"]] -> c

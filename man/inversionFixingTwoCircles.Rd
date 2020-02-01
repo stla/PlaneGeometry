@@ -10,7 +10,7 @@ inversionFixingTwoCircles(circ1, circ2)
 \item{circ1, circ2}{\code{Circle} objects}
 }
 \value{
-An \code{Inversion} object, which maps \code{circ1} to \code{circ1}
+An \code{Inversion} object, which maps \code{circ1} to \code{circ2}
 and \code{circ2} to \code{circ2}.
 }
 \description{

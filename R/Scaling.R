@@ -176,8 +176,6 @@ Scaling <- R6Class(
       private[[".direction"]] -> w
       private[[".scale"]] -> s
       w1 <- w[1L]; w2 <- w[2L]
-      # M1 <- cbind(rbind(c(w1,w2),c(-w2,w1),c(0,0)), c(Q,1))
-      # M2 <- cbind(rbind(s*c(w1,w2),c(-w2,w1),c(0,0)), c(Q,1))
       M1 <- cbind(rbind(c(w1,w2),c(-w2,w1),Q), c(0,0,1))
       M2 <- cbind(rbind(s*c(w1,w2),c(-w2,w1),Q), c(0,0,1))
       M <- solve(M1) %*% M2 # top-left corner always symmetric ?
@@ -200,17 +198,17 @@ Scaling <- R6Class(
       private[[".direction"]] -> w
       C <- circ$center; R <- circ$radius
       O <- self$transform(C)
-      lw <- sqrt(c(crossprod(w)))
+      lw <- .vlength(w)
       A1 <- self$transform(C + R*w/lw)
       wt <- c(-w[2L], w[1L])
       A2 <- self$transform(C + R*wt/lw)
       if(private[[".scale"]] >= 1){
-        r1 <- sqrt(c(crossprod(A1-O)))
-        r2 <- sqrt(c(crossprod(A2-O)))
+        r1 <- .distance(A1,O)
+        r2 <- .distance(A2,O)
         alpha <- atan2(A1[2L]-O[2L],A1[1L]-O[1L]) * 180/pi
       }else{
-        r1 <- sqrt(c(crossprod(A2-O)))
-        r2 <- sqrt(c(crossprod(A1-O)))
+        r1 <- .distance(A2,O)
+        r2 <- .distance(A1,O)
         alpha <- atan2(A2[2L]-O[2L],A2[1L]-O[1L]) * 180/pi
       }
       Ellipse$new(O, r1, r2, alpha, degrees = TRUE)

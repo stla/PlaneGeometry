@@ -243,21 +243,6 @@ EllipticalArc <- R6Class(
         flatAngle <- pi
         k <- 1
       }
-      # t1 <- atan(a/b*tan(theta1)) %% (2*pi)
-      # t2 <- atan(a/b*tan(theta2)) %% (2*pi)
-      # d1 <- t1 - t1 %% (pi/2)
-      # d2 <- t2 - t2 %% (pi/2)
-      # d <- abs(d1-d2)
-      # if(d == 0){ # t1 and t2 in same quadrant
-      #   integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2)$value
-      # }else{
-      #   quadrantLength <- a * gsl::ellint_Ecomp(sqrt(1-b^2/a^2))
-      #   if(d2 == 3*pi/2){ # t1 and t2 in adjacent quadrants
-      #     quadrantLength -
-      #     integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), 0, t1 %% (pi/2))$value +
-      #       integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), 3*pi/2, t2)$value
-      #   }
-      # }
       if(alpha1 > alpha2) alpha1 <- alpha1 - 2*flatAngle
       delta <- alpha1 - alpha1 %% flatAngle
       alpha1 <- alpha1 + delta
@@ -267,19 +252,6 @@ EllipticalArc <- R6Class(
       t1 <- atan2(a/b, 1/tan(theta1)) + theta1 - theta1 %% pi
       t2 <- atan2(a/b, 1/tan(theta2)) + theta2 - theta2 %% pi
       m <- 1 - a*a/b/b
-      # u1 <- t1
-      # while(u1 > pi/2){
-      #   u1 <- u1 - pi
-      # }
-      # u2 <- t2
-      # while(u2 > pi/2){
-      #   u2 <- u2 - pi
-      # }
-      # tt1 <- atan(a/b*tan(theta1))
-      # tt2 <- atan(a/b*tan(theta2))
-      # x <- b * abs(ellint2(t2, m) - ellint2(t1,m))
-      #if(t2 - t1 > pi) x <- 4*a * gsl::ellint_Ecomp(sqrt(1-b^2/a^2)) - x
-      # x
 #      integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2, ...)
       b * (ellint2(t2, m) - ellint2(t1,m))
     }

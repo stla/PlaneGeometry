@@ -28,7 +28,8 @@ Inversion <- R6Class(
         stopifnot(
           is.numeric(pole),
           length(pole) == 2L,
-          !any(is.na(pole))
+          !any(is.na(pole)),
+          all(is.finite(pole))
         )
         private[[".pole"]] <- pole
       }
@@ -44,6 +45,7 @@ Inversion <- R6Class(
           is.numeric(power),
           length(power) == 1L,
           !is.na(power),
+          is.finite(power),
           power != 0
         )
         private[[".power"]] <- power
@@ -90,7 +92,7 @@ Inversion <- R6Class(
     #' @return A point or \code{Inf}, the image of \code{M}.
     invert = function(M) {
       pole <- private[[".pole"]]
-      if(isTRUE(all.equal(Inf, M))) return(pole)
+      if(isTRUE(all.equal(Inf, M, check.attributes = FALSE))) return(pole)
       M <- as.vector(M)
       stopifnot(
         is.numeric(M),
@@ -98,7 +100,7 @@ Inversion <- R6Class(
         !any(is.na(M)),
         all(is.finite(M))
       )
-      if(isTRUE(all.equal(pole, M))) return(Inf)
+      if(isTRUE(all.equal(pole, M, check.attributes = FALSE))) return(Inf)
       k <- private[[".power"]]
       pole_M <- M - pole
       pole + k/c(crossprod(pole_M)) * pole_M
@@ -139,6 +141,7 @@ Inversion <- R6Class(
     #' }
     #' par(opar)
     invertCircle = function(circ){
+      stopifnot(is(circ, "Circle"))
       c0 <- private[[".pole"]]; k <- private[[".power"]]
       c1 <- circ$center
       r1 <- circ$radius
@@ -165,6 +168,7 @@ Inversion <- R6Class(
     #' @param line a \code{Line} object
     #' @return A \code{Circle} object or a \code{Line} object.
     invertLine = function(line){
+      stopifnot(is(line, "Line"))
       A <- line$A: B <- line$B
       if(.collinear(A, B, private[[".pole"]])){
         line
@@ -210,6 +214,7 @@ Inversion <- R6Class(
 #' and \code{circ2} to \code{circ1}.
 #' @export
 inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
+  stopifnot(is(circ1, "Circle"), is(circ2, "Circle"))
   c1 <- circ1$center; r1 <- circ1$radius
   c2 <- circ2$center; r2 <- circ2$radius
   ok <- TRUE
@@ -232,10 +237,11 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
 #'
 #' @param circ1,circ2 \code{Circle} objects
 #'
-#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ1}
+#' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}
 #' and \code{circ2} to \code{circ2}.
 #' @export
 inversionFixingTwoCircles <- function(circ1, circ2){
+  stopifnot(is(circ1, "Circle"), is(circ2, "Circle"))
   O <- circ1$radicalCenter(circ2)
   Inversion$new(O, circ1$power(O));
 }
@@ -249,6 +255,7 @@ inversionFixingTwoCircles <- function(circ1, circ2){
 #' \code{circ2} and \code{circ3} invariant.
 #' @export
 inversionFixingThreeCircles <- function(circ1, circ2, circ3){
+  stopifnot(is(circ1, "Circle"), is(circ2, "Circle"), is(circ3, "Circle"))
   Rc <- radicalCenter(circ1, circ2, circ3)
   Inversion$new(Rc, circ1$power(Rc))
 }

@@ -207,7 +207,7 @@ Affine <- R6Class(
       y0 <- (2*A*E-B*D)/Delta
       theta <- atan2(C-A-sqrt((A-C)^2+B*B), B)
       degrees <- ell$degrees
-      theta <- if(degrees) (theta*180/pi) %% 180 else theta %% pi
+      theta <- if(degrees) (theta*180/pi) %% 180 else (theta %% pi)
       Ellipse$new(c(x0,y0), a, b, theta, degrees = degrees)
     }
   )
@@ -257,8 +257,8 @@ AffineMappingEllipse2Ellipse <- function(ell1, ell2){
     if(ell1$degrees) theta <- theta * pi/180
     costheta <- cos(theta); sintheta <- sin(theta)
   }
-  f1 <-
-    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell1$center)
+  f1 <- Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)),
+                   ell1$center)
   #
   if(is(ell2, "Circle")){
     a <- b <- ell2$radius
@@ -268,8 +268,8 @@ AffineMappingEllipse2Ellipse <- function(ell1, ell2){
     if(ell2$degrees) theta <- theta * pi/180
     costheta <- cos(theta); sintheta <- sin(theta)
   }
-  f2 <-
-    Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)), ell2$center)
+  f2 <- Affine$new(cbind(a*c(costheta,sintheta), b*c(-sintheta,costheta)),
+                   ell2$center)
   #
   f1$inverse()$compose(f2)
 }
