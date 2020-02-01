@@ -7,7 +7,8 @@
 A line is given by two distinct points,
 named \code{A} and \code{B}, and two logical values \code{extendA}
 and \code{extendB}, indicating whether the line must be extended
-beyond \code{A} and \code{B} respectively.
+beyond \code{A} and \code{B} respectively. Depending on \code{extendA}
+and \code{extendB}, the line is an infinite line, a half-line, or a segment.
 }
 \examples{
 

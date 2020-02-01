@@ -320,8 +320,6 @@ tessellation2 <- function(depth, Thetas0, colors){
   plot(0, 0, type = "n", asp = 1, xlim = c(-4,4), ylim = c(-4,4))
 
   path <- do.call(rbind, lapply(rev(arcs), function(arc) arc$path()))
-  # x <- unlist(lapply(paths, "[[", "x"))
-  # y <- unlist(lapply(paths, "[[", "y"))
   polypath(path, col = colors[1L])
   
   invisible(lapply(arcs, function(arc){
@@ -331,7 +329,6 @@ tessellation2 <- function(depth, Thetas0, colors){
     alpha1 <- Arg(A[1L] + 1i*A[2L])
     alpha2 <- Arg(B[1L] + 1i*B[2L])
     path2 <- Arc$new(c(0,0), 3, alpha1, alpha2, FALSE)$path()
-    #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
     polypath(rbind(path1,path2), col = colors[2L])
   }))
   
@@ -353,7 +350,6 @@ tessellation2 <- function(depth, Thetas0, colors){
       alpha1 <- Arg(A[1L] + 1i*A[2L])
       alpha2 <- Arg(B[1L] + 1i*B[2L])
       path2 <- Arc$new(c(0,0), 3, alpha1, alpha2, FALSE)$path()
-      #x <- c(path1$x, path2$x); y <- c(path1$y, path2$y)
       polypath(rbind(path1,path2), col = colors[d+1L])
     }
   }

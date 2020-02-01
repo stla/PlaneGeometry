@@ -137,6 +137,7 @@ Mobius <- R6Class(
     #' returns \code{M1 o M0} or \code{M0 o M1})
     #' @return A \code{Mobius} object.
     compose = function(M1, left = TRUE) {
+      stopifnot(is(M1, "Mobius"))
       A <- self$getM(); B <- M1$getM()
       if(left) Mobius$new(B %*% A) else Mobius$new(A %*% B)
     },
