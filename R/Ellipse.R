@@ -603,7 +603,7 @@ EllipseFromEquation <- function(A, B, C, D, E, F){
   phi <- if(is.nan(B/(A-C))){
     0
   }else{
-    if(C > A) atan(B/(A-C))/2 else (pi/2 - atan(-B/(A-C))/2)
+    if(abs(C) > abs(A)) atan(B/(A-C))/2 else (pi/2 - atan(-B/(A-C))/2)
   }
   Ellipse$new(c(x,y)/(4*A*C - B*B), max(a,b), min(a,b), (phi*180/pi) %% 180)
 }
