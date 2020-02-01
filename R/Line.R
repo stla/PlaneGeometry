@@ -152,7 +152,7 @@ Line <- R6Class(
     #' @details The equation of the line is
     #' \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
     #' where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
-    #' and \ifelse{html}{\out{d}}{\eqn{\d}{d}} is the offset.
+    #' and \ifelse{html}{\out{d}}{\eqn{d}{d}} is the offset.
     directionAndOffset = function(){
       A <- private[[".A"]]; B <- private[[".B"]]
       if(A[1L] == B[1L]){
