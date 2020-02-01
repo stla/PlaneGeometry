@@ -259,3 +259,21 @@ inversionFixingThreeCircles <- function(circ1, circ2, circ3){
   Rc <- radicalCenter(circ1, circ2, circ3)
   Inversion$new(Rc, circ1$power(Rc))
 }
+
+#' Inversion keeping a circle unchanged
+#' @description Return an inversion with a given pole which keeps a given
+#' circle unchanged.
+#'
+#' @param pole inversion pole, a point
+#' @param circ a \code{Circle} object
+#'
+#' @return An \code{Inversion} object.
+#' @export
+#'
+#' @examples circ <- Circle$new(c(4,3), 2)
+#' iota <- inversionKeepingCircle(c(1,2), circ)
+#' iota$transformCircle(circ)
+inversionKeepingCircle <- function(pole, circ){
+  stopifnot(is(circ, "Circle"))
+  Inversion$new(pole, circ$power(pole))
+}
