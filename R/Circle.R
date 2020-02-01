@@ -217,12 +217,13 @@ Circle <- R6Class(
     #' draw(ocirc, lty = "dashed", lwd = 2)
     #' draw(arc, lwd = 3, col = "blue")
     orthogonalThroughTwoPointsWithinCircle = function(P1, P2, arc = FALSE) {
-      if(isTRUE(all.equal(P1, P2))) stop("`P1` and `P2` must be distinct.")
+      if(isTRUE(all.equal(P1, P2, check.attributes = FALSE)))
+        stop("`P1` and `P2` must be distinct.")
       I <- private[[".center"]]; r <- private[[".radius"]]; r2 <- r*r
-      if(c(crossprod(P1-I)) >= r2){
+      if(.distance(P1,I) >= r2){
         stop("`P1` is not in the interior of the reference circle.")
       }
-      if(c(crossprod(P2-I)) >= r2){
+      if(.distance(P2,I) >= r2){
         stop("`P2` is not in the interior of the reference circle.")
       }
       if(.collinear(I, P1, P2)){

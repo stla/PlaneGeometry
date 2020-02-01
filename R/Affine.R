@@ -181,6 +181,7 @@ Affine <- R6Class(
     #' @param ell an \code{Ellipse} object or a \code{Circle} object
     #' @return An \code{Ellipse} object.
     transformEllipse = function(ell){
+      stopifnot(is(ell, "Circle") || is(ell, "Ellipse"))
       if(det(private[[".A"]]) == 0){
         stop("The affine map is singular.")
       }

@@ -160,7 +160,7 @@ Mobius <- R6Class(
     #' Mob$transform(Inf)
     transform = function(M) {
       M <- as.vector(M)
-      if(!(isinf <- isTRUE(all.equal(M, Inf)))){
+      if(!(isinf <- isTRUE(all.equal(M, Inf, check.attributes = FALSE)))){
         stopifnot(
           is.numeric(M),
           length(M) == 2L,

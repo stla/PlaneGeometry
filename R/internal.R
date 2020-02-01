@@ -3,7 +3,7 @@
 }
 
 .toCplx <- function(M){
-  if(isTRUE(all.equal(M, Inf))){
+  if(isTRUE(all.equal(M, Inf, check.attributes = FALSE))){
     Inf
   }else{
     complex(real = M[1L], imaginary = M[2L])
@@ -49,7 +49,9 @@
 
 .collinear <- function(A, B, C, tol = 0) {
   notdistinct <-
-    isTRUE(all.equal(A,B)) || isTRUE(all.equal(A,C)) || isTRUE(all.equal(B,C))
+    isTRUE(all.equal(A, B, check.attributes = FALSE)) ||
+    isTRUE(all.equal(A, C, check.attributes = FALSE)) ||
+    isTRUE(all.equal(B, C, check.attributes = FALSE))
   if(notdistinct) return(TRUE)
   AB <- B-A; AC <- C-A
   z <- (AB[1] - 1i*AB[2]) * (AC[1] + 1i*AC[2])
@@ -167,39 +169,3 @@
   Ellipse$new(center, a, b, alpha)
 }
 
-# elliptic integral of second kind allowing negative m (k²)
-# .ellint2 <- function(phi, m){
-#   sine <- sin(phi)
-#   sine2 <- sine*sine
-#   cosine2 <- 1 - sine2
-#   oneminusmsine2 <- 1 - m*sine2
-#   sine * gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
-#     m * sine*sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3
-# }
-
-# .ellint2 <- function(phi, m){
-#   if(phi == 0){
-#     0
-#   }else if(phi >= -pi/2 && phi <= pi/2){
-#     sine <- sin(phi)
-#     sine2 <- sine*sine
-#     cosine2 <- 1 - sine2
-#     oneminusmsine2 <- 1 - m*sine2
-#     sine * (gsl::ellint_RF(cosine2, oneminusmsine2, 1) -
-#               m * sine2 * gsl::ellint_RD(cosine2, oneminusmsine2, 1) / 3)
-#   }else if(phi > pi/2){
-#     k <- 0
-#     while(phi > pi/2){
-#       phi <- phi - pi
-#       k <- k + 1
-#     }
-#     2*k*ellint2(pi/2, m) + ellint2(phi, m)
-#   }else{
-#     k <- 0
-#     while(phi < -pi/2){
-#       phi <- phi + pi
-#       k <- k - 1
-#     }
-#     2*k*ellint2(pi/2, m) + ellint2(phi, m)
-#   }
-# }
