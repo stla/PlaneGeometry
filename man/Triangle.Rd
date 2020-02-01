@@ -447,7 +447,7 @@ Nagel triangle (or extouch triangle) of the reference triangle.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{NagelPoint}}{logical, whether to return the Nagel point as attribute.}
+\item{\code{NagelPoint}}{logical, whether to return the Nagel point as attribute}
 }
 \if{html}{\out{</div>}}
 }

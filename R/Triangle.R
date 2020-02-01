@@ -391,7 +391,7 @@ Triangle <- R6Class(
     },
 
     #' @description Nagel triangle (or extouch triangle) of the reference triangle.
-    #' @param NagelPoint logical, whether to return the Nagel point as attribute.
+    #' @param NagelPoint logical, whether to return the Nagel point as attribute
     #' @return A \code{Triangle} object.
     #' @examples t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
     #' lineAB <- Line$new(t$A, t$B)
