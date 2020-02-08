@@ -222,12 +222,34 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
     warning("`positive = TRUE` not possible; switching to `FALSE`")
     ok <- FALSE
   }
+  c1c2 <- .distance(c1, c2)
+  inside <- FALSE
+  if(max(r1,r2) > c1c2 + min(r1,r2)){
+    inside <- TRUE
+  }
+  if(!positive && !inside){
+    circlesIntersect <- c1c2 <= r1+r2
+    if(circlesIntersect){
+      warning("`positive = FALSE` not possible; switching to `TRUE`")
+      positive <- TRUE
+    }
+  }
   a <- r1/r2
   if(positive && ok){
-    O <- -r2/(r1-r2) * c1 + r1/(r1-r2) * c2
+    #O <- -r2/(r1-r2) * c1 + r1/(r1-r2) * c2
+    O <- if(inside){
+      c1 + a/(1+a) * (c2-c1)
+    }else{
+      c1 - a/(1-a) * (c2-c1)
+    }
     Inversion$new(O, a * abs(c(crossprod(O - c2)) - r2*r2))
   }else{
-    O <- r2/(r1+r2) * c1 + r1/(r1+r2) * c2
+    #O <- r2/(r1+r2) * c1 + r1/(r1+r2) * c2
+    O <- if(inside){
+      c1 - a/(1-a) * (c2-c1)
+    }else{
+      c1 + a/(1+a) * (c2-c1)
+    }
     Inversion$new(O, -a * abs(c(crossprod(O - c2)) - r2*r2))
   }
 }
