@@ -14,7 +14,9 @@ must be positive or negative}
 }
 \value{
 An \code{Inversion} object, which maps \code{circ1} to \code{circ2}
-and \code{circ2} to \code{circ1}.
+and \code{circ2} to \code{circ1}, except in the case when \code{circ1}
+and \code{circ2} are congruent and tangent: in this case a \code{Reflection}
+object is returned (a reflection is an inversion on a line).
 }
 \description{
 Return the inversion which swaps two given circles.

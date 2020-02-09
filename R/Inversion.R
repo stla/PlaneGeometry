@@ -211,7 +211,9 @@ Inversion <- R6Class(
 #' must be positive or negative
 #'
 #' @return An \code{Inversion} object, which maps \code{circ1} to \code{circ2}
-#' and \code{circ2} to \code{circ1}.
+#' and \code{circ2} to \code{circ1}, except in the case when \code{circ1}
+#' and \code{circ2} are congruent and tangent: in this case a \code{Reflection}
+#' object is returned (a reflection is an inversion on a line).
 #' @export
 inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
   stopifnot(is(circ1, "Circle"), is(circ2, "Circle"))
@@ -219,23 +221,24 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
   c2 <- circ2$center; r2 <- circ2$radius
   c1c2 <- .distance(c1, c2)
   if(r1 == r2){
-    if(c1c2 < r1+r2){ # they intersect at two points
+    I <- (c1 + c2) / 2
+    if(c1c2 < r1+r2){ # they intersect at two points or are equal
       if(!positive){
         warning("`positive = FALSE` not possible; switching to `TRUE`")
       }
-      I <- (c1 + c2) / 2
       k <- abs(.distance(I,c2) - r2*r2)
       return(Inversion$new(I, k))
     }else if(c1c2 > r1+r2){ # they do not intersect
       if(positive){
         warning("`positive = TRUE` not possible; switching to `FALSE`")
       }
-      I <- (c1 + c2) / 2
       k <- -abs(.distance(I,c2) - r2*r2)
       return(Inversion$new(I, k))
     }else{ # they touch
-      warning("No solution")
-      return(NULL) # retourner une reflection
+      warning("No possible inversion; returning a reflection")
+      c1_c2 <- c2 - c1
+      v <- c(c1_c2[2L], -c1_c2[1L])
+      return(Reflection$new(Line$new(I+v, I-v)))
     }
   }
   # ok <- TRUE
