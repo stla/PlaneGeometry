@@ -1,5 +1,15 @@
 context("Inversions")
 
+test_that("invertCircle", {
+  circ0 <- Circle$new(c(0,2), 3)
+  iota <- Inversion$new(c(5,5), 6)
+  circ1 <- iota$invertCircle(circ0)
+  A <- iota$invert(c(3,2))
+  B <- iota$invert(c(0,5))
+  C <- iota$invert(c(-3,2))
+  expect_true(circ1$includes(A) && circ1$includes(B) && circ1$includes(C))
+})
+
 test_that("inversionSwappingTwoCircles", {
   ## non-intersecting circles, external
   circ1 <- Circle$new(c(0,2), 3)

@@ -217,12 +217,32 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
   stopifnot(is(circ1, "Circle"), is(circ2, "Circle"))
   c1 <- circ1$center; r1 <- circ1$radius
   c2 <- circ2$center; r2 <- circ2$radius
-  ok <- TRUE
-  if(positive && r1 == r2){
-    warning("`positive = TRUE` not possible; switching to `FALSE`")
-    ok <- FALSE
-  }
   c1c2 <- .distance(c1, c2)
+  if(r1 == r2){
+    if(c1c2 < r1+r2){ # they intersect at two points
+      if(!positive){
+        warning("`positive = FALSE` not possible; switching to `TRUE`")
+      }
+      I <- (c1 + c2) / 2
+      k <- abs(.distance(I,c2) - r2*r2)
+      return(Inversion$new(I, k))
+    }else if(c1c2 > r1+r2){ # they do not intersect
+      if(positive){
+        warning("`positive = TRUE` not possible; switching to `FALSE`")
+      }
+      I <- (c1 + c2) / 2
+      k <- -abs(.distance(I,c2) - r2*r2)
+      return(Inversion$new(I, k))
+    }else{ # they touch
+      warning("No solution")
+      return(NULL) # retourner une reflection
+    }
+  }
+  # ok <- TRUE
+  # if(positive && r1 == r2){
+  #   warning("`positive = TRUE` not possible; switching to `FALSE`")
+  #   ok <- FALSE
+  # }
   inside <- FALSE
   if(max(r1,r2) > c1c2 + min(r1,r2)){
     inside <- TRUE
@@ -235,7 +255,7 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
     }
   }
   a <- r1/r2
-  if(positive && ok){
+  if(positive){# && ok){
     #O <- -r2/(r1-r2) * c1 + r1/(r1-r2) * c2
     O <- if(inside){
       c1 + a/(1+a) * (c2-c1)
