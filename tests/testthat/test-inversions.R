@@ -57,7 +57,7 @@ test_that("inversionSwappingTwoCircles", {
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
-  iota <- inversionSwappingTwoCircles(circ1, circ2, FALSE)
+  expect_warning(iota <- inversionSwappingTwoCircles(circ1, circ2, FALSE))
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
@@ -65,7 +65,7 @@ test_that("inversionSwappingTwoCircles", {
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
-  iota <- inversionSwappingTwoCircles(circ2, circ1, FALSE)
+  expect_warning(iota <- inversionSwappingTwoCircles(circ2, circ1, FALSE))
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   ## tangent circles
@@ -76,7 +76,7 @@ test_that("inversionSwappingTwoCircles", {
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
-  iota <- inversionSwappingTwoCircles(circ1, circ2, FALSE)
+  expect_warning(iota <- inversionSwappingTwoCircles(circ1, circ2, FALSE))
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
@@ -84,7 +84,7 @@ test_that("inversionSwappingTwoCircles", {
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
   #
-  iota <- inversionSwappingTwoCircles(circ2, circ1, FALSE)
+  expect_warning(iota <- inversionSwappingTwoCircles(circ2, circ1, FALSE))
   expect_true(circ1$isEqual(iota$invertCircle(circ2)))
   expect_true(circ2$isEqual(iota$invertCircle(circ1)))
 })
