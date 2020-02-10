@@ -1,6 +1,8 @@
-# PlaneGeometry 1.1.0 (2020-02-08)
+# PlaneGeometry 1.1.0 (2020-02-10)
 
-Bug fixed: the function `inversionSwappingTwoCircles` did not work for all cases.
+* Bug fixed: the function `inversionSwappingTwoCircles` did not work for all cases.
+
+* New functions: `inversionFromCircle` and `midCircles`.
 
 
 # PlaneGeometry 1.0.0 (2020-02-01)

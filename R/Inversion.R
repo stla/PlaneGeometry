@@ -202,6 +202,17 @@ Inversion <- R6Class(
   )
 )
 
+#' Inversion on a circle
+#' @description Return the inversion on a given circle.
+#'
+#' @param circ a \code{Circle} object
+#'
+#' @return An \code{Inversion} object
+#' @export
+inversionFromCircle <- function(circ){
+  stopifnot(is(circ, "Circle"))
+  Inversion$new(circ$center, circ$radius*circ$radius)
+}
 
 #' Inversion swapping two circles
 #' @description Return the inversion which swaps two given circles.
@@ -226,13 +237,13 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
       if(!positive){
         warning("`positive = FALSE` not possible; switching to `TRUE`")
       }
-      k <- abs(.distance(I,c2) - r2*r2)
+      k <- abs(c(crossprod(I-c2)) - r2*r2)
       return(Inversion$new(I, k))
     }else if(c1c2 > r1+r2){ # they do not intersect
       if(positive){
         warning("`positive = TRUE` not possible; switching to `FALSE`")
       }
-      k <- -abs(.distance(I,c2) - r2*r2)
+      k <- -abs(c(crossprod(I-c2)) - r2*r2)
       return(Inversion$new(I, k))
     }else{ # they touch
       warning("No possible inversion; returning a reflection")
@@ -247,10 +258,12 @@ inversionSwappingTwoCircles <- function(circ1, circ2, positive = TRUE){
   #   ok <- FALSE
   # }
   inside <- FALSE
-  if(max(r1,r2) > c1c2 + min(r1,r2)){
+  inside_tangent <- FALSE
+  if(max(r1,r2) >= c1c2 + min(r1,r2)){
     inside <- TRUE
+    inside_tangent <- max(r1,r2) == c1c2 + min(r1,r2)
   }
-  if(!positive && !inside){
+  if(!positive && (!inside || inside_tangent)){
     circlesIntersect <- c1c2 <= r1+r2
     if(circlesIntersect){
       warning("`positive = FALSE` not possible; switching to `TRUE`")

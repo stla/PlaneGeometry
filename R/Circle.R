@@ -373,6 +373,92 @@ radicalCenter <- function(circ1, circ2, circ3){
   .LineLineIntersection(l1$A, l1$B, l2$A, l2$B)
 }
 
+#' Mid-circle(s)
+#' @description Return the mid-circle(s) of two circles.
+#'
+#' @param circ1,circ2 \code{Circle} objects
+#'
+#' @return A \code{Circle} object, or a \code{Line} object, or a list of two
+#' such objects.
+#' @export
+#'
+#' @details A mid-circle of two circles is a generalized circle (i.e. a circle
+#' or a line) such that the inversion on this circle swaps the two circles.
+#' The case of a line appears only when the two circles have equal radii.
+#'
+#' @seealso \code{\link{inversionSwappingTwoCircles}}
+#'
+#' @examples circ1 <- Circle$new(c(5,4),2)
+#' circ2 <- Circle$new(c(6,4),1)
+#' midcircle <- midCircles(circ1, circ2)
+#' inversionFromCircle(midcircle)
+#' inversionSwappingTwoCircles(circ1, circ2)
+midCircles <- function(circ1, circ2){
+  stopifnot(
+    is(circ1, "Circle"),
+    is(circ2, "Circle")
+  )
+
+  r1 <- circ1$radius; r2 <- circ2$radius
+  O1 <- circ1$center; O2 <- circ2$center
+
+  epsilon <- sqrt(.Machine$double.eps)
+
+  if(r1 == r2){
+    if(isTRUE(all.equal(O1,O2))){ # O1=O2
+      out <- list(
+        C1 = circ1,
+        C2 = "circles are equal; every diameter is a mid-circle"
+      )
+    }else{
+      d2 <- c(crossprod(O1 - O2))
+      sumRadii2 <- (r1+r2)^2
+      I <- (O1 + O2) / 2
+      O1_O2 <- O2 - O1
+      v <- c(O1_O2[2L], -O1_O2[1L])
+      line <- Line$new(I+v, I-v)
+      if(d2 < sumRadii2){ # they intersect at two points
+        out <- list(
+          C1 = Circle$new(I, sqrt(abs(c(crossprod(I-O2)) - r2*r2))),
+          C2 = line
+        )
+      }else{ # they are tangent or they do not intersect
+        out <- line
+      }
+    }
+  }else{ # r1 != r2
+    d2 <- c(crossprod(O1 - O2))
+    sumRadii2 <- (r1+r2)^2
+    rho <- r1/r2
+    if(d2 > sumRadii2 + epsilon){ # they are outside each other
+      I <- O1 - rho/(1-rho)*(O2-O1)
+      k <- rho * abs(c(crossprod(I-O2))-r2*r2)
+      out <- Circle$new(I, sqrt(k))
+    }else if(d2 < (r1-r2)^2 - epsilon){ # one contains the other
+      I <- O1 + rho/(1+rho)*(O2-O1)
+      k <- rho * abs(c(crossprod(I-O2))-r2*r2)
+      out <- Circle$new(I, sqrt(k))
+    }else if(sumRadii2 - d2 < epsilon){ # they are externally tangent
+      I <- O1 - rho/(1-rho)*(O2-O1)
+      k <- rho * abs(c(crossprod(I-O2))-r2*r2)
+      out <- Circle$new(I, sqrt(k))
+    }else if(d2 - (r1-r2)^2 < epsilon){ # they are internally tangent
+      I <- O1 + rho/(1+rho)*(O2-O1)
+      k <- rho * abs(c(crossprod(I-O2))-r2*r2)
+      out <- Circle$new(I, sqrt(k))
+    }else{ # they intersect at two points
+      I1 <- O1 - rho/(1-rho)*(O2-O1)
+      k1 <- rho * abs(c(crossprod(I1-O2))-r2*r2)
+      I2 <- O1 + rho/(1+rho)*(O2-O1)
+      k2 <- rho * abs(c(crossprod(I2-O2))-r2*r2)
+      out <- list(
+        C1 = Circle$new(I1, sqrt(k1)),
+        C2 = Circle$new(I2, sqrt(k2))
+      )
+    }
+  }
+  out
+}
 
 #' Steiner chain
 #' @description Return a Steiner chain of circles.
