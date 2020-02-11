@@ -170,6 +170,16 @@ Circle <- R6Class(
       isTRUE(all.equal(c(c0[1L],c0[2L],r0), c(c1[1L],c1[2L],r1)))
     },
 
+    #' @description Check whether the reference circle is orthogonal to a
+    #' given circle
+    #' @param circ a \code{Circle} object
+    isOrthogonal = function(circ){
+      stopifnot(is(circ, "Circle"))
+      d2 <- c(crossprod(private[[".center"]]-circ$center))
+      R <- private[[".radius"]]
+      isTRUE(all.equal(d2, R*R + circ$radius*circ$radius))
+    },
+
     #' @description Check whether a point belongs to the reference circle.
     #' @param M a point
     includes = function(M){

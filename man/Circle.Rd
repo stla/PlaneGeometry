@@ -100,6 +100,7 @@ draw(arc, lwd = 3, col = "blue")
 \item \href{#method-tangent}{\code{Circle$tangent()}}
 \item \href{#method-tangentsThroughExternalPoint}{\code{Circle$tangentsThroughExternalPoint()}}
 \item \href{#method-isEqual}{\code{Circle$isEqual()}}
+\item \href{#method-isOrthogonal}{\code{Circle$isOrthogonal()}}
 \item \href{#method-includes}{\code{Circle$includes()}}
 \item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
 \item \href{#method-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
@@ -282,6 +283,23 @@ tangency points are in the \code{B} field of the lines.
 Check whether the reference circle equals another circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$isEqual(circ)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{circ}}{a \code{Circle} object}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isOrthogonal"></a>}}
+\subsection{Method \code{isOrthogonal()}}{
+Check whether the reference circle is orthogonal to a
+given circle
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Circle$isOrthogonal(circ)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

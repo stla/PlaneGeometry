@@ -4,7 +4,7 @@
 
 * New functions: `inversionFromCircle` and `midCircles`.
 
-* New method for `Circle` class: `tangentsThroughExternalPoint`.
+* New methods for `Circle` class: `tangentsThroughExternalPoint`, `isOrthogonal`
 
 
 # PlaneGeometry 1.0.0 (2020-02-01)
