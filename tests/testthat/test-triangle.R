@@ -38,3 +38,14 @@ test_that("Symmedian point of a right triangle", {
   H <- orthic$C
   expect_equal(sympoint, (C+H)/2)
 })
+
+test_that("Gergonne triangle of tangential triangle is reference triangle", {
+  tref <- Triangle$new(c(0,0), c(1,5), c(4,3))
+  ttref <- tref$tangentialTriangle()
+  gergonnettref <- ttref$GergonneTriangle()
+  expect_equal(
+    cbind(tref$A,tref$B,tref$C),
+    cbind(gergonnettref$A,gergonnettref$B,gergonnettref$C)
+  )
+
+})
