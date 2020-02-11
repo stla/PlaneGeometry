@@ -139,6 +139,29 @@ Circle <- R6Class(
       Line$new(T, T + c(-sint,cost))
     },
 
+    #' @description Return the two tangents of the reference circle passing
+    #' through an external point.
+    #' @param P a point external to the reference circle
+    #' @return A list of two \code{Line} objects, the two tangents; the
+    #' tangency points are in the \code{B} field of the lines.
+    tangentsThroughExternalPoint = function(P){
+      P <- as.vector(P)
+      stopifnot(
+        is.numeric(P),
+        length(P) == 2L,
+        all(is.finite(P)),
+        !any(is.na(P))
+      )
+      O <- private[[".center"]]
+      if(.distance(O,P) <= private[[".radius"]]){
+        stop("`P` is not external to the circle.")
+      }
+      M <- (O+P)/2
+      circ <- Circle$new(M, .distance(O, M))
+      Is <- intersectionCircleCircle(self, circ)
+      list(T1 = Line$new(P, Is[[1L]]), T2 = Line$new(P, Is[[2L]]))
+    },
+
     #' @description Check whether the reference circle equals another circle.
     #' @param circ a \code{Circle} object
     isEqual = function(circ){
