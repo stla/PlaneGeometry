@@ -553,7 +553,8 @@ Gergonne point of the reference triangle.
 \subsection{Method \code{tangentialTriangle()}}{
 Tangential triangle of the reference triangle.
 This is the triangle formed by the lines tangent to the circumcircle of
-the reference triangle at its vertices.
+the reference triangle at its vertices. It does not exist for a
+right triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$tangentialTriangle()}\if{html}{\out{</div>}}
 }

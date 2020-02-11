@@ -368,9 +368,12 @@ Triangle <- R6Class(
       x <- 1 / (.dot(AC,AB) / b / c)
       y <- 1 / (.dot(BC,BA) / a / c)
       z <- 1 / (.dot(CA,CB) / a / b)
-      HA <- (b*y*B + c*z*C) / (b*y + c*z)
-      HB <- (a*x*A + c*z*C) / (a*x + c*z)
-      HC <- (a*x*A + b*y*B) / (a*x + b*y)
+      # HA <- (b*y*B + c*z*C) / (b*y + c*z)
+      # HB <- (a*x*A + c*z*C) / (a*x + c*z)
+      # HC <- (a*x*A + b*y*B) / (a*x + b*y)
+      HA <- (b/z*B + c/y*C) / (b/z + c/y)
+      HB <- (a/z*A + c/x*C) / (a/z + c/x)
+      HC <- (a/y*A + b/x*B) / (a/y + b/x)
       Triangle$new(HA, HB, HC)
     },
 
@@ -506,13 +509,18 @@ Triangle <- R6Class(
 
     #' @description Tangential triangle of the reference triangle.
     #' This is the triangle formed by the lines tangent to the circumcircle of
-    #' the reference triangle at its vertices.
+    #' the reference triangle at its vertices. It does not exist for a
+    #' right triangle.
     #' @return A \code{Triangle} object.
     tangentialTriangle = function() {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       a2 <- c(crossprod(B-C))
       b2 <- c(crossprod(A-C))
       c2 <- c(crossprod(B-A))
+      i <- match(max(a2,b2,c2), c(a2,b2,c2))
+      if(sum(c(a2,b2,c2)[-i]) == c(a2,b2,c2)[i]){
+        stop("The triangle is right, no tangential triangle.")
+      }
       TA <- (-a2*A + b2*B + c2*C) / (-a2 + b2 + c2)
       TB <- (a2*A - b2*B + c2*C) / (a2 - b2 + c2)
       TC <- (a2*A + b2*B - c2*C) / (a2 + b2 - c2)

@@ -22,3 +22,19 @@ test_that("Malfatii circles are tangent", {
   expect_equal(tpoints$TB, I2)
   expect_equal(tpoints$TC, I1)
 })
+
+test_that("Gergonne point is the symmedian point of the Gergonne triangle", {
+  t <- Triangle$new(c(0,0), c(1,5), c(4,3))
+  gpoint <- t$GergonnePoint()
+  intouchTriangle <- t$GergonneTriangle()
+  sympoint <- intouchTriangle$symmedianPoint()
+  expect_equal(gpoint, sympoint)
+})
+
+test_that("Symmedian point of a right triangle", {
+  t <- Triangle$new(c(0,0), c(1,5), c(3,3))
+  sympoint <- t$symmedianPoint()
+  orthic <- t$orthicTriangle()
+  H <- orthic$C
+  expect_equal(sympoint, (C+H)/2)
+})
