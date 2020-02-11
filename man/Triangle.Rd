@@ -75,6 +75,26 @@ points(rbind(NagelPoint), pch = 19)
 par(opar)
 
 ## ------------------------------------------------
+## Method `Triangle$symmedialTriangle`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
+symt <- t$symmedialTriangle()
+symmedianA <- Line$new(t$A, symt$A, FALSE, FALSE)
+symmedianB <- Line$new(t$B, symt$B, FALSE, FALSE)
+symmedianC <- Line$new(t$C, symt$C, FALSE, FALSE)
+K <- t$symmedianPoint()
+opar <- par(mar = c(0,0,0,0))
+plot(NULL, asp = 1, xlim = c(-1,5), ylim = c(-3,3),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(symmedianA, lwd = 2, col = "blue")
+draw(symmedianB, lwd = 2, col = "blue")
+draw(symmedianC, lwd = 2, col = "blue")
+points(rbind(K), pch = 19, col = "red")
+par(opar)
+
+## ------------------------------------------------
 ## Method `Triangle$MalfattiCircles`
 ## ------------------------------------------------
 
@@ -142,6 +162,8 @@ incircle$center
 \item \href{#method-GergonneTriangle}{\code{Triangle$GergonneTriangle()}}
 \item \href{#method-GergonnePoint}{\code{Triangle$GergonnePoint()}}
 \item \href{#method-tangentialTriangle}{\code{Triangle$tangentialTriangle()}}
+\item \href{#method-symmedialTriangle}{\code{Triangle$symmedialTriangle()}}
+\item \href{#method-symmedianPoint}{\code{Triangle$symmedianPoint()}}
 \item \href{#method-circumcircle}{\code{Triangle$circumcircle()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
@@ -538,6 +560,52 @@ the reference triangle at its vertices.
 
 \subsection{Returns}{
 A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-symmedialTriangle"></a>}}
+\subsection{Method \code{symmedialTriangle()}}{
+Symmedial triangle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$symmedialTriangle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Triangle} object.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
+symt <- t$symmedialTriangle()
+symmedianA <- Line$new(t$A, symt$A, FALSE, FALSE)
+symmedianB <- Line$new(t$B, symt$B, FALSE, FALSE)
+symmedianC <- Line$new(t$C, symt$C, FALSE, FALSE)
+K <- t$symmedianPoint()
+opar <- par(mar = c(0,0,0,0))
+plot(NULL, asp = 1, xlim = c(-1,5), ylim = c(-3,3),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(symmedianA, lwd = 2, col = "blue")
+draw(symmedianB, lwd = 2, col = "blue")
+draw(symmedianC, lwd = 2, col = "blue")
+points(rbind(K), pch = 19, col = "red")
+par(opar)
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-symmedianPoint"></a>}}
+\subsection{Method \code{symmedianPoint()}}{
+Symmedian point of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$symmedianPoint()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A point.
 }
 }
 \if{html}{\out{<hr>}}

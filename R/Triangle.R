@@ -519,6 +519,44 @@ Triangle <- R6Class(
       Triangle$new(TA, TB, TC)
     },
 
+    #' @description Symmedial triangle of the reference triangle.
+    #' @return A \code{Triangle} object.
+    #' @examples t <- Triangle$new(c(0,-2), c(0.5,1), c(3,0.6))
+    #' symt <- t$symmedialTriangle()
+    #' symmedianA <- Line$new(t$A, symt$A, FALSE, FALSE)
+    #' symmedianB <- Line$new(t$B, symt$B, FALSE, FALSE)
+    #' symmedianC <- Line$new(t$C, symt$C, FALSE, FALSE)
+    #' K <- t$symmedianPoint()
+    #' opar <- par(mar = c(0,0,0,0))
+    #' plot(NULL, asp = 1, xlim = c(-1,5), ylim = c(-3,3),
+    #'      xlab = NA, ylab = NA, axes = FALSE)
+    #' draw(t, lwd = 2)
+    #' draw(symmedianA, lwd = 2, col = "blue")
+    #' draw(symmedianB, lwd = 2, col = "blue")
+    #' draw(symmedianC, lwd = 2, col = "blue")
+    #' points(rbind(K), pch = 19, col = "red")
+    #' par(opar)
+    symmedialTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      KA <- (b2*B + c2*C) / (b2 + c2)
+      KB <- (a2*A + c2*C) / (a2 + c2)
+      KC <- (a2*A + b2*B) / (a2 + b2)
+      Triangle$new(KA, KB, KC)
+    },
+
+    #' @description Symmedian point of the reference triangle.
+    #' @return A point.
+    symmedianPoint = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      (a2*A + b2*B + c2*C) / (a2 + b2 + c2)
+    },
+
     #' @description Circumcircle of the reference triangle.
     #' @return A \code{Circle} object.
     circumcircle = function() {
