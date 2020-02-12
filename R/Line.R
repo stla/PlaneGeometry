@@ -290,6 +290,14 @@ Line <- R6Class(
       .LineLineIntersection(A, B, M, M+v)
     },
 
+    #' @description Distance from a point to the reference line.
+    #' @param M a point
+    #' @return A positive number.
+    distance = function(M){
+      P <- self$projection(M)
+      .distance(M, P)
+    },
+
     #' @description Reflection of a point with respect to the reference line.
     #' @param M a point
     #' @return A point.

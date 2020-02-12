@@ -142,6 +142,7 @@ incircle$center
 \item \href{#method-b}{\code{Triangle$b()}}
 \item \href{#method-c}{\code{Triangle$c()}}
 \item \href{#method-edges}{\code{Triangle$edges()}}
+\item \href{#method-orientation}{\code{Triangle$orientation()}}
 \item \href{#method-contains}{\code{Triangle$contains()}}
 \item \href{#method-isAcute}{\code{Triangle$isAcute()}}
 \item \href{#method-angleA}{\code{Triangle$angleA()}}
@@ -166,7 +167,9 @@ incircle$center
 \item \href{#method-symmedianPoint}{\code{Triangle$symmedianPoint()}}
 \item \href{#method-circumcircle}{\code{Triangle$circumcircle()}}
 \item \href{#method-circumcenter}{\code{Triangle$circumcenter()}}
+\item \href{#method-circumradius}{\code{Triangle$circumradius()}}
 \item \href{#method-BrocardCircle}{\code{Triangle$BrocardCircle()}}
+\item \href{#method-BrocardPoints}{\code{Triangle$BrocardPoints()}}
 \item \href{#method-LemoineCircleI}{\code{Triangle$LemoineCircleI()}}
 \item \href{#method-LemoineCircleII}{\code{Triangle$LemoineCircleII()}}
 \item \href{#method-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
@@ -290,9 +293,21 @@ A named numeric vector.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-orientation"></a>}}
+\subsection{Method \code{orientation()}}{
+Determine the orientation of the triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$orientation()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An integer: 1 for counterclockwise, -1 for clockwise, 0 for collinear.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-contains"></a>}}
 \subsection{Method \code{contains()}}{
-Determines whether a point lies inside the reference triangle.
+Determine whether a point lies inside the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$contains(M)}\if{html}{\out{</div>}}
 }
@@ -638,6 +653,15 @@ Circumcenter of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-circumradius"></a>}}
+\subsection{Method \code{circumradius()}}{
+Circumradius of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$circumradius()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-BrocardCircle"></a>}}
 \subsection{Method \code{BrocardCircle()}}{
 The Brocard circle of the reference triangle (also known
@@ -648,6 +672,19 @@ as the seven-point circle).
 
 \subsection{Returns}{
 A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-BrocardPoints"></a>}}
+\subsection{Method \code{BrocardPoints()}}{
+Brocard points of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$BrocardPoints()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A list of two points, the first Brocard point and the second
+Brocard point.
 }
 }
 \if{html}{\out{<hr>}}

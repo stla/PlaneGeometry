@@ -177,7 +177,16 @@ Triangle <- R6Class(
       )
     },
 
-    #' @description Determines whether a point lies inside the reference triangle.
+    #' @description Determine the orientation of the triangle.
+    #' @return An integer: 1 for counterclockwise, -1 for clockwise, 0 for collinear.
+    orientation = function(){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      val <-
+        (B[2L] - A[2L])*(C[1L] - B[1L]) - (B[1L] - A[1L])*(C[2L] - B[2L])
+      ifelse(val == 0, 0L, ifelse(val > 0, -1L, 1L))
+    },
+
+    #' @description Determine whether a point lies inside the reference triangle.
     #' @param M a point
     contains = function(M){
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
@@ -596,6 +605,15 @@ Triangle <- R6Class(
       (a*cosA*A + b*cosB*B + c*cosC*C) / (a*cosA + b*cosB + c*cosC)
     },
 
+    #' @description Circumradius of the reference triangle.
+    circumradius = function(){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      a*b*c / sqrt((a+b+c)*(b+c-a)*(c+a-b)*(a+b-c))
+    },
+
     #' @description The Brocard circle of the reference triangle (also known
     #' as the seven-point circle).
     #' @return A \code{Circle} object.
@@ -603,6 +621,27 @@ Triangle <- R6Class(
       O <- self$circumcenter()
       K <- self$symmedianPoint()
       CircleAB(O, K)
+    },
+
+    #' @description Brocard points of the reference triangle.
+    #' @return A list of two points, the first Brocard point and the second
+    #' Brocard point.
+    BrocardPoints = function(){
+      if(self$flatness() == 1){
+        warning("The triangle is flat.")
+        return(NULL)
+      }
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      Omega <- self$trilinearToPoint(c/b, a/c, b/a)
+      OmegaPrime <- self$trilinearToPoint(b/c, c/a, a/b)
+      if(self$orientation() == 1L){
+        list(Z1 = Omega, Z2 = OmegaPrime)
+      }else{
+        list(Z1 = OmegaPrime, Z2 = Omega)
+      }
     },
 
     #' @description The first Lemoine circle of the reference triangle.

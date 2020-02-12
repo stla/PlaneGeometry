@@ -7,7 +7,10 @@
 * New methods for `Circle` class: `tangentsThroughExternalPoint`,`isOrthogonal`
 
 * New methods for `Triangle` class: `symmedialTriangle`, `symmedianPoint`, 
-`BrocardCircle`, `LemoineCircleI/II/III`, `LemoineTriangle`, `ParryCircle`
+`BrocardCircle`, `BrocardPoints`, `LemoineCircleI/II/III`, `LemoineTriangle`, 
+`ParryCircle`
+
+* New method for `Line` class: `distance`
 
 
 # PlaneGeometry 1.0.0 (2020-02-01)
