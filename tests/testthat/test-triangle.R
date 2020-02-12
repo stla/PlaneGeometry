@@ -47,5 +47,13 @@ test_that("Gergonne triangle of tangential triangle is reference triangle", {
     cbind(tref$A, tref$B, tref$C),
     cbind(gergonnettref$A, gergonnettref$B, gergonnettref$C)
   )
+})
 
+test_that("Orthogonality Parry circle", {
+  t <- Triangle$new(c(0,0), c(1,5), c(4,3))
+  parry <- t$ParryCircle()
+  brocard <- t$BrocardCircle()
+  circum <- t$circumcircle()
+  expect_true(parry$isOrthogonal(brocard))
+  expect_true(parry$isOrthogonal(circum))
 })
