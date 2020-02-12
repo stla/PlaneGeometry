@@ -171,6 +171,7 @@ incircle$center
 \item \href{#method-LemoineCircleII}{\code{Triangle$LemoineCircleII()}}
 \item \href{#method-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
 \item \href{#method-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
+\item \href{#method-ParryCircle}{\code{Triangle$ParryCircle()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
@@ -692,6 +693,18 @@ A \code{Triangle} object.
 The third Lemoine circle of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$LemoineCircleIII()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-ParryCircle"></a>}}
+\subsection{Method \code{ParryCircle()}}{
+Parry circle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$ParryCircle()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{

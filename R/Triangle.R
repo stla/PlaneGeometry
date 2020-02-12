@@ -661,6 +661,22 @@ Triangle <- R6Class(
       self$LemoineTriangle()$circumcircle()
     },
 
+    #' @description Parry circle of the reference triangle.
+    #' @return A \code{Circle} object.
+    ParryCircle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      t1 <- a2*(b2-c2)*(b2+c2-2*a2)
+      t2 <- b2*(c2-a2)*(c2+a2-2*b2)
+      t3 <- c2*(a2-b2)*(a2+b2-2*c2)
+      O <- (t1*A+t2*B+t3*C) / (t1+t2+t3)
+      R <- sqrt(a2*b2*c2)*((a2*a2+b2*b2+c2*c2) - (a2*b2+b2*c2+a2*c2)) / 3 /
+        abs((a2-b2)*(b2-c2)*(c2-a2)) # quid si isocele ?
+      Circle$new(O, R)
+    },
+
     #' @description Malfatti circles of the triangle.
     #' @param tangencyPoints logical, whether to retourn the tangency points of
     #' the Malfatti circles as an attribute.
