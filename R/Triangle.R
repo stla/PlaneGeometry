@@ -578,7 +578,87 @@ Triangle <- R6Class(
       Dx <- det(cbind(q, ABC[,2L], 1))
       Dy <- -det(cbind(q, ABC[,1L], 1))
       center <- c(Dx,Dy) / det(cbind(ABC, 1)) / 2
-      Circle$new(center = center, radius = sqrt(c(crossprod(center-A))))
+      Circle$new(center = center, radius = .distance(center,A))
+    },
+
+    #' @description Circumcenter of the reference triangle.
+    circumcenter = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      AC <- C-A; AB <- B-A
+      BC <- C-B; BA <- A-B
+      CA <- A-C; CB <- B-C
+      cosA <- .dot(AC,AB) / b / c
+      cosB <- .dot(BC,BA) / a / c
+      cosC <- .dot(CA,CB) / a / b
+      (a*cosA*A + b*cosB*B + c*cosC*C) / (a*cosA + b*cosB + c*cosC)
+    },
+
+    #' @description The Brocard circle of the reference triangle (also known
+    #' as the seven-point circle).
+    #' @return A \code{Circle} object.
+    BrocardCircle = function() {
+      O <- self$circumcenter()
+      K <- self$symmedianPoint()
+      CircleAB(O, K)
+    },
+
+    #' @description The first Lemoine circle of the reference triangle.
+    #' @return A \code{Circle} object.
+    LemoineCircleI = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      a <- sqrt(a2)
+      b <- sqrt(b2)
+      c <- sqrt(c2)
+      R <- a*b*c*sqrt(a2*b2 + b2*c2 + c2*a2) / (a2 + b2 + c2) /
+        sqrt((-a+b+c)*(a-b+c)*(a+b-c)*(a+b+c))
+      O <- self$circumcenter()
+      K <- self$symmedianPoint()
+      Circle$new((O+K)/2, R)
+    },
+
+    #' @description The second Lemoine circle of the reference triangle (also
+    #' known as the cosine circle)
+    #' @return A \code{Circle} object.
+    LemoineCircleII = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      R <- sqrt(a2*b2*c2) / (a2 + b2 + c2)
+      K <- self$symmedianPoint()
+      Circle$new(K, R)
+    },
+
+    #' @description The Lemoine triangle of the reference triangle.
+    #' @return A \code{Triangle} object.
+    LemoineTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a2 <- c(crossprod(B-C))
+      b2 <- c(crossprod(A-C))
+      c2 <- c(crossprod(B-A))
+      abc <- sqrt(a2*b2*c2)
+      # t1 <- sqrt(b2*c2) / (a2-2*b2-2*c2)
+      # t2 <- sqrt(a2*c2) / (-2*a2+b2-2*c2)
+      # t3 <- sqrt(a2*b2) / (-2*a2-2*b2+c2)
+      t1 <- abc / (a2-2*b2-2*c2)
+      t2 <- abc / (-2*a2+b2-2*c2)
+      t3 <- abc / (-2*a2-2*b2+c2)
+      P1 <- (t2*B + t3*C) / (t2+t3)
+      P2 <- (t1*A + t3*C) / (t1+t3)
+      P3 <- (t1*A + t2*B) / (t1+t2)
+      Triangle$new(P1, P2, P3)
+    },
+
+    #' @description The third Lemoine circle of the reference triangle.
+    #' @return A \code{Circle} object.
+    LemoineCircleIII = function() {
+      self$LemoineTriangle()$circumcircle()
     },
 
     #' @description Malfatti circles of the triangle.
@@ -587,7 +667,7 @@ Triangle <- R6Class(
     #' @return A list with the three Malfatti circles, \code{Circle} objects.
     #' @examples t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
     #' Mcircles <- t$MalfattiCircles(TRUE)
-    #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+    #' plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
     #'      xlab = NA, ylab = NA)
     #' grid()
     #' draw(t, col = "blue", lwd = 2)

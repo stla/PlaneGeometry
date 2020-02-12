@@ -566,6 +566,17 @@ CircleOA <- function(O, A){
   Circle$new(O, .distance(O,A))
 }
 
+#' Circle given by a diameter
+#' @description Return the circle given by a diameter
+#'
+#' @param A,B the endpoints of the diameter
+#'
+#' @return A \code{Circle} object.
+#' @export
+CircleAB <- function(A, B){
+  Circle$new((A+B)/2, .distance(A,B)/2)
+}
+
 #' Unit circle
 #' @description Circle centered at the origin with radius 1.
 #' @export

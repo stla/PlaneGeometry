@@ -6,7 +6,8 @@
 
 * New methods for `Circle` class: `tangentsThroughExternalPoint`, `isOrthogonal`
 
-* New methods for `Triangle` class: `symmedialTriangle`, `symmedianPoint`
+* New methods for `Triangle` class: `symmedialTriangle`, `symmedianPoint`, 
+`BrocardCircle`
 
 
 # PlaneGeometry 1.0.0 (2020-02-01)

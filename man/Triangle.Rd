@@ -100,7 +100,7 @@ par(opar)
 
 t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
 Mcircles <- t$MalfattiCircles(TRUE)
-plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
      xlab = NA, ylab = NA)
 grid()
 draw(t, col = "blue", lwd = 2)
@@ -165,6 +165,12 @@ incircle$center
 \item \href{#method-symmedialTriangle}{\code{Triangle$symmedialTriangle()}}
 \item \href{#method-symmedianPoint}{\code{Triangle$symmedianPoint()}}
 \item \href{#method-circumcircle}{\code{Triangle$circumcircle()}}
+\item \href{#method-circumcenter}{\code{Triangle$circumcenter()}}
+\item \href{#method-BrocardCircle}{\code{Triangle$BrocardCircle()}}
+\item \href{#method-LemoineCircleI}{\code{Triangle$LemoineCircleI()}}
+\item \href{#method-LemoineCircleII}{\code{Triangle$LemoineCircleII()}}
+\item \href{#method-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
+\item \href{#method-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
@@ -622,6 +628,77 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-circumcenter"></a>}}
+\subsection{Method \code{circumcenter()}}{
+Circumcenter of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$circumcenter()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-BrocardCircle"></a>}}
+\subsection{Method \code{BrocardCircle()}}{
+The Brocard circle of the reference triangle (also known
+as the seven-point circle).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$BrocardCircle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LemoineCircleI"></a>}}
+\subsection{Method \code{LemoineCircleI()}}{
+The first Lemoine circle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$LemoineCircleI()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LemoineCircleII"></a>}}
+\subsection{Method \code{LemoineCircleII()}}{
+The second Lemoine circle of the reference triangle (also
+known as the cosine circle)
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$LemoineCircleII()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LemoineTriangle"></a>}}
+\subsection{Method \code{LemoineTriangle()}}{
+The Lemoine triangle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$LemoineTriangle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LemoineCircleIII"></a>}}
+\subsection{Method \code{LemoineCircleIII()}}{
+The third Lemoine circle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$LemoineCircleIII()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-MalfattiCircles"></a>}}
 \subsection{Method \code{MalfattiCircles()}}{
 Malfatti circles of the triangle.
@@ -644,7 +721,7 @@ A list with the three Malfatti circles, \code{Circle} objects.
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
 Mcircles <- t$MalfattiCircles(TRUE)
-plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
      xlab = NA, ylab = NA)
 grid()
 draw(t, col = "blue", lwd = 2)
