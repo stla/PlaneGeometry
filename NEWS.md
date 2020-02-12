@@ -8,7 +8,7 @@
 
 * New methods for `Triangle` class: `symmedialTriangle`, `symmedianPoint`, 
 `BrocardCircle`, `BrocardPoints`, `LemoineCircleI/II/III`, `LemoineTriangle`, 
-`ParryCircle`
+`ParryCircle`, `SteinerEllipse`
 
 * New method for `Line` class: `distance`
 

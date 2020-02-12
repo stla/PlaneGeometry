@@ -117,6 +117,17 @@ t <- Triangle$new(c(0,0), c(2,1), c(5,7))
 incircle <- t$incircle()
 t$trilinearToPoint(1, 1, 1)
 incircle$center
+
+## ------------------------------------------------
+## Method `Triangle$SteinerEllipse`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+ell <- t$SteinerEllipse()
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.7,2.4),
+     xlab = NA, ylab = NA)
+draw(t, col = "blue", lwd = 2)
+draw(ell, border = "red", lwd =2)
 }
 \seealso{
 \code{\link{TriangleThreeLines}} to define a triangle by three lines.
@@ -182,6 +193,7 @@ incircle$center
 \item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
+\item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
 \item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
 }
@@ -895,6 +907,33 @@ Translate the triangle.
 \subsection{Returns}{
 A \code{Triangle} object.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SteinerEllipse"></a>}}
+\subsection{Method \code{SteinerEllipse()}}{
+The Steiner ellipse (or circumellipse) of the reference
+triangle. This is the ellipse passing through the three vertices of
+the triangle and centered at the centroid of the triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$SteinerEllipse()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An \code{Ellipse} object.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+ell <- t$SteinerEllipse()
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.7,2.4),
+     xlab = NA, ylab = NA)
+draw(t, col = "blue", lwd = 2)
+draw(ell, border = "red", lwd =2)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-randomPoints"></a>}}
