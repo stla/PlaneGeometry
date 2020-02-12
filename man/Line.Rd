@@ -59,6 +59,7 @@ l$includes(M, strict = TRUE)
 \item \href{#method-isParallel}{\code{Line$isParallel()}}
 \item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
+\item \href{#method-parallel}{\code{Line$parallel()}}
 \item \href{#method-projection}{\code{Line$projection()}}
 \item \href{#method-distance}{\code{Line$distance()}}
 \item \href{#method-reflection}{\code{Line$reflection()}}
@@ -240,6 +241,25 @@ beyond the point \code{M}}
 \subsection{Returns}{
 A \code{Line} object; its two points are the
 meeting point and the point \code{M}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-parallel"></a>}}
+\subsection{Method \code{parallel()}}{
+Parallel to the reference line passing through a given point.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$parallel(M)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{M}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}

@@ -280,6 +280,15 @@ Line <- R6Class(
       Line$new(H, M, extendH, extendM)
     },
 
+    #' @description Parallel to the reference line passing through a given point.
+    #' @param M a point
+    #' @return A \code{Line} object.
+    parallel = function(M){
+      A <- private[[".A"]]; B <- private[[".B"]]
+      A_B <- B - A
+      Line$new(M, M + A_B)
+    },
+
     #' @description Orthogonal projection of a point to the reference line.
     #' @param M a point
     #' @return A point.
