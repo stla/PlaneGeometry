@@ -717,6 +717,40 @@ Triangle <- R6Class(
       Circle$new(O, R)
     },
 
+    #' @description Pedal triangle of a point with respect to the reference
+    #' triangle. The pedal triangle of a point \code{P} is the triangle whose
+    #' vertices are the feet of the perpendiculars from \code{P} to the sides
+    #' of the reference triangle.
+    #' @param P a point
+    #' @return A \code{Triangle} object.
+    pedalTriangle = function(P){
+      # P <- as.vector(P)
+      # stopifnot(
+      #   is.numeric(P),
+      #   length(P) == 2L,
+      #   !any(is.na(P)),
+      #   all(is.finite(P))
+      # )
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      AC <- C-A; AB <- B-A
+      BC <- C-B; BA <- A-B
+      CA <- A-C; CB <- B-C
+      cosA <- .dot(AC,AB) / b / c
+      cosB <- .dot(BC,BA) / a / c
+      cosC <- .dot(CA,CB) / a / b
+      Ptc <- self$pointToTrilinear(P)
+      Q1 <- (b*(Ptc[2L] + Ptc[1L]*cosC)*B + c*(Ptc[3L] + Ptc[1L]*cosB)*C) /
+        (b*(Ptc[2L] + Ptc[1L]*cosC) + c*(Ptc[3L] + Ptc[1L]*cosB))
+      Q2 <- (a*(Ptc[1L] + Ptc[2L]*cosC)*A + c*(Ptc[3L] + Ptc[2L]*cosA)*C) /
+        (a*(Ptc[1L] + Ptc[2L]*cosC) + c*(Ptc[3L] + Ptc[2L]*cosA))
+      Q3 <- (a*(Ptc[1L] + Ptc[3L]*cosB)*A + b*(Ptc[2L] + Ptc[3L]*cosA)*B) /
+        (a*(Ptc[1L] + Ptc[3L]*cosB) + b*(Ptc[2L] + Ptc[3L]*cosA))
+      Triangle$new(Q1, Q2, Q3)
+    },
+
     #' @description Malfatti circles of the triangle.
     #' @param tangencyPoints logical, whether to retourn the tangency points of
     #' the Malfatti circles as an attribute.

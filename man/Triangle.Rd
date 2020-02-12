@@ -186,6 +186,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
 \item \href{#method-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
 \item \href{#method-ParryCircle}{\code{Triangle$ParryCircle()}}
+\item \href{#method-pedalTriangle}{\code{Triangle$pedalTriangle()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
@@ -759,6 +760,28 @@ Parry circle of the reference triangle.
 
 \subsection{Returns}{
 A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pedalTriangle"></a>}}
+\subsection{Method \code{pedalTriangle()}}{
+Pedal triangle of a point with respect to the reference
+triangle. The pedal triangle of a point \code{P} is the triangle whose
+vertices are the feet of the perpendiculars from \code{P} to the sides
+of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$pedalTriangle(P)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
