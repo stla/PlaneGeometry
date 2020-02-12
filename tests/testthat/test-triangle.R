@@ -94,4 +94,9 @@ test_that("Pedal triangles", {
   ptH <- t$pedalTriangle(H)
   orthic <- t$orthicTriangle()
   expect_equal(cbind(orthic$A,orthic$B,orthic$C), cbind(ptH$A,ptH$B,ptH$C))
+  #
+  O <- t$circumcenter()
+  ptO <- t$pedalTriangle(O)
+  medial <- t$medialTriangle()
+  expect_equal(cbind(medial$A,medial$B,medial$C), cbind(ptO$A,ptO$B,ptO$C))
 })

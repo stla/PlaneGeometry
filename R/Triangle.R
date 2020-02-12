@@ -365,6 +365,13 @@ Triangle <- R6Class(
       )
     },
 
+    #' @description Medial triangle. Its vertices are the mid-points of the
+    #' sides of the reference triangle.
+    medialTriangle = function(){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      Triangle$new((B+C)/2, (A+C)/2, (A+B)/2)
+    },
+
     #' @description Orthic triangle. Its vertices are the feet of the altitudes
     #' of the reference triangle.
     orthicTriangle = function() {

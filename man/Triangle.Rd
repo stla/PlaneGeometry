@@ -167,6 +167,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-area}{\code{Triangle$area()}}
 \item \href{#method-incircle}{\code{Triangle$incircle()}}
 \item \href{#method-excircles}{\code{Triangle$excircles()}}
+\item \href{#method-medialTriangle}{\code{Triangle$medialTriangle()}}
 \item \href{#method-orthicTriangle}{\code{Triangle$orthicTriangle()}}
 \item \href{#method-incentralTriangle}{\code{Triangle$incentralTriangle()}}
 \item \href{#method-NagelTriangle}{\code{Triangle$NagelTriangle()}}
@@ -466,6 +467,16 @@ Excircles of the triangle.
 \subsection{Returns}{
 A list with the three excircles, \code{Circle} objects.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-medialTriangle"></a>}}
+\subsection{Method \code{medialTriangle()}}{
+Medial triangle. Its vertices are the mid-points of the
+sides of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$medialTriangle()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-orthicTriangle"></a>}}
