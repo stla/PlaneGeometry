@@ -81,3 +81,17 @@ test_that("Brocard points - distance from circumcenter", {
   expect_equal(d, .distance(bpoints$Z1, O))
   expect_equal(d, .distance(bpoints$Z2, O))
 })
+
+test_that("Pedal triangles", {
+  t <- Triangle$new(c(1,1), c(0,3), c(2,-3))
+  #
+  I <- t$incircle()$center
+  ptI <- t$pedalTriangle(I)
+  gerg <- t$GergonneTriangle()
+  expect_equal(cbind(gerg$A,gerg$B,gerg$C), cbind(ptI$A,ptI$B,ptI$C))
+  #
+  H <- t$orthocenter()
+  ptH <- t$pedalTriangle(H)
+  orthic <- t$orthicTriangle()
+  expect_equal(cbind(orthic$A,orthic$B,orthic$C), cbind(ptH$A,ptH$B,ptH$C))
+})
