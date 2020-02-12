@@ -365,6 +365,25 @@ Triangle <- R6Class(
       )
     },
 
+    #' @description Excentral triangle of the reference triangle.
+    #' @return A \code{Triangle} object.
+    excentralTriangle = function() {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      JA <- (-a*A + b*B + c*C) / (-a + b + c)
+      JB <- (a*A - b*B + c*C) / (a - b + c)
+      JC <- (a*A + b*B - c*C) / (a + b - c)
+      Triangle$new(JA, JB, JC)
+    },
+
+    #' @description Bevan point. This is the circumcenter of the
+    #' excentral triangle.
+    BevanPoint = function(){
+      self$excentralTriangle()$circumcenter()
+    },
+
     #' @description Medial triangle. Its vertices are the mid-points of the
     #' sides of the reference triangle.
     medialTriangle = function(){

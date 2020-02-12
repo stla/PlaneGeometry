@@ -167,6 +167,8 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-area}{\code{Triangle$area()}}
 \item \href{#method-incircle}{\code{Triangle$incircle()}}
 \item \href{#method-excircles}{\code{Triangle$excircles()}}
+\item \href{#method-excentralTriangle}{\code{Triangle$excentralTriangle()}}
+\item \href{#method-BevanPoint}{\code{Triangle$BevanPoint()}}
 \item \href{#method-medialTriangle}{\code{Triangle$medialTriangle()}}
 \item \href{#method-orthicTriangle}{\code{Triangle$orthicTriangle()}}
 \item \href{#method-incentralTriangle}{\code{Triangle$incentralTriangle()}}
@@ -467,6 +469,28 @@ Excircles of the triangle.
 \subsection{Returns}{
 A list with the three excircles, \code{Circle} objects.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-excentralTriangle"></a>}}
+\subsection{Method \code{excentralTriangle()}}{
+Excentral triangle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$excentralTriangle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-BevanPoint"></a>}}
+\subsection{Method \code{BevanPoint()}}{
+Bevan point. This is the circumcenter of the
+excentral triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$BevanPoint()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-medialTriangle"></a>}}

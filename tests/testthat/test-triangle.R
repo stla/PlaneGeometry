@@ -99,4 +99,9 @@ test_that("Pedal triangles", {
   ptO <- t$pedalTriangle(O)
   medial <- t$medialTriangle()
   expect_equal(cbind(medial$A,medial$B,medial$C), cbind(ptO$A,ptO$B,ptO$C))
+  #
+  B <- t$BevanPoint()
+  ptB <- t$pedalTriangle(B)
+  nagel <- t$NagelTriangle()
+  expect_equal(cbind(nagel$A,nagel$B,nagel$C), cbind(ptB$A,ptB$B,ptB$C))
 })
