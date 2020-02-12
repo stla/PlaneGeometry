@@ -17,7 +17,7 @@
 #' B_JB <- Line$new(B, JB, FALSE, FALSE)
 #' C_JC <- Line$new(C, JC, FALSE, FALSE)
 #' opar <- par(mar = c(0,0,0,0))
-#' plot(0, 0, type = "n", asp = 1, xlim = c(0,6), ylim = c(-4,4),
+#' plot(NULL, asp = 1, xlim = c(0,6), ylim = c(-4,4),
 #'      xlab = NA, ylab = NA, axes = FALSE)
 #' draw(t, lwd = 2)
 #' draw(incircle, border = "orange")
@@ -30,6 +30,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom uniformly runif_in_triangle runif_on_triangle
 Triangle <- R6Class(
 
   "Triangle",
@@ -918,10 +919,10 @@ Triangle <- R6Class(
     randomPoints = function(n, where = "in"){
       where <- match.arg(where, c("in", "on"))
       if(where == "in"){
-        uniformly::runif_in_triangle(n, private[[".A"]], private[[".B"]],
+        runif_in_triangle(n, private[[".A"]], private[[".B"]],
                                      private[[".C"]])
       }else{
-        uniformly::runif_on_triangle(n, private[[".A"]], private[[".B"]],
+        runif_on_triangle(n, private[[".A"]], private[[".B"]],
                                      private[[".C"]])
       }
     }

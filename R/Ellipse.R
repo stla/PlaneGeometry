@@ -6,7 +6,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
-# #' @importFrom DescTools DrawEllipse
+#' @importFrom uniformly runif_in_ellipsoid runif_on_ellipsoid
 Ellipse <- R6Class(
 
   "Ellipse",
@@ -484,10 +484,10 @@ Ellipse <- R6Class(
       where <- match.arg(where, c("in", "on"))
       S <- self$matrix()
       if(where == "in"){
-        sims <- uniformly::runif_in_ellipsoid(n, S, 1)
+        sims <- runif_in_ellipsoid(n, S, 1)
         sweep(sims, 2L, private[[".center"]], "+")
       }else{
-        sims <- uniformly::runif_on_ellipsoid(n, S, 1)
+        sims <- runif_on_ellipsoid(n, S, 1)
         sweep(sims, 2L, private[[".center"]], "+")
       }
     }

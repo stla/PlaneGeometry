@@ -5,6 +5,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
+#' @importFrom uniformly runif_in_sphere runif_on_sphere
 Circle <- R6Class(
 
   "Circle",
@@ -383,10 +384,10 @@ Circle <- R6Class(
     randomPoints = function(n, where = "in"){
       where <- match.arg(where, c("in", "on"))
       if(where == "in"){
-        sims <- uniformly::runif_in_sphere(n, 2, private[[".radius"]])
+        sims <- runif_in_sphere(n, 2, private[[".radius"]])
         sweep(sims, 2L, private[[".center"]], "+")
       }else{
-        sims <- uniformly::runif_on_sphere(n, 2, private[[".radius"]])
+        sims <- runif_on_sphere(n, 2, private[[".radius"]])
         sweep(sims, 2L, private[[".center"]], "+")
       }
     }

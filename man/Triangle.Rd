@@ -20,7 +20,7 @@ A_JA <- Line$new(A, JA, FALSE, FALSE)
 B_JB <- Line$new(B, JB, FALSE, FALSE)
 C_JC <- Line$new(C, JC, FALSE, FALSE)
 opar <- par(mar = c(0,0,0,0))
-plot(0, 0, type = "n", asp = 1, xlim = c(0,6), ylim = c(-4,4),
+plot(NULL, asp = 1, xlim = c(0,6), ylim = c(-4,4),
      xlab = NA, ylab = NA, axes = FALSE)
 draw(t, lwd = 2)
 draw(incircle, border = "orange")
