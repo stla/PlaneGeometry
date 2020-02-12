@@ -842,6 +842,30 @@ Triangle <- R6Class(
       (a*x*A + b*y*B + c*z*C) / den
     },
 
+    #' @description Give the trilinear coordinates of a point with respect to
+    #' the reference triangle.
+    #' @param P a point
+    #' @return The trilinear coordinates, a numeric vector of length 3.
+    pointToTrilinear = function(P){
+      P <- as.vector(P)
+      stopifnot(
+        is.numeric(P),
+        length(P) == 2L,
+        !any(is.na(P)),
+        all(is.finite(P))
+      )
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      Mat <- solve(rbind(cbind(A-C,B-C,C),c(0,0,1)))
+      k1k2 <- Mat %*% c(P,1)
+      k1 <- k1k2[1L]
+      k2 <- k1k2[2L]
+      k3 <- 1-k1-k2
+      c(x = k1/a, y = k2/b, z = k3/c)
+    },
+
     #' @description Rotate the triangle.
     #' @param alpha angle of rotation
     #' @param O center of rotation

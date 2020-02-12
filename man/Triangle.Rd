@@ -191,6 +191,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
 \item \href{#method-equalDetourPoint}{\code{Triangle$equalDetourPoint()}}
 \item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
+\item \href{#method-pointToTrilinear}{\code{Triangle$pointToTrilinear()}}
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
 \item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
@@ -865,6 +866,26 @@ incircle$center
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pointToTrilinear"></a>}}
+\subsection{Method \code{pointToTrilinear()}}{
+Give the trilinear coordinates of a point with respect to
+the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$pointToTrilinear(P)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The trilinear coordinates, a numeric vector of length 3.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotate"></a>}}
