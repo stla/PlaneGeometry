@@ -57,3 +57,27 @@ test_that("Orthogonality Parry circle", {
   expect_true(parry$isOrthogonal(brocard))
   expect_true(parry$isOrthogonal(circum))
 })
+
+test_that("Brocard points - concurrency", {
+  t <- Triangle$new(c(0,0), c(1,5), c(5,2))
+  bpoints <- t$BrocardPoints()
+  bline1 <- Line$new(t$A, bpoints$Z1)
+  bline2 <- Line$new(t$A, bpoints$Z2)
+  median <- Line$new(t$B, t$centroid())
+  symmedian <- Line$new(t$C, t$symmedianPoint())
+  P <- intersectionLineLine(bline1, median)
+  expect_true(symmedian$includes(P))
+  # Q <- intersectionLineLine(bline2, median)
+  # expect_true(symmedian$includes(Q)) ???
+})
+
+test_that("Brocard points - distance from circumcenter", {
+  t <- Triangle$new(c(0,0), c(1,5), c(5,2))
+  bpoints <- t$BrocardPoints()
+  O <- t$circumcenter()
+  R <- t$circumradius()
+  edges <- as.list(t$edges())
+  d <- R * with(edges, sqrt((a^4+b^4+c^4)/(a^2*b^2+a^2*c^2+b^2*c^2)-1))
+  expect_equal(d, .distance(bpoints$Z1, O))
+  expect_equal(d, .distance(bpoints$Z2, O))
+})
