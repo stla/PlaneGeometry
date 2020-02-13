@@ -777,6 +777,22 @@ Triangle <- R6Class(
       Triangle$new(Q1, Q2, Q3)
     },
 
+    #' @description Cevian triangle of a point with respect to the reference
+    #' triangle.
+    #' @param P a point
+    #' @return A \code{Triangle} object.
+    CevianTriangle = function(P){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      Ptc <- self$pointToTrilinear(P)
+      Q1 <- (b*Ptc[2L]*B + c*Ptc[3L]*C) / (b*Ptc[2L] + c*Ptc[3L])
+      Q2 <- (a*Ptc[1L]*A + c*Ptc[3L]*C) / (a*Ptc[1L] + c*Ptc[3L])
+      Q3 <- (a*Ptc[1L]*A + b*Ptc[2L]*B) / (a*Ptc[1L] + b*Ptc[2L])
+      Triangle$new(Q1, Q2, Q3)
+    },
+
     #' @description Malfatti circles of the triangle.
     #' @param tangencyPoints logical, whether to retourn the tangency points of
     #' the Malfatti circles as an attribute.

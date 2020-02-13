@@ -105,3 +105,38 @@ test_that("Pedal triangles", {
   nagel <- t$NagelTriangle()
   expect_equal(cbind(nagel$A,nagel$B,nagel$C), cbind(ptB$A,ptB$B,ptB$C))
 })
+
+test_that("Cevian triangles", {
+  t <- Triangle$new(c(1,1), c(0,3), c(2,-3))
+  #
+  I <- t$incircle()$center
+  ctI <- t$CevianTriangle(I)
+  incentral <- t$incentralTriangle()
+  expect_equal(cbind(incentral$A,incentral$B,incentral$C),
+               cbind(ctI$A,ctI$B,ctI$C))
+  #
+  G <- t$centroid()
+  ctG <- t$CevianTriangle(G)
+  medial <- t$medialTriangle()
+  expect_equal(cbind(medial$A,medial$B,medial$C), cbind(ctG$A,ctG$B,ctG$C))
+  #
+  H <- t$orthocenter()
+  ctH <- t$CevianTriangle(H)
+  orthic <- t$orthicTriangle()
+  expect_equal(cbind(orthic$A,orthic$B,orthic$C), cbind(ctH$A,ctH$B,ctH$C))
+  #
+  K <- t$symmedianPoint()
+  ctK <- t$CevianTriangle(K)
+  symm <- t$symmedialTriangle()
+  expect_equal(cbind(symm$A,symm$B,symm$C), cbind(ctK$A,ctK$B,ctK$C))
+  #
+  Ge <- t$GergonnePoint()
+  ctGe <- t$CevianTriangle(Ge)
+  gerg <- t$GergonneTriangle()
+  expect_equal(cbind(gerg$A,gerg$B,gerg$C), cbind(ctGe$A,ctGe$B,ctGe$C))
+  #
+  N <- t$NagelPoint()
+  ctN <- t$CevianTriangle(N)
+  extouch <- t$NagelTriangle()
+  expect_equal(cbind(extouch$A,extouch$B,extouch$C), cbind(ctN$A,ctN$B,ctN$C))
+})

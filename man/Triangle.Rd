@@ -190,6 +190,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
 \item \href{#method-ParryCircle}{\code{Triangle$ParryCircle()}}
 \item \href{#method-pedalTriangle}{\code{Triangle$pedalTriangle()}}
+\item \href{#method-CevianTriangle}{\code{Triangle$CevianTriangle()}}
 \item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
 \item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
 \item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
@@ -806,6 +807,26 @@ vertices are the feet of the perpendiculars from \code{P} to the sides
 of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$pedalTriangle(P)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Triangle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-CevianTriangle"></a>}}
+\subsection{Method \code{CevianTriangle()}}{
+Cevian triangle of a point with respect to the reference
+triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$CevianTriangle(P)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
