@@ -1011,6 +1011,28 @@ Triangle <- R6Class(
       f$transformEllipse(circ)
     },
 
+    #' @description The Steiner inellipse (or midpoint ellipse) of the reference
+    #' triangle. This is the ellipse tangent to the sides of the triangle at
+    #' their midpoints, and centered at the centroid of the triangle.
+    #' @return An \code{Ellipse} object.
+    #' @examples t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+    #' ell <- t$SteinerInellipse()
+    #' plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.1,2.4),
+    #'      xlab = NA, ylab = NA)
+    #' draw(t, col = "blue", lwd = 2)
+    #' draw(ell, border = "red", lwd =2)
+    SteinerInellipse = function(){
+      if(self$flatness() == 1){
+        warning("The triangle is flat.")
+        return(NULL)
+      }
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      P <- c(0,0); Q <- c(10,0); R <- c(5, 5*sqrt(3))
+      circ <- Triangle$new(P, Q, R)$incircle()
+      f <- AffineMappingThreePoints(P, Q, R, A, B, C)
+      f$transformEllipse(circ)
+    },
+
     #' @description Random points on or in the reference triangle.
     #' @param n an integer, the desired number of points
     #' @param where \code{"in"} to generate inside the triangle,

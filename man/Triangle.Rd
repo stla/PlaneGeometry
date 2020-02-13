@@ -128,6 +128,17 @@ plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.7,2.4),
      xlab = NA, ylab = NA)
 draw(t, col = "blue", lwd = 2)
 draw(ell, border = "red", lwd =2)
+
+## ------------------------------------------------
+## Method `Triangle$SteinerInellipse`
+## ------------------------------------------------
+
+t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+ell <- t$SteinerInellipse()
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.1,2.4),
+     xlab = NA, ylab = NA)
+draw(t, col = "blue", lwd = 2)
+draw(ell, border = "red", lwd =2)
 }
 \seealso{
 \code{\link{TriangleThreeLines}} to define a triangle by three lines.
@@ -200,6 +211,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
 \item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
+\item \href{#method-SteinerInellipse}{\code{Triangle$SteinerInellipse()}}
 \item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
 }
@@ -1026,6 +1038,33 @@ An \code{Ellipse} object.
 \preformatted{t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
 ell <- t$SteinerEllipse()
 plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.7,2.4),
+     xlab = NA, ylab = NA)
+draw(t, col = "blue", lwd = 2)
+draw(ell, border = "red", lwd =2)
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-SteinerInellipse"></a>}}
+\subsection{Method \code{SteinerInellipse()}}{
+The Steiner inellipse (or midpoint ellipse) of the reference
+triangle. This is the ellipse tangent to the sides of the triangle at
+their midpoints, and centered at the centroid of the triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$SteinerInellipse()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An \code{Ellipse} object.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+ell <- t$SteinerInellipse()
+plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.1,2.4),
      xlab = NA, ylab = NA)
 draw(t, col = "blue", lwd = 2)
 draw(ell, border = "red", lwd =2)

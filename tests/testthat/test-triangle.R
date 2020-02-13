@@ -140,3 +140,10 @@ test_that("Cevian triangles", {
   extouch <- t$NagelTriangle()
   expect_equal(cbind(extouch$A,extouch$B,extouch$C), cbind(ctN$A,ctN$B,ctN$C))
 })
+
+test_that("Steiner ellipse/inellipse", {
+  t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
+  inell <- t$SteinerInellipse()
+  ell <- t$medialTriangle()$SteinerEllipse()
+  expect_true(ell$isEqual(inell))
+})
