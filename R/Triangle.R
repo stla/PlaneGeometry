@@ -148,6 +148,7 @@ Triangle <- R6Class(
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       AB <- B-A; AC <- C-A
       z <- (AB[1] - 1i*AB[2]) * (AC[1] + 1i*AC[2])
+      if(z == 0) return(1)
       re <- Re(z); im <- Im(z)
       1 / (1 + im*im/re/re)
     },
@@ -336,12 +337,39 @@ Triangle <- R6Class(
       a <- .distance(B,C)
       b <- .distance(A,C)
       c <- .distance(B,A)
-      p <- (a + b + c); s <- p / 2;
+      p <- a + b + c; s <- p / 2
       areaABC <- sqrt(s*(s-a)*(s-b)*(s-c))
       Circle$new(
         center = (A*a + B*b + C*c) / p,
         radius = areaABC / s
       )
+    },
+
+    #' @description Inradius of the reference triangle.
+    inradius = function() {
+      if(self$flatness() == 1){
+        warning("The triangle is flat.")
+        return(0)
+      }
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      s <- (a + b + c) / 2
+      sqrt(s*(s-a)*(s-b)*(s-c)) / s
+    },
+
+    #' @description Incenter of the reference triangle.
+    incenter = function() {
+      if(self$flatness() == 1){
+        warning("The triangle is flat.")
+      }
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      p <- a + b + c
+      (A*a + B*b + C*c) / p
     },
 
     #' @description Excircles of the triangle.

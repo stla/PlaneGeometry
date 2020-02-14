@@ -177,6 +177,8 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-orthocenter}{\code{Triangle$orthocenter()}}
 \item \href{#method-area}{\code{Triangle$area()}}
 \item \href{#method-incircle}{\code{Triangle$incircle()}}
+\item \href{#method-inradius}{\code{Triangle$inradius()}}
+\item \href{#method-incenter}{\code{Triangle$incenter()}}
 \item \href{#method-excircles}{\code{Triangle$excircles()}}
 \item \href{#method-excentralTriangle}{\code{Triangle$excentralTriangle()}}
 \item \href{#method-BevanPoint}{\code{Triangle$BevanPoint()}}
@@ -470,6 +472,24 @@ Incircle of the triangle.
 \subsection{Returns}{
 A \code{Circle} object.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-inradius"></a>}}
+\subsection{Method \code{inradius()}}{
+Inradius of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$inradius()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-incenter"></a>}}
+\subsection{Method \code{incenter()}}{
+Incenter of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$incenter()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-excircles"></a>}}

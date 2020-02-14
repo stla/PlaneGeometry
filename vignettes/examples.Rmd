@@ -131,6 +131,56 @@ par(opar)
 ```
 
 
+# Apollonius circle of a triangle
+
+There are several circles called "Apollonius circle". 
+We take the one defined as follows, with respect to a reference triangle:
+*the circle which touches all three excircles of the reference triangle 
+and encompasses them*.
+
+It can be constructed as the inversive image of the nine-point circle with 
+respect to the circle orthogonal to the excircles of the reference triangle. 
+This inversion can be obtained in `PlaneGeometry` with the function 
+`inversionFixingThreeCircles`.
+
+```{r}
+# reference triangle
+t <- Triangle$new(c(0,0), c(5,3), c(3,-1))
+# nine-point circle
+npc <- t$orthicTriangle()$circumcircle()
+# excircles
+excircles <- t$excircles()
+# inversion with respect to the circle orthogonal to the excircles
+iota <- inversionFixingThreeCircles(excircles$A, excircles$B, excircles$C)
+# Apollonius circle
+ApolloniusCircle <- iota$invertCircle(npc)
+```
+
+Let's do a figure:
+
+```{r apollonius, fig.width=5, fig.height=5}
+opar <- par(mar = c(0,0,0,0))
+plot(NULL, asp = 1, xlim = c(-10,14), ylim = c(-5, 18),
+     xlab = NA, ylab = NA, axes = FALSE)
+draw(t, lwd = 2)
+draw(excircles$A, lwd = 2, border = "blue")
+draw(excircles$B, lwd = 2, border = "blue")
+draw(excircles$C, lwd = 2, border = "blue")
+draw(ApolloniusCircle, lwd = 2, border = "red")
+par(opar)
+```
+
+The radius of the Apollonius circle is $\frac{r^2+s^2}{4r}$ where $r$ is the 
+inradius of the triangle and $s$ its semiperimeter. Let's check this point:
+
+```{r}
+inradius <- t$inradius()
+semiperimeter <- sum(t$edges()) / 2
+(inradius^2 + semiperimeter^2) / (4*inradius)
+ApolloniusCircle$radius
+```
+
+
 # Filling the lapping area of two circles
 
 Let two circles intersecting at two points. 
