@@ -242,7 +242,7 @@ Mobius <- R6Class(
       A <- -2 * Re(gamma0*c*Conj(d)) - D0*.Mod2(c)
       gamma <- Conj(gamma0)*b*Conj(c) + gamma0*Conj(d)*a + D0*Conj(c)*a
       D <- D0*.Mod2(a) + 2*Re(gamma0*Conj(b)*a)
-      if(A != 0){
+      if(abs(A) > sqrt(.Machine$double.eps)){
         Circle$new(.fromCplx(-gamma/A), sqrt(.Mod2(gamma)/A/A + D/A))
       }else{
         P <- self$transform(line$A)
