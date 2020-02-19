@@ -1,4 +1,4 @@
-# PlaneGeometry 1.1.0 (2020-02-10)
+# PlaneGeometry 1.1.0 (2020-02-18)
 
 * Bug fixed: the function `inversionSwappingTwoCircles` did not work for all cases.
 
@@ -12,6 +12,8 @@
 `pedalTriangle`, `CevianTriangle`.
 
 * New methods for `Line` class: `distance`, `parallel`.
+
+* New methods for `Mobius` class: `power`, `gpower`.
 
 
 # PlaneGeometry 1.0.0 (2020-02-01)

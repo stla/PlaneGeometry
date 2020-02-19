@@ -169,3 +169,30 @@
   Ellipse$new(center, a, b, alpha)
 }
 
+# .Jordan2x2 <- function(M){
+#   detM <- det(M)
+#   trM <- M[1L,1L] + M[2L,2L]
+#   if(abs(trM*trM - 4*detM) < sqrt(.Machine$double.eps)){
+#     lambda <- trM/2
+#     if(isTRUE(all.equal(M, diag(c(lambda,lambda))))){
+#       list(P = diag(2L), J = M)
+#     }else{
+#       N <- M - diag(c(lambda,lambda))
+#       if(isTRUE(all.equal(N[,2L], c(0,0)))){
+#         v2 <- c(1,0)
+#         v1 <- N[,1L]
+#       }else{
+#         v2 <- c(0,1)
+#         v1 <- N[,2L]
+#       }
+#       list(P = cbind(v1,v2), J = rbind(c(1,lambda),c(0,1)))
+#     }
+#   }else{
+#     eig <- eigen(M)
+#     list(P = eig$vectors, J = diag(eig$values))
+#   }
+# }
+
+`%**%` <- function(M, k){
+  Reduce(`%*%`, replicate(k, M, simplify = FALSE))
+}

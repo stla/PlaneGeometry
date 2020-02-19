@@ -142,7 +142,7 @@ Mobius <- R6Class(
       if(left) Mobius$new(B %*% A) else Mobius$new(A %*% B)
     },
 
-    #' @description Inverse the reference Möbius transformation.
+    #' @description Inverse of the reference Möbius transformation.
     #' @return A \code{Mobius} object.
     inverse = function() {
       M <- matrix(NA_complex_, 2L, 2L)
@@ -151,6 +151,57 @@ Mobius <- R6Class(
       -private[[".c"]] -> M[2L,1L]
       private[[".d"]] -> M[1L,1L]
       Mobius$new(M)
+    },
+
+    #' @description Power of the reference Möbius transformation.
+    #' @param k an integer, possibly negative
+    #' @return The Möbius transformation \code{M^k},
+    #' where \code{M} is the reference Möbius transformation.
+    power = function(k){
+      stopifnot(.isInteger(k), length(k) == 1L)
+      if(k >= 0){
+        M <- self$getM()
+        Mobius$new(M %**% k)
+      }else{
+        M <- matrix(NA_complex_, 2L, 2L)
+        private[[".a"]] -> M[2L,2L]
+        -private[[".b"]] -> M[1L,2L]
+        -private[[".c"]] -> M[2L,1L]
+        private[[".d"]] -> M[1L,1L]
+        Mobius$new(M  %**% (-k))
+      }
+    },
+
+    #' @description Generalized power of the reference Möbius transformation.
+    #' @param k a real number, possibly negative
+    #' @return A \code{Mobius} object, the generalized \code{k}-th power of
+    #' the reference Möbius transformation.
+    gpower = function(k){
+      stopifnot(is.numeric(k), length(k) == 1L)
+      M <- self$getM()
+      detM <- M[1L,1L]*M[2L,2L] - M[1L,2L]*M[2L,1L]
+      trM <- M[1L,1L] + M[2L,2L]
+      if(Mod(trM*trM - 4*detM) < sqrt(.Machine$double.eps)){
+        lambda <- trM/2
+        if(isTRUE(all.equal(M, diag(c(lambda,lambda))))){
+          Mobius$new(diag(c(lambda^k,lambda^k)))
+        }else{
+          N <- M - diag(c(lambda,lambda))
+          if(isTRUE(all.equal(N[,2L], c(0,0)))){
+            v2 <- c(1,0)
+            v1 <- N[,1L]
+          }else{
+            v2 <- c(0,1)
+            v1 <- N[,2L]
+          }
+          P <- cbind(v1,v2)
+          Jk <- rbind(c(lambda^k,k*lambda^(k-1)), c(0,lambda^k))
+          Mobius$new(P %*% Jk %*% solve(P))
+        }
+      }else{
+        eig <- eigen(M)
+        Mobius$new(eig$vectors %*% diag(eig$values^k) %*% solve(eig$vectors))
+      }
     },
 
     #' @description Transformation of a point by the reference Möbius transformation.

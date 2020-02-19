@@ -49,6 +49,8 @@ transformation, and also the \code{compose} method of the
 \item \href{#method-getM}{\code{Mobius$getM()}}
 \item \href{#method-compose}{\code{Mobius$compose()}}
 \item \href{#method-inverse}{\code{Mobius$inverse()}}
+\item \href{#method-power}{\code{Mobius$power()}}
+\item \href{#method-gpower}{\code{Mobius$gpower()}}
 \item \href{#method-transform}{\code{Mobius$transform()}}
 \item \href{#method-transformCircle}{\code{Mobius$transformCircle()}}
 \item \href{#method-transformLine}{\code{Mobius$transformLine()}}
@@ -133,13 +135,53 @@ A \code{Mobius} object.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inverse"></a>}}
 \subsection{Method \code{inverse()}}{
-Inverse the reference Möbius transformation.
+Inverse of the reference Möbius transformation.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Mobius$inverse()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
 A \code{Mobius} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-power"></a>}}
+\subsection{Method \code{power()}}{
+Power of the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$power(k)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{k}}{an integer, possibly negative}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The Möbius transformation \code{M^k},
+where \code{M} is the reference Möbius transformation.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-gpower"></a>}}
+\subsection{Method \code{gpower()}}{
+Generalized power of the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$gpower(k)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{k}}{a real number, possibly negative}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Mobius} object, the generalized \code{k}-th power of
+the reference Möbius transformation.
 }
 }
 \if{html}{\out{<hr>}}
