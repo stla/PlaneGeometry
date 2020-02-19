@@ -146,7 +146,7 @@ Inversion <- R6Class(
       c1 <- circ$center
       r1 <- circ$radius
       D1 <- (c1[1L] - c0[1L])^2 + (c1[2L] - c0[2L])^2 - r1*r1
-      if(D1 != 0){
+      if(abs(D1) > sqrt(.Machine$double.eps)){
         s <- k / D1
         Circle$new(c0 + s*(c1-c0), abs(s)*r1);
       }else{
