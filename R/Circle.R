@@ -181,6 +181,29 @@ Circle <- R6Class(
       isTRUE(all.equal(d2, R*R + circ$radius*circ$radius))
     },
 
+    #' @description Angle between the reference circle and a given circle,
+    #' if they intersect.
+    #' @param circ a \code{Circle} object
+    angle = function(circ){
+      stopifnot(is(circ, "Circle"))
+      center1 <- private[[".center"]]
+      center2 <- circ$center
+      r1 <- private[[".radius"]]
+      r2 <- circ$radius
+      d2 <- c(crossprod(center1 - center2))
+      epsilon <- sqrt(.Machine$double.eps)
+      if(d2 > (r1+r2)^2 + epsilon || d2 < (r1-r2)^2 - epsilon){
+        message("The two circles do not intersect.")
+        return(NULL)
+      }
+      b1 <- 1/r1; b2 <- 1/r2
+      a1 <- b1*center1; a2 <- b2*center2
+      bprime1 <- r1 * (c(crossprod(a1))-1)
+      bprime2 <- r2 * (c(crossprod(a2))-1)
+      cosTheta <- b1*bprime2/2 + b2*bprime1/2 - .dot(a1,a2)
+      acos(cosTheta)
+    },
+
     #' @description Check whether a point belongs to the reference circle.
     #' @param M a point
     includes = function(M){

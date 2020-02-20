@@ -4,7 +4,8 @@
 
 * New functions: `inversionFromCircle`, `midCircles`, `CircleAB`.
 
-* New methods for `Circle` class: `tangentsThroughExternalPoint`,`isOrthogonal`.
+* New methods for `Circle` class: `tangentsThroughExternalPoint`, 
+`isOrthogonal`, `angle`.
 
 * New methods for `Triangle` class: `symmedialTriangle`, `symmedianPoint`, 
 `BrocardCircle`, `BrocardPoints`, `LemoineCircleI/II/III`, `LemoineTriangle`, 
