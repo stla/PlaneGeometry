@@ -1,9 +1,13 @@
+## Summary
+
+This is the second version of the package. I have fixed the 'NOTE' raised by 
+the CRAN checks.
+
 ## Test environments
+
 * ubuntu 18.04, R 3.6.2
-* win-builder devel (release does not work)
+* win-builder devel and release
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
-
-* This is a new release.
+Status: OK
