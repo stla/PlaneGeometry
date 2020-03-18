@@ -248,8 +248,12 @@ Mobius <- R6Class(
       x1 <- .Mod2(d+c*z0)
       x2 <- R*R*.Mod2(c)
       if(x1 != x2){ # we are in this case if c=0
-        z <- z0 - R^2/Conj(d/c+z0)
-        w0 <- self$transform(.fromCplx(z))
+        if(x1 > 0){
+          z <- if(c == 0) z0 else (z0 - R^2/Conj(d/c+z0))
+          w0 <- self$transform(.fromCplx(z))
+        }else{
+          w0 <- self$transform(Inf)
+        }
         Circle$new(w0, Mod(.toCplx(w0 - self$transform(.fromCplx(z0+R)))))
       }else{
         if(circ$includes(M <- .fromCplx(-d/c))){
