@@ -256,7 +256,7 @@ Mobius <- R6Class(
         }
         Circle$new(w0, Mod(.toCplx(w0 - self$transform(.fromCplx(z0+R)))))
       }else{
-        if(circ$includes(M <- .fromCplx(-d/c))){
+        if(c != 0 && circ$includes(M <- .fromCplx(-d/c))){
           alpha <- 0
           while(TRUE){
             P <- circ$pointFromAngle(alpha, degrees = FALSE)
