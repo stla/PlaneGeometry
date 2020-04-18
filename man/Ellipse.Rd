@@ -49,6 +49,26 @@ draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
 
 ## ------------------------------------------------
+## Method `Ellipse$theta2t`
+## ------------------------------------------------
+
+O <- c(1, 1)
+ell <- Ellipse$new(O, 5, 2, 30)
+theta <- 20
+P <- ell$pointFromAngle(theta)
+t <- ell$theta2t(theta)
+tg <- ell$tangent(t)
+OP <- Line$new(O, P, FALSE, FALSE)
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,5),
+     xlab = NA, ylab = NA)
+draw(ell, col = "antiquewhite")
+points(P[1], P[2], pch = 19)
+draw(tg, col = "red")
+draw(OP)
+draw(ell$semiMajorAxis())
+text(t(O+c(1,0.9)), expression(theta))
+
+## ------------------------------------------------
 ## Method `Ellipse$regressionLines`
 ## ------------------------------------------------
 
@@ -113,6 +133,7 @@ points(pts, pch = 19, col = "blue")
 \item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
+\item \href{#method-theta2t}{\code{Ellipse$theta2t()}}
 \item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
 \item \href{#method-boundingbox}{\code{Ellipse$boundingbox()}}
 \item \href{#method-randomPoints}{\code{Ellipse$randomPoints()}}
@@ -319,7 +340,8 @@ invisible(lapply(diameters, draw))
 \if{html}{\out{<a id="method-pointFromAngle"></a>}}
 \subsection{Method \code{pointFromAngle()}}{
 Intersection point of the ellipse with the half-line
-starting at the ellipse center and with director angle \code{theta}.
+starting at the ellipse center and forming angle \code{theta} with
+the major axis.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Ellipse$pointFromAngle(theta, degrees = TRUE)}\if{html}{\out{</div>}}
 }
@@ -378,7 +400,8 @@ A list with the two foci.
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-tangent"></a>}}
 \subsection{Method \code{tangent()}}{
-Tangents of the reference ellipse.
+Tangents of the reference ellipse at a point given by
+its eccentric angle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Ellipse$tangent(t)}\if{html}{\out{</div>}}
 }
@@ -386,7 +409,7 @@ Tangents of the reference ellipse.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{t}}{an angle, there is one tangent for each value of \code{t}
+\item{\code{t}}{eccentric angle, there is one tangent for each value of \code{t}
 modulo \code{2*pi}; for \code{t = 0, pi/2, pi, -pi/2}, these are the
 tangents at the vertices of the ellipse}
 }
@@ -400,6 +423,52 @@ plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-theta2t"></a>}}
+\subsection{Method \code{theta2t()}}{
+Convert angle to eccentric angle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$theta2t(theta, degrees = TRUE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{theta}}{angle between the major axis and the half-line starting
+at the center of the ellipse and passing through the point of interest
+on the ellipse}
+
+\item{\code{degrees}}{logical, whether \code{theta} is given in degrees}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The eccentric angle of the point of interest on the ellipse,
+in radians.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{O <- c(1, 1)
+ell <- Ellipse$new(O, 5, 2, 30)
+theta <- 20
+P <- ell$pointFromAngle(theta)
+t <- ell$theta2t(theta)
+tg <- ell$tangent(t)
+OP <- Line$new(O, P, FALSE, FALSE)
+plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,5),
+     xlab = NA, ylab = NA)
+draw(ell, col = "antiquewhite")
+points(P[1], P[2], pch = 19)
+draw(tg, col = "red")
+draw(OP)
+draw(ell$semiMajorAxis())
+text(t(O+c(1,0.9)), expression(theta))
 }
 \if{html}{\out{</div>}}
 
