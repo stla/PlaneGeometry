@@ -320,6 +320,13 @@ Ellipse <- R6Class(
     #' two-column matrix of points of the ellipse if
     #' \code{length(theta) > 1} (one point per row).
     pointFromAngle = function(theta, degrees = TRUE){
+      theta <- as.vector(theta)
+      stopifnot(
+        is.numeric(theta),
+        length(theta) >= 1L,
+        !any(is.na(theta)),
+        all(is.finite(theta))
+      )
       O <- private[[".center"]]
       a <- private[[".rmajor"]]
       b <- private[[".rminor"]]
@@ -347,6 +354,13 @@ Ellipse <- R6Class(
     #' two-column matrix of points of the ellipse if
     #' \code{length(t) > 1} (one point per row).
     pointFromEccentricAngle = function(t){
+      t <- as.vector(t)
+      stopifnot(
+        is.numeric(t),
+        length(t) >= 1L,
+        !any(is.na(t)),
+        all(is.finite(t))
+      )
       O <- private[[".center"]]
       a <- private[[".rmajor"]]
       b <- private[[".rminor"]]
