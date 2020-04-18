@@ -443,6 +443,43 @@ Ellipse <- R6Class(
       Line$new(T, T+v)
     },
 
+    #' @description Normal unit vector to the ellipse.
+    #' @param t a number, the eccentric angle in radians of the point of the
+    #' ellipse at which we want the normal unit vector
+    #' @return The normal unit vector to the ellipse at the point given by
+    #' eccentric angle \code{t}.
+    #' @examples ell <- Ellipse$new(c(1,1), 5, 2, 30)
+    #' t_ <- seq(0, 2*pi, length.out = 13)[-1]
+    #' plot(NULL, asp = 1, xlim = c(-5,7), ylim = c(-3,5),
+    #'      xlab = NA, ylab = NA)
+    #' draw(ell, col = "magenta")
+    #' for(i in 1:length(t_)){
+    #'   t <- t_[i]
+    #'   P <- ell$pointFromEccentricAngle(t)
+    #'   v <- ell$normal(t)
+    #'   draw(Line$new(P, P+v, FALSE, FALSE))
+    #' }
+    normal = function(t){
+      t <- as.vector(t)
+      stopifnot(
+        is.numeric(t),
+        length(t) == 1L,
+        !is.na(t),
+        is.finite(t)
+      )
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]; b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+      x <- -a*sin(t); y <- b*cos(t)
+      v <- c(
+        sinalpha*x + cosalpha*y,
+        -cosalpha*x + sinalpha*y
+      )
+      v / .vlength(v)
+    },
+
     #' @description Convert angle to eccentric angle.
     #' @param theta angle between the major axis and the half-line starting
     #' at the center of the ellipse and passing through the point of interest

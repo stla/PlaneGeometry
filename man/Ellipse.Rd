@@ -49,6 +49,22 @@ draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
 
 ## ------------------------------------------------
+## Method `Ellipse$normal`
+## ------------------------------------------------
+
+ell <- Ellipse$new(c(1,1), 5, 2, 30)
+t_ <- seq(0, 2*pi, length.out = 13)[-1]
+plot(NULL, asp = 1, xlim = c(-5,7), ylim = c(-3,5),
+     xlab = NA, ylab = NA)
+draw(ell, col = "magenta")
+for(i in 1:length(t_)){
+  t <- t_[i]
+  P <- ell$pointFromEccentricAngle(t)
+  v <- ell$normal(t)
+  draw(Line$new(P, P+v, FALSE, FALSE))
+}
+
+## ------------------------------------------------
 ## Method `Ellipse$theta2t`
 ## ------------------------------------------------
 
@@ -134,6 +150,7 @@ points(pts, pch = 19, col = "blue")
 \item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
 \item \href{#method-tangent}{\code{Ellipse$tangent()}}
+\item \href{#method-normal}{\code{Ellipse$normal()}}
 \item \href{#method-theta2t}{\code{Ellipse$theta2t()}}
 \item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
 \item \href{#method-boundingbox}{\code{Ellipse$boundingbox()}}
@@ -445,6 +462,45 @@ plot(NULL, asp = 1, xlim = c(-4,6), ylim = c(-2,4),
      xlab = NA, ylab = NA)
 draw(ell, col = "yellow")
 invisible(lapply(tangents, draw, col = "blue"))
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-normal"></a>}}
+\subsection{Method \code{normal()}}{
+Normal unit vector to the ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$normal(t)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{t}}{a number, the eccentric angle in radians of the point of the
+ellipse at which we want the normal unit vector}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+The normal unit vector to the ellipse at the point given by
+eccentric angle \code{t}.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{ell <- Ellipse$new(c(1,1), 5, 2, 30)
+t_ <- seq(0, 2*pi, length.out = 13)[-1]
+plot(NULL, asp = 1, xlim = c(-5,7), ylim = c(-3,5),
+     xlab = NA, ylab = NA)
+draw(ell, col = "magenta")
+for(i in 1:length(t_)){
+  t <- t_[i]
+  P <- ell$pointFromEccentricAngle(t)
+  v <- ell$normal(t)
+  draw(Line$new(P, P+v, FALSE, FALSE))
+}
 }
 \if{html}{\out{</div>}}
 
