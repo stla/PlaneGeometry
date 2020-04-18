@@ -1,6 +1,9 @@
 # PlaneGeometry 1.2.0 (2020-04-xx)
 
-* New methods for `Ellipse` class: `theta2t`, `pointFromEccentricAngle`.
+* New methods for `Ellipse` class: `theta2t`, `pointFromEccentricAngle`, 
+`normal`.
+
+* New example in the vignette, the elliptical billiard.
 
 
 # PlaneGeometry 1.1.0 (2020-02-24)
