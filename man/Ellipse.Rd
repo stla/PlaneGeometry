@@ -129,6 +129,7 @@ points(pts, pch = 19, col = "blue")
 \item \href{#method-path}{\code{Ellipse$path()}}
 \item \href{#method-diameter}{\code{Ellipse$diameter()}}
 \item \href{#method-pointFromAngle}{\code{Ellipse$pointFromAngle()}}
+\item \href{#method-pointFromEccentricAngle}{\code{Ellipse$pointFromEccentricAngle()}}
 \item \href{#method-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
 \item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
 \item \href{#method-foci}{\code{Ellipse$foci()}}
@@ -359,6 +360,27 @@ the major axis.
 A point of the ellipse if \code{length(theta)==1} or a
 two-column matrix of points of the ellipse if
 \code{length(theta) > 1} (one point per row).
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-pointFromEccentricAngle"></a>}}
+\subsection{Method \code{pointFromEccentricAngle()}}{
+Point of the ellipse with given eccentric angle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$pointFromEccentricAngle(t)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{t}}{a number, the eccentric angle in radians, or a numeric vector}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point of the ellipse if \code{length(t)==1} or a
+two-column matrix of points of the ellipse if
+\code{length(t) > 1} (one point per row).
 }
 }
 \if{html}{\out{<hr>}}

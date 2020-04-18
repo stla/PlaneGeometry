@@ -341,6 +341,22 @@ Ellipse <- R6Class(
       out
     },
 
+    #' @description Point of the ellipse with given eccentric angle.
+    #' @param t a number, the eccentric angle in radians, or a numeric vector
+    #' @return A point of the ellipse if \code{length(t)==1} or a
+    #' two-column matrix of points of the ellipse if
+    #' \code{length(t) > 1} (one point per row).
+    pointFromEccentricAngle = function(t){
+      O <- private[[".center"]]
+      a <- private[[".rmajor"]]
+      b <- private[[".rminor"]]
+      alpha <- private[[".alpha"]]
+      if(private[[".degrees"]]) alpha <- alpha * pi/180
+      out <- .ellipsePoints(t, O, a, b, alpha)
+      if(length(t) == 1L) out <- c(out)
+      out
+    },
+
     #' @description Semi-major axis of the ellipse.
     #' @return A segment (\code{Line} object).
     semiMajorAxis = function(){

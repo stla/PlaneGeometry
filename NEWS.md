@@ -1,3 +1,8 @@
+# PlaneGeometry 1.2.0 (2020-04-xx)
+
+* New methods for `Ellipse` class: `theta2t`, `pointFromEccentricAngle`.
+
+
 # PlaneGeometry 1.1.0 (2020-02-24)
 
 * Bug fixed: the function `inversionSwappingTwoCircles` did not work for all cases.
