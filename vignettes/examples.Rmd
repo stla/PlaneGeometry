@@ -2,7 +2,7 @@
 title: "Examples of the PlaneGeometry package"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{examples}
+  %\VignetteIndexEntry{Examples of the PlaneGeometry package}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 editor_options: 
