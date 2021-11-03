@@ -202,7 +202,7 @@ Line <- R6Class(
     isEqual = function(line) {
       do1 <- as.numeric(self$directionAndOffset())
       do2 <- as.numeric(line$directionAndOffset())
-      do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
+      #do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
       isTRUE(all.equal(do1, do2))
     },
 

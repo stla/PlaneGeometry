@@ -1,7 +1,7 @@
 Package: PlaneGeometry
 Type: Package
 Title: Plane Geometry
-Version: 1.2.0
+Version: 1.2.0.9000
 Date: 2020-08-06
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>

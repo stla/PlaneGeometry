@@ -1,3 +1,8 @@
+# PlaneGeometry 1.2.0.9000
+
+* Fixed the `isEqual` method of the `Line` class.
+
+
 # PlaneGeometry 1.2.0 (2020-08-06)
 
 * New methods for `Ellipse` class: `theta2t`, `pointFromEccentricAngle`, 
