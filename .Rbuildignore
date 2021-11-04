@@ -5,5 +5,6 @@
 ^doc$
 ^Meta$
 ^inst/tests$
+^inst/essais$
 ^cran-comments\.md$
 ^CRAN-RELEASE$

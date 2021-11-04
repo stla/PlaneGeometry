@@ -54,6 +54,7 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Rotation} object.
 \subsection{Usage}{
@@ -85,6 +86,7 @@ A new \code{Rotation} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Rotation} object.
 \subsection{Usage}{
@@ -101,6 +103,7 @@ Show instance of a \code{Rotation} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotate"></a>}}
+\if{latex}{\out{\hypertarget{method-rotate}{}}}
 \subsection{Method \code{rotate()}}{
 Rotate a point or several points.
 \subsection{Usage}{
@@ -117,6 +120,7 @@ Rotate a point or several points.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{rotate}.
 \subsection{Usage}{
@@ -133,6 +137,7 @@ An alias of \code{rotate}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotateCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-rotateCircle}{}}}
 \subsection{Method \code{rotateCircle()}}{
 Rotate a circle.
 \subsection{Usage}{
@@ -152,6 +157,7 @@ A \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 An alias of \code{rotateCircle}.
 \subsection{Usage}{
@@ -171,6 +177,7 @@ A \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotateEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-rotateEllipse}{}}}
 \subsection{Method \code{rotateEllipse()}}{
 Rotate an ellipse.
 \subsection{Usage}{
@@ -190,6 +197,7 @@ An \code{Ellipse} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-transformEllipse}{}}}
 \subsection{Method \code{transformEllipse()}}{
 An alias of \code{rotateEllipse}.
 \subsection{Usage}{
@@ -209,6 +217,7 @@ An \code{Ellipse} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-rotateLine"></a>}}
+\if{latex}{\out{\hypertarget{method-rotateLine}{}}}
 \subsection{Method \code{rotateLine()}}{
 Rotate a line.
 \subsection{Usage}{
@@ -228,6 +237,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 An alias of \code{rotateLine}.
 \subsection{Usage}{
@@ -247,6 +257,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the rotation.
 \subsection{Usage}{
@@ -270,6 +281,7 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference rotation to an \code{Affine} object.
 \subsection{Usage}{
@@ -279,6 +291,7 @@ Convert the reference rotation to an \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

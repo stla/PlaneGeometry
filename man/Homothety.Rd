@@ -46,6 +46,7 @@ H$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Homothety} object.
 \subsection{Usage}{
@@ -75,6 +76,7 @@ A new \code{Homothety} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Homothety} object.
 \subsection{Usage}{
@@ -91,6 +93,7 @@ Show instance of a \code{Homothety} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference homothety.
 \subsection{Usage}{
@@ -107,6 +110,7 @@ Transform a point or several points by the reference homothety.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 Transform a circle by the reference homothety.
 \subsection{Usage}{
@@ -126,6 +130,7 @@ A \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the homothety.
 \subsection{Usage}{
@@ -149,6 +154,7 @@ H$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference homothety to an \code{Affine} object.
 \subsection{Usage}{
@@ -158,6 +164,7 @@ Convert the reference homothety to an \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

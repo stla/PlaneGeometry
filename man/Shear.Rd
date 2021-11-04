@@ -74,6 +74,7 @@ and the length of the second vector, perpendicular to the first one}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Shear} object.
 \subsection{Usage}{
@@ -110,6 +111,7 @@ A new \code{Shear} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Shear} object.
 \subsection{Usage}{
@@ -126,6 +128,7 @@ Show instance of a \code{Shear} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference shear.
 \subsection{Usage}{
@@ -142,6 +145,7 @@ Transform a point or several points by the reference shear.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the shear.
 \subsection{Usage}{
@@ -163,6 +167,7 @@ S$getMatrix()
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference shear to an \code{Affine} object.
 \subsection{Usage}{
@@ -180,6 +185,7 @@ Convert the reference shear to an \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

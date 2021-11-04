@@ -2,6 +2,8 @@
 
 * Fixed the `isEqual` method of the `Line` class.
 
+* New example in the vignette, an illustration of inversions.
+
 
 # PlaneGeometry 1.2.0 (2020-08-06)
 

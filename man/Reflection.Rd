@@ -49,6 +49,7 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Reflection} object.
 \subsection{Usage}{
@@ -77,6 +78,7 @@ Reflection$new(l)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a reflection object.
 \subsection{Usage}{
@@ -93,6 +95,7 @@ Show instance of a reflection object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reflect"></a>}}
+\if{latex}{\out{\hypertarget{method-reflect}{}}}
 \subsection{Method \code{reflect()}}{
 Reflect a point.
 \subsection{Usage}{
@@ -109,6 +112,7 @@ Reflect a point.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{reflect}.
 \subsection{Usage}{
@@ -125,6 +129,7 @@ An alias of \code{reflect}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reflectCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-reflectCircle}{}}}
 \subsection{Method \code{reflectCircle()}}{
 Reflect a circle.
 \subsection{Usage}{
@@ -144,6 +149,7 @@ A \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 An alias of \code{reflectCircle}.
 \subsection{Usage}{
@@ -163,6 +169,7 @@ A \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reflectLine"></a>}}
+\if{latex}{\out{\hypertarget{method-reflectLine}{}}}
 \subsection{Method \code{reflectLine()}}{
 Reflect a line.
 \subsection{Usage}{
@@ -182,6 +189,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 An alias of \code{reflectLine}.
 \subsection{Usage}{
@@ -201,6 +209,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the reflection.
 \subsection{Usage}{
@@ -224,6 +233,7 @@ R$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference reflection to an \code{Affine} object.
 \subsection{Usage}{
@@ -233,6 +243,7 @@ Convert the reference reflection to an \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -59,6 +59,7 @@ transformation, and also the \code{compose} method of the
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Mobius} object.
 \subsection{Usage}{
@@ -78,6 +79,7 @@ A new \code{Mobius} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Mobius} object.
 \subsection{Usage}{
@@ -102,6 +104,7 @@ Show instance of a \code{Mobius} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getM"></a>}}
+\if{latex}{\out{\hypertarget{method-getM}{}}}
 \subsection{Method \code{getM()}}{
 Get the matrix corresponding to the Möbius transformation.
 \subsection{Usage}{
@@ -111,6 +114,7 @@ Get the matrix corresponding to the Möbius transformation.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-compose"></a>}}
+\if{latex}{\out{\hypertarget{method-compose}{}}}
 \subsection{Method \code{compose()}}{
 Compose the reference Möbius transformation with another
 Möbius transformation
@@ -134,6 +138,7 @@ A \code{Mobius} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inverse"></a>}}
+\if{latex}{\out{\hypertarget{method-inverse}{}}}
 \subsection{Method \code{inverse()}}{
 Inverse of the reference Möbius transformation.
 \subsection{Usage}{
@@ -146,6 +151,7 @@ A \code{Mobius} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-power"></a>}}
+\if{latex}{\out{\hypertarget{method-power}{}}}
 \subsection{Method \code{power()}}{
 Power of the reference Möbius transformation.
 \subsection{Usage}{
@@ -166,6 +172,7 @@ where \code{M} is the reference Möbius transformation.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-gpower"></a>}}
+\if{latex}{\out{\hypertarget{method-gpower}{}}}
 \subsection{Method \code{gpower()}}{
 Generalized power of the reference Möbius transformation.
 \subsection{Usage}{
@@ -186,6 +193,7 @@ the reference Möbius transformation.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transformation of a point by the reference Möbius transformation.
 \subsection{Usage}{
@@ -215,6 +223,7 @@ Mob$transform(Inf)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 Transformation of a circle by the reference Möbius transformation.
 \subsection{Usage}{
@@ -234,6 +243,7 @@ A \code{Circle} object or a \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 Transformation of a line by the reference Möbius transformation.
 \subsection{Usage}{
@@ -253,6 +263,7 @@ A \code{Circle} object or a \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

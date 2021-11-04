@@ -40,6 +40,7 @@ Affine$new(rbind(c(3.5,2),c(0,4)), c(-1, 1.25))
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Affine} object.
 \subsection{Usage}{
@@ -61,6 +62,7 @@ A new \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an \code{Affine} object.
 \subsection{Usage}{
@@ -85,6 +87,7 @@ Show instance of an \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-get3x3matrix"></a>}}
+\if{latex}{\out{\hypertarget{method-get3x3matrix}{}}}
 \subsection{Method \code{get3x3matrix()}}{
 The 3x3 matrix representing the affine map.
 \subsection{Usage}{
@@ -94,6 +97,7 @@ The 3x3 matrix representing the affine map.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inverse"></a>}}
+\if{latex}{\out{\hypertarget{method-inverse}{}}}
 \subsection{Method \code{inverse()}}{
 The inverse affine transformation, if it exists.
 \subsection{Usage}{
@@ -103,6 +107,7 @@ The inverse affine transformation, if it exists.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-compose"></a>}}
+\if{latex}{\out{\hypertarget{method-compose}{}}}
 \subsection{Method \code{compose()}}{
 Compose the reference affine map with another
 affine map.
@@ -126,6 +131,7 @@ An \code{Affine} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference affine map.
 \subsection{Usage}{
@@ -142,6 +148,7 @@ Transform a point or several points by the reference affine map.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 Transform a line by the reference affine transformation
 (only for invertible affine maps).
@@ -162,6 +169,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-transformEllipse}{}}}
 \subsection{Method \code{transformEllipse()}}{
 Transform an ellipse by the reference affine transformation
 (only for an invertible affine map).
@@ -183,6 +191,7 @@ An \code{Ellipse} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

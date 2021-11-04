@@ -69,12 +69,14 @@ par(opar)
 \item \href{#method-transformCircle}{\code{Inversion$transformCircle()}}
 \item \href{#method-invertLine}{\code{Inversion$invertLine()}}
 \item \href{#method-transformLine}{\code{Inversion$transformLine()}}
+\item \href{#method-invertGcircle}{\code{Inversion$invertGcircle()}}
 \item \href{#method-compose}{\code{Inversion$compose()}}
 \item \href{#method-clone}{\code{Inversion$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Inversion} object.
 \subsection{Usage}{
@@ -96,6 +98,7 @@ A new \code{Inversion} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an inversion object.
 \subsection{Usage}{
@@ -120,6 +123,7 @@ Show instance of an inversion object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invert"></a>}}
+\if{latex}{\out{\hypertarget{method-invert}{}}}
 \subsection{Method \code{invert()}}{
 Inversion of a point.
 \subsection{Usage}{
@@ -139,6 +143,7 @@ A point or \code{Inf}, the image of \code{M}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{invert}.
 \subsection{Usage}{
@@ -158,6 +163,7 @@ A point or \code{Inf}, the image of \code{M}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invertCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-invertCircle}{}}}
 \subsection{Method \code{invertCircle()}}{
 Inversion of a circle.
 \subsection{Usage}{
@@ -208,6 +214,7 @@ par(opar)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 An alias of \code{invertCircle}.
 \subsection{Usage}{
@@ -227,6 +234,7 @@ A \code{Circle} object or a \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-invertLine"></a>}}
+\if{latex}{\out{\hypertarget{method-invertLine}{}}}
 \subsection{Method \code{invertLine()}}{
 Inversion of a line.
 \subsection{Usage}{
@@ -246,6 +254,7 @@ A \code{Circle} object or a \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 An alias of \code{invertLine}.
 \subsection{Usage}{
@@ -264,7 +273,28 @@ A \code{Circle} object or a \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-invertGcircle"></a>}}
+\if{latex}{\out{\hypertarget{method-invertGcircle}{}}}
+\subsection{Method \code{invertGcircle()}}{
+Inversion of a generalized circle (i.e. a circle or a line).
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Inversion$invertGcircle(gcircle)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{gcircle}}{a \code{Circle} object or a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-compose"></a>}}
+\if{latex}{\out{\hypertarget{method-compose}{}}}
 \subsection{Method \code{compose()}}{
 Compose the reference inversion with another inversion.
 The result is a Möbius transformation.
@@ -288,6 +318,7 @@ A \code{Mobius} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

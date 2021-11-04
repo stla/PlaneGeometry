@@ -57,6 +57,7 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{EllipticalArc} object.
 \subsection{Usage}{
@@ -92,6 +93,7 @@ EllipticalArc$new(ell, 45, 90)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an \code{EllipticalArc} object.
 \subsection{Usage}{
@@ -108,6 +110,7 @@ Show instance of an \code{EllipticalArc} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-startingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-startingPoint}{}}}
 \subsection{Method \code{startingPoint()}}{
 Starting point of the reference elliptical arc.
 \subsection{Usage}{
@@ -117,6 +120,7 @@ Starting point of the reference elliptical arc.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-endingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-endingPoint}{}}}
 \subsection{Method \code{endingPoint()}}{
 Ending point of the reference elliptical arc.
 \subsection{Usage}{
@@ -126,6 +130,7 @@ Ending point of the reference elliptical arc.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference elliptical arc equals
 another elliptical arc.
@@ -143,6 +148,7 @@ another elliptical arc.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-complementaryArc"></a>}}
+\if{latex}{\out{\hypertarget{method-complementaryArc}{}}}
 \subsection{Method \code{complementaryArc()}}{
 Complementary elliptical arc of the reference elliptical arc.
 \subsection{Usage}{
@@ -165,6 +171,7 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-path"></a>}}
+\if{latex}{\out{\hypertarget{method-path}{}}}
 \subsection{Method \code{path()}}{
 The reference elliptical arc as a path.
 \subsection{Usage}{
@@ -185,6 +192,7 @@ A matrix with two columns \code{x} and \code{y} of length
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-length"></a>}}
+\if{latex}{\out{\hypertarget{method-length}{}}}
 \subsection{Method \code{length()}}{
 The length of the elliptical arc.
 \subsection{Usage}{
@@ -197,6 +205,7 @@ A number, the arc length.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

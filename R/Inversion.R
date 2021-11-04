@@ -169,7 +169,7 @@ Inversion <- R6Class(
     #' @return A \code{Circle} object or a \code{Line} object.
     invertLine = function(line){
       stopifnot(is(line, "Line"))
-      A <- line$A: B <- line$B
+      A <- line$A; B <- line$B
       if(.collinear(A, B, private[[".pole"]])){
         line
       }else{
@@ -183,6 +183,19 @@ Inversion <- R6Class(
     #' @return A \code{Circle} object or a \code{Line} object.
     transformLine = function(line){
       self$invertLine(line)
+    },
+
+    #' @description Inversion of a generalized circle (i.e. a circle or a line).
+    #' @param gcircle a \code{Circle} object or a \code{Line} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    invertGcircle = function(gcircle){
+      if(is(gcircle, "Line")){
+        self$invertLine(gcircle)
+      }else if(is(gcircle, "Circle")){
+        self$invertCircle(gcircle)
+      }else{
+        stop("`gcircle` must be a `Circle` object or a `Line` object.")
+      }
     },
 
     #' @description Compose the reference inversion with another inversion.

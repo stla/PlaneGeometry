@@ -31,6 +31,7 @@ A translation is given by a vector \code{v}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Translation} object.
 \subsection{Usage}{
@@ -50,6 +51,7 @@ A new \code{Translation} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a translation object.
 \subsection{Usage}{
@@ -66,6 +68,7 @@ Show instance of a translation object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-project"></a>}}
+\if{latex}{\out{\hypertarget{method-project}{}}}
 \subsection{Method \code{project()}}{
 Transform a point or several points by the reference
 translation.
@@ -83,6 +86,7 @@ translation.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{translate}.
 \subsection{Usage}{
@@ -99,6 +103,7 @@ An alias of \code{translate}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-translateLine"></a>}}
+\if{latex}{\out{\hypertarget{method-translateLine}{}}}
 \subsection{Method \code{translateLine()}}{
 Translate a line.
 \subsection{Usage}{
@@ -118,6 +123,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 An alias of \code{translateLine}.
 \subsection{Usage}{
@@ -137,6 +143,7 @@ A \code{Line} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-translateEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-translateEllipse}{}}}
 \subsection{Method \code{translateEllipse()}}{
 Translate a circle or an ellipse.
 \subsection{Usage}{
@@ -156,6 +163,7 @@ An \code{Ellipse} object or a \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-transformEllipse}{}}}
 \subsection{Method \code{transformEllipse()}}{
 An alias of \code{translateEllipse}.
 \subsection{Usage}{
@@ -175,6 +183,7 @@ An \code{Ellipse} object or a \code{Circle} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the translation.
 \subsection{Usage}{
@@ -187,6 +196,7 @@ A 3x3 matrix.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference translation to an \code{Affine}
 object.
@@ -197,6 +207,7 @@ object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

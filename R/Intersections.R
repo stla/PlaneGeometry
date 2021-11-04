@@ -154,7 +154,7 @@ intersectionCircleLine <- function(circ, line, strict = FALSE){
 intersectionEllipseLine <- function(ell, line, strict = FALSE){
   stopifnot(is(ell, "Ellipse") || is(ell, "Circle"), is(line, "Line"))
   if(is(ell, "Circle")){
-    return(intersectionCircleLine(.circleAsEllipse(ell), line, strict))
+    return(intersectionCircleLine(ell, line, strict))
   }
   a <- ell$rmajor; b <- ell$rminor; theta <- ell$alpha
   if(ell$degrees) theta <- theta * pi/180

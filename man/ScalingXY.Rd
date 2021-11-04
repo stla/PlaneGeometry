@@ -48,6 +48,7 @@ S$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{ScalingXY} object.
 \subsection{Usage}{
@@ -79,6 +80,7 @@ A new \code{ScalingXY} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{ScalingXY} object.
 \subsection{Usage}{
@@ -95,6 +97,7 @@ Show instance of a \code{ScalingXY} object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference axis-scaling.
 \subsection{Usage}{
@@ -114,6 +117,7 @@ A point or a two-column matrix of points.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the axis-scaling.
 \subsection{Usage}{
@@ -137,6 +141,7 @@ S$getMatrix() \%*\% c(P,1)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference axis-scaling to an \code{Affine}
 object.
@@ -147,6 +152,7 @@ object.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
