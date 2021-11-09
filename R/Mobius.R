@@ -159,7 +159,9 @@ Mobius <- R6Class(
     #' where \code{M} is the reference Möbius transformation.
     power = function(k){
       stopifnot(.isInteger(k), length(k) == 1L)
-      if(k >= 0){
+      if(k == 0){
+        Mobius$new(diag(2))
+      }else if(k >= 0){
         M <- self$getM()
         Mobius$new(M %**% k)
       }else{
@@ -304,8 +306,20 @@ Mobius <- R6Class(
         Q <- self$transform(line$B)
         Line$new(P, Q)
       }
-    }
+    },
 
+    #' @description Transformation of a generalized circle (i.e. a circle or a
+    #'   line) by the reference Möbius transformation.
+    #' @param gcirc a \code{Circle} object or a \code{Line} object
+    #' @return A \code{Circle} object or a \code{Line} object.
+    transformGcircle = function(gcirc) {
+      stopifnot(is(gcirc, "Circle") || is(gcirc, "Line"))
+      if(is(gcirc, "Circle")){
+        self$transformCircle(gcirc)
+      }else{
+        self$transformLine(gcirc)
+      }
+    }
   )
 )
 

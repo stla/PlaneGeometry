@@ -778,3 +778,209 @@ par(opar)
 ```
 
 
+# Schottky circles
+
+This construction is taken from the book *Indra's Pearls: The Vision of Felix Klein*.
+
+```{r schottky, message=FALSE}
+library(freegroup)
+
+.a <- alpha(1)
+.A <- inverse(.a)
+.b <- alpha(2)
+.B <- inverse(.b)
+
+tofree <- function(l){
+  switch(l,
+         a = .a,
+         A = .A,
+         b = .b,
+         B = .B)
+}
+
+# starting circles ####
+Ca <- Line$new(c(-1,0), c(1,0))
+Rc <- sqrt(2)/4
+yI <- -3*sqrt(2)/4
+CA <- Circle$new(c(0,yI), Rc)
+theta <- -0.5
+T <- c(Rc*cos(theta), yI+Rc*sin(theta))
+P <- c(T[1]+T[2]*tan(theta), 0)
+PT <- sqrt(c(crossprod(T-P)))
+xTprime <- P[1]+PT
+xPprime <- -yI/tan(theta)
+PprimeTprime <- abs(xTprime-xPprime)
+Rcprime <- abs(yI*PprimeTprime/xPprime)
+Cb <- Circle$new(c(xTprime, -Rcprime), Rcprime)
+CB <- Circle$new(c(-xTprime, -Rcprime), Rcprime)
+
+
+# words of size n
+n <- 6L
+G <- do.call(expand.grid, rep(list(c("a", "A", "b", "B")), n))
+G <- split(as.matrix(G), 1:nrow(G))
+G <- lapply(G, function(w){
+  sum(do.call(c.free, lapply(w, tofree)))
+})
+G <- uniqueWith(G, free_equal)
+sizes <- sapply(G, total)
+G <- lapply(G, `[[`, 1L)
+Gn <- G[sizes == n]
+
+# Mobius transformations ####
+toCplx <- function(xy) complex(real = xy[1], imaginary = xy[2])
+a <- Mobius$new(rbind(c(sqrt(2),1i), c(-1i,sqrt(2))))
+b <- Mobius$new(rbind(
+  c(toCplx(Cb$center), c(crossprod(Cb$center))-Cb$radius^2),
+  c(1, -toCplx(CB$center))
+))
+A <- a$inverse()
+B <- b$inverse()
+
+Gn <- lapply(Gn, function(arr){
+  transfos <- vector("list", length = ncol(arr))
+  for(j in seq_len(ncol(arr))){
+    power <- arr[2, j]
+    isneg <- power < 0
+    k <- abs(power)
+    elemindex <- arr[1L, j]
+    if(isneg){
+      if(elemindex == 1){
+        mobius <- A
+      }else{
+        mobius <- B
+      }
+    }else{
+      if(elemindex == 1){
+        mobius <- a
+      }else{
+        mobius <- b
+      }
+    }
+    if(j == ncol(arr)){
+      transfos[[j]] <- mobius$power(k-1L)
+      elem = c("a", "b")[elemindex]
+      if(isneg) elem <- toupper(elem)
+    }else{
+      transfos[[j]] <- mobius$power(k)
+    }
+  }
+  list(compo = Reduce(function(M0,M1) M1$compose(M0), transfos), elem = elem)
+})
+```
+
+Here is the picture:
+
+```{r draw_schottky, fig.width=5, fig.height=5}
+opar <- par(mar = c(0,0,0,0), bg = "whitesmoke")
+plot(NULL, asp = 1, xlim = c(-3,3), ylim = c(-3,3),
+     axes = FALSE, xlab = NA, ylab = NA)
+draw(Ca); draw(CA); draw(Cb); draw(CB)
+draw(A$transformCircle(CA), lwd = 2, border = "red")
+draw(A$transformCircle(CB), lwd = 2, border = "red")
+draw(A$transformCircle(Cb), lwd = 2, border = "red")
+draw(a$transformLine(Ca),   lwd = 2, border = "green")
+draw(a$transformCircle(CB), lwd = 2, border = "green")
+draw(a$transformCircle(Cb), lwd = 2, border = "green")
+draw(b$transformLine(Ca),   lwd = 2, border = "blue")
+draw(b$transformCircle(Cb), lwd = 2, border = "blue")
+draw(b$transformCircle(CA), lwd = 2, border = "blue")
+draw(B$transformLine(Ca),   lwd = 2, border = "yellow")
+draw(B$transformCircle(CA), lwd = 2, border = "yellow")
+draw(B$transformCircle(CB), lwd = 2, border = "yellow")
+
+circles <- lapply(Gn, function(g){
+  gcirc <- switch(g[["elem"]], a = Ca, b = Cb, A = CA, B = CB)
+  mobius <- g[["compo"]]
+  mobius$transformGcircle(gcirc)
+})
+invisible(lapply(circles, draw, col = "orange"))
+par(opar)
+```
+
+
+# Modular tesselation
+
+I did this animation after I came across the paper 
+[Complex Variables Visualized](https://www3.risc.jku.at/publications/download/risc_5011/DiplomaThesisPonweiser.pdf) written by Thomas Ponweiser. This is the paper 
+which motivated me to implement the generalized power of a Möbius transformation.
+
+
+```{r modularTesselation, message=FALSE}
+library(elliptic) # for the unimodular matrices
+
+# Möbius transformations
+T <- Mobius$new(rbind(c(0,-1), c(1,0)))
+U <- Mobius$new(rbind(c(1,1), c(0,1)))
+R <- U$compose(T)
+# R**t, generalized power
+Rt <- function(t){
+  R$gpower(t)
+}
+
+# starting circles
+I <- Circle$new(c(0, 1.5), 0.5)
+TI <- T$transformCircle(I)
+
+# modified Cayley transformation
+Phi <- Mobius$new(rbind(c(1i, 1), c(1, 1i)))
+
+
+draw_pair <- function(M, u, compose = FALSE){
+  if(compose) M <- M$compose(T)
+  A <- M$compose(Rt(u))$compose(Phi)
+  C <- A$transformCircle(I)
+  draw(C, col = "magenta")
+  C <- A$transformCircle(TI)
+  draw(C, col = "magenta")
+  if(!compose){
+    draw_pair(M, u, compose=TRUE)
+  }
+}
+
+n <- 8L
+transfos <- unimodular(n)
+
+fplot <- function(u){
+  opar <- par(mar = c(0,0,0,0), bg = "black")
+  plot(NULL, asp = 1, xlim = c(-1.1, 1.1), ylim = c(-1.1, 1.1),
+       axes = FALSE, xlab = NA, ylab = NA)
+  for(i in 1L:dim(transfos)[3L]){
+    transfo <- transfos[, , i]
+    M <- Mobius$new(transfo)
+    draw_pair(M, u)
+    M <- M$inverse()
+    draw_pair(M, u)
+    diag(transfo) <- -diag(transfo)
+    M <- Mobius$new(transfo)
+    draw_pair(M, u)
+    M <- M$inverse()
+    draw_pair(M, u)
+    d <- diag(transfo)
+    if(d[1L] != d[2L]){
+      diag(transfo) <- rev(diag(transfo))
+      M <- Mobius$new(transfo)
+      draw_pair(M, u)
+      M <- M$inverse()
+      draw_pair(M, u)
+    }
+  }
+}
+```
+
+To get the animation, run:
+
+```{r}
+library(gifski)
+u_ <- seq(0, 3, length.out = 181)[-1]
+save_gif(
+  for(u in u_){
+    fplot(u)
+  },
+  width = 512,
+  height = 512,
+  delay = 0.1
+)
+```
+
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation.gif)

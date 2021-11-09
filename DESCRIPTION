@@ -17,7 +17,8 @@ Suggests:
     rmarkdown,
     viridisLite,
     sets,
-    ellipse
+    ellipse,
+    freegroup
 VignetteBuilder: knitr
 URL: https://github.com/stla/PlaneGeometry
 BugReports: https://github.com/stla/PlaneGeometry/issues

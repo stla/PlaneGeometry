@@ -7,7 +7,7 @@ test_that("Triangle$contains", {
   expect_true(all(apply(pts, 1L, t$contains)))
 })
 
-test_that("Malfatii circles are tangent", {
+test_that("Malfatti circles are tangent", {
   t <- Triangle$new(c(0,0), c(1,5), c(3,3))
   Mcircles <- t$MalfattiCircles(tangencyPoints = TRUE)
   C1 <- Mcircles[[1L]]; C2 <- Mcircles[[2L]]; C3 <- Mcircles[[3L]]

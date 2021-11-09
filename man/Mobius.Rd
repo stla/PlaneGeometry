@@ -54,6 +54,7 @@ transformation, and also the \code{compose} method of the
 \item \href{#method-transform}{\code{Mobius$transform()}}
 \item \href{#method-transformCircle}{\code{Mobius$transformCircle()}}
 \item \href{#method-transformLine}{\code{Mobius$transformLine()}}
+\item \href{#method-transformGcircle}{\code{Mobius$transformGcircle()}}
 \item \href{#method-clone}{\code{Mobius$clone()}}
 }
 }
@@ -254,6 +255,27 @@ Transformation of a line by the reference Möbius transformation.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A \code{Circle} object or a \code{Line} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-transformGcircle"></a>}}
+\if{latex}{\out{\hypertarget{method-transformGcircle}{}}}
+\subsection{Method \code{transformGcircle()}}{
+Transformation of a generalized circle (i.e. a circle or a
+  line) by the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$transformGcircle(gcirc)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{gcirc}}{a \code{Circle} object or a \code{Line} object}
 }
 \if{html}{\out{</div>}}
 }

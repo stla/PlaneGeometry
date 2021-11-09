@@ -2,7 +2,10 @@
 
 * Fixed the `isEqual` method of the `Line` class.
 
-* New example in the vignette, an illustration of inversions.
+* Fixed Möbius raised at the power 0.
+
+* New examples in the vignette: an illustration of inversions, Schottky circles, 
+and modular tessellation.
 
 
 # PlaneGeometry 1.2.0 (2020-08-06)
