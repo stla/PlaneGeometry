@@ -785,18 +785,21 @@ This construction is taken from the book *Indra's Pearls: The Vision of Felix Kl
 ```{r schottky, message=FALSE}
 library(freegroup)
 
-.a <- alpha(1)
-.A <- inverse(.a)
-.b <- alpha(2)
-.B <- inverse(.b)
+a <- alpha(1)
+A <- inverse(a)
+b <- alpha(2)
+B <- inverse(b)
 
-tofree <- function(l){
-  switch(l,
-         a = .a,
-         A = .A,
-         b = .b,
-         B = .B)
-}
+# words of size n
+n <- 6L
+G <- do.call(expand.grid, rep(list(c("a", "A", "b", "B")), n))
+G <- split(as.matrix(G), 1:nrow(G))
+G <- lapply(G, function(w){
+  sum(do.call(c.free, lapply(w, function(x) switch(x, a=a, A=A, b=b, B=B))))
+})
+G <- uniqueWith(G, free_equal)
+sizes <- vapply(G, total, numeric(1L))
+Gn <- G[sizes == n]
 
 # starting circles ####
 Ca <- Line$new(c(-1,0), c(1,0))
@@ -813,90 +816,88 @@ PprimeTprime <- abs(xTprime-xPprime)
 Rcprime <- abs(yI*PprimeTprime/xPprime)
 Cb <- Circle$new(c(xTprime, -Rcprime), Rcprime)
 CB <- Circle$new(c(-xTprime, -Rcprime), Rcprime)
-
-
-# words of size n
-n <- 6L
-G <- do.call(expand.grid, rep(list(c("a", "A", "b", "B")), n))
-G <- split(as.matrix(G), 1:nrow(G))
-G <- lapply(G, function(w){
-  sum(do.call(c.free, lapply(w, tofree)))
-})
-G <- uniqueWith(G, free_equal)
-sizes <- sapply(G, total)
-G <- lapply(G, `[[`, 1L)
-Gn <- G[sizes == n]
+GCIRCLES <- list(a = Ca, A = CA, b = Cb, B = CB)
 
 # Mobius transformations ####
+Mob_a <- Mobius$new(rbind(c(sqrt(2), 1i), c(-1i, sqrt(2))))
+Mob_A <- Mob_a$inverse()
+
 toCplx <- function(xy) complex(real = xy[1], imaginary = xy[2])
-a <- Mobius$new(rbind(c(sqrt(2),1i), c(-1i,sqrt(2))))
-b <- Mobius$new(rbind(
+Mob_b <- Mobius$new(rbind(
   c(toCplx(Cb$center), c(crossprod(Cb$center))-Cb$radius^2),
   c(1, -toCplx(CB$center))
 ))
-A <- a$inverse()
-B <- b$inverse()
+Mob_B <- Mob_b$inverse()
 
-Gn <- lapply(Gn, function(arr){
-  transfos <- vector("list", length = ncol(arr))
-  for(j in seq_len(ncol(arr))){
-    power <- arr[2, j]
-    isneg <- power < 0
-    k <- abs(power)
-    elemindex <- arr[1L, j]
-    if(isneg){
-      if(elemindex == 1){
-        mobius <- A
-      }else{
-        mobius <- B
-      }
-    }else{
-      if(elemindex == 1){
-        mobius <- a
-      }else{
-        mobius <- b
-      }
+MOBS <- list(a = Mob_a, A = Mob_A, b = Mob_b, B = Mob_B)
+
+# Conversion word of size n to circle
+word2seq <- function(g){
+  seq <- c()
+  gr <- reduce(g)[[1L]]
+  for(j in 1L:ncol(gr)){
+    monomial <- gr[, j]
+    t <- c("a", "b")[monomial[1L]]
+    i <- monomial[2L]
+    if(i < 0L){
+      i <- -i
+      t <- toupper(t)
     }
-    if(j == ncol(arr)){
-      transfos[[j]] <- mobius$power(k-1L)
-      elem = c("a", "b")[elemindex]
-      if(isneg) elem <- toupper(elem)
-    }else{
-      transfos[[j]] <- mobius$power(k)
-    }
+    seq <- c(seq, rep(t, i))
   }
-  list(compo = Reduce(function(M0,M1) M1$compose(M0), transfos), elem = elem)
-})
+  seq
+}
+word2circle <- function(g){
+  seq <- word2seq(g)
+  mobs <- MOBS[seq]
+  mobius <- Reduce(function(M1, M2) M1$compose(M2), mobs[-n])
+  mobius$transformGcircle(GCIRCLES[[seq[n]]])
+}
 ```
 
 Here is the picture:
 
 ```{r draw_schottky, fig.width=5, fig.height=5}
-opar <- par(mar = c(0,0,0,0), bg = "whitesmoke")
+opar <- par(mar = c(0,0,0,0), bg = "black")
 plot(NULL, asp = 1, xlim = c(-3,3), ylim = c(-3,3),
      axes = FALSE, xlab = NA, ylab = NA)
 draw(Ca); draw(CA); draw(Cb); draw(CB)
-draw(A$transformCircle(CA), lwd = 2, border = "red")
-draw(A$transformCircle(CB), lwd = 2, border = "red")
-draw(A$transformCircle(Cb), lwd = 2, border = "red")
-draw(a$transformLine(Ca),   lwd = 2, border = "green")
-draw(a$transformCircle(CB), lwd = 2, border = "green")
-draw(a$transformCircle(Cb), lwd = 2, border = "green")
-draw(b$transformLine(Ca),   lwd = 2, border = "blue")
-draw(b$transformCircle(Cb), lwd = 2, border = "blue")
-draw(b$transformCircle(CA), lwd = 2, border = "blue")
-draw(B$transformLine(Ca),   lwd = 2, border = "yellow")
-draw(B$transformCircle(CA), lwd = 2, border = "yellow")
-draw(B$transformCircle(CB), lwd = 2, border = "yellow")
-
-circles <- lapply(Gn, function(g){
-  gcirc <- switch(g[["elem"]], a = Ca, b = Cb, A = CA, B = CB)
-  mobius <- g[["compo"]]
-  mobius$transformGcircle(gcirc)
-})
-invisible(lapply(circles, draw, col = "orange"))
+C1 <- Mob_A$transformCircle(CA)
+C2 <- Mob_A$transformCircle(CB)
+C3 <- Mob_A$transformCircle(Cb)
+draw(C1, lwd = 2, border = "red")
+draw(C2, lwd = 2, border = "red")
+draw(C3, lwd = 2, border = "red")
+C1 <- Mob_a$transformLine(Ca)
+C2 <- Mob_a$transformCircle(Cb)
+C3 <- Mob_a$transformCircle(CB)
+draw(C1, lwd = 2, border = "green")
+draw(C2, lwd = 2, border = "green")
+draw(C3, lwd = 2, border = "green")
+C1 <- Mob_b$transformLine(Ca)
+C2 <- Mob_b$transformCircle(CA)
+C3 <- Mob_b$transformCircle(Cb)
+draw(C1, lwd = 2, border = "blue")
+draw(C2, lwd = 2, border = "blue")
+draw(C3, lwd = 2, border = "blue")
+C1 <- Mob_B$transformLine(Ca)
+C2 <- Mob_B$transformCircle(CA)
+C3 <- Mob_B$transformCircle(CB)
+draw(C1, lwd = 2, border = "yellow")
+draw(C2, lwd = 2, border = "yellow")
+draw(C3, lwd = 2, border = "yellow")
+for(g in Gn){
+  circ <- circle(g)
+  draw(circ, lwd = 2, border = "orange")
+}
 par(opar)
 ```
+
+Here is the same picture but with better quality:
+
+![](SchottkyCircles_tikz.png)
+
+I realized this picture with the **tikzDevice** package.
 
 
 # Modular tesselation
