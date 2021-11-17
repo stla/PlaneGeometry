@@ -202,8 +202,12 @@ Line <- R6Class(
     isEqual = function(line) {
       do1 <- as.numeric(self$directionAndOffset())
       do2 <- as.numeric(line$directionAndOffset())
-      #do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
-      isTRUE(all.equal(do1, do2))
+      if(isTRUE(all.equal(do1[2L], do2[2L]))){
+        do1[1L] <- do1[1L] %% pi; do2[1L] <- do2[1L] %% pi
+        isTRUE(all.equal(do1, do2))
+      }else{
+        isTRUE(all.equal(do1, do2))
+      }
     },
 
     #' @description Check whether the reference line is parallel to a given line.
