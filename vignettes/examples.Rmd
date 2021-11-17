@@ -887,7 +887,7 @@ draw(C1, lwd = 2, border = "yellow")
 draw(C2, lwd = 2, border = "yellow")
 draw(C3, lwd = 2, border = "yellow")
 for(g in Gn){
-  circ <- circle(g)
+  circ <- word2circle(g)
   draw(circ, lwd = 2, border = "orange")
 }
 par(opar)
@@ -971,7 +971,7 @@ fplot <- function(u){
 
 To get the animation, run:
 
-```{r}
+```{r, eval=FALSE}
 library(gifski)
 u_ <- seq(0, 3, length.out = 181)[-1]
 save_gif(
