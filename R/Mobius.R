@@ -177,7 +177,10 @@ Mobius <- R6Class(
     #' @description Generalized power of the reference Möbius transformation.
     #' @param k a real number, possibly negative
     #' @return A \code{Mobius} object, the generalized \code{k}-th power of
-    #' the reference Möbius transformation.
+    #'   the reference Möbius transformation.
+    #' @examples M <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
+    #' Mroot <- M$gpower(1/2)
+    #' Mroot$compose(Mroot) # should be M
     gpower = function(k){
       stopifnot(is.numeric(k), length(k) == 1L)
       M <- self$getM()
@@ -236,6 +239,36 @@ Mobius <- R6Class(
           .fromCplx((a*z+b)/(c*z+d))
         }
       }
+    },
+
+    #' @description Returns the fixed points of the reference Möbius transformation.
+    #' @return One point, or a list of two points, or a message in the case when the transformation is the identity map.
+    fixedPoints = function() {
+      private[[".a"]] -> a
+      private[[".b"]] -> b
+      private[[".c"]] -> c
+      private[[".d"]] -> d
+      M_is_identity <- (a == d) && b == 0 && c == 0
+      if(M_is_identity){
+        message("This Möbius transformation is the identity map, every point ",
+                "is a fixed point.")
+        return(invisibe(NULL))
+      }
+      if(c == 0){
+        if(a == d){
+          return(Inf)
+        }else{
+          return(.fromCplx(-b / (a-d)))
+        }
+      }
+      Delta <- (a-d)^2 + 4*b*c
+      if(Delta == 0){
+        return(.fromCplx((a-d)/2/c))
+      }
+      list(
+        .fromCplx((a-d + sqrt(Delta))/2/c),
+        .fromCplx((a-d - sqrt(Delta))/2/c)
+      )
     },
 
     #' @description Transformation of a circle by the reference Möbius transformation.
@@ -344,4 +377,69 @@ MobiusMappingThreePoints <- function(P1, P2, P3, Q1, Q2, Q3){
   }
   Mob2 <- .MobiusMappingThreePoints2ZeroOneInf(w1, w2, w3)
   Mob1$compose(Mob2$inverse())
+}
+
+#' @title Möbius transformation mapping a given circle to a given circle
+#' @description Returns a Möbius transformation mapping a given circle to
+#'   another given circle.
+#'
+#' @param circ1,circ2 \code{Circle} objects
+#'
+#' @return A Möbius transformation which maps \code{circ1} to \code{circ2}.
+#'
+#' @export
+#'
+#' @examples library(PlaneGeometry)
+#' C1 <- Circle$new(c(0, 0), 1)
+#' C2 <- Circle$new(c(1, 2), 3)
+#' M <- MobiusMappingCircle(C1, C2)
+#' C3 <- M$transformCircle(C1)
+#' C3$isEqual(C2)
+MobiusMappingCircle <- function(circ1, circ2){
+  stopifnot(is(circ1, "Circle"))
+  stopifnot(is(circ2, "Circle"))
+  z1 <- .toCplx(circ1$pointFromAngle(0))
+  z2 <- .toCplx(circ1$pointFromAngle(90, degrees = TRUE))
+  z3 <- .toCplx(circ1$pointFromAngle(270, degrees = TRUE))
+  MT1 <- Mobius$new(rbind(c(z2-z3, -z1*(z2-z3)), c(z2-z1, -z3*(z2-z1))))
+  z1 <- .toCplx(circ2$pointFromAngle(180, degrees = TRUE))
+  z2 <- .toCplx(circ2$pointFromAngle(90, degrees = TRUE))
+  z3 <- .toCplx(circ2$pointFromAngle(270, degrees = TRUE))
+  MT2 <- Mobius$new(
+    rbind(c(z2-z3, -z1*(z2-z3)), c(z2-z1, -z3*(z2-z1)))
+  )
+  MT1$compose(MT2$inverse())
+}
+
+#' @title Cross ratio
+#' @description The cross ratio of four points.
+#'
+#' @param A,B,C,D four distinct points
+#'
+#' @return A complex number. It is real if and only if the four points lie on
+#'   a generalized circle (that is a circle or a line).
+#' @export
+#'
+#' @examples c <- Circle$new(c(0, 0), 1)
+#' A <- c$pointFromAngle(0)
+#' B <- c$pointFromAngle(90)
+#' C <- c$pointFromAngle(180)
+#' D <- c$pointFromAngle(270)
+#' crossRatio(A, B, C, D) # should be real
+#' Mob <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
+#' MA <- Mob$transform(A)
+#' MB <- Mob$transform(B)
+#' MC <- Mob$transform(C)
+#' MD <- Mob$transform(D)
+#' crossRatio(MA, MB, MC, MD) # should be identical to `crossRatio(A, B, C, D)`
+crossRatio <- function(A, B, C, D){
+  stopifnot(.isPoint(A), .isPoint(B), .isPoint(C), .isPoint(D))
+  z1 <- .toCplx(A)
+  z2 <- .toCplx(B)
+  z3 <- .toCplx(C)
+  z4 <- .toCplx(D)
+  if(length(unique(c(z1, z2, z3, z4))) < 4L){
+    stop("The four points must be distinct.")
+  }
+  (z1-z4)/(z1-z2)*(z3-z2)/(z3-z4)
 }

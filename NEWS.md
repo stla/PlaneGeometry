@@ -4,8 +4,13 @@
 
 * Fixed Möbius raised at the power 0.
 
+* Added the method `fixedPoints` to the `Mobius` class.
+
+* New function `MobiusMappingCircle`, which returns a Möbius transformation 
+mapping a given circle to another given circle.
+
 * New examples in the vignette: an illustration of inversions, Schottky circles, 
-and modular tessellation.
+modular tessellation, Apollonian gasket, and Malfatti gasket.
 
 
 # PlaneGeometry 1.2.0 (2020-08-06)

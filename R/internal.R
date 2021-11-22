@@ -2,6 +2,10 @@
   is.numeric(x) && all(is.finite(x)) && !any(is.na(x)) && all(trunc(x) == x)
 }
 
+.isPoint <- function(M){
+  is.numeric(M) && length(M) == 2L && !any(is.na(M)) && all(is.finite(M))
+}
+
 .toCplx <- function(M){
   if(isTRUE(all.equal(M, Inf, check.attributes = FALSE))){
     Inf

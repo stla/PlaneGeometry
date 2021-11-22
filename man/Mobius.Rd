@@ -16,6 +16,14 @@ with non-null determinant.
 Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
 
 ## ------------------------------------------------
+## Method `Mobius$gpower`
+## ------------------------------------------------
+
+M <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
+Mroot <- M$gpower(1/2)
+Mroot$compose(Mroot) # should be M
+
+## ------------------------------------------------
 ## Method `Mobius$transform`
 ## ------------------------------------------------
 
@@ -52,6 +60,7 @@ transformation, and also the \code{compose} method of the
 \item \href{#method-power}{\code{Mobius$power()}}
 \item \href{#method-gpower}{\code{Mobius$gpower()}}
 \item \href{#method-transform}{\code{Mobius$transform()}}
+\item \href{#method-fixedPoints}{\code{Mobius$fixedPoints()}}
 \item \href{#method-transformCircle}{\code{Mobius$transformCircle()}}
 \item \href{#method-transformLine}{\code{Mobius$transformLine()}}
 \item \href{#method-transformGcircle}{\code{Mobius$transformGcircle()}}
@@ -189,8 +198,18 @@ Generalized power of the reference Möbius transformation.
 }
 \subsection{Returns}{
 A \code{Mobius} object, the generalized \code{k}-th power of
-the reference Möbius transformation.
+  the reference Möbius transformation.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{M <- Mobius$new(rbind(c(1+1i,2),c(0,3-2i)))
+Mroot <- M$gpower(1/2)
+Mroot$compose(Mroot) # should be M
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transform"></a>}}
@@ -221,6 +240,19 @@ Mob$transform(Inf)
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-fixedPoints"></a>}}
+\if{latex}{\out{\hypertarget{method-fixedPoints}{}}}
+\subsection{Method \code{fixedPoints()}}{
+Returns the fixed points of the reference Möbius transformation.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Mobius$fixedPoints()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+One point, or a list of two points, or a message in the case when the transformation is the identity map.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-transformCircle"></a>}}
