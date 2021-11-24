@@ -356,6 +356,28 @@ Mobius <- R6Class(
   )
 )
 
+#' Möbius transformation swapping two given points
+#' @description Return a Möbius transformation which sends
+#'   \code{A} to \code{B} and \code{B} to \code{A}.
+#'
+#' @param A,B two distinct points, \code{Inf} not allowed
+#'
+#' @return A \code{Mobius} object.
+#' @export
+MobiusSwappingTwoPoints <- function(A, B){
+  z1 <- .toCplx(A); z2 <- .toCplx(B)
+  if(z1 == z2){
+    stop("`A` and `B` must be distinct.")
+  }
+  p <- z1*z2
+  s <- z1+z2
+  mat <- rbind(
+    c(Im(p), Re(p)*Im(s)-Im(p)*Re(s)),
+    c(Im(s), -Im(p))
+  )
+  Mobius$new(mat)
+}
+
 #' Möbius transformation mapping three given points to three given points
 #' @description Return a Möbius transformation which sends
 #' \code{P1} to \code{Q1}, \code{P2} to \code{Q2} and \code{P3} to \code{Q3}.

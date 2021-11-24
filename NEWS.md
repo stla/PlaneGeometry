@@ -9,6 +9,9 @@
 * New function `MobiusMappingCircle`, which returns a Möbius transformation 
 mapping a given circle to another given circle.
 
+* New function `MobiusSwappingTwoPoints`, returning a Möbius transformation 
+swapping two given points.
+
 * New examples in the vignette: an illustration of inversions, Schottky circles, 
 modular tessellation, Apollonian gasket, and Malfatti gasket.
 
