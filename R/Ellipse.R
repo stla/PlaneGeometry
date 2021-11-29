@@ -286,7 +286,6 @@ Ellipse <- R6Class(
     #' draw(ell)
     #' invisible(lapply(diameters, draw))
     diameter = function(t, conjugate = FALSE){
-      center <- private[[".center"]]
       alpha <- private[[".alpha"]]
       if(private[[".degrees"]]) alpha <- alpha * pi/180
       ts <- if(conjugate){
