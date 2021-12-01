@@ -172,7 +172,7 @@ Circle <- R6Class(
     },
 
     #' @description Check whether the reference circle is orthogonal to a
-    #' given circle
+    #' given circle.
     #' @param circ a \code{Circle} object
     isOrthogonal = function(circ){
       stopifnot(is(circ, "Circle"))

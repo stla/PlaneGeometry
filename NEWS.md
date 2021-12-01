@@ -12,6 +12,12 @@ mapping a given circle to another given circle.
 * New function `MobiusSwappingTwoPoints`, returning a Möbius transformation 
 swapping two given points.
 
+* New function `EllipseFromThreeBoundaryPoints`, returning the smallest area 
+ellipse passing through three given boundary points.
+
+* New function attached to the `Triangle` class: `MandartInellipse`, which 
+returns the Mandart inellipse of the triangle.
+
 * New examples in the vignette: an illustration of inversions, Schottky circles, 
 modular tessellation, Apollonian gasket, and Malfatti gasket.
 

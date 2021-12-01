@@ -306,7 +306,7 @@ Check whether the reference circle equals another circle.
 \if{latex}{\out{\hypertarget{method-isOrthogonal}{}}}
 \subsection{Method \code{isOrthogonal()}}{
 Check whether the reference circle is orthogonal to a
-given circle
+given circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Circle$isOrthogonal(circ)}\if{html}{\out{</div>}}
 }

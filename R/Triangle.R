@@ -256,7 +256,8 @@ Triangle <- R6Class(
       )
     },
 
-    #' @description The X(175) triangle center.
+    #' @description Isoperimetric point, also known as the X(175) triangle
+    #'   center; this is the center of the outer Soddy circle.
     X175 = function() {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
       a <- .distance(B,C)
@@ -1059,6 +1060,27 @@ Triangle <- R6Class(
       circ <- Triangle$new(P, Q, R)$incircle()
       f <- AffineMappingThreePoints(P, Q, R, A, B, C)
       f$transformEllipse(circ)
+    },
+
+    #' @description The Mandart inellipse of the reference triangle.
+    #' @return An \code{Ellipse} object.
+    MandartInellipse = function(){
+      if(self$flatness() == 1){
+        warning("The triangle is flat.")
+        return(NULL)
+      }
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      # tangency points of the excircles:
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      tc <- c(0, c+a-b, a+b-c)
+      XA <- (b*tc[2L]*B + c*tc[3L]*C) / (b*tc[2L] + c*tc[3L])
+      tc <- c(c+b-a, 0, a+b-c)
+      XB <- (a*tc[1L]*A + c*tc[3L]*C) / (a*tc[1L] + c*tc[3L])
+      tc <- c(c+b-a, a+c-b, 0)
+      XC <- (a*tc[1L]*A + b*tc[2L]*B) / (a*tc[1L] + b*tc[2L])
+      EllipseFromThreeBoundaryPoints(XA, XB, XC)
     },
 
     #' @description Random points on or in the reference triangle.

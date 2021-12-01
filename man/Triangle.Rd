@@ -214,6 +214,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-translate}{\code{Triangle$translate()}}
 \item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
 \item \href{#method-SteinerInellipse}{\code{Triangle$SteinerInellipse()}}
+\item \href{#method-MandartInellipse}{\code{Triangle$MandartInellipse()}}
 \item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
 }
@@ -430,7 +431,8 @@ A named vector containing the values of the angles in radians.
 \if{html}{\out{<a id="method-X175"></a>}}
 \if{latex}{\out{\hypertarget{method-X175}{}}}
 \subsection{Method \code{X175()}}{
-The X(175) triangle center.
+Isoperimetric point, also known as the X(175) triangle
+  center; this is the center of the outer Soddy circle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$X175()}\if{html}{\out{</div>}}
 }
@@ -1150,6 +1152,19 @@ draw(ell, border = "red", lwd =2)
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-MandartInellipse"></a>}}
+\if{latex}{\out{\hypertarget{method-MandartInellipse}{}}}
+\subsection{Method \code{MandartInellipse()}}{
+The Mandart inellipse of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$MandartInellipse()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+An \code{Ellipse} object.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-randomPoints"></a>}}
