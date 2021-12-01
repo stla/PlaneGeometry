@@ -1062,7 +1062,9 @@ Triangle <- R6Class(
       f$transformEllipse(circ)
     },
 
-    #' @description The Mandart inellipse of the reference triangle.
+    #' @description The Mandart inellipse of the reference triangle. This is
+    #'   the unique ellipse tangent to the triangle's sides at the contact
+    #'   points of its excircles
     #' @return An \code{Ellipse} object.
     MandartInellipse = function(){
       if(self$flatness() == 1){

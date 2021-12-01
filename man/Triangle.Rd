@@ -1157,7 +1157,9 @@ draw(ell, border = "red", lwd =2)
 \if{html}{\out{<a id="method-MandartInellipse"></a>}}
 \if{latex}{\out{\hypertarget{method-MandartInellipse}{}}}
 \subsection{Method \code{MandartInellipse()}}{
-The Mandart inellipse of the reference triangle.
+The Mandart inellipse of the reference triangle. This is
+  the unique ellipse tangent to the triangle's sides at the contact
+  points of its excircles
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$MandartInellipse()}\if{html}{\out{</div>}}
 }
