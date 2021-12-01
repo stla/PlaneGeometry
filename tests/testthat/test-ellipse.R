@@ -55,3 +55,12 @@ test_that("Gaussian ellipse", {
   pts <- ellipse::ellipse(Sigma, centre = mean, level = p)
   expect_true(all(apply(pts, 1L, ell$includes)))
 })
+
+test_that("Ellipse diameters", {
+  ell <- Ellipse$new(c(2,3), 5, 4, 50)
+  majorAxis <- ell$diameter(0)
+  minorAxis <- ell$diameter(pi/2)
+  expect_equal(majorAxis$length(), 2*5)
+  expect_equal(minorAxis$length(), 2*4)
+  expect_true(majorAxis$isPerpendicular(minorAxis))
+})

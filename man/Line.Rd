@@ -54,9 +54,11 @@ l$includes(M, strict = TRUE)
 \itemize{
 \item \href{#method-new}{\code{Line$new()}}
 \item \href{#method-print}{\code{Line$print()}}
+\item \href{#method-length}{\code{Line$length()}}
 \item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
 \item \href{#method-isEqual}{\code{Line$isEqual()}}
 \item \href{#method-isParallel}{\code{Line$isParallel()}}
+\item \href{#method-isPerpendicular}{\code{Line$isPerpendicular()}}
 \item \href{#method-includes}{\code{Line$includes()}}
 \item \href{#method-perpendicular}{\code{Line$perpendicular()}}
 \item \href{#method-parallel}{\code{Line$parallel()}}
@@ -129,6 +131,17 @@ Show instance of a line object.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-length"></a>}}
+\if{latex}{\out{\hypertarget{method-length}{}}}
+\subsection{Method \code{length()}}{
+Segment length, returns the length of the segment joining
+  the two point defining the line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$length()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-directionAndOffset"></a>}}
 \if{latex}{\out{\hypertarget{method-directionAndOffset}{}}}
 \subsection{Method \code{directionAndOffset()}}{
@@ -174,6 +187,26 @@ without taking into account \code{extendA} and \code{extendB}.
 Check whether the reference line is parallel to a given line.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Line$isParallel(line)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{line}}{a \code{Line} object}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+\code{TRUE} or \code{FALSE}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isPerpendicular"></a>}}
+\if{latex}{\out{\hypertarget{method-isPerpendicular}{}}}
+\subsection{Method \code{isPerpendicular()}}{
+Check whether the reference line is perpendicular to a given line.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Line$isPerpendicular(line)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

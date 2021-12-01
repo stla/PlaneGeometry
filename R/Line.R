@@ -147,6 +147,12 @@ Line <- R6Class(
       }
     },
 
+    #' @description Segment length, returns the length of the segment joining
+    #'   the two point defining the line.
+    length = function(){
+      .distance(private[[".A"]], private[[".B"]])
+    },
+
     #' @description Direction (angle between 0 and 2pi)
     #' and offset (positive number) of the reference line.
     #' @details The equation of the line is
@@ -219,6 +225,15 @@ Line <- R6Class(
       dx1 <- P1[1L] - P2[1L]; dx2 <- Q1[1L] - Q2[1L]
       dy1 <- P1[2L] - P2[2L]; dy2 <- Q1[2L] - Q2[2L]
       abs(det(rbind(c(dx1, dy1), c(dx2, dy2)))) < sqrt(.Machine$double.eps)
+    },
+
+    #' @description Check whether the reference line is perpendicular to a given line.
+    #' @param line a \code{Line} object
+    #' @return \code{TRUE} or \code{FALSE}.
+    isPerpendicular = function(line) {
+      u <- private[[".A"]] - private[[".B"]]
+      v <- line$A - line$B
+      .isAlmostZero(.dot(u, v))
     },
 
     #' @description Whether a point belongs to the reference line.
