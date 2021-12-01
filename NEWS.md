@@ -15,6 +15,9 @@ swapping two given points.
 * New function `EllipseFromThreeBoundaryPoints`, returning the smallest area 
 ellipse passing through three given boundary points.
 
+* New function `EllipseFromFociAndOnePoint`, returning the ellipse with given 
+foci and a given point on its boundary.
+
 * New function attached to the `Triangle` class: `MandartInellipse`, which 
 returns the Mandart inellipse of the triangle.
 

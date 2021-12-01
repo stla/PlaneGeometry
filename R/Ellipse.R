@@ -783,3 +783,20 @@ EllipseFromThreeBoundaryPoints <- function(P1, P2, P3){
   EllipseFromCenterAndMatrix(means, S)
 }
 
+#' @title Ellipse from foci and one point
+#' @description Derive the ellipse with given foci and one point on the boundary.
+#'
+#' @param F1,F2 points, the foci
+#' @param P a point on the boundary of the ellipse
+#'
+#' @return An \code{Ellipse} object.
+#' @export
+EllipseFromFociAndOnePoint <- function(F1, F2, P){
+  k <- .distance(A, F1) + .distance(A, F2)
+  a <- k/2
+  center <- (F1 + F2) / 2
+  d <- .distance(center, F1)
+  b <- sqrt(a*a - d*d)
+  alpha <- atan(abs(F1[2]-F2[2])/abs(F1[1]-F2[1]))
+  Ellipse$new(center, a, b, alpha, degrees = FALSE)
+}
