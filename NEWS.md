@@ -21,6 +21,9 @@ foci and a given point on its boundary.
 * New function attached to the `Triangle` class: `MandartInellipse`, which 
 returns the Mandart inellipse of the triangle.
 
+* New function attached to the `Triangle` class: `hexylTriangle`, which 
+returns the hexyl triangle of the triangle.
+
 * New examples in the vignette: an illustration of inversions, Schottky circles, 
 modular tessellation, Apollonian gasket, and Malfatti gasket.
 

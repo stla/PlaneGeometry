@@ -156,5 +156,5 @@ test_that("Hexyl triangle", {
   JA <- et$A; JB <- et$B; JC <- et$C
   HAJC <- Line$new(HA, JC)
   HCJA <- Line$new(HC, JA)
-  expext_true(HAJC$isParallel(HCJA))
+  expect_true(HAJC$isParallel(HCJA))
 })
