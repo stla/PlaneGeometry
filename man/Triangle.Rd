@@ -216,6 +216,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-SteinerInellipse}{\code{Triangle$SteinerInellipse()}}
 \item \href{#method-MandartInellipse}{\code{Triangle$MandartInellipse()}}
 \item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
+\item \href{#method-hexylTriangle}{\code{Triangle$hexylTriangle()}}
 \item \href{#method-clone}{\code{Triangle$clone()}}
 }
 }
@@ -991,7 +992,7 @@ Equal detour point of the triangle.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{detour}}{logical, whether to return the detour as an attribute.}
+\item{\code{detour}}{logical, whether to return the detour as an attribute}
 }
 \if{html}{\out{</div>}}
 }
@@ -1190,6 +1191,16 @@ Random points on or in the reference triangle.
 \subsection{Returns}{
 The generated points in a two columns matrix with \code{n} rows.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-hexylTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-hexylTriangle}{}}}
+\subsection{Method \code{hexylTriangle()}}{
+Hexyl triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$hexylTriangle()}\if{html}{\out{</div>}}
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}

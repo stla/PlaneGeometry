@@ -147,3 +147,14 @@ test_that("Steiner ellipse/inellipse", {
   ell <- t$medialTriangle()$SteinerEllipse()
   expect_true(ell$isEqual(inell))
 })
+
+test_that("Hexyl triangle", {
+  t <- Triangle$new(c(0,0), c(1,5), c(3,3))
+  ht <- t$hexylTriangle()
+  et <- t$excentralTriangle()
+  HA <- ht$A; HB <- ht$B; HC <- ht$C
+  JA <- et$A; JB <- et$B; JC <- et$C
+  HAJC <- Line$new(HA, JC)
+  HCJA <- Line$new(HC, JA)
+  expext_true(HAJC$isParallel(HCJA))
+})

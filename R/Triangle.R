@@ -913,7 +913,7 @@ Triangle <- R6Class(
     },
 
     #' @description Equal detour point of the triangle.
-    #' @param detour logical, whether to return the detour as an attribute.
+    #' @param detour logical, whether to return the detour as an attribute
     #' @details Also known as the X(176) triangle center.
     equalDetourPoint = function(detour=FALSE) {
       private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
@@ -1099,6 +1099,31 @@ Triangle <- R6Class(
         runif_on_triangle(n, private[[".A"]], private[[".B"]],
                                      private[[".C"]])
       }
+    },
+
+    #' @description Hexyl triangle.
+    hexylTriangle = function(){
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      cosangles <- cos(self$angles())
+      cosA <- cosangles[1L]
+      cosB <- cosangles[2L]
+      cosC <- cosangles[3L]
+      a <- .distance(B,C)
+      b <- .distance(A,C)
+      c <- .distance(B,A)
+      x <- cosA + cosB + cosC + 1
+      y <- cosA + cosB - cosC - 1
+      z <- cosA - cosB + cosC - 1
+      HA <- (a*x*A + b*y*B + c*z*C) / (a*x + b*y + c*z)
+      x <- cosA + cosB - cosC - 1
+      y <- cosA + cosB + cosC + 1
+      z <- -cosA + cosB + cosC - 1
+      HB <- (a*x*A + b*y*B + c*z*C) / (a*x + b*y + c*z)
+      x <- cosA - cosB + cosC - 1
+      y <- -cosA + cosB + cosC - 1
+      z <- cosA + cosB + cosC + 1
+      HC <- (a*x*A + b*y*B + c*z*C) / (a*x + b*y + c*z)
+      Triangle$new(HA, HB, HC)
     }
 
   )
