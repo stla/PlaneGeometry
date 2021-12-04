@@ -24,6 +24,9 @@ returns the Mandart inellipse of the triangle.
 * New function attached to the `Triangle` class: `hexylTriangle`, which 
 returns the hexyl triangle of the triangle.
 
+* New function attached to the `Triangle` class: `isogonalConjugate`, which 
+returns the isogonal conjugate of a point with respect to the triangle.
+
 * New examples in the vignette: an illustration of inversions, Schottky circles, 
 modular tessellation, Apollonian gasket, and Malfatti gasket.
 

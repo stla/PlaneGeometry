@@ -971,6 +971,20 @@ Triangle <- R6Class(
       c(x = k1/a, y = k2/b, z = k3/c)
     },
 
+
+    #' @description Isogonal conjugate of a point with respect to
+    #' the reference triangle.
+    #' @param P a point
+    #' @return A point, the isogonal conjugate of \code{P}.
+    isogonalConjugate = function(P){
+      coords <- self$pointToTrilinear(P)
+      x <- coords[1L]
+      y <- coords[2L]
+      z <- coords[3L]
+      self$trilinearToPoint(y*z, x*z, x*y)
+    },
+
+
     #' @description Rotate the triangle.
     #' @param alpha angle of rotation
     #' @param O center of rotation
@@ -1022,6 +1036,11 @@ Triangle <- R6Class(
     #' triangle. This is the ellipse passing through the three vertices of
     #' the triangle and centered at the centroid of the triangle.
     #' @return An \code{Ellipse} object.
+    #' @note The Steiner ellipse is also the smallest area ellipse which passes
+    #'   through the vertices of the triangle, and thus can be obtained with
+    #'   the function \code{\link{EllipseFromThreeBoundaryPoints}}. We can also
+    #'   note that the major axis of the Steiner ellipse is the Deming
+    #'   least squares line of the three triangle vertices.
     #' @examples t <- Triangle$new(c(0,0), c(2,0.5), c(1.5,2))
     #' ell <- t$SteinerEllipse()
     #' plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.7,2.4),

@@ -6,6 +6,13 @@
 \description{
 A triangle has three vertices. They are named A, B, C.
 }
+\note{
+The Steiner ellipse is also the smallest area ellipse which passes
+  through the vertices of the triangle, and thus can be obtained with
+  the function \code{\link{EllipseFromThreeBoundaryPoints}}. We can also
+  note that the major axis of the Steiner ellipse is the Deming
+  least squares line of the three triangle vertices.
+}
 \examples{
 # incircle and excircles
 A <- c(0,0); B <- c(1,2); C <- c(3.5,1)
@@ -210,6 +217,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-equalDetourPoint}{\code{Triangle$equalDetourPoint()}}
 \item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
 \item \href{#method-pointToTrilinear}{\code{Triangle$pointToTrilinear()}}
+\item \href{#method-isogonalConjugate}{\code{Triangle$isogonalConjugate()}}
 \item \href{#method-rotate}{\code{Triangle$rotate()}}
 \item \href{#method-translate}{\code{Triangle$translate()}}
 \item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
@@ -1052,6 +1060,27 @@ the reference triangle.
 }
 \subsection{Returns}{
 The trilinear coordinates, a numeric vector of length 3.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-isogonalConjugate"></a>}}
+\if{latex}{\out{\hypertarget{method-isogonalConjugate}{}}}
+\subsection{Method \code{isogonalConjugate()}}{
+Isogonal conjugate of a point with respect to
+the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$isogonalConjugate(P)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A point, the isogonal conjugate of \code{P}.
 }
 }
 \if{html}{\out{<hr>}}
