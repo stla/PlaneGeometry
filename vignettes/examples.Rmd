@@ -1104,6 +1104,78 @@ save_gif(
 
 ![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket.gif)
 
+We can also animate the Apollonian gasket with the help of a Möbius 
+transformation. Consider the following complex matrix:
+
+$$
+M = \begin{pmatrix}
+i & \gamma \\
+\bar\gamma & -i
+\end{pmatrix}
+$$
+with $|gamma| < 1$. 
+
+The Möbius transformation associated to $M$ maps the unit disk to the unit disk 
+and it is of order $2$. Its powers map the unit disk to the unit dis as well. 
+By the way, after some calculus, one can give the expression of $M^t$. 
+We find
+
+```{r}
+Mt <- function(gamma, t){
+  h <- sqrt(1 - Mod(gamma)^2)
+  d2 <- h^t * (cos(t*pi/2) + 1i*sin(t*pi/2))
+  d1 <- Conj(d2)
+  A11 <- Re(d1) - 1i*Im(d1)/h
+  A12 <- Im(d2) * gamma / h
+  rbind(
+    c(A11, A12), 
+    c(Conj(A11), Conj(A12))
+  )
+}
+```
+
+Now let's do the animation.
+
+```{r ApollonianMobius}
+c0 <- Circle$new(c(0,0), 1) # the exterior circle
+depth <- 5
+ApollonianCircles <- ApollonianGasket(c0, n = 3, phi = 0.1, shift = 0.5, depth)
+xlim <- c(-1.1, 1.1)
+ylim <- c(-1.1, 1.1)
+opar <- par(mar = c(0, 0, 0, 0))
+fplot <- function(gamma, t){
+  plot(NULL, type = "n", xlim = xlim, ylim = ylim,
+       xlab = NA, ylab = NA, axes = FALSE, asp = 1)
+  draw(c0, border = "black", lwd = 2)
+  Mob <- Mt(gamma, t)
+  for(i in 1:depth){
+    for(circ in ApollonianCircles[[i]]){
+      draw(Mob$transformCircle(circ), col = colors[i])
+    }
+  }
+}
+fanim <- function(){
+  gamma <- 0.5 + 0.4i
+  t_ <- seq(0, 2, length.out = 91)[-91]
+  for(t in t_){
+    fplot(gamma, t)
+  }
+}
+```
+
+```{r, eval=FALSE}
+library(gifski)
+save_gif(
+  fanim(),
+  "ApollonianMobius.gif",
+  width = 512, height = 512,
+  delay = 0.1
+)
+par(opar)
+```
+
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif)
+
 
 # Malfatti gasket
 
