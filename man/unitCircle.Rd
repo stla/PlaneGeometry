@@ -5,7 +5,7 @@
 \alias{unitCircle}
 \title{Unit circle}
 \format{
-An object of class \code{Circle} (inherits from \code{R6}) of length 24.
+An object of class \code{Circle} (inherits from \code{R6}) of length 25.
 }
 \usage{
 unitCircle

@@ -171,6 +171,12 @@ Circle <- R6Class(
       isTRUE(all.equal(c(c0[1L],c0[2L],r0), c(c1[1L],c1[2L],r1)))
     },
 
+    #' @description Check whether the reference circle differs from another circle.
+    #' @param circ a \code{Circle} object
+    isDifferent = function(circ){
+      !self$isEqual(circ)
+    },
+
     #' @description Check whether the reference circle is orthogonal to a
     #' given circle.
     #' @param circ a \code{Circle} object
@@ -576,6 +582,28 @@ SteinerChain <- function(c0, n, phi, shift, ellipse = FALSE){
   return(out)
 }
 
+#' @title Inner Soddy circle
+#' @description Inner Soddy circles associated to three circles.
+#'
+#' @param circ1,circ2,circ3 distinct circles
+#'
+#' @return A \code{Circle} object.
+#' @export
+soddyCircle <- function(circ1, circ2, circ3){
+  stopifnot(is(circ1, "Circle"))
+  stopifnot(is(circ2, "Circle"))
+  stopifnot(is(circ3, "Circle"))
+  stopifnot(circ1$isDifferent(circ2))
+  stopifnot(circ2$isDifferent(circ3))
+  stopifnot(circ3$isDifferent(circ1))
+  trgl <- Triangle$new(circ1$center, circ2$center, circ3$center)
+  edp <- trgl$equalDetourPoint()
+  r1 <- circ1$radius
+  r2 <- circ2$radius
+  r3 <- circ3$radius
+  r <- 1 / (1/r1 + 1/r2 + 1/r3 + 2*sqrt(1/r1/r2 + 1/r2/r3 + 1/r3/r1))
+  Circle$new(edp, r)
+}
 
 #' Circle given by its center and a point
 #' @description Return the circle given by its center and a point it
