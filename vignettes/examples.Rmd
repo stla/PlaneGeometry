@@ -1177,14 +1177,38 @@ par(opar)
 ![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif)
 
 
-# Malfatti gasket
+# Another Apollonian fractal
 
-Now we will do something a bit more complicated. We will take a triangle, fill 
-each of its three Malfatti circles with an Apollonian gasket, and fill the 
-rest of the triangle with tangent circles. In fact, tangent spheres: we will 
-draw the result in 3D, this will be more pretty.
+Let's do another Apollonian fractal which uses the inner Soddy circle. 
+As you can see, the code is short:
 
-```{r malfattigasket}
+```{r apollony, eval=FALSE}
+apollony <- function(c1, c2, c3, n){
+  soddycircle <- soddyCircle(c1, c2, c3)
+  if(n == 1){
+    soddycircle
+  }else{
+    c(
+      apollony(c1, c2, soddycircle, n-1),
+      apollony(c1, soddycircle, c3, n-1),
+      apollony(soddycircle, c2, c3, n-1)
+    )
+  }
+}
+
+fractal <- function(n){
+  c1 = Circle$new(c(1, -1/sqrt(3)), 1)
+  c2 = Circle$new(c(-1, -1/sqrt(3)), 1)
+  c3 = Circle$new(c(0, sqrt(3) - 1/sqrt(3)), 1)
+  do.call(c, lapply(1:n, function(i) apollony(c1, c2, c3, i)))
+}
+
+circs <- fractal(4)
+```
+
+Let's plot the fractal in 3D with the help of the **rgl** package.
+
+```{r rglsphere}
 library(rgl)
 # the spheres in rgl, obtained with the `spheres3d` function, are not smooth;
 # the way we use below provides pretty spheres 
@@ -1198,7 +1222,39 @@ drawSphere <- function(circle, ...){
   sphere <- scale3d(unitSphere, radius, radius, radius)
   shade3d(translate3d(sphere, center[1], center[2], 0), ...)
 }
+```
 
+Now here is how to plot the fractal and make an animation:
+
+```{r rglapollony, eval=FALSE}
+# plot ####
+open3d(windowRect = c(50, 50, 562, 562))
+bg3d(color = "#363940")
+view3d(35, 60, zoom = 0.95)
+for(circ in circs){
+  drawSphere(circ, color = "darkred")
+}
+# animation ####
+movie3d(
+  spin3d(axis = c(0, 0, 1), rpm = 15),
+  duration = 4, fps = 15,
+  movie = "Apollony", dir = ".",
+  convert = "magick convert -dispose previous -loop 0 -delay 1x%d %s*.png %s.%s",
+  startTime = 1/60
+)
+```
+
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/Apollony.gif)
+
+
+# Malfatti gasket
+
+Now we will do something a bit more complicated. We will take a triangle, fill 
+each of its three Malfatti circles with an Apollonian gasket, and fill the 
+rest of the triangle with tangent circles. In fact, tangent spheres: we will 
+draw the result in 3D, this will be more pretty.
+
+```{r malfattigasket}
 toCplx <- function(M){
   M[1] + 1i * M[2]
 }
@@ -1350,6 +1406,7 @@ colors2 <- plasma(depth2)
 And we get the 3D picture:
 
 ```{r rgl, eval=FALSE}
+library(rgl)
 open3d(windowRect = c(50, 50, 562, 562), zoom = 0.9)
 bg3d(rgb(54, 57, 64, maxColorValue = 255))
 drawTriangularGasket(mcircles, A, B, C, colors, depth)
