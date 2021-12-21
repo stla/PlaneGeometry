@@ -1,4 +1,4 @@
-# PlaneGeometry 1.2.0.9000
+# PlaneGeometry 1.3.0 (2021-12-21)
 
 * Fixed the `isEqual` method of the `Line` class.
 

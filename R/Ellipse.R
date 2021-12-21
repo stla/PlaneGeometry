@@ -792,7 +792,7 @@ EllipseFromThreeBoundaryPoints <- function(P1, P2, P3){
 #' @return An \code{Ellipse} object.
 #' @export
 EllipseFromFociAndOnePoint <- function(F1, F2, P){
-  k <- .distance(A, F1) + .distance(A, F2)
+  k <- .distance(P, F1) + .distance(P, F2)
   a <- k/2
   center <- (F1 + F2) / 2
   d <- .distance(center, F1)

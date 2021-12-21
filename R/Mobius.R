@@ -250,7 +250,7 @@ Mobius <- R6Class(
       private[[".d"]] -> d
       M_is_identity <- (a == d) && b == 0 && c == 0
       if(M_is_identity){
-        message("This Möbius transformation is the identity map, every point ",
+        message("This Mobius transformation is the identity map, every point ",
                 "is a fixed point.")
         return(invisibe(NULL))
       }

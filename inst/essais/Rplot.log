@@ -1,0 +1,548 @@
+This is LuaHBTeX, Version 1.14.0 (MiKTeX 21.10 Portable) (format=lualatex 2021.11.13)  13 NOV 2021 08:28
+ restricted system commands enabled.
+**Rplot.tex
+(./Rplot.tex
+LaTeX2e <2021-06-01> patch level 1
+Lua module: luaotfload 2021-05-21 3.18 Lua based OpenType font support
+Lua module: lualibs 2021-05-20 2.74 ConTeXt Lua standard libraries.
+Lua module: lualibs-extended 2021-05-20 2.74 ConTeXt Lua libraries -- extended c
+ollection.
+luaotfload | conf : Root cache directory is "C:/PortableApps/MiKTeX/texmfs/data/
+luatex-cache/generic/names".
+luaotfload | init : Loading fontloader "fontloader-2021-05-20.lua" from kpse-res
+olved path "C:/PortableApps/MiKTeX/texmfs/install/tex/luatex/luaotfload/fontload
+er-2021-05-20.lua".
+Lua-only attribute luaotfload@noligature = 1
+Lua-only attribute luaotfload@syllabe = 2
+luaotfload | init : Context OpenType loader version 3.116
+Inserting `luaotfload.node_processor' at position 1 in `pre_linebreak_filter'.
+Inserting `luaotfload.node_processor' at position 1 in `hpack_filter'.
+Inserting `luaotfload.glyph_stream' at position 1 in `glyph_stream_provider'.
+Inserting `luaotfload.define_font' at position 1 in `define_font'.
+Lua-only attribute luaotfload_color_attribute = 3
+luaotfload | conf : Root cache directory is "C:/PortableApps/MiKTeX/texmfs/data/
+luatex-cache/generic/names".
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_opentype_file'.
+Inserting `luaotfload.harf.strip_prefix' at position 1 in `find_truetype_file'.
+Inserting `luaotfload.harf.finalize_vlist' at position 1 in `post_linebreak_filt
+er'.
+Inserting `luaotfload.harf.finalize_hlist' at position 2 in `hpack_filter'.
+Inserting `luaotfload.cleanup_files' at position 1 in `wrapup_run'.
+Inserting `luaotfload.harf.finalize_unicode' at position 1 in `finish_pdffile'.
+Inserting `luaotfload.glyphinfo' at position 1 in `glyph_info'.
+Lua-only attribute luaotfload.letterspace_done = 4
+Inserting `luaotfload.aux.set_sscale_dimens' at position 1 in `luaotfload.patch_
+font'.
+Inserting `luaotfload.aux.set_font_index' at position 2 in `luaotfload.patch_fon
+t'.
+Inserting `luaotfload.aux.patch_cambria_domh' at position 3 in `luaotfload.patch
+_font'.
+Inserting `luaotfload.aux.fixup_fontdata' at position 1 in `luaotfload.patch_fon
+t_unsafe'.
+Inserting `luaotfload.aux.set_capheight' at position 4 in `luaotfload.patch_font
+'.
+Inserting `luaotfload.aux.set_xheight' at position 5 in `luaotfload.patch_font'.
+Inserting `luaotfload.rewrite_fontname' at position 6 in `luaotfload.patch_font'
+. L3 programming layer <2021-10-12>
+Inserting `tracingstacklevels' at position 1 in `input_level_string'.
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/standalone/standalone.cls
+Document Class: standalone 2018/03/26 v1.3a Class to compile TeX sub-files stan
+dalone
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/iftex/ifluatex.sty
+Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/xkeyval/xkeyval.tex
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks16
+\XKV@tempa@toks=\toks17
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count179
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+))
+\sa@internal=\count180
+\c@sapage=\count181
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/standalone/standalone.cfg
+File: standalone.cfg 2018/03/26 v1.3a Default configuration file for 'standalon
+e' class
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/base/article.cls
+Document Class: article 2021/02/12 v1.4n Standard LaTeX document class
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/base/size12.clo
+File: size12.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+luaotfload | db : Font names database loaded from C:/PortableApps/MiKTeX/texmfs/
+data/luatex-cache/generic/names/luaotfload-names.luc)
+\c@part=\count182
+\c@section=\count183
+\c@subsection=\count184
+\c@subsubsection=\count185
+\c@paragraph=\count186
+\c@subparagraph=\count187
+\c@figure=\count188
+\c@table=\count189
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/luatex85/luatex85.sty
+Package: luatex85 2016/06/15 v1.4 pdftex aliases for luatex
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/infwarerr/infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+\pdftexcmds@toks=\toks18
+)
+\sa@box=\box50
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/frontendlayer/tikz.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgf.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfrcs.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfutil-common
+.tex
+\pgfutil@everybye=\toks19
+\pgfutil@tempdima=\dimen139
+\pgfutil@tempdimb=\dimen140
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfutil-common
+-lists.tex))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfutil-latex.
+def
+\pgfutil@abb=\box51
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfrcs.code.te
+x (C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+))
+Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/basiclayer/pgfcore.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: luatex.def on input line 107.
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics-def/luatex.def
+File: luatex.def 2021/06/01 v1.2c Graphics/color driver for luatex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/systemlayer/pgfsys.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys.code.
+tex
+Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.t
+ex
+\pgfkeys@pathtoks=\toks20
+\pgfkeys@temptoks=\toks21
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeysfiltere
+d.code.tex
+\pgfkeys@tmptoks=\toks22
+))
+\pgf@x=\dimen143
+\pgf@y=\dimen144
+\pgf@xa=\dimen145
+\pgf@ya=\dimen146
+\pgf@xb=\dimen147
+\pgf@yb=\dimen148
+\pgf@xc=\dimen149
+\pgf@yc=\dimen150
+\pgf@xd=\dimen151
+\pgf@yd=\dimen152
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count190
+\c@pgf@countb=\count191
+\c@pgf@countc=\count192
+\c@pgf@countd=\count193
+\t@pgf@toka=\toks23
+\t@pgf@tokb=\toks24
+\t@pgf@tokc=\toks25
+\pgf@sys@id@count=\count194
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+)
+Driver file for pgf: pgfsys-luatex.def
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-luate
+x.def
+File: pgfsys-luatex.def 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsys-commo
+n-pdf.def
+File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsyssoftpa
+th.code.tex
+File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfsyssoftpath@smallbuffer@items=\count195
+\pgfsyssoftpath@bigbuffer@items=\count196
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/systemlayer/pgfsysprotoc
+ol.code.tex
+File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcore.code.
+tex
+Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathcalc.code.te
+x
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathutil.code.te
+x)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathparser.code.
+tex
+\pgfmath@dimen=\dimen153
+\pgfmath@count=\count197
+\pgfmath@box=\box52
+\pgfmath@toks=\toks26
+\pgfmath@stack@operand=\toks27
+\pgfmath@stack@operation=\toks28
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.co
+de.tex
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.ba
+sic.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.tr
+igonometric.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.ra
+ndom.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.co
+mparison.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.ba
+se.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.ro
+und.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.mi
+sc.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfunctions.in
+tegerarithmetics.code.tex)))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmathfloat.code.t
+ex
+\c@pgfmathroundto@lastzeros=\count198
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfint.code.tex)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepoints
+.code.tex
+File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@picminx=\dimen154
+\pgf@picmaxx=\dimen155
+\pgf@picminy=\dimen156
+\pgf@picmaxy=\dimen157
+\pgf@pathminx=\dimen158
+\pgf@pathmaxx=\dimen159
+\pgf@pathminy=\dimen160
+\pgf@pathmaxy=\dimen161
+\pgf@xx=\dimen162
+\pgf@xy=\dimen163
+\pgf@yx=\dimen164
+\pgf@yy=\dimen165
+\pgf@zx=\dimen166
+\pgf@zy=\dimen167
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathco
+nstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@path@lastx=\dimen168
+\pgf@path@lasty=\dimen169
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathus
+age.code.tex
+File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@shorten@end@additional=\dimen170
+\pgf@shorten@start@additional=\dimen171
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorescopes
+.code.tex
+File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfpic=\box53
+\pgf@hbox=\box54
+\pgf@layerbox@main=\box55
+\pgf@picture@serial@count=\count199
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoregraphi
+cstate.code.tex
+File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgflinewidth=\dimen172
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransf
+ormations.code.tex
+File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@pt@x=\dimen173
+\pgf@pt@y=\dimen174
+\pgf@pt@temp=\dimen175
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorequick.
+code.tex
+File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreobject
+s.code.tex
+File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepathpr
+ocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorearrows
+.code.tex
+File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfarrowsep=\dimen176
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreshade.
+code.tex
+File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@max=\dimen177
+\pgf@sys@shading@range@num=\count266
+\pgf@shadingcount=\count267
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreimage.
+code.tex
+File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoreextern
+al.code.tex
+File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfexternal@startupbox=\box56
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorelayers
+.code.tex
+File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcoretransp
+arency.code.tex
+File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorepatter
+ns.code.tex
+File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/basiclayer/pgfcorerdf.co
+de.tex
+File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmoduleshapes.
+code.tex
+File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfnodeparttextbox=\box57
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmoduleplot.co
+de.tex
+File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-vers
+ion-0-65.sty
+Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@nodesepstart=\dimen178
+\pgf@nodesepend=\dimen179
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/compatibility/pgfcomp-vers
+ion-1-18.sty
+Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgffor.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/utilities/pgfkeys.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgfkeys.code.t
+ex)) (C:/PortableApps/MiKTeX/texmfs/install/tex/latex/pgf/math/pgfmath.sty
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/utilities/pgffor.code.te
+x
+Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
+ (C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen180
+\pgffor@skip=\dimen181
+\pgffor@stack=\toks29
+\pgffor@toks=\toks30
+))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/tikz.
+code.tex
+Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/libraries/pgflibraryplot
+handlers.code.tex
+File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@plot@mark@count=\count268
+\pgfplotmarksize=\dimen182
+)
+\tikz@lastx=\dimen183
+\tikz@lasty=\dimen184
+\tikz@lastxsaved=\dimen185
+\tikz@lastysaved=\dimen186
+\tikz@lastmovetox=\dimen187
+\tikz@lastmovetoy=\dimen188
+\tikzleveldistance=\dimen189
+\tikzsiblingdistance=\dimen190
+\tikz@figbox=\box58
+\tikz@figbox@bg=\box59
+\tikz@tempbox=\box60
+\tikz@tempbox@bg=\box61
+\tikztreelevel=\count269
+\tikznumberofchildren=\count270
+\tikznumberofcurrentchild=\count271
+\tikz@fig@count=\count272
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/modules/pgfmodulematrix.
+code.tex
+File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmatrixcurrentrow=\count273
+\pgfmatrixcurrentcolumn=\count274
+\pgf@matrix@numberofcolumns=\count275
+)
+\tikz@expandcount=\count276
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/pgf/frontendlayer/tikz/libra
+ries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+)))
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/preview/preview.sty
+Package: preview 2017/04/24 12.3 (AUCTeX/preview-latex)
+\pr@markerbox=\box62
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/preview/prtightpage.def
+\PreviewBorder=\dimen191
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/preview/prtightpage.def)
+\pr@snippet=\count277
+\pr@box=\box63
+\pr@output=\toks31
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/l3backend/l3backend-luatex.def
+File: l3backend-luatex.def 2021-10-12 L3 backend support: PDF output (LuaTeX)
+\l__color_backend_stack_int=\count278
+\l__pdf_internal_box=\box64
+) (./Rplot.aux)
+\openout1 = Rplot.aux
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 11.
+LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
+1.
+ (C:/PortableApps/MiKTeX/texmfs/install/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
+LaTeX Font Info:    ... okay on input line 11.
+ (C:/PortableApps/MiKTeX/texmfs/install/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count279
+\scratchdimen=\dimen192
+\scratchbox=\box65
+\nofMPsegments=\count280
+\nofMParguments=\count281
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count282
+\MPscratchDim=\dimen193
+\MPnumerator=\count283
+\makeMPintoPDFobject=\count284
+\everyMPtoPDFconversion=\toks33
+)
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/kvdefinekeys/kvdefinekeys.st
+y
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)) (C:/PortableApps/MiKTeX/texmfs/install/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+))
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
+
+(C:/PortableApps/MiKTeX/texmfs/install/tex/latex/00miktex/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Preview: Fontsize 12pt
+Preview: PDFoutput 1
+Preview: Tightpage 0 0 0 0
+[1
+Non-PDF special ignored!
+Non-PDF special ignored!] (./Rplot.aux))
+
+Here is how much of LuaTeX's memory you used:
+ 13161 strings out of 478106
+ 3553368,2848258 words of node,token memory allocated
+ 493 words of node memory still in use:
+   6 hlist, 1 vlist, 1 rule, 4 glue, 3 kern, 1 glyph, 10 attribute, 48 glue_spec
+, 10 attribute_list, 2 write, 1 special, 4 pdf_colorstack nodes
+   avail lists: 1:1,2:412698,3:213275,4:9,5:23,6:2,7:199420,9:24
+ 32974 multiletter control sequences out of 65536+600000
+ 23 fonts using 2647927 bytes
+ 102i,5n,102p,385b,560s stack positions out of 5000i,500n,10000p,200000b,80000s
+Output written on Rplot.pdf (1 page, 485987 bytes).
+
+PDF statistics: 9 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 16 words of extra memory for PDF output out of 10000 (max. 100000000)
+
