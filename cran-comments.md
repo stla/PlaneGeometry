@@ -1,7 +1,4 @@
-## Summary
-
-Including new features. 
-The CRAN checks of the previous version were clean. 
+This is a resubmission. The previous submission was too big.
 
 ## Test environments
 
