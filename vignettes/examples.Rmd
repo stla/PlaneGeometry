@@ -60,7 +60,7 @@ lineFCprime$includes(ExeterPoint)
 
 Let's draw a figure now.
 
-```{r Exeter, fig.width=5, fig.height=5}
+```{r Exeter, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0))
 plot(NULL, asp = 1, xlim = c(-2,9), ylim = c(-6,7),
      xlab = NA, ylab = NA, axes = FALSE)
@@ -118,7 +118,7 @@ T1p <- iota1$invert(T1); T1pp <- iota2$invert(T1)
 Csolution1 <- Triangle$new(T1, T1p, T1pp)$circumcircle()
 ```
 
-```{r tangentCircles, fig.width=5, fig.height=5}
+```{r tangentCircles, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0))
 plot(NULL, asp = 1, xlim = c(-4,9), ylim = c(-4,9),
      xlab = NA, ylab = NA, axes = FALSE)
@@ -158,7 +158,7 @@ ApolloniusCircle <- iota$invertCircle(npc)
 
 Let's do a figure:
 
-```{r apollonius, fig.width=5, fig.height=5}
+```{r apollonius, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0))
 plot(NULL, asp = 1, xlim = c(-10,14), ylim = c(-5, 18),
      xlab = NA, ylab = NA, axes = FALSE)
@@ -186,7 +186,7 @@ ApolloniusCircle$radius
 Let two circles intersecting at two points. 
 How to fill the lapping area of the two circles?
 
-```{r lappingArea, fig.width=5, fig.height=5}
+```{r lappingArea, fig.width=4, fig.height=4}
 O1 <- c(2,5); circ1 <- Circle$new(O1, 2)
 O2 <- c(4,4); circ2 <- Circle$new(O2, 3)
 
@@ -303,7 +303,7 @@ tessellation <- function(depth, Thetas0, colors){
 ```
 
 
-```{r tessellation, fig.width=5, fig.height=5}
+```{r tessellation, fig.width=4, fig.height=4}
 tessellation(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
@@ -415,7 +415,7 @@ tessellation2 <- function(depth, Thetas0, colors){
 ```
 
 
-```{r tessellation2, fig.width=5, fig.height=5}
+```{r tessellation2, fig.width=4, fig.height=4}
 tessellation2(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
@@ -460,7 +460,7 @@ I <- intersectionCircleLine(circ, halfT1, strict = TRUE)
 T2 <- T1$perpendicular(I)
 ```
 
-```{r directorCircle, fig.width=5, fig.height=5}
+```{r directorCircle, fig.width=4, fig.height=4}
 opar <- par(mar=c(0,0,0,0))
 plot(NULL, asp = 1, 
      xlim = c(-3,6), ylim = c(-5,7), xlab = NA, ylab = NA)
@@ -501,7 +501,7 @@ f <- AffineMappingEllipse2Ellipse(c0, ell)
 ellipses <- lapply(circles, f$transformEllipse)
 ```
 
-```{r ellipticalSteiner, fig.width=6, fig.height=4}
+```{r ellipticalSteiner, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0))
 plot(NULL, asp = 1, xlim = c(-8,6), ylim = c(-4,4), 
      xlab = NA, ylab = NA, axes = FALSE)
@@ -564,7 +564,7 @@ chains <- lapply(circles[1:3], function(c0){
 })
 ```
 
-```{r nestedSteiner, fig.width=5, fig.height=5}
+```{r nestedSteiner, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0))
 plot(NULL, asp = 1, xlim = c(0,6), ylim = c(-4,4), 
      xlab = NA, ylab = NA, axes = FALSE)
@@ -586,7 +586,7 @@ picture!
 
 The following code plots the trajectory of a ball on an elliptical billiard.
 
-```{r billiard, fig.width=5, fig.height=5}
+```{r billiard, fig.width=4, fig.height=4}
 reflect <- function(incidentDir, normalVec){
   incidentDir - 2*c(crossprod(normalVec, incidentDir)) * normalVec
 }
@@ -769,7 +769,7 @@ drawGcircle <- function(gcircle, colors = rainbow(4L), ...){
 
 And now let's draw them:
 
-```{r draw_gcircles, fig.width=5, fig.height=5}
+```{r draw_gcircles, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0), bg = "black")
 plot(0, 0, type = "n", xlim = c(-2.3, 2.3), ylim = c(-2.3, 2.3),
      asp = 1, axes = FALSE, xlab = NA, ylab = NA)
@@ -857,7 +857,7 @@ word2circle <- function(g){
 
 Here is the picture:
 
-```{r draw_schottky, fig.width=5, fig.height=5}
+```{r draw_schottky, fig.width=4, fig.height=4}
 opar <- par(mar = c(0,0,0,0), bg = "black")
 plot(NULL, asp = 1, xlim = c(-3,3), ylim = c(-3,3),
      axes = FALSE, xlab = NA, ylab = NA)
@@ -895,7 +895,7 @@ par(opar)
 
 Here is the same picture but with better quality:
 
-![](SchottkyCircles_tikz.png)
+![](SchottkyCircles_tikz.png){width=40%}
 
 I realized this picture with the **tikzDevice** package.
 
@@ -1047,7 +1047,7 @@ ApollonianGasket <- function(c0, n, phi, shift, depth){
 
 Let's apply our function:
 
-```{r drawgasket, fig.height=5, fig.width=5}
+```{r drawgasket, fig.height=4, fig.width=4}
 library(viridisLite) # for the colors
 c0 <- Circle$new(c(0,0), 3) # the exterior circle
 depth <- 5
@@ -1415,7 +1415,7 @@ drawCircularGasket(mcircles[[2]], n2, phi2, shift, depth2, colors2)
 drawCircularGasket(mcircles[[3]], n3, phi3, shift, depth2, colors2)
 ```
 
-![](MalfattiGasket.png)
+![](MalfattiGasket.png){width=40%}
 
 
 As an exercise, you can add some animation to this picture, by animating the 
