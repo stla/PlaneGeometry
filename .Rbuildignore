@@ -8,3 +8,4 @@
 ^inst/essais$
 ^cran-comments\.md$
 ^CRAN-RELEASE$
+^inst/imgs$
