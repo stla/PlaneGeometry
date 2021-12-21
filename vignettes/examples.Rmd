@@ -548,7 +548,7 @@ save_gif(
 ```
 
 
-![](https://thumbs.gfycat.com/ContentZestyCutworm-size_restricted.gif)
+![](https://thumbs.gfycat.com/ContentZestyCutworm-size_restricted.gif){width=40%}
 
 ## Nested Steiner chains
 
@@ -984,7 +984,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation.gif)
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation.gif){width=40%}
 
 
 # Apollonian gasket
@@ -1102,7 +1102,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket.gif)
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket.gif){width=40%}
 
 We can also animate the Apollonian gasket with the help of a Möbius 
 transformation. Consider the following complex matrix:
@@ -1113,7 +1113,7 @@ i & \gamma \\
 \bar\gamma & -i
 \end{pmatrix}
 $$
-with $|gamma| < 1$. 
+with $|\gamma| < 1$. 
 
 The Möbius transformation associated to $M$ maps the unit disk to the unit disk 
 and it is of order $2$. Its powers map the unit disk to the unit dis as well. 
@@ -1174,7 +1174,7 @@ save_gif(
 par(opar)
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif)
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif){width=40%}
 
 
 # Another Apollonian fractal
@@ -1244,7 +1244,7 @@ movie3d(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/Apollony.gif)
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/Apollony.gif){width=40%}
 
 
 # Malfatti gasket
