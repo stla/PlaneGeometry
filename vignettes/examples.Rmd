@@ -895,7 +895,7 @@ par(opar)
 
 Here is the same picture but with better quality:
 
-![](SchottkyCircles_tikz.png){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/SchottkyCircles_tikz.png){width=40%}
 
 I realized this picture with the **tikzDevice** package.
 
@@ -1415,7 +1415,7 @@ drawCircularGasket(mcircles[[2]], n2, phi2, shift, depth2, colors2)
 drawCircularGasket(mcircles[[3]], n3, phi3, shift, depth2, colors2)
 ```
 
-![](MalfattiGasket.png){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiGasket.png){width=40%}
 
 
 As an exercise, you can add some animation to this picture, by animating the 
