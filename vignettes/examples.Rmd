@@ -1,8 +1,7 @@
 ---
 title: "Examples of the PlaneGeometry package"
 output: 
-  rmarkdown::html_vignette:
-    dev: jpeg
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Examples of the PlaneGeometry package}
   %\VignetteEncoding{UTF-8}
@@ -986,7 +985,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation_compressed.gif){width=40%}
 
 
 # Apollonian gasket
@@ -1104,7 +1103,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket_compressed.gif){width=40%}
 
 We can also animate the Apollonian gasket with the help of a Möbius 
 transformation. Consider the following complex matrix:
@@ -1246,7 +1245,7 @@ movie3d(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/Apollony.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/Apollony_compressed.gif){width=40%}
 
 
 # Malfatti gasket
