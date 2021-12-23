@@ -1,6 +1,8 @@
 ---
 title: "Examples of the PlaneGeometry package"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    dev: jpeg
 vignette: >
   %\VignetteIndexEntry{Examples of the PlaneGeometry package}
   %\VignetteEncoding{UTF-8}
