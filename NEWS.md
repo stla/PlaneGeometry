@@ -1,3 +1,9 @@
+# PlaneGeometry 1.3.0.9000 (2022-xx-xx)
+
+New function `fitEllipse`, to fit an ellipse to a set of points. It uses the 
+**fitConic** package.
+
+
 # PlaneGeometry 1.3.0 (2021-12-21)
 
 * Fixed the `isEqual` method of the `Line` class.

@@ -1,13 +1,13 @@
 Package: PlaneGeometry
 Type: Package
 Title: Plane Geometry
-Version: 1.3.0
+Version: 1.3.0.9000
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: An extensive set of plane geometry routines. Provides R6 classes representing triangles, circles, circular arcs, ellipses, elliptical arcs and lines, and their plot methods. Also provides R6 classes representing transformations: rotations, reflections, homotheties, scalings, general affine transformations, inversions, Möbius transformations. 
 License: GPL-3
 Encoding: UTF-8
-Imports: R6, methods, graphics, stringr, gsl, uniformly, sdpt3r
+Imports: R6, methods, graphics, stringr, gsl, uniformly, sdpt3r, fitConic
 RoxygenNote: 7.1.2
 Suggests: 
     testthat,

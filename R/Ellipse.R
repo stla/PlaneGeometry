@@ -800,3 +800,40 @@ EllipseFromFociAndOnePoint <- function(F1, F2, P){
   alpha <- atan(abs(F1[2]-F2[2])/abs(F1[1]-F2[1]))
   Ellipse$new(center, a, b, alpha, degrees = FALSE)
 }
+
+
+#' @title Fit an ellipse
+#' @description Fit an ellipse to a set of points.
+#'
+#' @param points numeric matrix with two columns, one point per row
+#'
+#' @return An \code{Ellipse} object representing the fitted ellipse. The
+#'   residual sum of squares is given in the \code{RSS} attribute.
+#' @export
+#' @importFrom fitConic fitConic
+#'
+#' @examples library(PlaneGeometry)
+#' # We add some noise to 30 points on an ellipse:
+#' ell <- Ellipse$new(c(1, 1), 3, 2, 30)
+#' set.seed(666L)
+#' points <- ell$randomPoints(30, "on") + matrix(rnorm(30*2, sd = 0.2), ncol = 2)
+#' # Now we fit an ellipse to these points:
+#' ellFitted <- fitEllipse(points)
+#' # let's draw all this stuff:
+#' box <- ell$boundingbox()
+#' plot(NULL, asp = 1, xlim = box$x, ylim = box$y, xlab = NA, ylab = NA)
+#' draw(ell, border = "blue", lwd = 2)
+#' points(points, pch = 19)
+#' draw(ellFitted, border = "green", lwd = 2)
+fitEllipse <- function(points){
+  fit <- fitConic(points, conicType = "e")
+  if(fit[["exitCode"]] != 1){
+    stop("The ellipse fitting has failed.", call. = TRUE)
+  }
+  cfs <- fit[["parA"]]
+  fittedEllipse <- EllipseFromEquation(
+    cfs[1L], cfs[2L], cfs[3L], cfs[4L], cfs[5L], cfs[6L]
+  )
+  attr(fittedEllipse, "RSS") <- fit[["RSS"]]
+  fittedEllipse
+}

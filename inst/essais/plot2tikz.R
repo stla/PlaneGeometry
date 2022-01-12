@@ -110,8 +110,8 @@ plot2tikz <- function(code, filename="Rplot", outdir=getwd(),
   return(invisible())
 }
 
-library(tikzDevice)
-library(stringr)
-plot2tikz(fplot, compile=FALSE,
-   documentDeclaration ="\\documentclass[12pt]{standalone}\n",
-   width=5, height=5, bg="black", fg="black")
+# library(tikzDevice)
+# library(stringr)
+# plot2tikz(fplot, compile=FALSE,
+#    documentDeclaration ="\\documentclass[12pt]{standalone}\n",
+#    width=5, height=5, bg="black", fg="black")
