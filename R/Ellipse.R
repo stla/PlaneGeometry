@@ -826,6 +826,15 @@ EllipseFromFociAndOnePoint <- function(F1, F2, P){
 #' points(points, pch = 19)
 #' draw(ellFitted, border = "green", lwd = 2)
 fitEllipse <- function(points){
+  if(!is.matrix(points) || !is.numeric(points)){
+    stop("The `points` argument must be a numeric matrix.", call. = TRUE)
+  }
+  if(ncol(points) != 2L){
+    stop("The `points` matrix must have two columns.", call. = TRUE)
+  }
+  if(any(is.na(points))){
+    stop("Points with missing values are not allowed.", call. = TRUE)
+  }
   fit <- fitConic(points, conicType = "e")
   if(fit[["exitCode"]] != 1){
     stop("The ellipse fitting has failed.", call. = TRUE)

@@ -3,8 +3,9 @@ library(fitConic)
 
 ell <- Ellipse$new(c(1,1), 3, 2, 30)
 set.seed(666L)
-pts <- ell$randomPoints(30, "on")
-ptsNoise <- pts + matrix(rnorm(30*2, sd = 0.2), ncol = 2)
+npoints <- 5
+pts <- ell$randomPoints(npoints, "on")
+ptsNoise <- pts + matrix(rnorm(npoints*2, sd = 0.2), ncol = 2)
 
 fit <- fitConic(ptsNoise, conicType = "e")
 cfs <- fit$parA
