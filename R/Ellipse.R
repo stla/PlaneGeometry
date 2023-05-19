@@ -848,7 +848,7 @@ fitEllipse <- function(points){
 }
 
 #' @title Maximum volume ellipse inscribed in a convex polyhedron
-#' @description Computes the ellipse inscribed in a convex polyhedron with
+#' @description Computes the ellipse inscribed in a convex polygon with
 #'   maximum volume.
 #'
 #' @param points the vertices of the polyhedron in a two-columns matrix; their
@@ -878,6 +878,8 @@ fitEllipse <- function(points){
 #' ell <- maxVolumeInscribedEllipse(hexagon)
 #' draw(ell, col = "yellow2", border = "blue", lwd = 2)
 #' par(opar)
+#' # check optimization status:
+#' attr(ell, "status")
 maxVolumeInscribedEllipse <- function(points, verbose = FALSE) {
   if(!is.matrix(points) || !is.numeric(points)){
     stop("The `points` argument must be a numeric matrix.", call. = TRUE)

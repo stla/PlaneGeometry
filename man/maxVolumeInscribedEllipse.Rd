@@ -19,7 +19,7 @@ An \code{Ellipse} object. The status of the optimization problem
   not optimal.
 }
 \description{
-Computes the ellipse inscribed in a convex polyhedron with
+Computes the ellipse inscribed in a convex polygon with
   maximum volume.
 }
 \examples{
@@ -38,4 +38,6 @@ polygon(hexagon)
 ell <- maxVolumeInscribedEllipse(hexagon)
 draw(ell, col = "yellow2", border = "blue", lwd = 2)
 par(opar)
+# check optimization status:
+attr(ell, "status")
 }

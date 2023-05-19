@@ -1,3 +1,10 @@
+# PlaneGeometry 1.4.0 (2023-05-19)
+
+New function `maxVolumeInscribedEllipse`, to compute the ellipse inscribed in a 
+convex polygon with maximum volume. This optimization problem is solved with 
+the help of the **CVXR** package.
+
+
 # PlaneGeometry 1.3.1 (2022-01-13)
 
 New function `fitEllipse`, to fit an ellipse to a set of points. It uses the 
