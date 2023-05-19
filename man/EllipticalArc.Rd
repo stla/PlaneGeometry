@@ -133,7 +133,7 @@ Ending point of the reference elliptical arc.
 \if{latex}{\out{\hypertarget{method-EllipticalArc-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference elliptical arc equals
-another elliptical arc.
+  another elliptical arc.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{EllipticalArc$isEqual(arc)}\if{html}{\out{</div>}}
 }
@@ -187,7 +187,7 @@ The reference elliptical arc as a path.
 }
 \subsection{Returns}{
 A matrix with two columns \code{x} and \code{y} of length
-\code{npoints}.
+  \code{npoints}.
 }
 }
 \if{html}{\out{<hr>}}

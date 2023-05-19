@@ -14,9 +14,9 @@ License: GPL-3
 URL: https://github.com/stla/PlaneGeometry
 BugReports: https://github.com/stla/PlaneGeometry/issues
 Imports: 
+    Carlson,
     fitConic,
     graphics,
-    gsl,
     methods,
     R6,
     sdpt3r,

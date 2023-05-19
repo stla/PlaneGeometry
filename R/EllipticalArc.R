@@ -6,7 +6,7 @@
 #'
 #' @export
 #' @importFrom R6 R6Class
-#' @importFrom gsl ellint_Ecomp
+#' @importFrom Carlson elliptic_E
 EllipticalArc <- R6Class(
 
   "EllipticalArc",
@@ -87,7 +87,8 @@ EllipticalArc <- R6Class(
     #' @param degrees logical, whether \code{alpha1} and \code{alpha2} are
     #' given in degrees
     #' @return A new \code{EllipticalArc} object.
-    #' @examples ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+    #' @examples
+    #' ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
     #' EllipticalArc$new(ell, 45, 90)
     initialize = function(ell, alpha1, alpha2, degrees = TRUE) {
       stopifnot(
@@ -156,7 +157,7 @@ EllipticalArc <- R6Class(
     },
 
     #' @description Check whether the reference elliptical arc equals
-    #' another elliptical arc.
+    #'   another elliptical arc.
     #' @param arc an \code{EllipticalArc} object
     isEqual = function(arc){
       ell0 <- private[[".ell"]]
@@ -178,7 +179,8 @@ EllipticalArc <- R6Class(
     },
 
     #' @description Complementary elliptical arc of the reference elliptical arc.
-    #' @examples ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
+    #' @examples
+    #' ell <- Ellipse$new(c(-4,0), 4, 2.5, 140)
     #' arc <- EllipticalArc$new(ell, 30, 60)
     #' plot(NULL, type = "n", asp = 1, xlim = c(-8,0), ylim = c(-3.2,3.2),
     #'      xlab = NA, ylab = NA)
@@ -196,7 +198,7 @@ EllipticalArc <- R6Class(
     #' @description The reference elliptical arc as a path.
     #' @param npoints number of points of the path
     #' @return A matrix with two columns \code{x} and \code{y} of length
-    #' \code{npoints}.
+    #'   \code{npoints}.
     path = function(npoints = 100L) {
       k <- ifelse(private[[".degrees"]], pi/180, 1)
       alpha1 <- (private[[".alpha1"]]*k) #%% (2*pi)
@@ -226,19 +228,19 @@ EllipticalArc <- R6Class(
       degrees <- private[[".degrees"]]
       if(degrees){
         if(abs(alpha1-alpha2) == 180){
-          return(2*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+          return(2*a*Re(Carlson::elliptic_E(pi/2, 1-b^2/a^2, minerror = 1e-12)))
         }
         if(abs(alpha1-alpha2) == 360){
-          return(4*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+          return(4*a*Re(Carlson::elliptic_E(pi/2, 1-b^2/a^2, minerror = 1e-12)))
         }
         flatAngle <- 180
         k <- pi/180
       }else{
         if(abs(alpha1-alpha2) == pi){
-          return(2*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+          return(2*a*Re(Carlson::elliptic_E(pi/2, 1-b^2/a^2, minerror = 1e-12)))
         }
         if(abs(alpha1-alpha2) == 2*pi){
-          return(4*a*gsl::ellint_Ecomp(sqrt(1-b^2/a^2)))
+          return(4*a*Re(Carlson::elliptic_E(pi/2, 1-b^2/a^2, minerror = 1e-12)))
         }
         flatAngle <- pi
         k <- 1
@@ -253,7 +255,7 @@ EllipticalArc <- R6Class(
       t2 <- atan2(a/b, 1/tan(theta2)) + theta2 - theta2 %% pi
       m <- 1 - a*a/b/b
 #      integrate(function(t) sqrt(a^2*sin(t)^2+b^2*cos(t)^2), t1, t2, ...)
-      b * (ellint2(t2, m) - ellint2(t1,m))
+      b * Re(Carlson::elliptic_E(t2, m) - Carlson::elliptic_E(t1,m))
     }
   )
 )
