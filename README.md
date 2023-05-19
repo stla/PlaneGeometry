@@ -1,9 +1,10 @@
 # PlaneGeometry: plane geometry with R
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/stla/PlaneGeometry/workflows/R-CMD-check/badge.svg)](https://github.com/stla/PlaneGeometry/actions)
+[![R-CMD-check](https://github.com/stla/PlaneGeometry/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/stla/PlaneGeometry/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
+___
 
 ```r
 library(PlaneGeometry)
