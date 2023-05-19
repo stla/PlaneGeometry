@@ -32,7 +32,7 @@ test_that("Length", {
   #
   arc <- EllipticalArc$new(ell, 0, 180)
   expect_equal(
-    2*ell$rmajor*gsl::ellint_Ecomp(sqrt(1-ell$rminor^2/ell$rmajor^2)),
+    2*ell$rmajor*Re(Carlson::elliptic_E(pi/2, 1-ell$rminor^2/ell$rmajor^2)),
     arc$length()
   )
 })
