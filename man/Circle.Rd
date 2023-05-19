@@ -93,33 +93,33 @@ draw(arc, lwd = 3, col = "blue")
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Circle$new()}}
-\item \href{#method-print}{\code{Circle$print()}}
-\item \href{#method-pointFromAngle}{\code{Circle$pointFromAngle()}}
-\item \href{#method-diameter}{\code{Circle$diameter()}}
-\item \href{#method-tangent}{\code{Circle$tangent()}}
-\item \href{#method-tangentsThroughExternalPoint}{\code{Circle$tangentsThroughExternalPoint()}}
-\item \href{#method-isEqual}{\code{Circle$isEqual()}}
-\item \href{#method-isDifferent}{\code{Circle$isDifferent()}}
-\item \href{#method-isOrthogonal}{\code{Circle$isOrthogonal()}}
-\item \href{#method-angle}{\code{Circle$angle()}}
-\item \href{#method-includes}{\code{Circle$includes()}}
-\item \href{#method-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
-\item \href{#method-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
-\item \href{#method-power}{\code{Circle$power()}}
-\item \href{#method-radicalCenter}{\code{Circle$radicalCenter()}}
-\item \href{#method-radicalAxis}{\code{Circle$radicalAxis()}}
-\item \href{#method-rotate}{\code{Circle$rotate()}}
-\item \href{#method-translate}{\code{Circle$translate()}}
-\item \href{#method-invert}{\code{Circle$invert()}}
-\item \href{#method-asEllipse}{\code{Circle$asEllipse()}}
-\item \href{#method-randomPoints}{\code{Circle$randomPoints()}}
-\item \href{#method-clone}{\code{Circle$clone()}}
+\item \href{#method-Circle-new}{\code{Circle$new()}}
+\item \href{#method-Circle-print}{\code{Circle$print()}}
+\item \href{#method-Circle-pointFromAngle}{\code{Circle$pointFromAngle()}}
+\item \href{#method-Circle-diameter}{\code{Circle$diameter()}}
+\item \href{#method-Circle-tangent}{\code{Circle$tangent()}}
+\item \href{#method-Circle-tangentsThroughExternalPoint}{\code{Circle$tangentsThroughExternalPoint()}}
+\item \href{#method-Circle-isEqual}{\code{Circle$isEqual()}}
+\item \href{#method-Circle-isDifferent}{\code{Circle$isDifferent()}}
+\item \href{#method-Circle-isOrthogonal}{\code{Circle$isOrthogonal()}}
+\item \href{#method-Circle-angle}{\code{Circle$angle()}}
+\item \href{#method-Circle-includes}{\code{Circle$includes()}}
+\item \href{#method-Circle-orthogonalThroughTwoPointsOnCircle}{\code{Circle$orthogonalThroughTwoPointsOnCircle()}}
+\item \href{#method-Circle-orthogonalThroughTwoPointsWithinCircle}{\code{Circle$orthogonalThroughTwoPointsWithinCircle()}}
+\item \href{#method-Circle-power}{\code{Circle$power()}}
+\item \href{#method-Circle-radicalCenter}{\code{Circle$radicalCenter()}}
+\item \href{#method-Circle-radicalAxis}{\code{Circle$radicalAxis()}}
+\item \href{#method-Circle-rotate}{\code{Circle$rotate()}}
+\item \href{#method-Circle-translate}{\code{Circle$translate()}}
+\item \href{#method-Circle-invert}{\code{Circle$invert()}}
+\item \href{#method-Circle-asEllipse}{\code{Circle$asEllipse()}}
+\item \href{#method-Circle-randomPoints}{\code{Circle$randomPoints()}}
+\item \href{#method-Circle-clone}{\code{Circle$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Circle-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Circle} object.
 \subsection{Usage}{
@@ -152,8 +152,8 @@ circ
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Circle-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a circle object.
 \subsection{Usage}{
@@ -177,8 +177,8 @@ Show instance of a circle object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pointFromAngle"></a>}}
-\if{latex}{\out{\hypertarget{method-pointFromAngle}{}}}
+\if{html}{\out{<a id="method-Circle-pointFromAngle"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-pointFromAngle}{}}}
 \subsection{Method \code{pointFromAngle()}}{
 Get a point on the reference circle from its polar angle.
 \subsection{Usage}{
@@ -199,8 +199,8 @@ The point on the circle with polar angle \code{alpha}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-diameter"></a>}}
-\if{latex}{\out{\hypertarget{method-diameter}{}}}
+\if{html}{\out{<a id="method-Circle-diameter"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-diameter}{}}}
 \subsection{Method \code{diameter()}}{
 Diameter of the reference circle for a given polar angle.
 \subsection{Usage}{
@@ -233,8 +233,8 @@ invisible(lapply(diams, draw, col = "blue"))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tangent"></a>}}
-\if{latex}{\out{\hypertarget{method-tangent}{}}}
+\if{html}{\out{<a id="method-Circle-tangent"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-tangent}{}}}
 \subsection{Method \code{tangent()}}{
 Tangent of the reference circle at a given polar angle.
 \subsection{Usage}{
@@ -264,8 +264,8 @@ invisible(lapply(tangents, draw, col = "blue"))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tangentsThroughExternalPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-tangentsThroughExternalPoint}{}}}
+\if{html}{\out{<a id="method-Circle-tangentsThroughExternalPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-tangentsThroughExternalPoint}{}}}
 \subsection{Method \code{tangentsThroughExternalPoint()}}{
 Return the two tangents of the reference circle passing
 through an external point.
@@ -286,8 +286,8 @@ tangency points are in the \code{B} field of the lines.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isEqual"></a>}}
-\if{latex}{\out{\hypertarget{method-isEqual}{}}}
+\if{html}{\out{<a id="method-Circle-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference circle equals another circle.
 \subsection{Usage}{
@@ -303,8 +303,8 @@ Check whether the reference circle equals another circle.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isDifferent"></a>}}
-\if{latex}{\out{\hypertarget{method-isDifferent}{}}}
+\if{html}{\out{<a id="method-Circle-isDifferent"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-isDifferent}{}}}
 \subsection{Method \code{isDifferent()}}{
 Check whether the reference circle differs from another circle.
 \subsection{Usage}{
@@ -320,8 +320,8 @@ Check whether the reference circle differs from another circle.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isOrthogonal"></a>}}
-\if{latex}{\out{\hypertarget{method-isOrthogonal}{}}}
+\if{html}{\out{<a id="method-Circle-isOrthogonal"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-isOrthogonal}{}}}
 \subsection{Method \code{isOrthogonal()}}{
 Check whether the reference circle is orthogonal to a
 given circle.
@@ -338,8 +338,8 @@ given circle.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-angle"></a>}}
-\if{latex}{\out{\hypertarget{method-angle}{}}}
+\if{html}{\out{<a id="method-Circle-angle"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-angle}{}}}
 \subsection{Method \code{angle()}}{
 Angle between the reference circle and a given circle,
 if they intersect.
@@ -356,8 +356,8 @@ if they intersect.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-includes"></a>}}
-\if{latex}{\out{\hypertarget{method-includes}{}}}
+\if{html}{\out{<a id="method-Circle-includes"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-includes}{}}}
 \subsection{Method \code{includes()}}{
 Check whether a point belongs to the reference circle.
 \subsection{Usage}{
@@ -373,8 +373,8 @@ Check whether a point belongs to the reference circle.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-orthogonalThroughTwoPointsOnCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-orthogonalThroughTwoPointsOnCircle}{}}}
+\if{html}{\out{<a id="method-Circle-orthogonalThroughTwoPointsOnCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-orthogonalThroughTwoPointsOnCircle}{}}}
 \subsection{Method \code{orthogonalThroughTwoPointsOnCircle()}}{
 Orthogonal circle passing through two points on the reference circle.
 \subsection{Usage}{
@@ -418,8 +418,8 @@ par(opar)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-orthogonalThroughTwoPointsWithinCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-orthogonalThroughTwoPointsWithinCircle}{}}}
+\if{html}{\out{<a id="method-Circle-orthogonalThroughTwoPointsWithinCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-orthogonalThroughTwoPointsWithinCircle}{}}}
 \subsection{Method \code{orthogonalThroughTwoPointsWithinCircle()}}{
 Orthogonal circle passing through two points within the reference circle.
 \subsection{Usage}{
@@ -458,8 +458,8 @@ draw(arc, lwd = 3, col = "blue")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-power"></a>}}
-\if{latex}{\out{\hypertarget{method-power}{}}}
+\if{html}{\out{<a id="method-Circle-power"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-power}{}}}
 \subsection{Method \code{power()}}{
 Power of a point with respect to the reference circle.
 \subsection{Usage}{
@@ -478,8 +478,8 @@ A number.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-radicalCenter"></a>}}
-\if{latex}{\out{\hypertarget{method-radicalCenter}{}}}
+\if{html}{\out{<a id="method-Circle-radicalCenter"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-radicalCenter}{}}}
 \subsection{Method \code{radicalCenter()}}{
 Radical center of two circles.
 \subsection{Usage}{
@@ -495,8 +495,8 @@ Radical center of two circles.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-radicalAxis"></a>}}
-\if{latex}{\out{\hypertarget{method-radicalAxis}{}}}
+\if{html}{\out{<a id="method-Circle-radicalAxis"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-radicalAxis}{}}}
 \subsection{Method \code{radicalAxis()}}{
 Radical axis of two circles.
 \subsection{Usage}{
@@ -515,8 +515,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rotate"></a>}}
-\if{latex}{\out{\hypertarget{method-rotate}{}}}
+\if{html}{\out{<a id="method-Circle-rotate"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-rotate}{}}}
 \subsection{Method \code{rotate()}}{
 Rotate the reference circle.
 \subsection{Usage}{
@@ -539,8 +539,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-translate"></a>}}
-\if{latex}{\out{\hypertarget{method-translate}{}}}
+\if{html}{\out{<a id="method-Circle-translate"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-translate}{}}}
 \subsection{Method \code{translate()}}{
 Translate the reference circle.
 \subsection{Usage}{
@@ -559,8 +559,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-invert"></a>}}
-\if{latex}{\out{\hypertarget{method-invert}{}}}
+\if{html}{\out{<a id="method-Circle-invert"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-invert}{}}}
 \subsection{Method \code{invert()}}{
 Invert the reference circle.
 \subsection{Usage}{
@@ -579,8 +579,8 @@ A \code{Circle} object or a \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asEllipse"></a>}}
-\if{latex}{\out{\hypertarget{method-asEllipse}{}}}
+\if{html}{\out{<a id="method-Circle-asEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-asEllipse}{}}}
 \subsection{Method \code{asEllipse()}}{
 Convert the reference circle to an \code{Ellipse} object.
 \subsection{Usage}{
@@ -589,8 +589,8 @@ Convert the reference circle to an \code{Ellipse} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-randomPoints"></a>}}
-\if{latex}{\out{\hypertarget{method-randomPoints}{}}}
+\if{html}{\out{<a id="method-Circle-randomPoints"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-randomPoints}{}}}
 \subsection{Method \code{randomPoints()}}{
 Random points on or in the reference circle.
 \subsection{Usage}{
@@ -612,8 +612,8 @@ The generated points in a two columns matrix with \code{n} rows.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Circle-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Circle-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

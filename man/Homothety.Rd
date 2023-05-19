@@ -35,18 +35,18 @@ H$getMatrix() \%*\% c(P,1)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Homothety$new()}}
-\item \href{#method-print}{\code{Homothety$print()}}
-\item \href{#method-transform}{\code{Homothety$transform()}}
-\item \href{#method-transformCircle}{\code{Homothety$transformCircle()}}
-\item \href{#method-getMatrix}{\code{Homothety$getMatrix()}}
-\item \href{#method-asAffine}{\code{Homothety$asAffine()}}
-\item \href{#method-clone}{\code{Homothety$clone()}}
+\item \href{#method-Homothety-new}{\code{Homothety$new()}}
+\item \href{#method-Homothety-print}{\code{Homothety$print()}}
+\item \href{#method-Homothety-transform}{\code{Homothety$transform()}}
+\item \href{#method-Homothety-transformCircle}{\code{Homothety$transformCircle()}}
+\item \href{#method-Homothety-getMatrix}{\code{Homothety$getMatrix()}}
+\item \href{#method-Homothety-asAffine}{\code{Homothety$asAffine()}}
+\item \href{#method-Homothety-clone}{\code{Homothety$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Homothety-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Homothety} object.
 \subsection{Usage}{
@@ -75,8 +75,8 @@ A new \code{Homothety} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Homothety-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Homothety} object.
 \subsection{Usage}{
@@ -92,8 +92,8 @@ Show instance of a \code{Homothety} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-Homothety-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference homothety.
 \subsection{Usage}{
@@ -109,8 +109,8 @@ Transform a point or several points by the reference homothety.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transformCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
+\if{html}{\out{<a id="method-Homothety-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 Transform a circle by the reference homothety.
 \subsection{Usage}{
@@ -129,8 +129,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMatrix"></a>}}
-\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
+\if{html}{\out{<a id="method-Homothety-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the homothety.
 \subsection{Usage}{
@@ -153,8 +153,8 @@ H$getMatrix() \%*\% c(P,1)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\if{latex}{\out{\hypertarget{method-asAffine}{}}}
+\if{html}{\out{<a id="method-Homothety-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference homothety to an \code{Affine} object.
 \subsection{Usage}{
@@ -163,8 +163,8 @@ Convert the reference homothety to an \code{Affine} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Homothety-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Homothety-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

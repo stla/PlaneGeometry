@@ -54,19 +54,19 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Arc$new()}}
-\item \href{#method-print}{\code{Arc$print()}}
-\item \href{#method-startingPoint}{\code{Arc$startingPoint()}}
-\item \href{#method-endingPoint}{\code{Arc$endingPoint()}}
-\item \href{#method-isEqual}{\code{Arc$isEqual()}}
-\item \href{#method-complementaryArc}{\code{Arc$complementaryArc()}}
-\item \href{#method-path}{\code{Arc$path()}}
-\item \href{#method-clone}{\code{Arc$clone()}}
+\item \href{#method-Arc-new}{\code{Arc$new()}}
+\item \href{#method-Arc-print}{\code{Arc$print()}}
+\item \href{#method-Arc-startingPoint}{\code{Arc$startingPoint()}}
+\item \href{#method-Arc-endingPoint}{\code{Arc$endingPoint()}}
+\item \href{#method-Arc-isEqual}{\code{Arc$isEqual()}}
+\item \href{#method-Arc-complementaryArc}{\code{Arc$complementaryArc()}}
+\item \href{#method-Arc-path}{\code{Arc$path()}}
+\item \href{#method-Arc-clone}{\code{Arc$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Arc-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Arc} object.
 \subsection{Usage}{
@@ -106,8 +106,8 @@ arc
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Arc-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an \code{Arc} object.
 \subsection{Usage}{
@@ -131,8 +131,8 @@ Show instance of an \code{Arc} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-startingPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-startingPoint}{}}}
+\if{html}{\out{<a id="method-Arc-startingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-startingPoint}{}}}
 \subsection{Method \code{startingPoint()}}{
 Starting point of the reference arc.
 \subsection{Usage}{
@@ -141,8 +141,8 @@ Starting point of the reference arc.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-endingPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-endingPoint}{}}}
+\if{html}{\out{<a id="method-Arc-endingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-endingPoint}{}}}
 \subsection{Method \code{endingPoint()}}{
 Ending point of the reference arc.
 \subsection{Usage}{
@@ -151,8 +151,8 @@ Ending point of the reference arc.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isEqual"></a>}}
-\if{latex}{\out{\hypertarget{method-isEqual}{}}}
+\if{html}{\out{<a id="method-Arc-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference arc equals another arc.
 \subsection{Usage}{
@@ -168,8 +168,8 @@ Check whether the reference arc equals another arc.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-complementaryArc"></a>}}
-\if{latex}{\out{\hypertarget{method-complementaryArc}{}}}
+\if{html}{\out{<a id="method-Arc-complementaryArc"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-complementaryArc}{}}}
 \subsection{Method \code{complementaryArc()}}{
 Complementary arc of the reference arc.
 \subsection{Usage}{
@@ -190,8 +190,8 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path"></a>}}
-\if{latex}{\out{\hypertarget{method-path}{}}}
+\if{html}{\out{<a id="method-Arc-path"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-path}{}}}
 \subsection{Method \code{path()}}{
 The reference arc as a path.
 \subsection{Usage}{
@@ -212,8 +212,8 @@ vignette for an example.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Arc-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Arc-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

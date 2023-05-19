@@ -52,28 +52,28 @@ l$includes(M, strict = TRUE)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Line$new()}}
-\item \href{#method-print}{\code{Line$print()}}
-\item \href{#method-length}{\code{Line$length()}}
-\item \href{#method-directionAndOffset}{\code{Line$directionAndOffset()}}
-\item \href{#method-isEqual}{\code{Line$isEqual()}}
-\item \href{#method-isParallel}{\code{Line$isParallel()}}
-\item \href{#method-isPerpendicular}{\code{Line$isPerpendicular()}}
-\item \href{#method-includes}{\code{Line$includes()}}
-\item \href{#method-perpendicular}{\code{Line$perpendicular()}}
-\item \href{#method-parallel}{\code{Line$parallel()}}
-\item \href{#method-projection}{\code{Line$projection()}}
-\item \href{#method-distance}{\code{Line$distance()}}
-\item \href{#method-reflection}{\code{Line$reflection()}}
-\item \href{#method-rotate}{\code{Line$rotate()}}
-\item \href{#method-translate}{\code{Line$translate()}}
-\item \href{#method-invert}{\code{Line$invert()}}
-\item \href{#method-clone}{\code{Line$clone()}}
+\item \href{#method-Line-new}{\code{Line$new()}}
+\item \href{#method-Line-print}{\code{Line$print()}}
+\item \href{#method-Line-length}{\code{Line$length()}}
+\item \href{#method-Line-directionAndOffset}{\code{Line$directionAndOffset()}}
+\item \href{#method-Line-isEqual}{\code{Line$isEqual()}}
+\item \href{#method-Line-isParallel}{\code{Line$isParallel()}}
+\item \href{#method-Line-isPerpendicular}{\code{Line$isPerpendicular()}}
+\item \href{#method-Line-includes}{\code{Line$includes()}}
+\item \href{#method-Line-perpendicular}{\code{Line$perpendicular()}}
+\item \href{#method-Line-parallel}{\code{Line$parallel()}}
+\item \href{#method-Line-projection}{\code{Line$projection()}}
+\item \href{#method-Line-distance}{\code{Line$distance()}}
+\item \href{#method-Line-reflection}{\code{Line$reflection()}}
+\item \href{#method-Line-rotate}{\code{Line$rotate()}}
+\item \href{#method-Line-translate}{\code{Line$translate()}}
+\item \href{#method-Line-invert}{\code{Line$invert()}}
+\item \href{#method-Line-clone}{\code{Line$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Line-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Line} object.
 \subsection{Usage}{
@@ -106,8 +106,8 @@ l
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Line-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a line object.
 \subsection{Usage}{
@@ -131,8 +131,8 @@ Show instance of a line object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-length"></a>}}
-\if{latex}{\out{\hypertarget{method-length}{}}}
+\if{html}{\out{<a id="method-Line-length"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-length}{}}}
 \subsection{Method \code{length()}}{
 Segment length, returns the length of the segment joining
   the two point defining the line.
@@ -142,8 +142,8 @@ Segment length, returns the length of the segment joining
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-directionAndOffset"></a>}}
-\if{latex}{\out{\hypertarget{method-directionAndOffset}{}}}
+\if{html}{\out{<a id="method-Line-directionAndOffset"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-directionAndOffset}{}}}
 \subsection{Method \code{directionAndOffset()}}{
 Direction (angle between 0 and 2pi)
 and offset (positive number) of the reference line.
@@ -160,8 +160,8 @@ and \ifelse{html}{\out{d}}{\eqn{d}{d}} is the offset.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isEqual"></a>}}
-\if{latex}{\out{\hypertarget{method-isEqual}{}}}
+\if{html}{\out{<a id="method-Line-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference line equals a given line,
 without taking into account \code{extendA} and \code{extendB}.
@@ -181,8 +181,8 @@ without taking into account \code{extendA} and \code{extendB}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isParallel"></a>}}
-\if{latex}{\out{\hypertarget{method-isParallel}{}}}
+\if{html}{\out{<a id="method-Line-isParallel"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-isParallel}{}}}
 \subsection{Method \code{isParallel()}}{
 Check whether the reference line is parallel to a given line.
 \subsection{Usage}{
@@ -201,8 +201,8 @@ Check whether the reference line is parallel to a given line.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isPerpendicular"></a>}}
-\if{latex}{\out{\hypertarget{method-isPerpendicular}{}}}
+\if{html}{\out{<a id="method-Line-isPerpendicular"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-isPerpendicular}{}}}
 \subsection{Method \code{isPerpendicular()}}{
 Check whether the reference line is perpendicular to a given line.
 \subsection{Usage}{
@@ -221,8 +221,8 @@ Check whether the reference line is perpendicular to a given line.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-includes"></a>}}
-\if{latex}{\out{\hypertarget{method-includes}{}}}
+\if{html}{\out{<a id="method-Line-includes"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-includes}{}}}
 \subsection{Method \code{includes()}}{
 Whether a point belongs to the reference line.
 \subsection{Usage}{
@@ -257,8 +257,8 @@ l$includes(M, strict = TRUE)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-perpendicular"></a>}}
-\if{latex}{\out{\hypertarget{method-perpendicular}{}}}
+\if{html}{\out{<a id="method-Line-perpendicular"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-perpendicular}{}}}
 \subsection{Method \code{perpendicular()}}{
 Perpendicular line passing through a given point.
 \subsection{Usage}{
@@ -284,8 +284,8 @@ meeting point and the point \code{M}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-parallel"></a>}}
-\if{latex}{\out{\hypertarget{method-parallel}{}}}
+\if{html}{\out{<a id="method-Line-parallel"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-parallel}{}}}
 \subsection{Method \code{parallel()}}{
 Parallel to the reference line passing through a given point.
 \subsection{Usage}{
@@ -304,8 +304,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-projection"></a>}}
-\if{latex}{\out{\hypertarget{method-projection}{}}}
+\if{html}{\out{<a id="method-Line-projection"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-projection}{}}}
 \subsection{Method \code{projection()}}{
 Orthogonal projection of a point to the reference line.
 \subsection{Usage}{
@@ -324,8 +324,8 @@ A point.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-distance"></a>}}
-\if{latex}{\out{\hypertarget{method-distance}{}}}
+\if{html}{\out{<a id="method-Line-distance"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-distance}{}}}
 \subsection{Method \code{distance()}}{
 Distance from a point to the reference line.
 \subsection{Usage}{
@@ -344,8 +344,8 @@ A positive number.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reflection"></a>}}
-\if{latex}{\out{\hypertarget{method-reflection}{}}}
+\if{html}{\out{<a id="method-Line-reflection"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-reflection}{}}}
 \subsection{Method \code{reflection()}}{
 Reflection of a point with respect to the reference line.
 \subsection{Usage}{
@@ -364,8 +364,8 @@ A point.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rotate"></a>}}
-\if{latex}{\out{\hypertarget{method-rotate}{}}}
+\if{html}{\out{<a id="method-Line-rotate"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-rotate}{}}}
 \subsection{Method \code{rotate()}}{
 Rotate the reference line.
 \subsection{Usage}{
@@ -388,8 +388,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-translate"></a>}}
-\if{latex}{\out{\hypertarget{method-translate}{}}}
+\if{html}{\out{<a id="method-Line-translate"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-translate}{}}}
 \subsection{Method \code{translate()}}{
 Translate the reference line.
 \subsection{Usage}{
@@ -408,8 +408,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-invert"></a>}}
-\if{latex}{\out{\hypertarget{method-invert}{}}}
+\if{html}{\out{<a id="method-Line-invert"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-invert}{}}}
 \subsection{Method \code{invert()}}{
 Invert the reference line.
 \subsection{Usage}{
@@ -428,8 +428,8 @@ A \code{Circle} object or a \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Line-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Line-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

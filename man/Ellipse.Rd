@@ -135,32 +135,32 @@ points(pts, pch = 19, col = "blue")
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Ellipse$new()}}
-\item \href{#method-print}{\code{Ellipse$print()}}
-\item \href{#method-isEqual}{\code{Ellipse$isEqual()}}
-\item \href{#method-equation}{\code{Ellipse$equation()}}
-\item \href{#method-includes}{\code{Ellipse$includes()}}
-\item \href{#method-contains}{\code{Ellipse$contains()}}
-\item \href{#method-matrix}{\code{Ellipse$matrix()}}
-\item \href{#method-path}{\code{Ellipse$path()}}
-\item \href{#method-diameter}{\code{Ellipse$diameter()}}
-\item \href{#method-pointFromAngle}{\code{Ellipse$pointFromAngle()}}
-\item \href{#method-pointFromEccentricAngle}{\code{Ellipse$pointFromEccentricAngle()}}
-\item \href{#method-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
-\item \href{#method-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
-\item \href{#method-foci}{\code{Ellipse$foci()}}
-\item \href{#method-tangent}{\code{Ellipse$tangent()}}
-\item \href{#method-normal}{\code{Ellipse$normal()}}
-\item \href{#method-theta2t}{\code{Ellipse$theta2t()}}
-\item \href{#method-regressionLines}{\code{Ellipse$regressionLines()}}
-\item \href{#method-boundingbox}{\code{Ellipse$boundingbox()}}
-\item \href{#method-randomPoints}{\code{Ellipse$randomPoints()}}
-\item \href{#method-clone}{\code{Ellipse$clone()}}
+\item \href{#method-Ellipse-new}{\code{Ellipse$new()}}
+\item \href{#method-Ellipse-print}{\code{Ellipse$print()}}
+\item \href{#method-Ellipse-isEqual}{\code{Ellipse$isEqual()}}
+\item \href{#method-Ellipse-equation}{\code{Ellipse$equation()}}
+\item \href{#method-Ellipse-includes}{\code{Ellipse$includes()}}
+\item \href{#method-Ellipse-contains}{\code{Ellipse$contains()}}
+\item \href{#method-Ellipse-matrix}{\code{Ellipse$matrix()}}
+\item \href{#method-Ellipse-path}{\code{Ellipse$path()}}
+\item \href{#method-Ellipse-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-Ellipse-pointFromAngle}{\code{Ellipse$pointFromAngle()}}
+\item \href{#method-Ellipse-pointFromEccentricAngle}{\code{Ellipse$pointFromEccentricAngle()}}
+\item \href{#method-Ellipse-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
+\item \href{#method-Ellipse-semiMinorAxis}{\code{Ellipse$semiMinorAxis()}}
+\item \href{#method-Ellipse-foci}{\code{Ellipse$foci()}}
+\item \href{#method-Ellipse-tangent}{\code{Ellipse$tangent()}}
+\item \href{#method-Ellipse-normal}{\code{Ellipse$normal()}}
+\item \href{#method-Ellipse-theta2t}{\code{Ellipse$theta2t()}}
+\item \href{#method-Ellipse-regressionLines}{\code{Ellipse$regressionLines()}}
+\item \href{#method-Ellipse-boundingbox}{\code{Ellipse$boundingbox()}}
+\item \href{#method-Ellipse-randomPoints}{\code{Ellipse$randomPoints()}}
+\item \href{#method-Ellipse-clone}{\code{Ellipse$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Ellipse-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Ellipse} object.
 \subsection{Usage}{
@@ -196,8 +196,8 @@ A new \code{Ellipse} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Ellipse-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an \code{Ellipse} object.
 \subsection{Usage}{
@@ -213,8 +213,8 @@ Show instance of an \code{Ellipse} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isEqual"></a>}}
-\if{latex}{\out{\hypertarget{method-isEqual}{}}}
+\if{html}{\out{<a id="method-Ellipse-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference ellipse equals an ellipse.
 \subsection{Usage}{
@@ -230,8 +230,8 @@ Check whether the reference ellipse equals an ellipse.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-equation"></a>}}
-\if{latex}{\out{\hypertarget{method-equation}{}}}
+\if{html}{\out{<a id="method-Ellipse-equation"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-equation}{}}}
 \subsection{Method \code{equation()}}{
 The coefficients of the implicit equation of the ellipse.
 \subsection{Usage}{
@@ -249,8 +249,8 @@ A named numeric vector.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-includes"></a>}}
-\if{latex}{\out{\hypertarget{method-includes}{}}}
+\if{html}{\out{<a id="method-Ellipse-includes"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-includes}{}}}
 \subsection{Method \code{includes()}}{
 Check whether a point lies on the reference ellipse.
 \subsection{Usage}{
@@ -266,8 +266,8 @@ Check whether a point lies on the reference ellipse.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-contains"></a>}}
-\if{latex}{\out{\hypertarget{method-contains}{}}}
+\if{html}{\out{<a id="method-Ellipse-contains"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-contains}{}}}
 \subsection{Method \code{contains()}}{
 Check whether a point is contained in the reference ellipse.
 \subsection{Usage}{
@@ -283,8 +283,8 @@ Check whether a point is contained in the reference ellipse.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-matrix"></a>}}
-\if{latex}{\out{\hypertarget{method-matrix}{}}}
+\if{html}{\out{<a id="method-Ellipse-matrix"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-matrix}{}}}
 \subsection{Method \code{matrix()}}{
 Returns the 2x2 matrix \code{S} associated to the reference
 ellipse. The equation of the ellipse is \code{t(M-O) \%*\% S \%*\% (M-O) = 1}.
@@ -306,8 +306,8 @@ apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path"></a>}}
-\if{latex}{\out{\hypertarget{method-path}{}}}
+\if{html}{\out{<a id="method-Ellipse-path"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-path}{}}}
 \subsection{Method \code{path()}}{
 Path that forms the reference ellipse.
 \subsection{Usage}{
@@ -327,8 +327,8 @@ length \code{npoints}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-diameter"></a>}}
-\if{latex}{\out{\hypertarget{method-diameter}{}}}
+\if{html}{\out{<a id="method-Ellipse-diameter"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-diameter}{}}}
 \subsection{Method \code{diameter()}}{
 Diameter and conjugate diameter of the reference ellipse.
 \subsection{Usage}{
@@ -364,8 +364,8 @@ invisible(lapply(diameters, draw))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pointFromAngle"></a>}}
-\if{latex}{\out{\hypertarget{method-pointFromAngle}{}}}
+\if{html}{\out{<a id="method-Ellipse-pointFromAngle"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-pointFromAngle}{}}}
 \subsection{Method \code{pointFromAngle()}}{
 Intersection point of the ellipse with the half-line
 starting at the ellipse center and forming angle \code{theta} with
@@ -390,8 +390,8 @@ two-column matrix of points of the ellipse if
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pointFromEccentricAngle"></a>}}
-\if{latex}{\out{\hypertarget{method-pointFromEccentricAngle}{}}}
+\if{html}{\out{<a id="method-Ellipse-pointFromEccentricAngle"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-pointFromEccentricAngle}{}}}
 \subsection{Method \code{pointFromEccentricAngle()}}{
 Point of the ellipse with given eccentric angle.
 \subsection{Usage}{
@@ -412,8 +412,8 @@ two-column matrix of points of the ellipse if
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-semiMajorAxis"></a>}}
-\if{latex}{\out{\hypertarget{method-semiMajorAxis}{}}}
+\if{html}{\out{<a id="method-Ellipse-semiMajorAxis"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-semiMajorAxis}{}}}
 \subsection{Method \code{semiMajorAxis()}}{
 Semi-major axis of the ellipse.
 \subsection{Usage}{
@@ -425,8 +425,8 @@ A segment (\code{Line} object).
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-semiMinorAxis"></a>}}
-\if{latex}{\out{\hypertarget{method-semiMinorAxis}{}}}
+\if{html}{\out{<a id="method-Ellipse-semiMinorAxis"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-semiMinorAxis}{}}}
 \subsection{Method \code{semiMinorAxis()}}{
 Semi-minor axis of the ellipse.
 \subsection{Usage}{
@@ -438,8 +438,8 @@ A segment (\code{Line} object).
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-foci"></a>}}
-\if{latex}{\out{\hypertarget{method-foci}{}}}
+\if{html}{\out{<a id="method-Ellipse-foci"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-foci}{}}}
 \subsection{Method \code{foci()}}{
 Foci of the reference ellipse.
 \subsection{Usage}{
@@ -451,8 +451,8 @@ A list with the two foci.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tangent"></a>}}
-\if{latex}{\out{\hypertarget{method-tangent}{}}}
+\if{html}{\out{<a id="method-Ellipse-tangent"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-tangent}{}}}
 \subsection{Method \code{tangent()}}{
 Tangents of the reference ellipse at a point given by
 its eccentric angle.
@@ -484,8 +484,8 @@ invisible(lapply(tangents, draw, col = "blue"))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-normal"></a>}}
-\if{latex}{\out{\hypertarget{method-normal}{}}}
+\if{html}{\out{<a id="method-Ellipse-normal"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-normal}{}}}
 \subsection{Method \code{normal()}}{
 Normal unit vector to the ellipse.
 \subsection{Usage}{
@@ -524,8 +524,8 @@ for(i in 1:length(t_)){
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-theta2t"></a>}}
-\if{latex}{\out{\hypertarget{method-theta2t}{}}}
+\if{html}{\out{<a id="method-Ellipse-theta2t"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-theta2t}{}}}
 \subsection{Method \code{theta2t()}}{
 Convert angle to eccentric angle.
 \subsection{Usage}{
@@ -571,8 +571,8 @@ text(t(O+c(1,0.9)), expression(theta))
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-regressionLines"></a>}}
-\if{latex}{\out{\hypertarget{method-regressionLines}{}}}
+\if{html}{\out{<a id="method-Ellipse-regressionLines"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-regressionLines}{}}}
 \subsection{Method \code{regressionLines()}}{
 Regression lines. The regression line of y on x intersects
 the ellipse at its rightmost point and its leftmost point.
@@ -604,8 +604,8 @@ draw(reglines$XonY, lwd = 2, col = "green")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-boundingbox"></a>}}
-\if{latex}{\out{\hypertarget{method-boundingbox}{}}}
+\if{html}{\out{<a id="method-Ellipse-boundingbox"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-boundingbox}{}}}
 \subsection{Method \code{boundingbox()}}{
 Return the smallest rectangle parallel to the axes
 which contains the reference ellipse.
@@ -631,8 +631,8 @@ abline(v = box$x, lty = 2); abline(h = box$y, lty = 2)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-randomPoints"></a>}}
-\if{latex}{\out{\hypertarget{method-randomPoints}{}}}
+\if{html}{\out{<a id="method-Ellipse-randomPoints"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-randomPoints}{}}}
 \subsection{Method \code{randomPoints()}}{
 Random points on or in the reference ellipse.
 \subsection{Usage}{
@@ -667,8 +667,8 @@ points(pts, pch = 19, col = "blue")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Ellipse-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

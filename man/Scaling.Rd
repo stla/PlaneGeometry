@@ -54,18 +54,18 @@ CRC Press, 2009.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Scaling$new()}}
-\item \href{#method-print}{\code{Scaling$print()}}
-\item \href{#method-transform}{\code{Scaling$transform()}}
-\item \href{#method-getMatrix}{\code{Scaling$getMatrix()}}
-\item \href{#method-asAffine}{\code{Scaling$asAffine()}}
-\item \href{#method-scaleCircle}{\code{Scaling$scaleCircle()}}
-\item \href{#method-clone}{\code{Scaling$clone()}}
+\item \href{#method-Scaling-new}{\code{Scaling$new()}}
+\item \href{#method-Scaling-print}{\code{Scaling$print()}}
+\item \href{#method-Scaling-transform}{\code{Scaling$transform()}}
+\item \href{#method-Scaling-getMatrix}{\code{Scaling$getMatrix()}}
+\item \href{#method-Scaling-asAffine}{\code{Scaling$asAffine()}}
+\item \href{#method-Scaling-scaleCircle}{\code{Scaling$scaleCircle()}}
+\item \href{#method-Scaling-clone}{\code{Scaling$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Scaling-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Scaling} object.
 \subsection{Usage}{
@@ -96,8 +96,8 @@ A new \code{Scaling} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Scaling-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{Scaling} object.
 \subsection{Usage}{
@@ -113,8 +113,8 @@ Show instance of a \code{Scaling} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-Scaling-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference scaling.
 \subsection{Usage}{
@@ -130,8 +130,8 @@ Transform a point or several points by the reference scaling.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMatrix"></a>}}
-\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
+\if{html}{\out{<a id="method-Scaling-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the scaling.
 \subsection{Usage}{
@@ -154,8 +154,8 @@ S$getMatrix() \%*\% c(P,1)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\if{latex}{\out{\hypertarget{method-asAffine}{}}}
+\if{html}{\out{<a id="method-Scaling-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference scaling to an \code{Affine} object.
 \subsection{Usage}{
@@ -164,8 +164,8 @@ Convert the reference scaling to an \code{Affine} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-scaleCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-scaleCircle}{}}}
+\if{html}{\out{<a id="method-Scaling-scaleCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-scaleCircle}{}}}
 \subsection{Method \code{scaleCircle()}}{
 Scale a circle. The result is an ellipse.
 \subsection{Usage}{
@@ -184,8 +184,8 @@ An \code{Ellipse} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Scaling-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Scaling-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

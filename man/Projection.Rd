@@ -55,18 +55,18 @@ P$getMatrix() \%*\% c(M,1)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Projection$new()}}
-\item \href{#method-print}{\code{Projection$print()}}
-\item \href{#method-project}{\code{Projection$project()}}
-\item \href{#method-transform}{\code{Projection$transform()}}
-\item \href{#method-getMatrix}{\code{Projection$getMatrix()}}
-\item \href{#method-asAffine}{\code{Projection$asAffine()}}
-\item \href{#method-clone}{\code{Projection$clone()}}
+\item \href{#method-Projection-new}{\code{Projection$new()}}
+\item \href{#method-Projection-print}{\code{Projection$print()}}
+\item \href{#method-Projection-project}{\code{Projection$project()}}
+\item \href{#method-Projection-transform}{\code{Projection$transform()}}
+\item \href{#method-Projection-getMatrix}{\code{Projection$getMatrix()}}
+\item \href{#method-Projection-asAffine}{\code{Projection$asAffine()}}
+\item \href{#method-Projection-clone}{\code{Projection$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Projection-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Projection} object.
 \subsection{Usage}{
@@ -97,8 +97,8 @@ Projection$new(D, Delta)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Projection-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a projection object.
 \subsection{Usage}{
@@ -114,8 +114,8 @@ Show instance of a projection object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-project"></a>}}
-\if{latex}{\out{\hypertarget{method-project}{}}}
+\if{html}{\out{<a id="method-Projection-project"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-project}{}}}
 \subsection{Method \code{project()}}{
 Project a point.
 \subsection{Usage}{
@@ -145,8 +145,8 @@ Delta$isParallel(Line$new(M, Mprime)) # should be TRUE
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-Projection-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{project}.
 \subsection{Usage}{
@@ -162,8 +162,8 @@ An alias of \code{project}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMatrix"></a>}}
-\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
+\if{html}{\out{<a id="method-Projection-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the projection.
 \subsection{Usage}{
@@ -186,8 +186,8 @@ P$getMatrix() \%*\% c(M,1)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\if{latex}{\out{\hypertarget{method-asAffine}{}}}
+\if{html}{\out{<a id="method-Projection-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference projection to an \code{Affine}
 object.
@@ -197,8 +197,8 @@ object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Projection-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Projection-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -34,22 +34,22 @@ R$getMatrix() \%*\% c(P,1)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Reflection$new()}}
-\item \href{#method-print}{\code{Reflection$print()}}
-\item \href{#method-reflect}{\code{Reflection$reflect()}}
-\item \href{#method-transform}{\code{Reflection$transform()}}
-\item \href{#method-reflectCircle}{\code{Reflection$reflectCircle()}}
-\item \href{#method-transformCircle}{\code{Reflection$transformCircle()}}
-\item \href{#method-reflectLine}{\code{Reflection$reflectLine()}}
-\item \href{#method-transformLine}{\code{Reflection$transformLine()}}
-\item \href{#method-getMatrix}{\code{Reflection$getMatrix()}}
-\item \href{#method-asAffine}{\code{Reflection$asAffine()}}
-\item \href{#method-clone}{\code{Reflection$clone()}}
+\item \href{#method-Reflection-new}{\code{Reflection$new()}}
+\item \href{#method-Reflection-print}{\code{Reflection$print()}}
+\item \href{#method-Reflection-reflect}{\code{Reflection$reflect()}}
+\item \href{#method-Reflection-transform}{\code{Reflection$transform()}}
+\item \href{#method-Reflection-reflectCircle}{\code{Reflection$reflectCircle()}}
+\item \href{#method-Reflection-transformCircle}{\code{Reflection$transformCircle()}}
+\item \href{#method-Reflection-reflectLine}{\code{Reflection$reflectLine()}}
+\item \href{#method-Reflection-transformLine}{\code{Reflection$transformLine()}}
+\item \href{#method-Reflection-getMatrix}{\code{Reflection$getMatrix()}}
+\item \href{#method-Reflection-asAffine}{\code{Reflection$asAffine()}}
+\item \href{#method-Reflection-clone}{\code{Reflection$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Reflection-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Reflection} object.
 \subsection{Usage}{
@@ -77,8 +77,8 @@ Reflection$new(l)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Reflection-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a reflection object.
 \subsection{Usage}{
@@ -94,8 +94,8 @@ Show instance of a reflection object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reflect"></a>}}
-\if{latex}{\out{\hypertarget{method-reflect}{}}}
+\if{html}{\out{<a id="method-Reflection-reflect"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-reflect}{}}}
 \subsection{Method \code{reflect()}}{
 Reflect a point.
 \subsection{Usage}{
@@ -111,8 +111,8 @@ Reflect a point.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-Reflection-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-transform}{}}}
 \subsection{Method \code{transform()}}{
 An alias of \code{reflect}.
 \subsection{Usage}{
@@ -128,8 +128,8 @@ An alias of \code{reflect}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reflectCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-reflectCircle}{}}}
+\if{html}{\out{<a id="method-Reflection-reflectCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-reflectCircle}{}}}
 \subsection{Method \code{reflectCircle()}}{
 Reflect a circle.
 \subsection{Usage}{
@@ -148,8 +148,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transformCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-transformCircle}{}}}
+\if{html}{\out{<a id="method-Reflection-transformCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-transformCircle}{}}}
 \subsection{Method \code{transformCircle()}}{
 An alias of \code{reflectCircle}.
 \subsection{Usage}{
@@ -168,8 +168,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reflectLine"></a>}}
-\if{latex}{\out{\hypertarget{method-reflectLine}{}}}
+\if{html}{\out{<a id="method-Reflection-reflectLine"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-reflectLine}{}}}
 \subsection{Method \code{reflectLine()}}{
 Reflect a line.
 \subsection{Usage}{
@@ -188,8 +188,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transformLine"></a>}}
-\if{latex}{\out{\hypertarget{method-transformLine}{}}}
+\if{html}{\out{<a id="method-Reflection-transformLine"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-transformLine}{}}}
 \subsection{Method \code{transformLine()}}{
 An alias of \code{reflectLine}.
 \subsection{Usage}{
@@ -208,8 +208,8 @@ A \code{Line} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMatrix"></a>}}
-\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
+\if{html}{\out{<a id="method-Reflection-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the reflection.
 \subsection{Usage}{
@@ -232,8 +232,8 @@ R$getMatrix() \%*\% c(P,1)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\if{latex}{\out{\hypertarget{method-asAffine}{}}}
+\if{html}{\out{<a id="method-Reflection-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference reflection to an \code{Affine} object.
 \subsection{Usage}{
@@ -242,8 +242,8 @@ Convert the reference reflection to an \code{Affine} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Reflection-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Reflection-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

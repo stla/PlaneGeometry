@@ -549,7 +549,7 @@ save_gif(
 ```
 
 
-![](https://thumbs.gfycat.com/ContentZestyCutworm-size_restricted.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/SteinerChainElliptical.gif){width=60%}
 
 ## Nested Steiner chains
 
@@ -896,7 +896,7 @@ par(opar)
 
 Here is the same picture but with better quality:
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/SchottkyCircles_tikz.png){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/SchottkyCircles_tikz.png){width=60%}
 
 I realized this picture with the **tikzDevice** package.
 
@@ -985,7 +985,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation_compressed.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/modularTessellation_compressed.gif){width=60%}
 
 
 # Apollonian gasket
@@ -1103,7 +1103,7 @@ save_gif(
 )
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket_compressed.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianGasket_compressed.gif){width=50%}
 
 We can also animate the Apollonian gasket with the help of a Möbius 
 transformation. Consider the following complex matrix:
@@ -1175,7 +1175,7 @@ save_gif(
 par(opar)
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/ApollonianMobius.gif){width=60%}
 
 
 # Another Apollonian fractal
@@ -1416,7 +1416,7 @@ drawCircularGasket(mcircles[[2]], n2, phi2, shift, depth2, colors2)
 drawCircularGasket(mcircles[[3]], n3, phi3, shift, depth2, colors2)
 ```
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiGasket.png){width=40%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiGasket.png){width=50%}
 
 
 As an exercise, you can add some animation to this picture, by animating the 

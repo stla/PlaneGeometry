@@ -164,73 +164,73 @@ draw(ell, border = "red", lwd =2)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Triangle$new()}}
-\item \href{#method-print}{\code{Triangle$print()}}
-\item \href{#method-flatness}{\code{Triangle$flatness()}}
-\item \href{#method-a}{\code{Triangle$a()}}
-\item \href{#method-b}{\code{Triangle$b()}}
-\item \href{#method-c}{\code{Triangle$c()}}
-\item \href{#method-edges}{\code{Triangle$edges()}}
-\item \href{#method-orientation}{\code{Triangle$orientation()}}
-\item \href{#method-contains}{\code{Triangle$contains()}}
-\item \href{#method-isAcute}{\code{Triangle$isAcute()}}
-\item \href{#method-angleA}{\code{Triangle$angleA()}}
-\item \href{#method-angleB}{\code{Triangle$angleB()}}
-\item \href{#method-angleC}{\code{Triangle$angleC()}}
-\item \href{#method-angles}{\code{Triangle$angles()}}
-\item \href{#method-X175}{\code{Triangle$X175()}}
-\item \href{#method-VeldkampIsoperimetricPoint}{\code{Triangle$VeldkampIsoperimetricPoint()}}
-\item \href{#method-centroid}{\code{Triangle$centroid()}}
-\item \href{#method-orthocenter}{\code{Triangle$orthocenter()}}
-\item \href{#method-area}{\code{Triangle$area()}}
-\item \href{#method-incircle}{\code{Triangle$incircle()}}
-\item \href{#method-inradius}{\code{Triangle$inradius()}}
-\item \href{#method-incenter}{\code{Triangle$incenter()}}
-\item \href{#method-excircles}{\code{Triangle$excircles()}}
-\item \href{#method-excentralTriangle}{\code{Triangle$excentralTriangle()}}
-\item \href{#method-BevanPoint}{\code{Triangle$BevanPoint()}}
-\item \href{#method-medialTriangle}{\code{Triangle$medialTriangle()}}
-\item \href{#method-orthicTriangle}{\code{Triangle$orthicTriangle()}}
-\item \href{#method-incentralTriangle}{\code{Triangle$incentralTriangle()}}
-\item \href{#method-NagelTriangle}{\code{Triangle$NagelTriangle()}}
-\item \href{#method-NagelPoint}{\code{Triangle$NagelPoint()}}
-\item \href{#method-GergonneTriangle}{\code{Triangle$GergonneTriangle()}}
-\item \href{#method-GergonnePoint}{\code{Triangle$GergonnePoint()}}
-\item \href{#method-tangentialTriangle}{\code{Triangle$tangentialTriangle()}}
-\item \href{#method-symmedialTriangle}{\code{Triangle$symmedialTriangle()}}
-\item \href{#method-symmedianPoint}{\code{Triangle$symmedianPoint()}}
-\item \href{#method-circumcircle}{\code{Triangle$circumcircle()}}
-\item \href{#method-circumcenter}{\code{Triangle$circumcenter()}}
-\item \href{#method-circumradius}{\code{Triangle$circumradius()}}
-\item \href{#method-BrocardCircle}{\code{Triangle$BrocardCircle()}}
-\item \href{#method-BrocardPoints}{\code{Triangle$BrocardPoints()}}
-\item \href{#method-LemoineCircleI}{\code{Triangle$LemoineCircleI()}}
-\item \href{#method-LemoineCircleII}{\code{Triangle$LemoineCircleII()}}
-\item \href{#method-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
-\item \href{#method-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
-\item \href{#method-ParryCircle}{\code{Triangle$ParryCircle()}}
-\item \href{#method-pedalTriangle}{\code{Triangle$pedalTriangle()}}
-\item \href{#method-CevianTriangle}{\code{Triangle$CevianTriangle()}}
-\item \href{#method-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
-\item \href{#method-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
-\item \href{#method-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
-\item \href{#method-equalDetourPoint}{\code{Triangle$equalDetourPoint()}}
-\item \href{#method-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
-\item \href{#method-pointToTrilinear}{\code{Triangle$pointToTrilinear()}}
-\item \href{#method-isogonalConjugate}{\code{Triangle$isogonalConjugate()}}
-\item \href{#method-rotate}{\code{Triangle$rotate()}}
-\item \href{#method-translate}{\code{Triangle$translate()}}
-\item \href{#method-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
-\item \href{#method-SteinerInellipse}{\code{Triangle$SteinerInellipse()}}
-\item \href{#method-MandartInellipse}{\code{Triangle$MandartInellipse()}}
-\item \href{#method-randomPoints}{\code{Triangle$randomPoints()}}
-\item \href{#method-hexylTriangle}{\code{Triangle$hexylTriangle()}}
-\item \href{#method-clone}{\code{Triangle$clone()}}
+\item \href{#method-Triangle-new}{\code{Triangle$new()}}
+\item \href{#method-Triangle-print}{\code{Triangle$print()}}
+\item \href{#method-Triangle-flatness}{\code{Triangle$flatness()}}
+\item \href{#method-Triangle-a}{\code{Triangle$a()}}
+\item \href{#method-Triangle-b}{\code{Triangle$b()}}
+\item \href{#method-Triangle-c}{\code{Triangle$c()}}
+\item \href{#method-Triangle-edges}{\code{Triangle$edges()}}
+\item \href{#method-Triangle-orientation}{\code{Triangle$orientation()}}
+\item \href{#method-Triangle-contains}{\code{Triangle$contains()}}
+\item \href{#method-Triangle-isAcute}{\code{Triangle$isAcute()}}
+\item \href{#method-Triangle-angleA}{\code{Triangle$angleA()}}
+\item \href{#method-Triangle-angleB}{\code{Triangle$angleB()}}
+\item \href{#method-Triangle-angleC}{\code{Triangle$angleC()}}
+\item \href{#method-Triangle-angles}{\code{Triangle$angles()}}
+\item \href{#method-Triangle-X175}{\code{Triangle$X175()}}
+\item \href{#method-Triangle-VeldkampIsoperimetricPoint}{\code{Triangle$VeldkampIsoperimetricPoint()}}
+\item \href{#method-Triangle-centroid}{\code{Triangle$centroid()}}
+\item \href{#method-Triangle-orthocenter}{\code{Triangle$orthocenter()}}
+\item \href{#method-Triangle-area}{\code{Triangle$area()}}
+\item \href{#method-Triangle-incircle}{\code{Triangle$incircle()}}
+\item \href{#method-Triangle-inradius}{\code{Triangle$inradius()}}
+\item \href{#method-Triangle-incenter}{\code{Triangle$incenter()}}
+\item \href{#method-Triangle-excircles}{\code{Triangle$excircles()}}
+\item \href{#method-Triangle-excentralTriangle}{\code{Triangle$excentralTriangle()}}
+\item \href{#method-Triangle-BevanPoint}{\code{Triangle$BevanPoint()}}
+\item \href{#method-Triangle-medialTriangle}{\code{Triangle$medialTriangle()}}
+\item \href{#method-Triangle-orthicTriangle}{\code{Triangle$orthicTriangle()}}
+\item \href{#method-Triangle-incentralTriangle}{\code{Triangle$incentralTriangle()}}
+\item \href{#method-Triangle-NagelTriangle}{\code{Triangle$NagelTriangle()}}
+\item \href{#method-Triangle-NagelPoint}{\code{Triangle$NagelPoint()}}
+\item \href{#method-Triangle-GergonneTriangle}{\code{Triangle$GergonneTriangle()}}
+\item \href{#method-Triangle-GergonnePoint}{\code{Triangle$GergonnePoint()}}
+\item \href{#method-Triangle-tangentialTriangle}{\code{Triangle$tangentialTriangle()}}
+\item \href{#method-Triangle-symmedialTriangle}{\code{Triangle$symmedialTriangle()}}
+\item \href{#method-Triangle-symmedianPoint}{\code{Triangle$symmedianPoint()}}
+\item \href{#method-Triangle-circumcircle}{\code{Triangle$circumcircle()}}
+\item \href{#method-Triangle-circumcenter}{\code{Triangle$circumcenter()}}
+\item \href{#method-Triangle-circumradius}{\code{Triangle$circumradius()}}
+\item \href{#method-Triangle-BrocardCircle}{\code{Triangle$BrocardCircle()}}
+\item \href{#method-Triangle-BrocardPoints}{\code{Triangle$BrocardPoints()}}
+\item \href{#method-Triangle-LemoineCircleI}{\code{Triangle$LemoineCircleI()}}
+\item \href{#method-Triangle-LemoineCircleII}{\code{Triangle$LemoineCircleII()}}
+\item \href{#method-Triangle-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
+\item \href{#method-Triangle-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
+\item \href{#method-Triangle-ParryCircle}{\code{Triangle$ParryCircle()}}
+\item \href{#method-Triangle-pedalTriangle}{\code{Triangle$pedalTriangle()}}
+\item \href{#method-Triangle-CevianTriangle}{\code{Triangle$CevianTriangle()}}
+\item \href{#method-Triangle-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
+\item \href{#method-Triangle-AjimaMalfatti1}{\code{Triangle$AjimaMalfatti1()}}
+\item \href{#method-Triangle-AjimaMalfatti2}{\code{Triangle$AjimaMalfatti2()}}
+\item \href{#method-Triangle-equalDetourPoint}{\code{Triangle$equalDetourPoint()}}
+\item \href{#method-Triangle-trilinearToPoint}{\code{Triangle$trilinearToPoint()}}
+\item \href{#method-Triangle-pointToTrilinear}{\code{Triangle$pointToTrilinear()}}
+\item \href{#method-Triangle-isogonalConjugate}{\code{Triangle$isogonalConjugate()}}
+\item \href{#method-Triangle-rotate}{\code{Triangle$rotate()}}
+\item \href{#method-Triangle-translate}{\code{Triangle$translate()}}
+\item \href{#method-Triangle-SteinerEllipse}{\code{Triangle$SteinerEllipse()}}
+\item \href{#method-Triangle-SteinerInellipse}{\code{Triangle$SteinerInellipse()}}
+\item \href{#method-Triangle-MandartInellipse}{\code{Triangle$MandartInellipse()}}
+\item \href{#method-Triangle-randomPoints}{\code{Triangle$randomPoints()}}
+\item \href{#method-Triangle-hexylTriangle}{\code{Triangle$hexylTriangle()}}
+\item \href{#method-Triangle-clone}{\code{Triangle$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Triangle-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{Triangle} object.
 \subsection{Usage}{
@@ -261,8 +261,8 @@ t
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Triangle-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a triangle object
 \subsection{Usage}{
@@ -286,8 +286,8 @@ Show instance of a triangle object
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-flatness"></a>}}
-\if{latex}{\out{\hypertarget{method-flatness}{}}}
+\if{html}{\out{<a id="method-Triangle-flatness"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-flatness}{}}}
 \subsection{Method \code{flatness()}}{
 Flatness of the triangle.
 \subsection{Usage}{
@@ -299,8 +299,8 @@ A number between 0 and 1. A triangle is flat when its flatness is 1.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-a"></a>}}
-\if{latex}{\out{\hypertarget{method-a}{}}}
+\if{html}{\out{<a id="method-Triangle-a"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-a}{}}}
 \subsection{Method \code{a()}}{
 Length of the side \code{BC}.
 \subsection{Usage}{
@@ -309,8 +309,8 @@ Length of the side \code{BC}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-b"></a>}}
-\if{latex}{\out{\hypertarget{method-b}{}}}
+\if{html}{\out{<a id="method-Triangle-b"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-b}{}}}
 \subsection{Method \code{b()}}{
 Length of the side \code{AC}.
 \subsection{Usage}{
@@ -319,8 +319,8 @@ Length of the side \code{AC}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-c"></a>}}
-\if{latex}{\out{\hypertarget{method-c}{}}}
+\if{html}{\out{<a id="method-Triangle-c"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-c}{}}}
 \subsection{Method \code{c()}}{
 Length of the side \code{AB}.
 \subsection{Usage}{
@@ -329,8 +329,8 @@ Length of the side \code{AB}.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-edges"></a>}}
-\if{latex}{\out{\hypertarget{method-edges}{}}}
+\if{html}{\out{<a id="method-Triangle-edges"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-edges}{}}}
 \subsection{Method \code{edges()}}{
 The lengths of the sides of the triangle.
 \subsection{Usage}{
@@ -342,8 +342,8 @@ A named numeric vector.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-orientation"></a>}}
-\if{latex}{\out{\hypertarget{method-orientation}{}}}
+\if{html}{\out{<a id="method-Triangle-orientation"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-orientation}{}}}
 \subsection{Method \code{orientation()}}{
 Determine the orientation of the triangle.
 \subsection{Usage}{
@@ -355,8 +355,8 @@ An integer: 1 for counterclockwise, -1 for clockwise, 0 for collinear.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-contains"></a>}}
-\if{latex}{\out{\hypertarget{method-contains}{}}}
+\if{html}{\out{<a id="method-Triangle-contains"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-contains}{}}}
 \subsection{Method \code{contains()}}{
 Determine whether a point lies inside the reference triangle.
 \subsection{Usage}{
@@ -372,8 +372,8 @@ Determine whether a point lies inside the reference triangle.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isAcute"></a>}}
-\if{latex}{\out{\hypertarget{method-isAcute}{}}}
+\if{html}{\out{<a id="method-Triangle-isAcute"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-isAcute}{}}}
 \subsection{Method \code{isAcute()}}{
 Determines whether the reference triangle is acute.
 \subsection{Usage}{
@@ -385,8 +385,8 @@ Determines whether the reference triangle is acute.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-angleA"></a>}}
-\if{latex}{\out{\hypertarget{method-angleA}{}}}
+\if{html}{\out{<a id="method-Triangle-angleA"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-angleA}{}}}
 \subsection{Method \code{angleA()}}{
 Angle at the vertex A.
 \subsection{Usage}{
@@ -398,8 +398,8 @@ The angle at the vertex A in radians.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-angleB"></a>}}
-\if{latex}{\out{\hypertarget{method-angleB}{}}}
+\if{html}{\out{<a id="method-Triangle-angleB"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-angleB}{}}}
 \subsection{Method \code{angleB()}}{
 Angle at the vertex B.
 \subsection{Usage}{
@@ -411,8 +411,8 @@ The angle at the vertex B in radians.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-angleC"></a>}}
-\if{latex}{\out{\hypertarget{method-angleC}{}}}
+\if{html}{\out{<a id="method-Triangle-angleC"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-angleC}{}}}
 \subsection{Method \code{angleC()}}{
 Angle at the vertex C.
 \subsection{Usage}{
@@ -424,8 +424,8 @@ The angle at the vertex C in radians.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-angles"></a>}}
-\if{latex}{\out{\hypertarget{method-angles}{}}}
+\if{html}{\out{<a id="method-Triangle-angles"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-angles}{}}}
 \subsection{Method \code{angles()}}{
 The three angles of the triangle.
 \subsection{Usage}{
@@ -437,8 +437,8 @@ A named vector containing the values of the angles in radians.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-X175"></a>}}
-\if{latex}{\out{\hypertarget{method-X175}{}}}
+\if{html}{\out{<a id="method-Triangle-X175"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-X175}{}}}
 \subsection{Method \code{X175()}}{
 Isoperimetric point, also known as the X(175) triangle
   center; this is the center of the outer Soddy circle.
@@ -448,8 +448,8 @@ Isoperimetric point, also known as the X(175) triangle
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-VeldkampIsoperimetricPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-VeldkampIsoperimetricPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-VeldkampIsoperimetricPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-VeldkampIsoperimetricPoint}{}}}
 \subsection{Method \code{VeldkampIsoperimetricPoint()}}{
 Isoperimetric point in the sense of Veldkamp.
 \subsection{Usage}{
@@ -462,8 +462,8 @@ Otherwise, returns `NULL`.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-centroid"></a>}}
-\if{latex}{\out{\hypertarget{method-centroid}{}}}
+\if{html}{\out{<a id="method-Triangle-centroid"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-centroid}{}}}
 \subsection{Method \code{centroid()}}{
 Centroid.
 \subsection{Usage}{
@@ -472,8 +472,8 @@ Centroid.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-orthocenter"></a>}}
-\if{latex}{\out{\hypertarget{method-orthocenter}{}}}
+\if{html}{\out{<a id="method-Triangle-orthocenter"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-orthocenter}{}}}
 \subsection{Method \code{orthocenter()}}{
 Orthocenter.
 \subsection{Usage}{
@@ -482,8 +482,8 @@ Orthocenter.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-area"></a>}}
-\if{latex}{\out{\hypertarget{method-area}{}}}
+\if{html}{\out{<a id="method-Triangle-area"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-area}{}}}
 \subsection{Method \code{area()}}{
 Area of the triangle.
 \subsection{Usage}{
@@ -492,8 +492,8 @@ Area of the triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-incircle"></a>}}
-\if{latex}{\out{\hypertarget{method-incircle}{}}}
+\if{html}{\out{<a id="method-Triangle-incircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-incircle}{}}}
 \subsection{Method \code{incircle()}}{
 Incircle of the triangle.
 \subsection{Usage}{
@@ -505,8 +505,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-inradius"></a>}}
-\if{latex}{\out{\hypertarget{method-inradius}{}}}
+\if{html}{\out{<a id="method-Triangle-inradius"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-inradius}{}}}
 \subsection{Method \code{inradius()}}{
 Inradius of the reference triangle.
 \subsection{Usage}{
@@ -515,8 +515,8 @@ Inradius of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-incenter"></a>}}
-\if{latex}{\out{\hypertarget{method-incenter}{}}}
+\if{html}{\out{<a id="method-Triangle-incenter"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-incenter}{}}}
 \subsection{Method \code{incenter()}}{
 Incenter of the reference triangle.
 \subsection{Usage}{
@@ -525,8 +525,8 @@ Incenter of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-excircles"></a>}}
-\if{latex}{\out{\hypertarget{method-excircles}{}}}
+\if{html}{\out{<a id="method-Triangle-excircles"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-excircles}{}}}
 \subsection{Method \code{excircles()}}{
 Excircles of the triangle.
 \subsection{Usage}{
@@ -538,8 +538,8 @@ A list with the three excircles, \code{Circle} objects.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-excentralTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-excentralTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-excentralTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-excentralTriangle}{}}}
 \subsection{Method \code{excentralTriangle()}}{
 Excentral triangle of the reference triangle.
 \subsection{Usage}{
@@ -551,8 +551,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BevanPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-BevanPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-BevanPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-BevanPoint}{}}}
 \subsection{Method \code{BevanPoint()}}{
 Bevan point. This is the circumcenter of the
 excentral triangle.
@@ -562,8 +562,8 @@ excentral triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-medialTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-medialTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-medialTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-medialTriangle}{}}}
 \subsection{Method \code{medialTriangle()}}{
 Medial triangle. Its vertices are the mid-points of the
 sides of the reference triangle.
@@ -573,8 +573,8 @@ sides of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-orthicTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-orthicTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-orthicTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-orthicTriangle}{}}}
 \subsection{Method \code{orthicTriangle()}}{
 Orthic triangle. Its vertices are the feet of the altitudes
 of the reference triangle.
@@ -584,8 +584,8 @@ of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-incentralTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-incentralTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-incentralTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-incentralTriangle}{}}}
 \subsection{Method \code{incentralTriangle()}}{
 Incentral triangle.
 \subsection{Usage}{
@@ -602,8 +602,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-NagelTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-NagelTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-NagelTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-NagelTriangle}{}}}
 \subsection{Method \code{NagelTriangle()}}{
 Nagel triangle (or extouch triangle) of the reference triangle.
 \subsection{Usage}{
@@ -650,8 +650,8 @@ par(opar)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-NagelPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-NagelPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-NagelPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-NagelPoint}{}}}
 \subsection{Method \code{NagelPoint()}}{
 Nagel point of the triangle.
 \subsection{Usage}{
@@ -660,8 +660,8 @@ Nagel point of the triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-GergonneTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-GergonneTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-GergonneTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-GergonneTriangle}{}}}
 \subsection{Method \code{GergonneTriangle()}}{
 Gergonne triangle of the reference triangle.
 \subsection{Usage}{
@@ -686,8 +686,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-GergonnePoint"></a>}}
-\if{latex}{\out{\hypertarget{method-GergonnePoint}{}}}
+\if{html}{\out{<a id="method-Triangle-GergonnePoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-GergonnePoint}{}}}
 \subsection{Method \code{GergonnePoint()}}{
 Gergonne point of the reference triangle.
 \subsection{Usage}{
@@ -696,8 +696,8 @@ Gergonne point of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-tangentialTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-tangentialTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-tangentialTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-tangentialTriangle}{}}}
 \subsection{Method \code{tangentialTriangle()}}{
 Tangential triangle of the reference triangle.
 This is the triangle formed by the lines tangent to the circumcircle of
@@ -712,8 +712,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-symmedialTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-symmedialTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-symmedialTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-symmedialTriangle}{}}}
 \subsection{Method \code{symmedialTriangle()}}{
 Symmedial triangle of the reference triangle.
 \subsection{Usage}{
@@ -747,8 +747,8 @@ par(opar)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-symmedianPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-symmedianPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-symmedianPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-symmedianPoint}{}}}
 \subsection{Method \code{symmedianPoint()}}{
 Symmedian point of the reference triangle.
 \subsection{Usage}{
@@ -760,8 +760,8 @@ A point.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-circumcircle"></a>}}
-\if{latex}{\out{\hypertarget{method-circumcircle}{}}}
+\if{html}{\out{<a id="method-Triangle-circumcircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-circumcircle}{}}}
 \subsection{Method \code{circumcircle()}}{
 Circumcircle of the reference triangle.
 \subsection{Usage}{
@@ -773,8 +773,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-circumcenter"></a>}}
-\if{latex}{\out{\hypertarget{method-circumcenter}{}}}
+\if{html}{\out{<a id="method-Triangle-circumcenter"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-circumcenter}{}}}
 \subsection{Method \code{circumcenter()}}{
 Circumcenter of the reference triangle.
 \subsection{Usage}{
@@ -783,8 +783,8 @@ Circumcenter of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-circumradius"></a>}}
-\if{latex}{\out{\hypertarget{method-circumradius}{}}}
+\if{html}{\out{<a id="method-Triangle-circumradius"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-circumradius}{}}}
 \subsection{Method \code{circumradius()}}{
 Circumradius of the reference triangle.
 \subsection{Usage}{
@@ -793,8 +793,8 @@ Circumradius of the reference triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BrocardCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-BrocardCircle}{}}}
+\if{html}{\out{<a id="method-Triangle-BrocardCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-BrocardCircle}{}}}
 \subsection{Method \code{BrocardCircle()}}{
 The Brocard circle of the reference triangle (also known
 as the seven-point circle).
@@ -807,8 +807,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-BrocardPoints"></a>}}
-\if{latex}{\out{\hypertarget{method-BrocardPoints}{}}}
+\if{html}{\out{<a id="method-Triangle-BrocardPoints"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-BrocardPoints}{}}}
 \subsection{Method \code{BrocardPoints()}}{
 Brocard points of the reference triangle.
 \subsection{Usage}{
@@ -821,8 +821,8 @@ Brocard point.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LemoineCircleI"></a>}}
-\if{latex}{\out{\hypertarget{method-LemoineCircleI}{}}}
+\if{html}{\out{<a id="method-Triangle-LemoineCircleI"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-LemoineCircleI}{}}}
 \subsection{Method \code{LemoineCircleI()}}{
 The first Lemoine circle of the reference triangle.
 \subsection{Usage}{
@@ -834,8 +834,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LemoineCircleII"></a>}}
-\if{latex}{\out{\hypertarget{method-LemoineCircleII}{}}}
+\if{html}{\out{<a id="method-Triangle-LemoineCircleII"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-LemoineCircleII}{}}}
 \subsection{Method \code{LemoineCircleII()}}{
 The second Lemoine circle of the reference triangle (also
 known as the cosine circle)
@@ -848,8 +848,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LemoineTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-LemoineTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-LemoineTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-LemoineTriangle}{}}}
 \subsection{Method \code{LemoineTriangle()}}{
 The Lemoine triangle of the reference triangle.
 \subsection{Usage}{
@@ -861,8 +861,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LemoineCircleIII"></a>}}
-\if{latex}{\out{\hypertarget{method-LemoineCircleIII}{}}}
+\if{html}{\out{<a id="method-Triangle-LemoineCircleIII"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-LemoineCircleIII}{}}}
 \subsection{Method \code{LemoineCircleIII()}}{
 The third Lemoine circle of the reference triangle.
 \subsection{Usage}{
@@ -874,8 +874,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-ParryCircle"></a>}}
-\if{latex}{\out{\hypertarget{method-ParryCircle}{}}}
+\if{html}{\out{<a id="method-Triangle-ParryCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-ParryCircle}{}}}
 \subsection{Method \code{ParryCircle()}}{
 Parry circle of the reference triangle.
 \subsection{Usage}{
@@ -887,8 +887,8 @@ A \code{Circle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pedalTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-pedalTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-pedalTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-pedalTriangle}{}}}
 \subsection{Method \code{pedalTriangle()}}{
 Pedal triangle of a point with respect to the reference
 triangle. The pedal triangle of a point \code{P} is the triangle whose
@@ -910,8 +910,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-CevianTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-CevianTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-CevianTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-CevianTriangle}{}}}
 \subsection{Method \code{CevianTriangle()}}{
 Cevian triangle of a point with respect to the reference
 triangle.
@@ -931,8 +931,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MalfattiCircles"></a>}}
-\if{latex}{\out{\hypertarget{method-MalfattiCircles}{}}}
+\if{html}{\out{<a id="method-Triangle-MalfattiCircles"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-MalfattiCircles}{}}}
 \subsection{Method \code{MalfattiCircles()}}{
 Malfatti circles of the triangle.
 \subsection{Usage}{
@@ -969,8 +969,8 @@ invisible(lapply(attr(Mcircles, "tangencyPoints"), function(P){
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-AjimaMalfatti1"></a>}}
-\if{latex}{\out{\hypertarget{method-AjimaMalfatti1}{}}}
+\if{html}{\out{<a id="method-Triangle-AjimaMalfatti1"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-AjimaMalfatti1}{}}}
 \subsection{Method \code{AjimaMalfatti1()}}{
 First Ajima-Malfatti point of the triangle.
 \subsection{Usage}{
@@ -979,8 +979,8 @@ First Ajima-Malfatti point of the triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-AjimaMalfatti2"></a>}}
-\if{latex}{\out{\hypertarget{method-AjimaMalfatti2}{}}}
+\if{html}{\out{<a id="method-Triangle-AjimaMalfatti2"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-AjimaMalfatti2}{}}}
 \subsection{Method \code{AjimaMalfatti2()}}{
 Second Ajima-Malfatti point of the triangle.
 \subsection{Usage}{
@@ -989,8 +989,8 @@ Second Ajima-Malfatti point of the triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-equalDetourPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-equalDetourPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-equalDetourPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-equalDetourPoint}{}}}
 \subsection{Method \code{equalDetourPoint()}}{
 Equal detour point of the triangle.
 \subsection{Usage}{
@@ -1010,8 +1010,8 @@ Also known as the X(176) triangle center.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-trilinearToPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-trilinearToPoint}{}}}
+\if{html}{\out{<a id="method-Triangle-trilinearToPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-trilinearToPoint}{}}}
 \subsection{Method \code{trilinearToPoint()}}{
 Point given by trilinear coordinates.
 \subsection{Usage}{
@@ -1042,8 +1042,8 @@ incircle$center
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-pointToTrilinear"></a>}}
-\if{latex}{\out{\hypertarget{method-pointToTrilinear}{}}}
+\if{html}{\out{<a id="method-Triangle-pointToTrilinear"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-pointToTrilinear}{}}}
 \subsection{Method \code{pointToTrilinear()}}{
 Give the trilinear coordinates of a point with respect to
 the reference triangle.
@@ -1063,8 +1063,8 @@ The trilinear coordinates, a numeric vector of length 3.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isogonalConjugate"></a>}}
-\if{latex}{\out{\hypertarget{method-isogonalConjugate}{}}}
+\if{html}{\out{<a id="method-Triangle-isogonalConjugate"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-isogonalConjugate}{}}}
 \subsection{Method \code{isogonalConjugate()}}{
 Isogonal conjugate of a point with respect to
 the reference triangle.
@@ -1084,8 +1084,8 @@ A point, the isogonal conjugate of \code{P}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-rotate"></a>}}
-\if{latex}{\out{\hypertarget{method-rotate}{}}}
+\if{html}{\out{<a id="method-Triangle-rotate"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-rotate}{}}}
 \subsection{Method \code{rotate()}}{
 Rotate the triangle.
 \subsection{Usage}{
@@ -1108,8 +1108,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-translate"></a>}}
-\if{latex}{\out{\hypertarget{method-translate}{}}}
+\if{html}{\out{<a id="method-Triangle-translate"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-translate}{}}}
 \subsection{Method \code{translate()}}{
 Translate the triangle.
 \subsection{Usage}{
@@ -1128,8 +1128,8 @@ A \code{Triangle} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SteinerEllipse"></a>}}
-\if{latex}{\out{\hypertarget{method-SteinerEllipse}{}}}
+\if{html}{\out{<a id="method-Triangle-SteinerEllipse"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-SteinerEllipse}{}}}
 \subsection{Method \code{SteinerEllipse()}}{
 The Steiner ellipse (or circumellipse) of the reference
 triangle. This is the ellipse passing through the three vertices of
@@ -1156,8 +1156,8 @@ draw(ell, border = "red", lwd =2)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-SteinerInellipse"></a>}}
-\if{latex}{\out{\hypertarget{method-SteinerInellipse}{}}}
+\if{html}{\out{<a id="method-Triangle-SteinerInellipse"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-SteinerInellipse}{}}}
 \subsection{Method \code{SteinerInellipse()}}{
 The Steiner inellipse (or midpoint ellipse) of the reference
 triangle. This is the ellipse tangent to the sides of the triangle at
@@ -1184,8 +1184,8 @@ draw(ell, border = "red", lwd =2)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-MandartInellipse"></a>}}
-\if{latex}{\out{\hypertarget{method-MandartInellipse}{}}}
+\if{html}{\out{<a id="method-Triangle-MandartInellipse"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-MandartInellipse}{}}}
 \subsection{Method \code{MandartInellipse()}}{
 The Mandart inellipse of the reference triangle. This is
   the unique ellipse tangent to the triangle's sides at the contact
@@ -1199,8 +1199,8 @@ An \code{Ellipse} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-randomPoints"></a>}}
-\if{latex}{\out{\hypertarget{method-randomPoints}{}}}
+\if{html}{\out{<a id="method-Triangle-randomPoints"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-randomPoints}{}}}
 \subsection{Method \code{randomPoints()}}{
 Random points on or in the reference triangle.
 \subsection{Usage}{
@@ -1222,8 +1222,8 @@ The generated points in a two columns matrix with \code{n} rows.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hexylTriangle"></a>}}
-\if{latex}{\out{\hypertarget{method-hexylTriangle}{}}}
+\if{html}{\out{<a id="method-Triangle-hexylTriangle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-hexylTriangle}{}}}
 \subsection{Method \code{hexylTriangle()}}{
 Hexyl triangle.
 \subsection{Usage}{
@@ -1232,8 +1232,8 @@ Hexyl triangle.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Triangle-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

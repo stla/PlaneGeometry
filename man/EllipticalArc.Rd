@@ -44,20 +44,20 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{EllipticalArc$new()}}
-\item \href{#method-print}{\code{EllipticalArc$print()}}
-\item \href{#method-startingPoint}{\code{EllipticalArc$startingPoint()}}
-\item \href{#method-endingPoint}{\code{EllipticalArc$endingPoint()}}
-\item \href{#method-isEqual}{\code{EllipticalArc$isEqual()}}
-\item \href{#method-complementaryArc}{\code{EllipticalArc$complementaryArc()}}
-\item \href{#method-path}{\code{EllipticalArc$path()}}
-\item \href{#method-length}{\code{EllipticalArc$length()}}
-\item \href{#method-clone}{\code{EllipticalArc$clone()}}
+\item \href{#method-EllipticalArc-new}{\code{EllipticalArc$new()}}
+\item \href{#method-EllipticalArc-print}{\code{EllipticalArc$print()}}
+\item \href{#method-EllipticalArc-startingPoint}{\code{EllipticalArc$startingPoint()}}
+\item \href{#method-EllipticalArc-endingPoint}{\code{EllipticalArc$endingPoint()}}
+\item \href{#method-EllipticalArc-isEqual}{\code{EllipticalArc$isEqual()}}
+\item \href{#method-EllipticalArc-complementaryArc}{\code{EllipticalArc$complementaryArc()}}
+\item \href{#method-EllipticalArc-path}{\code{EllipticalArc$path()}}
+\item \href{#method-EllipticalArc-length}{\code{EllipticalArc$length()}}
+\item \href{#method-EllipticalArc-clone}{\code{EllipticalArc$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-new"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{EllipticalArc} object.
 \subsection{Usage}{
@@ -92,8 +92,8 @@ EllipticalArc$new(ell, 45, 90)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-print"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of an \code{EllipticalArc} object.
 \subsection{Usage}{
@@ -109,8 +109,8 @@ Show instance of an \code{EllipticalArc} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-startingPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-startingPoint}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-startingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-startingPoint}{}}}
 \subsection{Method \code{startingPoint()}}{
 Starting point of the reference elliptical arc.
 \subsection{Usage}{
@@ -119,8 +119,8 @@ Starting point of the reference elliptical arc.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-endingPoint"></a>}}
-\if{latex}{\out{\hypertarget{method-endingPoint}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-endingPoint"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-endingPoint}{}}}
 \subsection{Method \code{endingPoint()}}{
 Ending point of the reference elliptical arc.
 \subsection{Usage}{
@@ -129,8 +129,8 @@ Ending point of the reference elliptical arc.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-isEqual"></a>}}
-\if{latex}{\out{\hypertarget{method-isEqual}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-isEqual"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-isEqual}{}}}
 \subsection{Method \code{isEqual()}}{
 Check whether the reference elliptical arc equals
 another elliptical arc.
@@ -147,8 +147,8 @@ another elliptical arc.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-complementaryArc"></a>}}
-\if{latex}{\out{\hypertarget{method-complementaryArc}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-complementaryArc"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-complementaryArc}{}}}
 \subsection{Method \code{complementaryArc()}}{
 Complementary elliptical arc of the reference elliptical arc.
 \subsection{Usage}{
@@ -170,8 +170,8 @@ draw(arc$complementaryArc(), lwd = 3, col = "green")
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-path"></a>}}
-\if{latex}{\out{\hypertarget{method-path}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-path"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-path}{}}}
 \subsection{Method \code{path()}}{
 The reference elliptical arc as a path.
 \subsection{Usage}{
@@ -191,8 +191,8 @@ A matrix with two columns \code{x} and \code{y} of length
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-length"></a>}}
-\if{latex}{\out{\hypertarget{method-length}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-length"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-length}{}}}
 \subsection{Method \code{length()}}{
 The length of the elliptical arc.
 \subsection{Usage}{
@@ -204,8 +204,8 @@ A number, the arc length.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-EllipticalArc-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-EllipticalArc-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

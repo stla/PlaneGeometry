@@ -18,7 +18,8 @@
 #' @note This function is used to calculate the length of an elliptical arc
 #' (method \code{length} of \code{EllipticalArc}).
 #'
-#' @examples phi <- pi/4; m <- 0.6
+#' @examples
+#' phi <- pi/4; m <- 0.6
 #' ellint2(phi, m)
 #' gsl::ellint_E(phi, sqrt(m))
 #' curve(ellint2(phi, x), -5, 1/sin(phi)^2)

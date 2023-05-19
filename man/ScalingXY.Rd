@@ -38,17 +38,17 @@ S$getMatrix() \%*\% c(P,1)
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{ScalingXY$new()}}
-\item \href{#method-print}{\code{ScalingXY$print()}}
-\item \href{#method-transform}{\code{ScalingXY$transform()}}
-\item \href{#method-getMatrix}{\code{ScalingXY$getMatrix()}}
-\item \href{#method-asAffine}{\code{ScalingXY$asAffine()}}
-\item \href{#method-clone}{\code{ScalingXY$clone()}}
+\item \href{#method-ScalingXY-new}{\code{ScalingXY$new()}}
+\item \href{#method-ScalingXY-print}{\code{ScalingXY$print()}}
+\item \href{#method-ScalingXY-transform}{\code{ScalingXY$transform()}}
+\item \href{#method-ScalingXY-getMatrix}{\code{ScalingXY$getMatrix()}}
+\item \href{#method-ScalingXY-asAffine}{\code{ScalingXY$asAffine()}}
+\item \href{#method-ScalingXY-clone}{\code{ScalingXY$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-ScalingXY-new"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-new}{}}}
 \subsection{Method \code{new()}}{
 Create a new \code{ScalingXY} object.
 \subsection{Usage}{
@@ -79,8 +79,8 @@ A new \code{ScalingXY} object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-ScalingXY-print"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-print}{}}}
 \subsection{Method \code{print()}}{
 Show instance of a \code{ScalingXY} object.
 \subsection{Usage}{
@@ -96,8 +96,8 @@ Show instance of a \code{ScalingXY} object.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-transform"></a>}}
-\if{latex}{\out{\hypertarget{method-transform}{}}}
+\if{html}{\out{<a id="method-ScalingXY-transform"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-transform}{}}}
 \subsection{Method \code{transform()}}{
 Transform a point or several points by the reference axis-scaling.
 \subsection{Usage}{
@@ -116,8 +116,8 @@ A point or a two-column matrix of points.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMatrix"></a>}}
-\if{latex}{\out{\hypertarget{method-getMatrix}{}}}
+\if{html}{\out{<a id="method-ScalingXY-getMatrix"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-getMatrix}{}}}
 \subsection{Method \code{getMatrix()}}{
 Augmented matrix of the axis-scaling.
 \subsection{Usage}{
@@ -140,8 +140,8 @@ S$getMatrix() \%*\% c(P,1)
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-asAffine"></a>}}
-\if{latex}{\out{\hypertarget{method-asAffine}{}}}
+\if{html}{\out{<a id="method-ScalingXY-asAffine"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-asAffine}{}}}
 \subsection{Method \code{asAffine()}}{
 Convert the reference axis-scaling to an \code{Affine}
 object.
@@ -151,8 +151,8 @@ object.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-ScalingXY-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-ScalingXY-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

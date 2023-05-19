@@ -1,24 +1,38 @@
-Package: PlaneGeometry
 Type: Package
+Package: PlaneGeometry
 Title: Plane Geometry
-Version: 1.3.1
+Version: 1.3.1.9000
 Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
-Description: An extensive set of plane geometry routines. Provides R6 classes representing triangles, circles, circular arcs, ellipses, elliptical arcs and lines, and their plot methods. Also provides R6 classes representing transformations: rotations, reflections, homotheties, scalings, general affine transformations, inversions, Möbius transformations. 
+Description: An extensive set of plane geometry routines. Provides R6
+    classes representing triangles, circles, circular arcs, ellipses,
+    elliptical arcs and lines, and their plot methods. Also provides R6
+    classes representing transformations: rotations, reflections,
+    homotheties, scalings, general affine transformations, inversions,
+    Möbius transformations.
 License: GPL-3
-Encoding: UTF-8
-Imports: R6, methods, graphics, stringr, gsl, uniformly, sdpt3r, fitConic
-RoxygenNote: 7.1.2
-Suggests: 
-    testthat,
-    knitr,
-    rmarkdown,
-    viridisLite,
-    sets,
-    ellipse,
-    freegroup,
-    elliptic,
-    rgl
-VignetteBuilder: knitr
 URL: https://github.com/stla/PlaneGeometry
 BugReports: https://github.com/stla/PlaneGeometry/issues
+Imports: 
+    fitConic,
+    graphics,
+    gsl,
+    methods,
+    R6,
+    sdpt3r,
+    stringr,
+    uniformly
+Suggests: 
+    ellipse,
+    elliptic,
+    freegroup,
+    knitr,
+    rgl,
+    rmarkdown,
+    sets,
+    testthat,
+    viridisLite
+VignetteBuilder: 
+    knitr
+Encoding: UTF-8
+RoxygenNote: 7.2.3
