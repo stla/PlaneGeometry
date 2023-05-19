@@ -847,11 +847,11 @@ fitEllipse <- function(points){
   fittedEllipse
 }
 
-#' @title Maximum volume ellipse inscribed in a convex polyhedron
+#' @title Maximum area ellipse inscribed in a convex polygon
 #' @description Computes the ellipse inscribed in a convex polygon with
-#'   maximum volume.
+#'   maximum area.
 #'
-#' @param points the vertices of the polyhedron in a two-columns matrix; their
+#' @param points the vertices of the polygon in a two-columns matrix; their
 #'   order has no importance, since the procedure takes the convex hull of
 #'   these points (and does not check the convexity)
 #' @param verbose argument passed to \code{\link[CVXR:psolve]{psolve}}
@@ -860,6 +860,7 @@ fitEllipse <- function(points){
 #'   is given as an attribute of this ellipse. A warning is thrown if it is
 #'   not optimal.
 #' @export
+#' @seealso \code{\link{maxAreaInscribedCircle}}
 #' @importFrom rcdd makeV scdd
 #' @importFrom CVXR Variable Minimize log_det norm2 Problem psolve
 #' @examples
@@ -875,12 +876,12 @@ fitEllipse <- function(points){
 #' plot(NULL, xlim=c(-2, 2), ylim=c(-2, 2), xlab = NA, ylab = NA, asp = 1)
 #' points(hexagon, pch = 19)
 #' polygon(hexagon)
-#' ell <- maxVolumeInscribedEllipse(hexagon)
+#' ell <- maxAreaInscribedEllipse(hexagon)
 #' draw(ell, col = "yellow2", border = "blue", lwd = 2)
 #' par(opar)
 #' # check optimization status:
 #' attr(ell, "status")
-maxVolumeInscribedEllipse <- function(points, verbose = FALSE) {
+maxAreaInscribedEllipse <- function(points, verbose = FALSE) {
   if(!is.matrix(points) || !is.numeric(points)){
     stop("The `points` argument must be a numeric matrix.", call. = TRUE)
   }

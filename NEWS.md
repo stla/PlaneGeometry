@@ -1,7 +1,11 @@
 # PlaneGeometry 1.4.0 (2023-05-19)
 
-New function `maxVolumeInscribedEllipse`, to compute the ellipse inscribed in a 
-convex polygon with maximum volume. This optimization problem is solved with 
+- New function `maxAreaInscribedCircle`, to compute the circle inscribed in a 
+convex polygon with maximum area. This optimization problem is solved with 
+the help of the **CVXR** package.
+
+- New function `maxAreaInscribedEllipse`, to compute the ellipse inscribed in a 
+convex polygon with maximum area. This optimization problem is solved with 
 the help of the **CVXR** package.
 
 
