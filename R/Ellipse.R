@@ -899,7 +899,7 @@ maxVolumeInscribedEllipse <- function(points, verbose = FALSE) {
   A <- - H[, -c(1L, 2L)]
   b <- H[, 2L]
   # problem variables
-  Bvar <- Variable(2L, 2L)
+  Bvar <- Variable(2L, 2L, symmetric = TRUE)
   dvar <- Variable(2L)
   # objective
   objective <- Minimize(-log_det(Bvar))
