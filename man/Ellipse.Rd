@@ -158,6 +158,7 @@ points(pts, pch = 19, col = "blue")
 \item \href{#method-Ellipse-matrix}{\code{Ellipse$matrix()}}
 \item \href{#method-Ellipse-path}{\code{Ellipse$path()}}
 \item \href{#method-Ellipse-diameter}{\code{Ellipse$diameter()}}
+\item \href{#method-Ellipse-perimeter}{\code{Ellipse$perimeter()}}
 \item \href{#method-Ellipse-pointFromAngle}{\code{Ellipse$pointFromAngle()}}
 \item \href{#method-Ellipse-pointFromEccentricAngle}{\code{Ellipse$pointFromEccentricAngle()}}
 \item \href{#method-Ellipse-semiMajorAxis}{\code{Ellipse$semiMajorAxis()}}
@@ -397,6 +398,16 @@ invisible(lapply(diameters, draw))
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Ellipse-perimeter"></a>}}
+\if{latex}{\out{\hypertarget{method-Ellipse-perimeter}{}}}
+\subsection{Method \code{perimeter()}}{
+Perimeter of the reference ellipse.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$perimeter()}\if{html}{\out{</div>}}
 }
 
 }

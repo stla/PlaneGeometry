@@ -7,14 +7,15 @@
 #' @export
 #' @importFrom R6 R6Class
 #' @importFrom uniformly runif_in_ellipsoid runif_on_ellipsoid
+#' @importFrom Carlson elliptic_E
 Ellipse <- R6Class(
 
   "Ellipse",
 
   private = list(
     .center = c(NA_real_, NA_real_),
-    .rmajor = c(NA_real_, NA_real_),
-    .rminor = c(NA_real_, NA_real_),
+    .rmajor = NA_real_,
+    .rminor = NA_real_,
     .alpha = NA_real_,
     .degrees = NA
   ),
@@ -276,7 +277,6 @@ Ellipse <- R6Class(
     #' polygon(innerPath, border = "blue", lwd = 2)
     #' polygon(outerPath, border = "green", lwd = 2)
     path = function(npoints = 100L, closed = FALSE, outer = FALSE){
-      center <- private[[".center"]]
       alpha <- private[[".alpha"]]
       if(private[[".degrees"]]) alpha <- alpha * pi/180
       if(outer) {
@@ -339,6 +339,13 @@ Ellipse <- R6Class(
       }else{
         Line$new(pts[1L,], pts[2L,], FALSE, FALSE)
       }
+    },
+
+    #' @description Perimeter of the reference ellipse.
+    perimeter = function() {
+      a <- private[[".rmajor"]]
+      b <- private[[".rminor"]]
+      4 * a * Re(elliptic_E(pi/2, 1-b^2/a^2, minerror = 1e-12))
     },
 
     #' @description Intersection point of the ellipse with the half-line
