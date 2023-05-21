@@ -27,6 +27,20 @@ pts <- ell$path(4L) # four points on the ellipse
 apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
 
 ## ------------------------------------------------
+## Method `Ellipse$path`
+## ------------------------------------------------
+
+library(PlaneGeometry)
+ell <- Ellipse$new(c(1, -1), rmajor = 3, rminor = 2, alpha = 30)
+innerPath <- ell$path(npoints = 10)
+outerPath <- ell$path(npoints = 10, outer = TRUE)
+bbox <- ell$boundingbox()
+plot(NULL, asp = 1, xlim = bbox$x, ylim = bbox$y, xlab = NA, ylab = NA)
+draw(ell, border = "red", lty = "dashed")
+polygon(innerPath, border = "blue", lwd = 2)
+polygon(outerPath, border = "green", lwd = 2)
+
+## ------------------------------------------------
 ## Method `Ellipse$diameter`
 ## ------------------------------------------------
 
@@ -311,20 +325,43 @@ apply(pts, 1L, function(M) t(M-O) \%*\% S \%*\% (M-O))
 \subsection{Method \code{path()}}{
 Path that forms the reference ellipse.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Ellipse$path(npoints = 100L)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Ellipse$path(npoints = 100L, closed = FALSE, outer = FALSE)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{npoints}}{number of points of the path}
+
+\item{\code{closed}}{Boolean, whether to return a closed path; you don't need
+a closed path if you want to plot it with
+\code{\link[graphics:polygon]{polygon}}}
+
+\item{\code{outer}}{Boolean; if \code{TRUE}, the ellipse will be contained
+inside the path, otherwise it will contain the path}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
 A matrix with two columns \code{x} and \code{y} of
-length \code{npoints}.
+  length \code{npoints}.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{library(PlaneGeometry)
+ell <- Ellipse$new(c(1, -1), rmajor = 3, rminor = 2, alpha = 30)
+innerPath <- ell$path(npoints = 10)
+outerPath <- ell$path(npoints = 10, outer = TRUE)
+bbox <- ell$boundingbox()
+plot(NULL, asp = 1, xlim = bbox$x, ylim = bbox$y, xlab = NA, ylab = NA)
+draw(ell, border = "red", lty = "dashed")
+polygon(innerPath, border = "blue", lwd = 2)
+polygon(outerPath, border = "green", lwd = 2)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Ellipse-diameter"></a>}}

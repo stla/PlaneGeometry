@@ -258,19 +258,50 @@ Ellipse <- R6Class(
 
     #' @description Path that forms the reference ellipse.
     #' @param npoints number of points of the path
+    #' @param closed Boolean, whether to return a closed path; you don't need
+    #'   a closed path if you want to plot it with
+    #'   \code{\link[graphics:polygon]{polygon}}
+    #' @param outer Boolean; if \code{TRUE}, the ellipse will be contained
+    #'   inside the path, otherwise it will contain the path
     #' @return A matrix with two columns \code{x} and \code{y} of
-    #' length \code{npoints}.
-    path = function(npoints = 100L){
+    #'   length \code{npoints}.
+    #' @examples
+    #' library(PlaneGeometry)
+    #' ell <- Ellipse$new(c(1, -1), rmajor = 3, rminor = 2, alpha = 30)
+    #' innerPath <- ell$path(npoints = 10)
+    #' outerPath <- ell$path(npoints = 10, outer = TRUE)
+    #' bbox <- ell$boundingbox()
+    #' plot(NULL, asp = 1, xlim = bbox$x, ylim = bbox$y, xlab = NA, ylab = NA)
+    #' draw(ell, border = "red", lty = "dashed")
+    #' polygon(innerPath, border = "blue", lwd = 2)
+    #' polygon(outerPath, border = "green", lwd = 2)
+    path = function(npoints = 100L, closed = FALSE, outer = FALSE){
       center <- private[[".center"]]
       alpha <- private[[".alpha"]]
       if(private[[".degrees"]]) alpha <- alpha * pi/180
-      .ellipsePoints(
-        seq(0, 2*pi, length.out = npoints+1L)[-1L],
-        private[[".center"]],
-        private[[".rmajor"]],
-        private[[".rminor"]],
-        alpha
-      )
+      if(outer) {
+        .ellipsePointsOuter(
+          closed,
+          private[[".center"]],
+          private[[".rmajor"]],
+          private[[".rminor"]],
+          alpha,
+          as.integer(npoints)
+        )
+      } else {
+        if(closed) {
+          t_ <- seq(0, 2*pi, length.out = npoints)
+        } else {
+          t_ <- seq(0, 2*pi, length.out = npoints+1L)[-1L]
+        }
+        .ellipsePoints(
+          t_,
+          private[[".center"]],
+          private[[".rmajor"]],
+          private[[".rminor"]],
+          alpha
+        )
+      }
     },
 
     #' @description Diameter and conjugate diameter of the reference ellipse.

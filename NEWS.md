@@ -1,3 +1,10 @@
+# PlaneGeometry 1.5.0 (2023-??-??)
+
+- The `path` method of the `Ellipse` class gains an argument `outer` allowing 
+to choose whether the path approximating the ellipse will be interior or 
+exterior (thanks to Duncan Murdoch for the help).
+
+
 # PlaneGeometry 1.4.0 (2023-05-19)
 
 - New function `maxAreaInscribedCircle`, to compute the circle inscribed in a 

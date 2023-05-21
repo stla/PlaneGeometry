@@ -136,9 +136,34 @@
   x <- a*cos(t); y <- b*sin(t)
   cosalpha <- cos(alpha); sinalpha <- sin(alpha)
   cbind(
-    x = O[1] + cosalpha*x - sinalpha*y,
-    y = O[2] + sinalpha*x + cosalpha*y
+    x = O[1L] + cosalpha*x - sinalpha*y,
+    y = O[2L] + sinalpha*x + cosalpha*y
   )
+}
+
+.ellipsePointsOuter <- function(closed, O, a, b, alpha, n) {
+  x0 <- O[1L]; y0 <- O[2L]
+  if(!closed) {
+    n <- n + 1L
+  }
+  theta <- c(seq(0, 2 * pi, length.out = n), 0)
+  sintheta <- sin(theta); costheta <- cos(theta)
+  cosalpha <- cos(alpha); sinalpha <- sin(alpha)
+  slopes <- (-a * sintheta * sinalpha + b * costheta * cosalpha) /
+    (-a * sintheta * cosalpha - b * costheta * sinalpha)
+  crds <- cbind(
+    a * costheta * cosalpha - b * sintheta * sinalpha + x0,
+    a * costheta * sinalpha + b * sintheta * cosalpha + y0
+  )
+  intercepts <- crds[, 2L] - slopes * crds[, 1L]
+  i <- 1L:(n-1L)
+  x <- (intercepts[i] - intercepts[i+1L]) / (slopes[i+1L] - slopes[i])
+  y <- slopes[i]*x + intercepts[i]
+  out <- cbind(x = x, y = y)
+  if(closed) {
+    out <- rbind(out, c(x = x[1L], y = y[1L]))
+  }
+  out
 }
 
 .circlePoints <- function(t, O, r){
