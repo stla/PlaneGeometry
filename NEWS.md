@@ -7,6 +7,11 @@ exterior (thanks to Duncan Murdoch for the help).
 - New method `perimeter` for the `Ellipse` class; it returns the perimeter 
 of the ellipse.
 
+- New methods for the `Triangle` class: `perimeter` and `outerSoddyCircle` 
+(beware - this circle possibly has a negative radius).
+
+- New example in the vignette.
+
 
 # PlaneGeometry 1.4.0 (2023-05-19)
 

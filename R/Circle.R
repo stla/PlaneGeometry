@@ -40,9 +40,11 @@ Circle <- R6Class(
         stopifnot(
           is.numeric(radius),
           length(radius) == 1L,
-          radius >= 0,
           !is.na(radius)
         )
+        if(radius < 0) {
+          warning("The radius is negative!")
+        }
         private[[".radius"]] <- radius
       }
     }
@@ -69,9 +71,11 @@ Circle <- R6Class(
       stopifnot(
         is.numeric(radius),
         length(radius) == 1L,
-        radius >= 0,
         !is.na(radius)
       )
+      if(radius < 0) {
+        warning("The radius is negative!")
+      }
       private[[".center"]] <- center
       private[[".radius"]] <- radius
     },
@@ -401,7 +405,7 @@ Circle <- R6Class(
 
     #' @description Convert the reference circle to an \code{Ellipse} object.
     asEllipse = function(){
-      r <- private[[".radius"]]
+      r <- abs(private[[".radius"]])
       Ellipse$new(private[[".center"]], r, r, 0)
     },
 

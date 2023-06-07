@@ -179,6 +179,12 @@ Triangle <- R6Class(
       )
     },
 
+    #' @description Perimeter of the triangle.
+    #' @return The perimeter of the triangle.
+    perimeter = function() {
+      sum(self$edges())
+    },
+
     #' @description Determine the orientation of the triangle.
     #' @return An integer: 1 for counterclockwise, -1 for clockwise, 0 for collinear.
     orientation = function(){
@@ -770,6 +776,18 @@ Triangle <- R6Class(
       R <- sqrt(a2*b2*c2)*((a2*a2+b2*b2+c2*c2) - (a2*b2+b2*c2+a2*c2)) / 3 /
         abs((a2-b2)*(b2-c2)*(c2-a2)) # quid si isocele ?
       Circle$new(O, R)
+    },
+
+    #' @description Soddy outer circle of the reference triangle.
+    #' @return A \code{Circle} object.
+    outerSoddyCircle = function() {
+      if(isTRUE(all.equal(self$flatness(), 1))) {
+        stop("The triangle is flat.")
+      }
+      O <- self$X175()
+      radius <- self$area() /
+        (4 * self$circumradius() + self$inradius() - self$perimeter())
+      Circle$new(O, radius)
     },
 
     #' @description Pedal triangle of a point with respect to the reference

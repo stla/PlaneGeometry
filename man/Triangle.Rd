@@ -171,6 +171,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-Triangle-b}{\code{Triangle$b()}}
 \item \href{#method-Triangle-c}{\code{Triangle$c()}}
 \item \href{#method-Triangle-edges}{\code{Triangle$edges()}}
+\item \href{#method-Triangle-perimeter}{\code{Triangle$perimeter()}}
 \item \href{#method-Triangle-orientation}{\code{Triangle$orientation()}}
 \item \href{#method-Triangle-contains}{\code{Triangle$contains()}}
 \item \href{#method-Triangle-isAcute}{\code{Triangle$isAcute()}}
@@ -209,6 +210,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-Triangle-LemoineTriangle}{\code{Triangle$LemoineTriangle()}}
 \item \href{#method-Triangle-LemoineCircleIII}{\code{Triangle$LemoineCircleIII()}}
 \item \href{#method-Triangle-ParryCircle}{\code{Triangle$ParryCircle()}}
+\item \href{#method-Triangle-outerSoddyCircle}{\code{Triangle$outerSoddyCircle()}}
 \item \href{#method-Triangle-pedalTriangle}{\code{Triangle$pedalTriangle()}}
 \item \href{#method-Triangle-CevianTriangle}{\code{Triangle$CevianTriangle()}}
 \item \href{#method-Triangle-MalfattiCircles}{\code{Triangle$MalfattiCircles()}}
@@ -339,6 +341,19 @@ The lengths of the sides of the triangle.
 
 \subsection{Returns}{
 A named numeric vector.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Triangle-perimeter"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-perimeter}{}}}
+\subsection{Method \code{perimeter()}}{
+Perimeter of the triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$perimeter()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+The perimeter of the triangle.
 }
 }
 \if{html}{\out{<hr>}}
@@ -880,6 +895,19 @@ A \code{Circle} object.
 Parry circle of the reference triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$ParryCircle()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+A \code{Circle} object.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Triangle-outerSoddyCircle"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-outerSoddyCircle}{}}}
+\subsection{Method \code{outerSoddyCircle()}}{
+Soddy outer circle of the reference triangle.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$outerSoddyCircle()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{
