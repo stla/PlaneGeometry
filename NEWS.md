@@ -1,4 +1,4 @@
-# PlaneGeometry 1.5.0 (2023-??-??)
+# PlaneGeometry 1.5.0 (2023-06-17)
 
 - The `path` method of the `Ellipse` class gains an argument `outer` allowing 
 to choose whether the path approximating the ellipse will be interior or 
