@@ -732,7 +732,7 @@ EllipseEquationFromFivePoints <- function(P1, P2, P3, P4, P5){
 EllipseFromEquation <- function(A, B, C, D, E, F){
   stopifnot(A*C > 0)
   if(B*B-4*A*C >= 0) stop("These parameters do not define an ellipse.")
-  if(D*D + E*E <= 4*(A+C)*F) stop("These parameters do not define an ellipse.")
+  #if(D*D + E*E <= 4*(A+C)*F) stop("These parameters do not define an ellipse.")
   Q <- rbind(c(2*A, B, D), c(B, 2*C, E), c(D, E, 2*F))
   if(det(Q) == 0) stop("These parameters do not define an ellipse.")
   M0 <- matrix(c(F, D/2, E/2, D/2, A, B/2, E/2, B/2, C), 3L, 3L)
