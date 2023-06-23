@@ -308,7 +308,7 @@ tessellation <- function(depth, Thetas0, colors){
 tessellation(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
-  colors = viridisLite::viridis(5)
+  colors = viridisLite::viridis(5L)
 )
 ```
 
@@ -402,7 +402,7 @@ tessellation2 <- function(depth, Thetas0, colors){
       A <- arc$endingPoint()
       alpha1 <- Arg(A[1L] + 1i*A[2L])
       alpha2 <- Arg(B[1L] + 1i*B[2L])
-      path2 <- Arc$new(c(0,0), 3, alpha1, alpha2, FALSE)$path()
+      path2 <- Arc$new(c(0, 0), 3, alpha1, alpha2, FALSE)$path()
       polypath(rbind(path1,path2), col = colors[d+1L])
     }
   }
@@ -420,7 +420,7 @@ tessellation2 <- function(depth, Thetas0, colors){
 tessellation2(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
-  colors = viridisLite::viridis(6)
+  colors = viridisLite::viridis(6L)
 )
 ```
 
@@ -1533,4 +1533,4 @@ CircularMalfattiGasket(
 ```
 
 
-![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiCircularGasket.png){width=50%}
+![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiCircularGasket.png){width=80%}
