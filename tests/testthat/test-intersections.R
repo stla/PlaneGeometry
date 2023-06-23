@@ -21,6 +21,7 @@ test_that("intersectionCircleCircle", {
 })
 
 test_that("Intersection collinear segments", {
+  skip_if_not_installed("sets")
   library(sets)
   #
   A <- c(1,1); B <- c(8,8); C <- c(3,3); D <- c(5,5)
@@ -79,6 +80,7 @@ test_that("Intersection collinear segments", {
 })
 
 test_that("Intersection collinear segment and half-line", {
+  skip_if_not_installed("sets")
   library(sets)
   #
   A <- c(1,1); B <- c(8,8); C <- c(3,3); D <- c(5,5)
@@ -149,6 +151,7 @@ test_that("Intersection collinear segment and half-line", {
 })
 
 test_that("Intersection collinear half-lines", {
+  skip_if_not_installed("sets")
   library(sets)
   #
   A <- c(1,1); B <- c(8,8); C <- c(3,3); D <- c(5,5)

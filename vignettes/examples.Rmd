@@ -304,7 +304,7 @@ tessellation <- function(depth, Thetas0, colors){
 ```
 
 
-```{r tessellation, fig.width=4, fig.height=4}
+```{r tessellation, fig.width=4, fig.height=4, eval=require("viridisLite", quietly=TRUE)}
 tessellation(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
@@ -416,7 +416,7 @@ tessellation2 <- function(depth, Thetas0, colors){
 ```
 
 
-```{r tessellation2, fig.width=4, fig.height=4}
+```{r tessellation2, fig.width=4, fig.height=4, eval=require("viridisLite", quietly=TRUE)}
 tessellation2(
   depth = 5L, 
   Thetas0 = c(0, 2, 3.8), 
@@ -783,7 +783,7 @@ par(opar)
 
 This construction is taken from the book *Indra's Pearls: The Vision of Felix Klein*.
 
-```{r schottky, message=FALSE}
+```{r schottky, message=FALSE, eval=require("freegroup", quietly=TRUE)}
 library(freegroup)
 
 a <- alpha(1)
@@ -858,7 +858,7 @@ word2circle <- function(g){
 
 Here is the picture:
 
-```{r draw_schottky, fig.width=4, fig.height=4}
+```{r draw_schottky, fig.width=4, fig.height=4, eval=require("freegroup", quietly=TRUE)}
 opar <- par(mar = c(0,0,0,0), bg = "black")
 plot(NULL, asp = 1, xlim = c(-3,3), ylim = c(-3,3),
      axes = FALSE, xlab = NA, ylab = NA)
@@ -908,7 +908,7 @@ I did this animation after I came across the paper
 which motivated me to implement the generalized power of a Möbius transformation.
 
 
-```{r modularTesselation, message=FALSE}
+```{r modularTesselation, message=FALSE, eval=require("elliptic", quietly=TRUE)}
 library(elliptic) # for the unimodular matrices
 
 # Möbius transformations
@@ -1048,7 +1048,7 @@ ApollonianGasket <- function(c0, n, phi, shift, depth){
 
 Let's apply our function:
 
-```{r drawgasket, fig.height=4, fig.width=4}
+```{r drawgasket, fig.height=4, fig.width=4, eval=require("viridisLite", quietly=TRUE)}
 library(viridisLite) # for the colors
 c0 <- Circle$new(c(0,0), 3) # the exterior circle
 depth <- 5
@@ -1209,7 +1209,7 @@ circs <- fractal(4)
 
 Let's plot the fractal in 3D with the help of the **rgl** package.
 
-```{r rglsphere}
+```{r rglsphere, eval=require("rgl", quietly=TRUE)}
 library(rgl)
 # the spheres in rgl, obtained with the `spheres3d` function, are not smooth;
 # the way we use below provides pretty spheres 
@@ -1255,7 +1255,7 @@ each of its three Malfatti circles with an Apollonian gasket, and fill the
 rest of the triangle with tangent circles. In fact, tangent spheres: we will 
 draw the result in 3D, this will be more pretty.
 
-```{r malfattigasket}
+```{r malfattigasket, eval=require("viridisLite", quietly=TRUE)}
 toCplx <- function(M) {
   M[1L] + 1i * M[2L]
 }
@@ -1427,7 +1427,7 @@ three circular gaskets.
 Yet another Malfatti based Apollonian gasket. This one uses the outer 
 Soddy circle, which has a negative radius!
 
-```{r malfattiCircular, warning=FALSE}
+```{r malfattiCircular, warning=FALSE, eval=require("rgl", quietly=TRUE)}
 library(rgl)
 
 iteration <- function(circlesWithIndicator, inversions) {
@@ -1531,7 +1531,6 @@ CircularMalfattiGasket(
   colors = c("yellow", "orangered", "darkmagenta")
 )
 ```
-
 
 
 ![](https://github.com/stla/PlaneGeometry/raw/master/inst/imgs/MalfattiCircularGasket.png){width=50%}

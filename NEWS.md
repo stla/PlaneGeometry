@@ -1,3 +1,8 @@
+# PlaneGeometry 1.5.1 (2023-06-23)
+
+- Unit tests and vignette chunks are now skipped if dependencies are missing.
+
+
 # PlaneGeometry 1.5.0 (2023-06-17)
 
 - The `path` method of the `Ellipse` class gains an argument `outer` allowing 

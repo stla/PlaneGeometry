@@ -48,8 +48,9 @@ test_that("EllipseFromEquation", {
 })
 
 test_that("Gaussian ellipse", {
+  skip_if_not_installed("ellipse")
   mean <- c(2, 1)
-  Sigma <- cbind(c(3,2),c(2,5))
+  Sigma <- cbind(c(3,2), c(2,5))
   p <- 0.9
   ell <- GaussianEllipse(mean, Sigma, p)
   pts <- ellipse::ellipse(Sigma, centre = mean, level = p)
