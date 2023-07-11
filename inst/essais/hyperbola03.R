@@ -42,6 +42,29 @@ g0 <- O
 g1 <- A - O
 g2 <- tgA
 
+eq1 <- function(t) O + cosh(t) * g1 + sinh(t) * g2
+eq2 <- function(t) O - cosh(t) * g1 + sinh(t) * g2
+
+# vertices
+t0 <- log(c(crossprod(g1-g2)) / c(crossprod(g1+g2))) / 4
+v1 <- eq1(t0)
+v2 <- eq2(-t0)
+
+# |f1|=|f2|
+lambdas_eq <- invM %*% (v1-O)
+lambdaEq <- lambdas_eq[1L]
+f1eq <- lambdaEq * f10
+f2eq <- lambdaEq * f20
+# v1 =
+O + f1eq + f2eq
+# tangent at v1
+tgV <- f1eq - f2eq
+
+# parametric representation  g0 +/- cosh(t) g1 + sinh(t) g2
+g0 <- O
+g1 <- v1 - O
+g2 <- tgV
+
 plot(NULL, asp = 1, xlim = c(-5, 5), ylim = c(-5, 5), xlab = "x", ylab = "y")
 t_ <- seq(-5, 5, length.out = 100L)
 H1 <- t(vapply(t_, function(t) {
@@ -52,22 +75,11 @@ H2 <- t(vapply(t_, function(t) {
   O - cosh(t) * g1 + sinh(t) * g2
 }, numeric(2L)))
 lines(H2)
-points(rbind(A), pch = 19)
+points(rbind(A), pch = 19, col="blue")
 draw(l1, col = "red")
 draw(l2, col = "red")
-
-eq1 <- function(t) O + cosh(t) * g1 + sinh(t) * g2
-eq2 <- function(t) O - cosh(t) * g1 + sinh(t) * g2
-
-# vertices
-t0 <- log(c(crossprod(g1-g2)) / c(crossprod(g1+g2))) / 4
-v1 <- eq1(t0)
-v2 <- eq2(-t0)
 points(t(v1), pch = 19)
 points(t(v2), pch = 19)
-
-# |f1|=|f2|
-invM %*% (v1-O)
 
 # intersecting rectangle
 h <- function(P) {
@@ -84,8 +96,18 @@ P2 <- c(xmax, ymin)
 P3 <- c(xmax, ymax)
 P4 <- c(xmin, ymax)
 
-h(P1); h(P2); h(P3); h(P4) # tous négatifs => tous à l'intérieur des branches
-# -> même signes, mais le rectangle contient un vertex
+h(P1); h(P2); h(P3); h(P4) # tous positifs => tous à l'intérieur des branches
+                           # est-ce général ?.. si tu ne sais pas, tu regardes
+                           # le signe pour P = O... qui est clairement négatif,
+                           # donc c'est général ! (et pas besoin de |f1|=|f2|)
+# -> même signes, mais le rectangle coupe les asymptotes
 h(v2) # 0
 
-# non... les vertex ne sont pas les points leftmost et rightmost
+# pour voir que le rectangle coupe une asymptote:
+do <- l1$directionAndOffset()
+theta <- do$direction
+offset <- do$offset
+s <- function(P) {
+  cos(theta) * P[1L] + sin(theta) * P[2L] - offset
+}
+s(P1); s(P2); s(P3); s(P4) # -> changement de signes
