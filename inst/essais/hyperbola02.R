@@ -1,7 +1,7 @@
 library(PlaneGeometry)
 
 # asymptotes
-a1 <- 0; b1 <- 1
+a1 <- 0; b1 <- 2
 l1 <- LineFromInterceptAndSlope(a1, b1)
 a2 <- -1; b2 <- -0.5
 l2 <- LineFromInterceptAndSlope(a2, b2)
@@ -9,7 +9,7 @@ l2 <- LineFromInterceptAndSlope(a2, b2)
 l1$isParallel(l2)
 
 # point on hyperbola
-A <- c(4, 2)
+A <- c(3, 3.5)
 
 # center
 O <- intersectionLineLine(l1, l2)
@@ -21,7 +21,7 @@ f10 <- c(sin(theta1), -cos(theta1))
 f20 <- c(sin(theta2), -cos(theta2))
 #lambdas <- solve(t(rbind(f10, f20)), A - O)
 # M <- t(rbind(f10, f20))
-detM <- cos(theta1 + theta2)
+detM <- -sin(theta1)*cos(theta2) + sin(theta2)*cos(theta1)
 invM <- rbind(
   c(-cos(theta2), -sin(theta2)),
   c(cos(theta1), sin(theta1))
@@ -43,7 +43,7 @@ g1 <- A - O
 g2 <- tgA
 
 plot(NULL, asp = 1, xlim = c(-5, 5), ylim = c(-5, 5), xlab = "x", ylab = "y")
-t_ <- seq(-2, 2, length.out = 100L)
+t_ <- seq(-5, 5, length.out = 100L)
 H1 <- t(vapply(t_, function(t) {
   O + cosh(t) * g1 + sinh(t) * g2
 }, numeric(2L)))
@@ -81,8 +81,8 @@ P2 <- c(xmax, ymin)
 P3 <- c(xmax, ymax)
 P4 <- c(xmin, ymin)
 
-h(P1); h(P2); h(P3); h(P4)
+h(P1); h(P2); h(P3); h(P4) # tous négatifs => tous entre les branches
 # -> même signes, mais le rectangle contient un vertex
 h(v2) # 0
 
-
+# non... les vertex ne sont pas les points leftmost et rightmost
