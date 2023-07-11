@@ -101,6 +101,7 @@ h(P1); h(P2); h(P3); h(P4) # tous positifs => tous à l'intérieur des branches
                            # le signe pour P = O... qui est clairement négatif,
                            # donc c'est général ! (et pas besoin de |f1|=|f2|)
 # -> même signes, mais le rectangle coupe les asymptotes
+# rq: suffit de regarder pour P1 et P3 il me semble
 h(v2) # 0
 
 # pour voir que le rectangle coupe une asymptote:
@@ -111,3 +112,20 @@ s <- function(P) {
   cos(theta) * P[1L] + sin(theta) * P[2L] - offset
 }
 s(P1); s(P2); s(P3); s(P4) # -> changement de signes
+
+# foci (see image)
+a2 <- c(crossprod(v1 - O))
+L <- Line$new(v1, v1+tgV) # utilisation de tgV ici
+I <- intersectionLineLine(l1, L)
+b2 <- c(crossprod(v1 - I))
+c <- sqrt(a2 + b2)
+a <- sqrt(a2)
+F1 <- O + c/a * (v1 - O)
+F2 <- O - c/a * (v1 - O)
+points(t(F1), pch = 19, col = "green")
+points(t(F2), pch = 19, col = "green")
+majorAxis <- Line$new(F1, F2)
+draw(majorAxis, col = "yellow")
+
+
+
