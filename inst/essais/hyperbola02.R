@@ -6,6 +6,8 @@ l1 <- LineFromInterceptAndSlope(a1, b1)
 a2 <- -1; b2 <- -0.5
 l2 <- LineFromInterceptAndSlope(a2, b2)
 
+l1$isParallel(l2)
+
 # point on hyperbola
 A <- c(4, 2)
 
@@ -63,3 +65,24 @@ v1 <- eq1(t0)
 v2 <- eq2(-t0)
 points(t(v1), pch = 19)
 points(t(v2), pch = 19)
+
+# intersecting rectangle
+h <- function(P) {
+  det(cbind(P-O, g2))^2 - det(cbind(g1, P-O))^2 - det(cbind(g1, g2))^2
+}
+
+xmin <- -6
+xmax <- 0
+ymin <- -7
+ymax <- 3
+
+P1 <- c(xmin, ymin)
+P2 <- c(xmax, ymin)
+P3 <- c(xmax, ymax)
+P4 <- c(xmin, ymin)
+
+h(P1); h(P2); h(P3); h(P4)
+# -> même signes, mais le rectangle contient un vertex
+h(v2) # 0
+
+
