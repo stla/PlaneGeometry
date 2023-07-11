@@ -128,4 +128,41 @@ majorAxis <- Line$new(F1, F2)
 draw(majorAxis, col = "yellow")
 
 
+# a good rectangle
+x1 <- F1[1]
+#t1 <- acosh(x1) nimp
+x2 <- F2[1]
+y1 <- F1[2L]
+y2 <- F2[2L]
+#t1 <- asinh(y1 - O[2]) nimp
 
+# prend p, le semi-machin rectum, ça donne un point sur l'hyperbole,
+# et pour un tel point on peut trouver t
+L <- majorAxis$perpendicular(F1)
+# ajouter méthode Line vecteur directeur unitaire ?
+alpha <- L$directionAndOffset()$direction
+u <- c(sin(alpha), -cos(alpha))
+P1 <- F1 + sqrt(b2) * u
+points(t(P1), pch = 19, col = "gray")
+P2 <- F2 - sqrt(b2) * u
+points(t(P2), pch = 19, col = "gray")
+
+plot(rbind(P1, P2), type = "n", asp = 1)
+#plot(NULL, asp = 1, xlim = c(x2, x1), ylim = c(y2, y1))
+t_ <- seq(-t1, t1, length.out = 100L)
+H1 <- t(vapply(t_, function(t) {
+  O + cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H1)
+H2 <- t(vapply(t_, function(t) {
+  O - cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H2)
+points(rbind(A), pch = 19, col="blue")
+draw(l1, col = "red")
+draw(l2, col = "red")
+points(t(v1), pch = 19)
+points(t(v2), pch = 19)
+points(t(F1), pch = 19, col = "green")
+points(t(F2), pch = 19, col = "green")
+draw(majorAxis, col = "yellow")
