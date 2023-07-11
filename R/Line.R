@@ -148,17 +148,17 @@ Line <- R6Class(
     },
 
     #' @description Segment length, returns the length of the segment joining
-    #'   the two point defining the line.
-    length = function(){
+    #'   the two points defining the line.
+    length = function() {
       .distance(private[[".A"]], private[[".B"]])
     },
 
     #' @description Direction (angle between 0 and 2pi)
-    #' and offset (positive number) of the reference line.
+    #'   and offset (positive number) of the reference line.
     #' @details The equation of the line is
-    #' \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
-    #' where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
-    #' and \ifelse{html}{\out{d}}{\eqn{d}{d}} is the offset.
+    #'   \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
+    #'   where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
+    #'   and \ifelse{html}{\out{d}}{\eqn{d}{d}} is the offset.
     directionAndOffset = function() {
       A <- private[[".A"]]; B <- private[[".B"]]
       if(A[1L] == B[1L]) {
@@ -175,7 +175,7 @@ Line <- R6Class(
         #   retistruct::line.line.intersection(A, B, c(0,0), c(0,1))[2L]
         theta <- -atan2(x, y) # if(y >= 0) atan2(y, x) else atan(y, x)
         offset <- A[1L]*cos(theta) + A[2L]*sin(theta)
-        if(offset < 0){
+        if(offset < 0) {
           theta <- theta + pi
           offset <- -offset
         }

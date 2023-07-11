@@ -13,9 +13,19 @@ A <- c(4, 2)
 O <- intersectionLineLine(l1, l2)
 
 # equation O + t f1 + 1/t f2
-f10 <- c(1, b1)
-f20 <- c(1, b2)
-lambdas <- solve(t(rbind(f10, f20)), A - O)
+theta1 <- l1$directionAndOffset()$direction
+theta2 <- l2$directionAndOffset()$direction
+f10 <- c(sin(theta1), -cos(theta1))
+f20 <- c(sin(theta2), -cos(theta2))
+#lambdas <- solve(t(rbind(f10, f20)), A - O)
+# M <- t(rbind(f10, f20))
+detM <- cos(theta1 + theta2)
+invM <- rbind(
+  c(-cos(theta2), -sin(theta2)),
+  c(cos(theta1), sin(theta1))
+) / detM
+lambdas <- invM %*% (A-O)
+
 lambda1 <- lambdas[1L]
 lambda2 <- lambdas[2L]
 f1 <- lambda1 * f10
