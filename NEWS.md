@@ -1,3 +1,8 @@
+# PlaneGeometry 1.6.0 (2023-0?-??)
+
+- New functions `LineFromInterceptAndSlope` and `LineFromEquation`.
+
+
 # PlaneGeometry 1.5.1 (2023-06-23)
 
 - Unit tests and vignette chunks are now skipped if dependencies are missing.

@@ -159,15 +159,15 @@ Line <- R6Class(
     #' \ifelse{html}{\out{cos(&theta;)x+sin(&theta;)y=d}}{\eqn{\cos(\theta)x+\sin(\theta)y=d}{cos(theta)x+sin(theta)y=d}}
     #' where \ifelse{html}{\out{&theta;}}{\eqn{\theta}{theta}} is the direction
     #' and \ifelse{html}{\out{d}}{\eqn{d}{d}} is the offset.
-    directionAndOffset = function(){
+    directionAndOffset = function() {
       A <- private[[".A"]]; B <- private[[".B"]]
-      if(A[1L] == B[1L]){
-        if(A[1L] > 0){
+      if(A[1L] == B[1L]) {
+        if(A[1L] > 0) {
           list(direction = 0, offset = A[1L])
-        }else{
+        } else {
           list(direction = pi, offset = -A[1L])
         }
-      }else{
+      } else {
         x <- B[1L] - A[1L]
         y <- B[2L] - A[2L]
         # sgn <- sign(x)*sign(y)
@@ -237,16 +237,19 @@ Line <- R6Class(
     },
 
     #' @description Whether a point belongs to the reference line.
-    #' @param M the point for which we want to test whether it belongs to the line
-    #' @param strict logical, whether to take into account \code{extendA} and \code{extendB}
+    #' @param M the point for which we want to test whether it belongs to the
+    #'   line
+    #' @param strict logical, whether to take into account \code{extendA}
+    #'   and \code{extendB}
     #' @param checkCollinear logical, whether to check the collinearity of
-    #' \code{A}, \code{B}, \code{M}; set to \code{FALSE} only if you are sure that
-    #' \code{M} is on the line \code{(AB)} (if you use \code{strict=TRUE})
+    #'   \code{A}, \code{B}, \code{M}; set to \code{FALSE} only if you are sure
+    #'   that \code{M} is on the line \code{(AB)} in case if you use
+    #'   \code{strict=TRUE}
     #' @return \code{TRUE} or \code{FALSE}.
     #' @examples A <- c(0,0); B <- c(1,2); M <- c(3,6)
     #' l <- Line$new(A, B, FALSE, FALSE)
     #' l$includes(M, strict = TRUE)
-    includes = function(M, strict = FALSE, checkCollinear = TRUE){
+    includes = function(M, strict = FALSE, checkCollinear = TRUE) {
       A <- private[[".A"]]; B <- private[[".B"]]
       if(checkCollinear){
         test <- .collinear(A, B, M)
@@ -254,25 +257,25 @@ Line <- R6Class(
       }
       extendA <- private[[".extendA"]]; extendB <- private[[".extendB"]]
       if(!strict || (extendA && extendB)) return(.collinear(A, B, M))
-      if(!extendA && !extendB){
+      if(!extendA && !extendB) {
         dotprod <- .dot(A-M, B-M)
-        if(dotprod <= 0){
+        if(dotprod <= 0) {
           TRUE
         } else {
           message("The point is on the line (AB), but not on the segment [AB]")
           FALSE
         }
-      }else if(extendA){
-        if(any((M-B)*(A-B)>0)){ #(M-B)[1L] * (A-B)[1L] > 0){
+      } else if(extendA) {
+        if(any((M-B)*(A-B)>0)) { #(M-B)[1L] * (A-B)[1L] > 0){
           TRUE
-        }else{
+        } else {
           message("The point is on the line (AB), but not on the half-line (AB]")
           FALSE
         }
-      }else{ # extendB
-        if(any((M-A)*(B-A)>0)){#(M-A)[1L] * (B-A)[1L] >= 0){
+      } else { # extendB
+        if(any((M-A)*(B-A)>0)) {#(M-A)[1L] * (B-A)[1L] >= 0){
           TRUE
-        }else{
+        } else {
           message("The point is on the line (AB), but not on the half-line [AB)")
           FALSE
         }

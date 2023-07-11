@@ -232,13 +232,16 @@ Whether a point belongs to the reference line.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{M}}{the point for which we want to test whether it belongs to the line}
+\item{\code{M}}{the point for which we want to test whether it belongs to the
+line}
 
-\item{\code{strict}}{logical, whether to take into account \code{extendA} and \code{extendB}}
+\item{\code{strict}}{logical, whether to take into account \code{extendA}
+and \code{extendB}}
 
 \item{\code{checkCollinear}}{logical, whether to check the collinearity of
-\code{A}, \code{B}, \code{M}; set to \code{FALSE} only if you are sure that
-\code{M} is on the line \code{(AB)} (if you use \code{strict=TRUE})}
+\code{A}, \code{B}, \code{M}; set to \code{FALSE} only if you are sure
+that \code{M} is on the line \code{(AB)} in case if you use
+\code{strict=TRUE}}
 }
 \if{html}{\out{</div>}}
 }
