@@ -141,14 +141,16 @@ y2 <- F2[2L]
 L <- majorAxis$perpendicular(F1)
 # ajouter méthode Line vecteur directeur unitaire ?
 alpha <- L$directionAndOffset()$direction
-u <- c(sin(alpha), -cos(alpha))
+u <- c(sin(alpha), -cos(alpha)) # c'est tgV normalisé !
 P1 <- F1 + sqrt(b2) * u
+PP1 <- F1 - sqrt(b2) * u
 points(t(P1), pch = 19, col = "gray")
 P2 <- F2 - sqrt(b2) * u
+PP2 <- F2 + sqrt(b2) * u
 points(t(P2), pch = 19, col = "gray")
 
-plot(rbind(P1, P2), type = "n", asp = 1)
-#plot(NULL, asp = 1, xlim = c(x2, x1), ylim = c(y2, y1))
+plot(rbind(P1, P2, PP1, PP2), type = "p", asp = 1, xlab ="x", ylab = "y",
+     pch = 19, col = "gray", xaxs = "i", yaxs = "i")
 t_ <- seq(-t1, t1, length.out = 100L)
 H1 <- t(vapply(t_, function(t) {
   O + cosh(t) * g1 + sinh(t) * g2
@@ -158,7 +160,7 @@ H2 <- t(vapply(t_, function(t) {
   O - cosh(t) * g1 + sinh(t) * g2
 }, numeric(2L)))
 lines(H2)
-points(rbind(A), pch = 19, col="blue")
+#points(rbind(A), pch = 19, col="blue")
 draw(l1, col = "red")
 draw(l2, col = "red")
 points(t(v1), pch = 19)
