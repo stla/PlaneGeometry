@@ -101,3 +101,21 @@ D <- intersectionLineLine(L2, tg)
 
 trgl <- Triangle$new(O, C, D)
 trgl$area()
+
+# "hvab theta"
+library(fitConic)
+L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.15)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+OAB <- hyperbola$OAB()
+O <- OAB$O
+A <- OAB$A
+B <- OAB$B
+eq <- hyperbola$equation()
+parA <- c(eq$Axx, 2*eq$Axy, eq$Ayy, 2*eq$Bx, 2*eq$By, eq$C)
+print(AtoG(parA))
+a <- hyperbola$abce()$a
+b <- hyperbola$abce()$b
+L2$directionAndOffset()$direction - atan(a/b) - pi # theta
+2*pi - L1$directionAndOffset()$direction + 0.4791294 # atan(a/b)
