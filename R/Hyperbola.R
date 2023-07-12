@@ -285,6 +285,25 @@ Hyperbola <- R6Class(
         det(cbind(A, P-O))^2 + det(cbind(A, B))^2,
         check.attributes = FALSE
       ))
+    },
+
+    #' @description Implicit quadratic equation of the hyperbola
+    #' \ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2*A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2*B<sub>x</sub>x + 2*B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{Axx*x^2 + 2Axy*x*y + Ayy*y^2 + 2Bx*x + 2By*y + C = 0}}
+    #' @return The coefficients of the equation in a named vector.
+    "equation" = function() {
+      O <- private[[".O"]]
+      A <- private[[".A"]]
+      B <- private[[".B"]]
+      M <- private[[".M"]]
+      Axx <- B[2L]^2 - A[2L]^2
+      Axy <- A[1L]*A[2L] - B[1L]*B[2L]
+      Ayy <- B[1L]^2 - A[1L]^2
+      Bx <- -(a*O[1L] + b*O[2L]/2)
+      By <- -(c*O[2L] + b*O[1L]/2)
+      x <- M[1L]
+      y <- M[2L]
+      C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
+      c(Axx = Axx, Axy = Axy, Ayy = Ayy, Bx = Bx, By = By, C = C)
     }
   )
 )

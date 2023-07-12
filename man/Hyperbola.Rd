@@ -72,6 +72,7 @@ hyperbola$includes(M)
 \item \href{#method-Hyperbola-foci}{\code{Hyperbola$foci()}}
 \item \href{#method-Hyperbola-plot}{\code{Hyperbola$plot()}}
 \item \href{#method-Hyperbola-includes}{\code{Hyperbola$includes()}}
+\item \href{#method-Hyperbola-equation}{\code{Hyperbola$equation()}}
 \item \href{#method-Hyperbola-clone}{\code{Hyperbola$clone()}}
 }
 }
@@ -260,6 +261,20 @@ hyperbola$includes(M)
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Hyperbola-equation"></a>}}
+\if{latex}{\out{\hypertarget{method-Hyperbola-equation}{}}}
+\subsection{Method \code{equation()}}{
+Implicit quadratic equation of the hyperbola
+\ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2*A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2*B<sub>x</sub>x + 2*B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{Axx*x^2 + 2Axy*x*y + Ayy*y^2 + 2Bx*x + 2By*y + C = 0}}
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hyperbola$equation()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+The coefficients of the equation in a named vector.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Hyperbola-clone"></a>}}

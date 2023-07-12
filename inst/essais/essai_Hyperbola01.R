@@ -34,10 +34,19 @@ x <- M[1]; y <- M[2]
 c(A*x*x, B*x*y, C*y^2, D*x, E*y, F)
 A*x^2 + B*x*y + C*y^2 - D*x + E*y - F
 
-###
-a <- B[2]^2 - A[2]^2
-c <- B[1]^2 - A[1]^2
-b <- -2*B[1]*B[2] + 2*A[1]*A[2]
-d <- -B[2]^2*2*O[1] + A[2]^2*2*O[1] + 2*B[2]*O[2]*B[1] - 2*A[2]*O[2]*A[1]
-e <- -B[1]^2*2*O[2] + A[1]^2*2*O[2] + 2*B[1]*O[1]*B[2] - 2*A[1]*O[1]*A[2]
-f <- -(a*x^2 + b*x*y + c*y^2 + d*x + e*y)
+### by developing the implicit equation with the determinants ($includes)
+( a <- B[2L]^2 - A[2L]^2 )
+( b <- 2*(A[1L]*A[2L] - B[1L]*B[2L]) )
+( c <- B[1L]^2 - A[1L]^2 )
+( d <- -(2*a*O[1L] + b*O[2L]) )
+( e <- -(2*c*O[2L] + b*O[1L]) )
+#e <- -B[1]^2*2*O[2] + A[1]^2*2*O[2] + 2*B[1]*O[1]*B[2] - 2*A[1]*O[1]*A[2]
+x <- M[1]; y <- M[2]
+( f <- -(a*x^2 + b*x*y + c*y^2 + d*x + e*y) )
+
+Axx <- B[2L]^2 - A[2L]^2
+Axy <- A[1L]*A[2L] - B[1L]*B[2L]
+Ayy <- B[1L]^2 - A[1L]^2
+Bx <- -(a*O[1L] + b*O[2L]/2)
+By <- -(c*O[2L] + b*O[1L]/2)
+C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
