@@ -307,8 +307,8 @@ Hyperbola <- R6Class(
       Axx <- B[2L]^2 - A[2L]^2
       Axy <- A[1L]*A[2L] - B[1L]*B[2L]
       Ayy <- B[1L]^2 - A[1L]^2
-      Bx <- -(a*O[1L] + b*O[2L]/2)
-      By <- -(c*O[2L] + b*O[1L]/2)
+      Bx <- -(Axx*O[1L] + Axy*O[2L]/2)
+      By <- -(Ayy*O[2L] + Axy*O[1L]/2)
       x <- M[1L]
       y <- M[2L]
       C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
