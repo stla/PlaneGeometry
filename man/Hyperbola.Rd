@@ -18,6 +18,16 @@ L2 <- LineFromInterceptAndSlope(-2, -0.5)
 M <- c(4, 3)
 hyperbola <- Hyperbola$new(L1, L2, M)
 hyperbola$OAB()
+
+## ------------------------------------------------
+## Method `Hyperbola$includes`
+## ------------------------------------------------
+
+L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+hyperbola$includes(M)
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -40,6 +50,7 @@ hyperbola$OAB()
 \item \href{#method-Hyperbola-abce}{\code{Hyperbola$abce()}}
 \item \href{#method-Hyperbola-foci}{\code{Hyperbola$foci()}}
 \item \href{#method-Hyperbola-plot}{\code{Hyperbola$plot()}}
+\item \href{#method-Hyperbola-includes}{\code{Hyperbola$includes()}}
 \item \href{#method-Hyperbola-clone}{\code{Hyperbola$clone()}}
 }
 }
@@ -164,6 +175,38 @@ Plot hyperbola.
 \subsection{Returns}{
 Nothing, called for plotting.
 }
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Hyperbola-includes"></a>}}
+\if{latex}{\out{\hypertarget{method-Hyperbola-includes}{}}}
+\subsection{Method \code{includes()}}{
+Whether a point belongs to the hyperbola.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hyperbola$includes(P)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{P}}{a point}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+A Boolean value.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+hyperbola$includes(M)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Hyperbola-clone"></a>}}

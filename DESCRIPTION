@@ -6,10 +6,10 @@ Author: Stéphane Laurent
 Maintainer: Stéphane Laurent <laurent_step@outlook.fr>
 Description: An extensive set of plane geometry routines. Provides R6
     classes representing triangles, circles, circular arcs, ellipses,
-    elliptical arcs and lines, and their plot methods. Also provides R6
-    classes representing transformations: rotations, reflections,
-    homotheties, scalings, general affine transformations, inversions,
-    Möbius transformations.
+    elliptical arcs, lines, hyperbolae, and their plot methods. Also 
+    provides R6 classes representing transformations: rotations, 
+    reflections, homotheties, scalings, general affine transformations, 
+    inversions, Möbius transformations.
 License: GPL-3
 URL: https://github.com/stla/PlaneGeometry
 BugReports: https://github.com/stla/PlaneGeometry/issues

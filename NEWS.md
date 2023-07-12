@@ -2,6 +2,8 @@
 
 - New functions `LineFromInterceptAndSlope` and `LineFromEquation`.
 
+- New R6 class `Hyperbola`.
+
 
 # PlaneGeometry 1.5.1 (2023-06-23)
 

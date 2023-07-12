@@ -243,6 +243,27 @@ Hyperbola <- R6Class(
       draw(self$L1, col = "red")
       draw(self$L2, col = "red")
       invisible()
+    },
+
+    #' @description Whether a point belongs to the hyperbola.
+    #' @param P a point
+    #' @return A Boolean value.
+    #' @examples
+    #' L1 <- LineFromInterceptAndSlope(0, 2)
+    #' L2 <- LineFromInterceptAndSlope(-2, -0.5)
+    #' M <- c(4, 3)
+    #' hyperbola <- Hyperbola$new(L1, L2, M)
+    #' hyperbola$includes(M)
+    "includes" = function(P) {
+      stopifnot(.isPoint(P))
+      O <- private[[".O"]]
+      A <- private[[".A"]]
+      B <- private[[".B"]]
+      isTRUE(all.equal(
+        det(cbind(P-O, B))^2,
+        det(cbind(A, P-O))^2 + det(cbind(A, B))^2,
+        check.attributes = FALSE
+      ))
     }
   )
 )
