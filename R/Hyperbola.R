@@ -229,7 +229,7 @@ Hyperbola <- R6Class(
       xmax <- par("usr")[2L]
       ymin <- par("usr")[3L]
       ymax <- par("usr")[4L]
-      t <- .good_t(xmin, xmax, ymin, ymax)
+      t <- .good_t(self, xmin, xmax, ymin, ymax)
       t_ <- seq(-t, t, length.out = 100L)
       H1 <- t(vapply(t_, function(t) {
         O + cosh(t) * A + sinh(t) * B

@@ -254,12 +254,12 @@
   L2 <- H$L2
   theta1 <- L1$directionAndOffset()$direction
   theta2 <- L2$directionAndOffset()$direction
-  sgn <- if(theta2 > pi/2 && theta2 < 3*pi/2) -1 else 1
+  sgn <- if(theta2 > pi) -1 else 1
   t1 <- .htrigonometricEquation(sgn*A[1L], B[1L], xmin - O[1L]) # prendre -g1 car branche ouest
   if(is.nan(t1)) t1 <- 0                                       # -> voir ça selon la direction de l1 ou l2
   t2 <- .htrigonometricEquation(A[1L], B[1L], xmax - O[1L])
   if(is.nan(t2)) t2 <- 0
-  sgn <- if(theta1 > pi/2 && theta1 < 3*pi/2) 1 else -1
+  sgn <- if(theta1 > pi) 1 else -1
   t3 <- .htrigonometricEquation(sgn*A[2L], B[2L], ymin - O[2L])
   if(is.nan(t3)) t3 <- 0
   t4 <- .htrigonometricEquation(A[2L], B[2L], ymax - O[2L])
