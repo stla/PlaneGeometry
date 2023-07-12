@@ -237,10 +237,10 @@ Hyperbola <- R6Class(
         b <- private[[".b"]]
         foci <- self$foci()
         u <- B / sqrt(c(crossprod(B)))
-        P1 <- F1 + b * u
-        Q1 <- F1 - b * u
-        P2 <- F2 - b * u
-        Q2 <- F2 + b * u
+        P1 <- foci$F1 + b * u
+        Q1 <- foci$F1 - b * u
+        P2 <- foci$F2 - b * u
+        Q2 <- foci$F2 + b * u
         pts <- rbind(P1, Q1, P2, Q2)
         plot(
           pts, type = "n", asp = 1, xlab = "x", ylab = "y"
