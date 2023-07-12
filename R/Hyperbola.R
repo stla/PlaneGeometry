@@ -100,11 +100,51 @@ Hyperbola <- R6Class(
     #' @return The center of the hyperbola, i.e. the point where
     #'   the two asymptotes meet each other.
     "center" = function() {
-      intersectionLineLine(self$L1, self$L2)
+      intersectionLineLine(private[[".L1"]], private[[".L2"]])
     },
 
-    "Oab" = function() {
-
+    #' @description Parametric equation \eqn{O \pm cosh(t) A + sinh(t) B}
+    #'   representing the hyperbola.
+    #' @return The point \code{O} and the two vectors \code{A} and \code{B}
+    #'   in a list.
+    #' @examples
+    #' L1 <- LineFromInterceptAndSlope(0, 2)
+    #' L2 <- LineFromInterceptAndSlope(-2, -0.5)
+    #' M <- c(4, 3)
+    #' hyperbola <- Hyperbola$new(L1, L2, M)
+    #' hyperbola$OAB()
+    "OAB" = function() {
+      O <- self$center()
+      # equation O + t f1 + 1/t f2
+      theta1 <- self$L1$directionAndOffset()$direction
+      theta2 <- self$L2$directionAndOffset()$direction
+      f10 <- c(sin(theta1), -cos(theta1))
+      f20 <- c(sin(theta2), -cos(theta2))
+      invMAT <- rbind(
+        c(-cos(theta2), -sin(theta2)),
+        c(cos(theta1), sin(theta1))
+      ) / sin(theta2 - theta1)
+      lambdas <- invMAT %*% (self$M - O)
+      lambda1 <- lambdas[1L]
+      lambda2 <- lambdas[2L]
+      f1 <- lambda1 * f10
+      f2 <- lambda2 * f20
+      # first equation O +/- g1 cosh(t) + g2 sinh(t)
+      g1 <- self$M - O
+      g2 <- f1 - f2
+      # vertex V1 = O + A
+      t0 <- log(c(crossprod(g1-g2)) / c(crossprod(g1+g2))) / 4
+      A <- cosh(t0) * g1 + sinh(t0) * g2
+      # |f1|=|f2|
+      lambdaEq <- c(crossprod(invMAT[1L, ], A))
+      f1eq <- lambdaEq * f10
+      f2eq <- lambdaEq * f20
+      # tangent at v1
+      tgV1 <- lambdaEq*(f10 - f20)
+      # parametric representation  O +/- cosh(t) A + sinh(t) B
+      B <- tgV1
+      #
+      list("O" = O, "A" = A, "B" = B)
     }
   )
 )
