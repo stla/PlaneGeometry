@@ -16,5 +16,5 @@ A \code{Line} object.
 }
 \description{
 Create a \code{Line} object representing the infinite line
-  with given intercept and given slope
+  with given intercept and given slope.
 }

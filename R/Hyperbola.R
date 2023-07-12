@@ -15,7 +15,11 @@ Hyperbola <- R6Class(
     .M = c(NA_real_, NA_real_),
     .O = c(NA_real_, NA_real_),
     .A = c(NA_real_, NA_real_),
-    .B = c(NA_real_, NA_real_)
+    .B = c(NA_real_, NA_real_),
+    .a = NA_real_,
+    .b = NA_real_,
+    .c = NA_real_,
+    .e = NA_real_
   ),
 
   active = list(
@@ -129,6 +133,20 @@ Hyperbola <- R6Class(
       private[[".O"]] <- O
       private[[".A"]] <- A
       private[[".B"]] <- B
+      #
+      # a,b,c,e
+      a2 <- c(crossprod(A))
+      a  <- sqrt(a2)
+      V1 <- O + A
+      L <- Line$new(V1, V1 + B)
+      I <- intersectionLineLine(L1, L)
+      b2 <- c(crossprod(V1 - I))
+      c <- sqrt(a2 + b2)
+      private[[".a"]] <- a
+      private[[".b"]] <- sqrt(b2)
+      private[[".c"]] <- c
+      private[[".e"]] <- c / a
+
     },
 
     #' @description Center of the hyperbola.
@@ -173,15 +191,21 @@ Hyperbola <- R6Class(
     #' @return The four numbers \code{a}, \code{b}, \code{c} and \code{e}
     #'   in a list.
     "abce" = function() {
+      list(
+        "a" = private[[".a"]],
+        "b" = private[[".b"]],
+        "c" = private[[".c"]],
+        "e" = private[[".e"]]
+      )
+    },
+
+    #' @description Foci of the hyperbola.
+    #' @return The two foci \code{F1} and \code{F2} in a list.
+    "foci" = function() {
+      O <- private[[".O"]]
+      e <- private[[".e"]]
       A <- private[[".A"]]
-      a2 <- c(crossprod(A))
-      a  <- sqrt(a2)
-      V1 <- private[[".O"]] + A
-      L <- Line$new(V1, V1 + private[[".B"]])
-      I <- intersectionLineLine(self$L1, L)
-      b2 <- c(crossprod(V1 - I))
-      c <- sqrt(a2 + b2)
-      list("a" = a, "b" = sqrt(b2), "c" = c, "e" = c/a)
+      list("F1" = O + e * A, "F2" = O - e * A)
     }
   )
 )
