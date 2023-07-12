@@ -229,3 +229,42 @@
 `%**%` <- function(M, k){
   Reduce(`%*%`, replicate(k, M, simplify = FALSE))
 }
+
+.htrigonometricEquation <- function(a, b, D) {
+  # solution of a*cosh(x) + b*sinh(x) = D
+  a2 <- a * a
+  b2 <- b * b
+  if(a2 > b2) {
+    acosh(D / (a * sqrt(1 - b2/a2))) - atanh(b/a)
+  } else if(a2 < b2) {
+    asinh(D / (b * sqrt(1 - a2/b2))) - atanh(a/b)
+  } else if(a == b) {
+    log(D/A)
+  } else {
+    log(-D/A)
+  }
+}
+
+.good_t <- function(H, xmin, xmax, ymin, ymax) {
+  OAB <- H$OAB()
+  O <- OAB[["O"]]
+  A <- OAB[["A"]]
+  B <- OAB[["B"]]
+  L1 <- H$L1
+  L2 <- H$L2
+  theta1 <- L1$directionAndOffset()$direction
+  theta2 <- L2$directionAndOffset()$direction
+  sgn <- if(theta2 > pi/2 && theta2 < 3*pi/2) -1 else 1
+  t1 <- .htrigonometricEquation(sgn*A[1L], B[1L], xmin - O[1L]) # prendre -g1 car branche ouest
+  if(is.nan(t1)) t1 <- 0                                       # -> voir ça selon la direction de l1 ou l2
+  t2 <- .htrigonometricEquation(A[1L], B[1L], xmax - O[1L])
+  if(is.nan(t2)) t2 <- 0
+  sgn <- if(theta1 > pi/2 && theta1 < 3*pi/2) 1 else -1
+  t3 <- .htrigonometricEquation(sgn*A[2L], B[2L], ymin - O[2L])
+  if(is.nan(t3)) t3 <- 0
+  t4 <- .htrigonometricEquation(A[2L], B[2L], ymax - O[2L])
+  if(is.nan(t4)) t4 <- 0
+  print(c(t1, t2, t3, t4))
+  #min(max(t1, t2), max(t3, t4)) # take absolute values?
+  min(max(abs(t1), abs(t2)), max(abs(t3), abs(t4)))
+}
