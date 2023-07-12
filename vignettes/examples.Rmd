@@ -1543,7 +1543,7 @@ so-called "triangle tangent-asymptotes" theorem. Observe the figure below.
 The point `P` has been taken arbitrarily on the hyperbola, and the blue line 
 is the tangent at `P`.
 
-```{r hyperbola, fig.width=6, fig.height=5}
+```{r hyperbola, fig.width=7, fig.height=5}
 # take a hyperbola
 L1 <- LineFromInterceptAndSlope(0, 2)      # asymptote 1
 L2 <- LineFromInterceptAndSlope(-2, -0.15) # asymptote 2
