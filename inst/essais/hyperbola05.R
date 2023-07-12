@@ -130,3 +130,41 @@ points(t(v2), pch = 19)
 # t pour xmin et t pour xmax -> prendre le max de ces deux t
 # idem pour ymin et ymax
 # puis prendre le min des deux t précédents
+.good_t <- function(xmin, xmax, ymin, ymax) {
+  t1 <- .htrigonometricEquation(-g1[1L], g2[1L], xmin - O[1L]) # prendre -g1 car branche ouest
+  if(is.nan(t1)) t1 <- 0
+  t2 <- .htrigonometricEquation(g1[1L], g2[1L], xmax - O[1L])
+  if(is.nan(t2)) t2 <- 0
+  t3 <- .htrigonometricEquation(g1[2L], g2[2L], ymin - O[2L])
+  if(is.nan(t3)) t3 <- 0
+  t4 <- .htrigonometricEquation(g1[2L], g2[2L], ymax - O[2L])
+  if(is.nan(t4)) t4 <- 0
+  print(c(t1, t2, t3, t4))
+  #min(max(t1, t2), max(t3, t4)) # take absolute values?
+  min(max(abs(t1), abs(t2)), max(abs(t3), abs(t4)))
+}
+
+Pmin <- c(-10, -10); Pmax <- c(6, 6)
+plot(rbind(Pmin, Pmax), type = "n", asp = 1, xlab ="x", ylab = "y"
+     #xaxs = "i", yaxs = "i"
+)
+xmin <- par("usr")[1L]
+xmax <- par("usr")[2L]
+ymin <- par("usr")[3L]
+ymax <- par("usr")[4L]
+t <- .good_t(xmin, xmax, ymin, ymax)
+t_ <- seq(-t, t, length.out = 100L)
+H1 <- t(vapply(t_, function(t) {
+  O + cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H1)
+H2 <- t(vapply(t_, function(t) {
+  O - cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H2)
+points(rbind(A), pch = 19, col="blue")
+draw(l1, col = "red")
+draw(l2, col = "red")
+points(t(v1), pch = 19)
+points(t(v2), pch = 19)
+
