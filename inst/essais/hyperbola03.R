@@ -128,16 +128,11 @@ majorAxis <- Line$new(F1, F2)
 draw(majorAxis, col = "yellow")
 
 
-# a good rectangle
-x1 <- F1[1]
-#t1 <- acosh(x1) nimp
-x2 <- F2[1]
-y1 <- F1[2L]
-y2 <- F2[2L]
-#t1 <- asinh(y1 - O[2]) nimp
+# a good rectangle ####
 
 # prend p, le semi-machin rectum, ça donne un point sur l'hyperbole,
 # et pour un tel point on peut trouver t... ça ne suffit pas!!
+# => il faut résoudre l'équation avec la conjecture
 L <- majorAxis$perpendicular(F1)
 # ajouter méthode Line vecteur directeur unitaire ?
 alpha <- L$directionAndOffset()$direction
@@ -175,11 +170,15 @@ draw(majorAxis, col = "yellow")
 # K(a,b) = sqrt(a^2-b^2)
 a <- -7; b <- 2; x <- 1.5
 ( cosh(x - atanh(b/a)) / ( a*cosh(x) - b*sinh(x) ) )^2 * (a+b) * (a-b)
+( cosh(x + atanh(b/a)) / ( a*cosh(x) + b*sinh(x) ) )^2 * (a+b) * (a-b)
 
-a <- g1[1]; b <- -g2[1]
+a <- g1[1]; b <- -g2[1] # take ymax if -1 < b/a < 1 is not fulfilled
 
 O[1] + a*cosh(t) + b*sinh(t) == O[1] + sqrt(a^2 - b^2) * cosh(t - atanh(b/a))
-# disons = 10 (valeur de x)
-# cosh(...) = (10 - O[1]) / K(a, b)
+# disons = 10 (valeur de xmax)
+# cosh(...) = (10 - O[1]) / K(a, b) # this assumes O[1] < xmax
 # ...       = acosh(")
-( t <- atanh(b/a) + acosh((10 - O[1]) / sqrt(a^2 - b^2) ))
+( t <- atanh(b/a) + acosh((10 - O[1]) / sqrt(a^2 - b^2)) )
+
+b <- g2[1] # => no need to negate g2[1]
+( t <- -atanh(b/a) + acosh((10 - O[1]) / sqrt(a^2 - b^2)) )
