@@ -218,10 +218,17 @@ Hyperbola <- R6Class(
     #' M <- c(4, 3)
     #' hyperbola <- Hyperbola$new(L1, L2, M)
     #' plot(hyperbola, lwd = 2)
+    #' points(t(M), pch = 19, col = "blue")
     #' O <- hyperbola$center()
     #' points(t(O), pch = 19)
     #' draw(L1, col = "red")
     #' draw(L2, col = "red")
+    #' vertices <- hyperbola$vertices()
+    #' points(rbind(vertices$V1, vertices$V2), pch = 19)
+    #' majorAxis <- Line$new(V1, V2)
+    #' draw(majorAxis, lty = "dashed")
+    #' foci <- hyperbola$foci()
+    #' points(rbind(foci$F1, foci$F2), pch = 19, col = "green")
     "plot" = function(add = FALSE, ...) {
       O <- private[[".O"]]
       A <- private[[".A"]]
