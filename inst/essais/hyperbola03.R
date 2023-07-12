@@ -172,6 +172,14 @@ draw(majorAxis, col = "yellow")
 
 # CONJECTURE
 # a*cosh(x) - b*sinh(x) = K(a,b) * cosh(x - atanh(b/a))
-a <- 7; b <- 2; x <- 1.5
+# K(a,b) = sqrt(a^2-b^2)
+a <- -7; b <- 2; x <- 1.5
 ( cosh(x - atanh(b/a)) / ( a*cosh(x) - b*sinh(x) ) )^2 * (a+b) * (a-b)
 
+a <- g1[1]; b <- -g2[1]
+
+O[1] + a*cosh(t) + b*sinh(t) == O[1] + sqrt(a^2 - b^2) * cosh(t - atanh(b/a))
+# disons = 10 (valeur de x)
+# cosh(...) = (10 - O[1]) / K(a, b)
+# ...       = acosh(")
+( t <- atanh(b/a) + acosh((10 - O[1]) / sqrt(a^2 - b^2) ))
