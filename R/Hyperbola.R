@@ -12,7 +12,10 @@ Hyperbola <- R6Class(
   private = list(
     .L1 = NULL,
     .L2 = NULL,
-    .M = c(NA_real_, NA_real_)
+    .M = c(NA_real_, NA_real_),
+    .O = c(NA_real_, NA_real_),
+    .A = c(NA_real_, NA_real_),
+    .B = c(NA_real_, NA_real_)
   ),
 
   active = list(
@@ -94,6 +97,38 @@ Hyperbola <- R6Class(
       private[[".L1"]] <- L1
       private[[".L2"]] <- L2
       private[[".M"]] <- M
+      # OAB in private
+      O <- self$center()
+      # equation O + t f1 + 1/t f2
+      theta1 <- L1$directionAndOffset()$direction
+      theta2 <- L2$directionAndOffset()$direction
+      f10 <- c(sin(theta1), -cos(theta1))
+      f20 <- c(sin(theta2), -cos(theta2))
+      invMAT <- rbind(
+        c(-cos(theta2), -sin(theta2)),
+        c(cos(theta1), sin(theta1))
+      ) / sin(theta2 - theta1)
+      lambdas <- invMAT %*% (M - O)
+      f1 <- lambdas[1L] * f10
+      f2 <- lambdas[2L] * f20
+      # first equation O +/- g1 cosh(t) + g2 sinh(t)
+      g1 <- M - O
+      g2 <- f1 - f2
+      # vertex V1 = O + A
+      t0 <- log(c(crossprod(g1-g2)) / c(crossprod(g1+g2))) / 4
+      A <- cosh(t0) * g1 + sinh(t0) * g2
+      # |f1|=|f2|
+      lambdaEq <- c(crossprod(invMAT[1L, ], A))
+      f1eq <- lambdaEq * f10
+      f2eq <- lambdaEq * f20
+      # tangent at v1
+      tgV1 <- lambdaEq*(f10 - f20)
+      # parametric representation  O +/- cosh(t) A + sinh(t) B
+      B <- tgV1
+      #
+      private[[".O"]] <- O
+      private[[".A"]] <- A
+      private[[".B"]] <- B
     },
 
     #' @description Center of the hyperbola.
@@ -114,37 +149,39 @@ Hyperbola <- R6Class(
     #' hyperbola <- Hyperbola$new(L1, L2, M)
     #' hyperbola$OAB()
     "OAB" = function() {
-      O <- self$center()
-      # equation O + t f1 + 1/t f2
-      theta1 <- self$L1$directionAndOffset()$direction
-      theta2 <- self$L2$directionAndOffset()$direction
-      f10 <- c(sin(theta1), -cos(theta1))
-      f20 <- c(sin(theta2), -cos(theta2))
-      invMAT <- rbind(
-        c(-cos(theta2), -sin(theta2)),
-        c(cos(theta1), sin(theta1))
-      ) / sin(theta2 - theta1)
-      lambdas <- invMAT %*% (self$M - O)
-      lambda1 <- lambdas[1L]
-      lambda2 <- lambdas[2L]
-      f1 <- lambda1 * f10
-      f2 <- lambda2 * f20
-      # first equation O +/- g1 cosh(t) + g2 sinh(t)
-      g1 <- self$M - O
-      g2 <- f1 - f2
-      # vertex V1 = O + A
-      t0 <- log(c(crossprod(g1-g2)) / c(crossprod(g1+g2))) / 4
-      A <- cosh(t0) * g1 + sinh(t0) * g2
-      # |f1|=|f2|
-      lambdaEq <- c(crossprod(invMAT[1L, ], A))
-      f1eq <- lambdaEq * f10
-      f2eq <- lambdaEq * f20
-      # tangent at v1
-      tgV1 <- lambdaEq*(f10 - f20)
-      # parametric representation  O +/- cosh(t) A + sinh(t) B
-      B <- tgV1
-      #
-      list("O" = O, "A" = A, "B" = B)
+      list(
+        "O" = private[[".O"]],
+        "A" = private[[".A"]],
+        "B" = private[[".B"]]
+      )
+    },
+
+    #' @description Vertices of the hyperbola.
+    #' @return The two vertices \code{V1} and \code{V2} in a list.
+    "vertices" = function() {
+      O <- private[[".O"]]
+      A <- private[[".A"]]
+      list("V1" = O + A, "V2" = O - A)
+    },
+
+    #' @description The numbers \code{a} (semi-major axis, i.e. distance
+    #'   from center to vertex),
+    #'   \code{b} (semi-minor axis),
+    #'   \code{c} (linear eccentricity)
+    #'   and \code{e} (eccentricity)
+    #'   associated to the hyperbola.
+    #' @return The four numbers \code{a}, \code{b}, \code{c} and \code{e}
+    #'   in a list.
+    "abce" = function() {
+      A <- private[[".A"]]
+      a2 <- c(crossprod(A))
+      a  <- sqrt(a2)
+      V1 <- private[[".O"]] + A
+      L <- Line$new(V1, V1 + private[[".B"]])
+      I <- intersectionLineLine(self$L1, L)
+      b2 <- c(crossprod(V1 - I))
+      c <- sqrt(a2 + b2)
+      list("a" = a, "b" = sqrt(b2), "c" = c, "e" = c/a)
     }
   )
 )
