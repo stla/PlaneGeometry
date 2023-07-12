@@ -209,22 +209,36 @@ Hyperbola <- R6Class(
     },
 
     #' @description Plot hyperbola.
+    #' @param add Boolean, whether to add this plot to the current plot
+    #' @param ... named arguments passed to \code{\link[graphics]{lines}}
     #' @return Nothing, called for plotting.
-    "plot" = function() {
+    #' @examples
+    #' L1 <- LineFromInterceptAndSlope(0, 2)
+    #' L2 <- LineFromInterceptAndSlope(-2, -0.5)
+    #' M <- c(4, 3)
+    #' hyperbola <- Hyperbola$new(L1, L2, M)
+    #' plot(hyperbola, lwd = 2)
+    #' O <- hyperbola$center()
+    #' points(t(O), pch = 19)
+    #' draw(L1, col = "red")
+    #' draw(L2, col = "red")
+    "plot" = function(add = FALSE, ...) {
       O <- private[[".O"]]
       A <- private[[".A"]]
       B <- private[[".B"]]
-      b <- private[[".b"]]
-      foci <- self$foci()
-      u <- B / sqrt(c(crossprod(B)))
-      P1 <- F1 + b * u
-      Q1 <- F1 - b * u
-      P2 <- F2 - b * u
-      Q2 <- F2 + b * u
-      pts <- rbind(P1, Q1, P2, Q2)
-      plot(
-        pts, type = "n", asp = 1, xlab = "x", ylab = "y"
-      )
+      if(!add) {
+        b <- private[[".b"]]
+        foci <- self$foci()
+        u <- B / sqrt(c(crossprod(B)))
+        P1 <- F1 + b * u
+        Q1 <- F1 - b * u
+        P2 <- F2 - b * u
+        Q2 <- F2 + b * u
+        pts <- rbind(P1, Q1, P2, Q2)
+        plot(
+          pts, type = "n", asp = 1, xlab = "x", ylab = "y"
+        )
+      }
       xmin <- par("usr")[1L]
       xmax <- par("usr")[2L]
       ymin <- par("usr")[3L]

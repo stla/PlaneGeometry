@@ -20,6 +20,20 @@ hyperbola <- Hyperbola$new(L1, L2, M)
 hyperbola$OAB()
 
 ## ------------------------------------------------
+## Method `Hyperbola$plot`
+## ------------------------------------------------
+
+L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+plot(hyperbola, lwd = 2)
+O <- hyperbola$center()
+points(t(O), pch = 19)
+draw(L1, col = "red")
+draw(L2, col = "red")
+
+## ------------------------------------------------
 ## Method `Hyperbola$includes`
 ## ------------------------------------------------
 
@@ -169,12 +183,37 @@ The two foci \code{F1} and \code{F2} in a list.
 \subsection{Method \code{plot()}}{
 Plot hyperbola.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hyperbola$plot()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Hyperbola$plot(add = FALSE, ...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{add}}{Boolean, whether to add this plot to the current plot}
+
+\item{\code{...}}{named arguments passed to \code{\link[graphics]{lines}}}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Returns}{
 Nothing, called for plotting.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+plot(hyperbola, lwd = 2)
+O <- hyperbola$center()
+points(t(O), pch = 19)
+draw(L1, col = "red")
+draw(L2, col = "red")
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Hyperbola-includes"></a>}}
