@@ -9,6 +9,7 @@ a2 <- -1; b2 <- -0.5
 l2 <- LineFromInterceptAndSlope(a2, b2)
 
 l1$isParallel(l2)
+l1$isEqual(l2)
 
 # point on hyperbola (input)
 A <- c(4, 3)
@@ -132,7 +133,7 @@ points(t(v2), pch = 19)
 # puis prendre le min des deux t précédents
 .good_t <- function(xmin, xmax, ymin, ymax) {
   t1 <- .htrigonometricEquation(-g1[1L], g2[1L], xmin - O[1L]) # prendre -g1 car branche ouest
-  if(is.nan(t1)) t1 <- 0
+  if(is.nan(t1)) t1 <- 0                                       # -> voir ça selon la direction de l1 ou l2
   t2 <- .htrigonometricEquation(g1[1L], g2[1L], xmax - O[1L])
   if(is.nan(t2)) t2 <- 0
   t3 <- .htrigonometricEquation(g1[2L], g2[2L], ymin - O[2L])
