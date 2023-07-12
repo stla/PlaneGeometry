@@ -137,7 +137,7 @@ y2 <- F2[2L]
 #t1 <- asinh(y1 - O[2]) nimp
 
 # prend p, le semi-machin rectum, ça donne un point sur l'hyperbole,
-# et pour un tel point on peut trouver t
+# et pour un tel point on peut trouver t... ça ne suffit pas!!
 L <- majorAxis$perpendicular(F1)
 # ajouter méthode Line vecteur directeur unitaire ?
 alpha <- L$directionAndOffset()$direction
@@ -168,3 +168,10 @@ points(t(v2), pch = 19)
 points(t(F1), pch = 19, col = "green")
 points(t(F2), pch = 19, col = "green")
 draw(majorAxis, col = "yellow")
+
+
+# CONJECTURE
+# a*cosh(x) - b*sinh(x) = K(a,b) * cosh(x - atanh(b/a))
+a <- 7; b <- 2; x <- 1.5
+( cosh(x - atanh(b/a)) / ( a*cosh(x) - b*sinh(x) ) )^2 * (a+b) * (a-b)
+
