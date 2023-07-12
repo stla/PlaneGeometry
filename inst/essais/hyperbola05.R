@@ -74,7 +74,7 @@ g2 <- tgV
   if(a2 > b2) {
     acosh(D / (a * sqrt(1 - b2/a2))) - atanh(b/a)
   } else if(a2 < b2) {
-    asinh(D / (b * sqrt(a2/b2 - 1))) - atanh(a/b)
+    asinh(D / (b * sqrt(1 - a2/b2))) - atanh(a/b)
   } else if(a == b) {
     log(D/A)
   } else {
@@ -83,8 +83,9 @@ g2 <- tgV
 }
 
 Pmin <- c(-2, -6); Pmax <- c(10, 6)
-plot(rbind(Pmin, Pmax), type = "n", asp = 1, xlab ="x", ylab = "y",
-     xaxs = "i", yaxs = "i")
+plot(rbind(Pmin, Pmax), type = "n", asp = 1, xlab ="x", ylab = "y"
+     #xaxs = "i", yaxs = "i"
+     )
 xmax <- par("usr")[2L]
 t <- .htrigonometricEquation(g1[1L], g2[1L], xmax - O[1L])
 t_ <- seq(-t, t, length.out = 100L)
@@ -102,6 +103,26 @@ draw(l2, col = "red")
 points(t(v1), pch = 19)
 points(t(v2), pch = 19)
 
-
+# avec ymin
+Pmin <- c(-2, -6); Pmax <- c(10, 6)
+plot(rbind(Pmin, Pmax), type = "n", asp = 1, xlab ="x", ylab = "y"
+     #xaxs = "i", yaxs = "i"
+)
+ymin <- par("usr")[3L]
+t <- .htrigonometricEquation(g1[2L], g2[2L], ymin - O[2L])
+t_ <- seq(-t, t, length.out = 100L)
+H1 <- t(vapply(t_, function(t) {
+  O + cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H1)
+H2 <- t(vapply(t_, function(t) {
+  O - cosh(t) * g1 + sinh(t) * g2
+}, numeric(2L)))
+lines(H2)
+points(rbind(A), pch = 19, col="blue")
+draw(l1, col = "red")
+draw(l2, col = "red")
+points(t(v1), pch = 19)
+points(t(v2), pch = 19)
 
 
