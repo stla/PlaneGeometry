@@ -119,3 +119,52 @@ a <- hyperbola$abce()$a
 b <- hyperbola$abce()$b
 L2$directionAndOffset()$direction - atan(a/b) - pi # theta
 2*pi - L1$directionAndOffset()$direction + 0.4791294 # atan(a/b)
+# clean:
+theta <- AtoG(parA)$parG[5L]
+L1direction <- theta - atan(a/b) + 2*pi
+L2direction <- theta + atan(a/b) + pi
+
+L1offset <- cos(L1direction) * O[1L] + sin(L1direction)  * O[2L]
+L2offset <- cos(L2direction) * O[1L] + sin(L2direction)  * O[2L]
+
+u1 <- c(-sin(L1direction), cos(L1direction))
+V1 <- O + a * u1 # noo !!
+
+alpha <- (L1direction + L2direction) / 2
+offset <- cos(alpha) * O[1] + sin(alpha) * O[2L]
+bissect <- LineFromEquation(cos(alpha), sin(alpha), -offset)
+u1 <- c(-sin(alpha), cos(alpha))
+O + a * u1 # V1
+
+#' @title Hyperbola object from the hyperbola equation.
+#' @description Create the \code{Hyperbola} object representing the hyperbola
+#'   with the given implicit equation.
+#' @param eq named vector or list of the six parameters \code{Axx}, \code{Axy},
+#'   \code{Ayy}, \code{Bx}, \code{By}, \code{C}
+#' @return A \code{Hyperbola} object.
+#' @export
+#' @importFrom fitConic AtoG
+HyperbolaFromEquation <- function(eq) {
+  parA <- c(
+    eq[["Axx"]], 2*eq[["Axy"]], eq[["Ayy"]],
+    2*eq[["Bx"]], 2*eq[["By"]], eq[["C"]]
+  )
+  hvabtheta <- AtoG(parA)$parG
+  h <- hvabtheta[1L]
+  v <- hvabtheta[2L]
+  a <- hvabtheta[3L]
+  b <- hvabtheta[4L]
+  theta <- hvabtheta[5L]
+  beta <- atan(a / b)
+  alpha <- theta + 3 * pi / 2
+  u1 <- c(-sin(alpha), cos(alpha))
+  M <- c(h, v) + a * u1 # V1
+  L1direction <- theta - beta + 2*pi
+  L2direction <- theta + beta + pi
+  L1offset <- cos(L1direction) * h + sin(L1direction) * v
+  L2offset <- cos(L2direction) * h + sin(L2direction) * v
+  L1 <- LineFromEquation(cos(L1direction), sin(L1direction), -L1offset)
+  L2 <- LineFromEquation(cos(L2direction), sin(L2direction), -L2offset)
+  Hyperbola$new(L1, L2, M) -> H
+}
+

@@ -25,7 +25,7 @@ LineFromInterceptAndSlope <- function(a, b) {
 LineFromEquation <- function(a, b, c) {
   stopifnot(a != 0 || b != 0)
   if(b != 0) {
-    LineFromInterceptAndSlope(a = -a/b, b = -c/b)
+    LineFromInterceptAndSlope(a = -c/b, b = -a/b)
   } else {
     x <- c / a
     Line$new(A = c(x, 0), B = c(x, 1))
