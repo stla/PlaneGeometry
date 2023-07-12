@@ -166,6 +166,7 @@ draw(majorAxis, col = "yellow")
 
 
 # CONJECTURE
+# https://math.stackexchange.com/q/1653544/38217
 # a*cosh(x) - b*sinh(x) = K(a,b) * cosh(x - atanh(b/a))
 # K(a,b) = sqrt(a^2-b^2)
 a <- -7; b <- 2; x <- 1.5
@@ -174,7 +175,7 @@ a <- -7; b <- 2; x <- 1.5
 
 a <- g1[1]; b <- -g2[1] # take ymax if -1 < b/a < 1 is not fulfilled
 
-O[1] + a*cosh(t) + b*sinh(t) == O[1] + sqrt(a^2 - b^2) * cosh(t - atanh(b/a))
+# O[1] + a*cosh(t) + b*sinh(t) = O[1] + sqrt(a^2 - b^2) * cosh(t - atanh(b/a))
 # disons = 10 (valeur de xmax)
 # cosh(...) = (10 - O[1]) / K(a, b) # this assumes O[1] < xmax
 # ...       = acosh(")
@@ -182,3 +183,20 @@ O[1] + a*cosh(t) + b*sinh(t) == O[1] + sqrt(a^2 - b^2) * cosh(t - atanh(b/a))
 
 b <- g2[1] # => no need to negate g2[1]
 ( t <- -atanh(b/a) + acosh((10 - O[1]) / sqrt(a^2 - b^2)) )
+
+# finally:
+.htrigonometricEquation <- function(a, b, D) {
+  # solution of a*cosh(x) + b*sinh(x) = D
+  a2 <- a * a
+  b2 <- b * b
+  if(a2 > b2) {
+    acosh(D / (a * sqrt(1 - b2/a2))) - atanh(b/a)
+  } else if(a2 < b2) {
+    asinh(D / (b * sqrt(a2/b2 - 1))) - atanh(a/b)
+  } else if(a == b) {
+    log(D/A)
+  } else {
+    log(-D/A)
+  }
+}
+
