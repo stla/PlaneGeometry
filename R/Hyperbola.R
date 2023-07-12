@@ -260,9 +260,9 @@ Hyperbola <- R6Class(
         O - cosh(t) * A + sinh(t) * B
       }, numeric(2L)))
       lines(H2, lwd = 2)
-      points(t(O), pch = 19, col="black")
-      draw(self$L1, col = "red")
-      draw(self$L2, col = "red")
+      # points(t(O), pch = 19, col="black")
+      # draw(self$L1, col = "red")
+      # draw(self$L2, col = "red")
       invisible()
     },
 
