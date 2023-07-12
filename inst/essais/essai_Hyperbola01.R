@@ -81,3 +81,23 @@ x <- V1[1]; y <- V1[2]
 f <- function(x,y) ((x-O[1])*B[2]-(y-O[2])*B[1])^2 - ((x-O[1])*A[2]-(y-O[2])*A[1])^2 - det(cbind(A,B))^2
 library(spray)
 f(lone(1,2), lone(2,2))
+
+# triangle tangent-asymptotes ####
+L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.15)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+OAB <- hyperbola$OAB()
+O <- OAB$O
+A <- OAB$A
+B <- OAB$B
+
+t <- 2
+P <- O + cosh(t)*A + sinh(t)*B
+tg <- Line$new(P, P + sinh(t)*A + cosh(t)*B)
+
+C <- intersectionLineLine(L1, tg)
+D <- intersectionLineLine(L2, tg)
+
+trgl <- Triangle$new(O, C, D)
+trgl$area()
