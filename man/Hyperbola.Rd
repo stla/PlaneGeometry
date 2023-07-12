@@ -49,6 +49,19 @@ L2 <- LineFromInterceptAndSlope(-2, -0.5)
 M <- c(4, 3)
 hyperbola <- Hyperbola$new(L1, L2, M)
 hyperbola$includes(M)
+
+## ------------------------------------------------
+## Method `Hyperbola$equation`
+## ------------------------------------------------
+
+L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+V1 <- hyperbola$vertices()$V1
+x <- V1[1]; y <- V1[2]
+eq <- hyperbola$equation()
+with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
 }
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
@@ -273,8 +286,23 @@ Implicit quadratic equation of the hyperbola
 }
 
 \subsection{Returns}{
-The coefficients of the equation in a named vector.
+The coefficients of the equation in a named list.
 }
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{L1 <- LineFromInterceptAndSlope(0, 2)
+L2 <- LineFromInterceptAndSlope(-2, -0.5)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+V1 <- hyperbola$vertices()$V1
+x <- V1[1]; y <- V1[2]
+eq <- hyperbola$equation()
+with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
+}
+\if{html}{\out{</div>}}
+
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Hyperbola-clone"></a>}}
