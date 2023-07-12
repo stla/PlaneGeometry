@@ -146,6 +146,13 @@ plot(NULL, asp = 1, xlim = c(0,2.5), ylim = c(-0.1,2.4),
      xlab = NA, ylab = NA)
 draw(t, col = "blue", lwd = 2)
 draw(ell, border = "red", lwd =2)
+
+## ------------------------------------------------
+## Method `Triangle$plot`
+## ------------------------------------------------
+
+trgl <- Triangle$new(c(0, 0), c(1, 0), c(0.5, sqrt(3)/2))
+trgl$plot(col = "yellow", border = "red")
 }
 \seealso{
 \code{\link{TriangleThreeLines}} to define a triangle by three lines.
@@ -227,6 +234,7 @@ draw(ell, border = "red", lwd =2)
 \item \href{#method-Triangle-MandartInellipse}{\code{Triangle$MandartInellipse()}}
 \item \href{#method-Triangle-randomPoints}{\code{Triangle$randomPoints()}}
 \item \href{#method-Triangle-hexylTriangle}{\code{Triangle$hexylTriangle()}}
+\item \href{#method-Triangle-plot}{\code{Triangle$plot()}}
 \item \href{#method-Triangle-clone}{\code{Triangle$clone()}}
 }
 }
@@ -1241,7 +1249,7 @@ Random points on or in the reference triangle.
 \item{\code{n}}{an integer, the desired number of points}
 
 \item{\code{where}}{\code{"in"} to generate inside the triangle,
-\code{"on"} to generate on the triangle}
+\code{"on"} to generate on the sides of the triangle}
 }
 \if{html}{\out{</div>}}
 }
@@ -1256,6 +1264,37 @@ The generated points in a two columns matrix with \code{n} rows.
 Hexyl triangle.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Triangle$hexylTriangle()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Triangle-plot"></a>}}
+\if{latex}{\out{\hypertarget{method-Triangle-plot}{}}}
+\subsection{Method \code{plot()}}{
+Plot a \code{Triangle} object.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Triangle$plot(add = FALSE, ...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{add}}{Boolean, whether to add the plot to the current plot}
+
+\item{\code{...}}{named arguments passed to \code{\link[graphics]{polygon}}}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+Nothing, called for plotting only.
+}
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{trgl <- Triangle$new(c(0, 0), c(1, 0), c(0.5, sqrt(3)/2))
+trgl$plot(col = "yellow", border = "red")
+}
+\if{html}{\out{</div>}}
+
 }
 
 }

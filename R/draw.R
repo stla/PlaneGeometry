@@ -6,11 +6,11 @@
 #' \code{Ellipse}, \code{Arc}, \code{EllipticalArc})
 #' @param npoints integer, the number of points of the path
 #' @param ... arguments passed to \code{\link{lines}} for a \code{Triangle}
-#' object, an \code{Arc} object or an \code{ElipticalArc} object,
-#' to \code{\link{polypath}} for a \code{Circle} object or an
-#' \code{Ellipse} object, general graphical parameters for a \code{Line}
-#' object, passed to \code{\link{lines}}, \code{\link{curve}}, or
-#' \code{\link{abline}}.
+#'   object, an \code{Arc} object or an \code{EllipticalArc} object,
+#'   to \code{\link{polypath}} for a \code{Circle} object or an
+#'   \code{Ellipse} object, general graphical parameters for a \code{Line}
+#'   object, passed to \code{\link{lines}}, \code{\link{curve}}, or
+#'   \code{\link{abline}}.
 #' @examples # open new plot window
 #' plot(0, 0, type="n", asp = 1, xlim = c(0,2.5), ylim = c(0,2.5),
 #'      xlab = NA, ylab = NA)

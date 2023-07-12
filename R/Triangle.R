@@ -31,6 +31,7 @@
 #' @export
 #' @importFrom R6 R6Class
 #' @importFrom uniformly runif_in_triangle runif_on_triangle
+#' @importFrom graphics polygon
 Triangle <- R6Class(
 
   "Triangle",
@@ -1125,7 +1126,7 @@ Triangle <- R6Class(
     #' @description Random points on or in the reference triangle.
     #' @param n an integer, the desired number of points
     #' @param where \code{"in"} to generate inside the triangle,
-    #' \code{"on"} to generate on the triangle
+    #'   \code{"on"} to generate on the sides of the triangle
     #' @return The generated points in a two columns matrix with \code{n} rows.
     randomPoints = function(n, where = "in"){
       where <- match.arg(where, c("in", "on"))
@@ -1161,6 +1162,23 @@ Triangle <- R6Class(
       z <- cosA + cosB + cosC + 1
       HC <- (a*x*A + b*y*B + c*z*C) / (a*x + b*y + c*z)
       Triangle$new(HA, HB, HC)
+    },
+
+    #' @description Plot a \code{Triangle} object.
+    #' @param add Boolean, whether to add the plot to the current plot
+    #' @param ... named arguments passed to \code{\link[graphics]{polygon}}
+    #' @return Nothing, called for plotting only.
+    #' @examples
+    #' trgl <- Triangle$new(c(0, 0), c(1, 0), c(0.5, sqrt(3)/2))
+    #' trgl$plot(col = "yellow", border = "red")
+    plot = function(add = FALSE, ...) {
+      private[[".A"]] -> A; private[[".B"]] -> B; private[[".C"]] -> C
+      plgn <- rbind(A, B, C)
+      if(!add) {
+        plot(plgn, type = "n", asp = 1, xlab = NA, ylab = NA)
+      }
+      polygon(plgn, ...)
+      invisible()
     }
 
   )

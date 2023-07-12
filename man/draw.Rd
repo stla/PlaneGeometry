@@ -29,7 +29,7 @@ draw(x, ...)
 \code{Ellipse}, \code{Arc}, \code{EllipticalArc})}
 
 \item{...}{arguments passed to \code{\link{lines}} for a \code{Triangle}
-object, an \code{Arc} object or an \code{ElipticalArc} object,
+object, an \code{Arc} object or an \code{EllipticalArc} object,
 to \code{\link{polypath}} for a \code{Circle} object or an
 \code{Ellipse} object, general graphical parameters for a \code{Line}
 object, passed to \code{\link{lines}}, \code{\link{curve}}, or
