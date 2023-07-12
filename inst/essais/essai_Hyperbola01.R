@@ -44,9 +44,40 @@ A*x^2 + B*x*y + C*y^2 - D*x + E*y - F
 x <- M[1]; y <- M[2]
 ( f <- -(a*x^2 + b*x*y + c*y^2 + d*x + e*y) )
 
+
 Axx <- B[2L]^2 - A[2L]^2
 Axy <- A[1L]*A[2L] - B[1L]*B[2L]
 Ayy <- B[1L]^2 - A[1L]^2
 Bx <- -(a*O[1L] + b*O[2L]/2)
 By <- -(c*O[2L] + b*O[1L]/2)
 C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
+
+
+#####
+a1 <- 0; b1 <- 2
+L1 <- LineFromInterceptAndSlope(a1, b1)
+a2 <- -1; b2 <- -0.5
+L2 <- LineFromInterceptAndSlope(a2, b2)
+# point on hyperbola (input)
+M <- c(4, 3)
+hyperbola <- Hyperbola$new(L1, L2, M)
+V1 <- hyperbola$vertices()$V1
+OAB <- hyperbola$OAB()
+O <- OAB$O
+A <- OAB$A
+B <- OAB$B
+
+Axx <- B[2L]^2 - A[2L]^2
+Axy <- A[1L]*A[2L] - B[1L]*B[2L]
+Ayy <- B[1L]^2 - A[1L]^2
+Bx <- -(Axx*O[1L] + Axy*O[2L])
+By <- -(Ayy*O[2L] + Axy*O[1L])
+x <- M[1L]; y <- M[2L]
+C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
+list(Axx = Axx, Axy = Axy, Ayy = Ayy, Bx = Bx, By = By, C = C)
+x <- V1[1]; y <- V1[2]
+-(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
+
+f <- function(x,y) ((x-O[1])*B[2]-(y-O[2])*B[1])^2 - ((x-O[1])*A[2]-(y-O[2])*A[1])^2 - det(cbind(A,B))^2
+library(spray)
+f(lone(1,2), lone(2,2))
