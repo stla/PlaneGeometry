@@ -11,3 +11,33 @@ M <- c(4, 3)
 hyperbola <- Hyperbola$new(L1, L2, M)
 
 hyperbola$plot()
+
+# quadric equation ####
+center <- hyperbola$center()
+abce <- hyperbola$abce()
+a2 <- abce$a^2
+b2 <- abce$b^2
+alpha <- atan(sqrt(b2/a2))
+x <- center[1L]; y <- center[2L]
+sine <- sin(alpha); cosine <- cos(alpha)
+sine2 <- sine*sine; cosine2 <- 1-sine2
+A <- (-a2*sine2 - b2*cosine2)
+B <- 0#2*(b2-a2)*sine*cosine
+C <- -a2*cosine2 - b2*sine2
+( Det <- A*C - (B/2)^2 ) # must be negative
+D <- -2*A*x - B*y
+E <- -B*x - 2*C*y
+( F <- A*x*x + B*x*y + C*y*y + a2*b2 )
+c(A = A, B = B, C = C, D = D, E = E, F = F)
+
+x <- M[1]; y <- M[2]
+c(A*x*x, B*x*y, C*y^2, D*x, E*y, F)
+A*x^2 + B*x*y + C*y^2 - D*x + E*y - F
+
+###
+a <- B[2]^2 - A[2]^2
+c <- B[1]^2 - A[1]^2
+b <- -2*B[1]*B[2] + 2*A[1]*A[2]
+d <- -B[2]^2*2*O[1] + A[2]^2*2*O[1] + 2*B[2]*O[2]*B[1] - 2*A[2]*O[2]*A[1]
+e <- -B[1]^2*2*O[2] + A[1]^2*2*O[2] + 2*B[1]*O[1]*B[2] - 2*A[1]*O[1]*A[2]
+f <- -(a*x^2 + b*x*y + c*y^2 + d*x + e*y)
