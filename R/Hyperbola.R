@@ -206,6 +206,43 @@ Hyperbola <- R6Class(
       e <- private[[".e"]]
       A <- private[[".A"]]
       list("F1" = O + e * A, "F2" = O - e * A)
+    },
+
+    #' @description Plot hyperbola.
+    #' @return Nothing, called for plotting.
+    "plot" = function() {
+      O <- private[[".O"]]
+      A <- private[[".A"]]
+      B <- private[[".B"]]
+      b <- private[[".b"]]
+      foci <- self$foci()
+      u <- B / sqrt(c(crossprod(B)))
+      P1 <- F1 + b * u
+      Q1 <- F1 - b * u
+      P2 <- F2 - b * u
+      Q2 <- F2 + b * u
+      pts <- rbind(P1, Q1, P2, Q2)
+      plot(
+        pts, type = "n", asp = 1, xlab = "x", ylab = "y"
+      )
+      xmin <- par("usr")[1L]
+      xmax <- par("usr")[2L]
+      ymin <- par("usr")[3L]
+      ymax <- par("usr")[4L]
+      t <- .good_t(xmin, xmax, ymin, ymax)
+      t_ <- seq(-t, t, length.out = 100L)
+      H1 <- t(vapply(t_, function(t) {
+        O + cosh(t) * A + sinh(t) * B
+      }, numeric(2L)))
+      lines(H1, lwd = 2)
+      H2 <- t(vapply(t_, function(t) {
+        O - cosh(t) * A + sinh(t) * B
+      }, numeric(2L)))
+      lines(H2, lwd = 2)
+      points(t(O), pch = 19, col="black")
+      draw(self$L1, col = "red")
+      draw(self$L2, col = "red")
+      invisible()
     }
   )
 )

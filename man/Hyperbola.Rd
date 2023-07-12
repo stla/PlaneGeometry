@@ -39,6 +39,7 @@ hyperbola$OAB()
 \item \href{#method-Hyperbola-vertices}{\code{Hyperbola$vertices()}}
 \item \href{#method-Hyperbola-abce}{\code{Hyperbola$abce()}}
 \item \href{#method-Hyperbola-foci}{\code{Hyperbola$foci()}}
+\item \href{#method-Hyperbola-plot}{\code{Hyperbola$plot()}}
 \item \href{#method-Hyperbola-clone}{\code{Hyperbola$clone()}}
 }
 }
@@ -149,6 +150,19 @@ Foci of the hyperbola.
 
 \subsection{Returns}{
 The two foci \code{F1} and \code{F2} in a list.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-Hyperbola-plot"></a>}}
+\if{latex}{\out{\hypertarget{method-Hyperbola-plot}{}}}
+\subsection{Method \code{plot()}}{
+Plot hyperbola.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hyperbola$plot()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Nothing, called for plotting.
 }
 }
 \if{html}{\out{<hr>}}
