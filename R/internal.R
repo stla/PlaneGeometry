@@ -239,9 +239,9 @@
   } else if(a2 < b2) {
     asinh(D / (b * sqrt(1 - a2/b2))) - atanh(a/b)
   } else if(a == b) {
-    log(D/A)
+    log(D/a)
   } else {
-    log(-D/A)
+    log(-D/a)
   }
 }
 

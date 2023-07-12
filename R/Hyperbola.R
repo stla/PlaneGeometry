@@ -225,7 +225,7 @@ Hyperbola <- R6Class(
     #' draw(L2, col = "red")
     #' vertices <- hyperbola$vertices()
     #' points(rbind(vertices$V1, vertices$V2), pch = 19)
-    #' majorAxis <- Line$new(V1, V2)
+    #' majorAxis <- Line$new(vertices$V1, vertices$V2)
     #' draw(majorAxis, lty = "dashed")
     #' foci <- hyperbola$foci()
     #' points(rbind(foci$F1, foci$F2), pch = 19, col = "green")
