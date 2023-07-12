@@ -91,7 +91,7 @@ PP2 <- F2 + sqrt(b2) * u
   if(a2 > b2) {
     acosh(D / (a * sqrt(1 - b2/a2))) - atanh(b/a)
   } else if(a2 < b2) {
-    asinh(D / (b * sqrt(a2/b2 - 1))) - atanh(a/b)
+    asinh(D / (b * sqrt(1 - a2/b2))) - atanh(a/b)
   } else if(a == b) {
     log(D/A)
   } else {

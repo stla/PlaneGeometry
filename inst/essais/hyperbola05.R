@@ -104,7 +104,7 @@ points(t(v1), pch = 19)
 points(t(v2), pch = 19)
 
 # avec ymin
-Pmin <- c(-2, -6); Pmax <- c(10, 6)
+Pmin <- c(0, -4); Pmax <- c(6, 6)
 plot(rbind(Pmin, Pmax), type = "n", asp = 1, xlab ="x", ylab = "y"
      #xaxs = "i", yaxs = "i"
 )
@@ -126,3 +126,7 @@ points(t(v1), pch = 19)
 points(t(v2), pch = 19)
 
 
+# -> algo:
+# t pour xmin et t pour xmax -> prendre le max de ces deux t
+# idem pour ymin et ymax
+# puis prendre le min des deux t précédents
