@@ -251,6 +251,10 @@ Hyperbola <- R6Class(
       ymin <- par("usr")[3L]
       ymax <- par("usr")[4L]
       t <- .good_t(self, xmin, xmax, ymin, ymax)
+      if(t == 0) {
+        warning("The hyperbola is not visible.")
+        return(invisible())
+      }
       t_ <- seq(-t, t, length.out = 100L)
       H1 <- t(vapply(t_, function(t) {
         O + cosh(t) * A + sinh(t) * B
