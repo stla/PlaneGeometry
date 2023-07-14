@@ -288,29 +288,30 @@ Hyperbola <- R6Class(
     },
 
     #' @description Implicit quadratic equation of the hyperbola
-    #' \ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2*A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2*B<sub>x</sub>x + 2*B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{Axx*x^2 + 2Axy*x*y + Ayy*y^2 + 2Bx*x + 2By*y + C = 0}}
+    #' \ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2B<sub>x</sub>x + 2B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{A_{xx}*x^2 + 2A_{xy}*x*y + A_{yy}*y^2 + 2B_x*x + 2B_y*y + C = 0}}
     #' @return The coefficients of the equation in a named list.
     #' @examples
     #' L1 <- LineFromInterceptAndSlope(0, 2)
     #' L2 <- LineFromInterceptAndSlope(-2, -0.5)
     #' M <- c(4, 3)
     #' hyperbola <- Hyperbola$new(L1, L2, M)
+    #' eq <- hyperbola$equation()
+    #' x <- M[1]; y <- M[2]
+    #' with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
     #' V1 <- hyperbola$vertices()$V1
     #' x <- V1[1]; y <- V1[2]
-    #' eq <- hyperbola$equation()
     #' with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
     "equation" = function() {
       O <- private[[".O"]]
       A <- private[[".A"]]
       B <- private[[".B"]]
-      M <- private[[".M"]]
       Axx <- B[2L]^2 - A[2L]^2
       Axy <- A[1L]*A[2L] - B[1L]*B[2L]
       Ayy <- B[1L]^2 - A[1L]^2
       Bx <- -(Axx*O[1L] + Axy*O[2L])
       By <- -(Ayy*O[2L] + Axy*O[1L])
-      x <- M[1L]
-      y <- M[2L]
+      x <- O[1L] + A[1L]
+      y <- O[2L] + A[2L]
       C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
       list(Axx = Axx, Axy = Axy, Ayy = Ayy, Bx = Bx, By = By, C = C)
     }

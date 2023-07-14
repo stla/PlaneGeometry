@@ -58,9 +58,11 @@ L1 <- LineFromInterceptAndSlope(0, 2)
 L2 <- LineFromInterceptAndSlope(-2, -0.5)
 M <- c(4, 3)
 hyperbola <- Hyperbola$new(L1, L2, M)
+eq <- hyperbola$equation()
+x <- M[1]; y <- M[2]
+with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
 V1 <- hyperbola$vertices()$V1
 x <- V1[1]; y <- V1[2]
-eq <- hyperbola$equation()
 with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
 }
 \section{Active bindings}{
@@ -280,7 +282,7 @@ hyperbola$includes(M)
 \if{latex}{\out{\hypertarget{method-Hyperbola-equation}{}}}
 \subsection{Method \code{equation()}}{
 Implicit quadratic equation of the hyperbola
-\ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2*A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2*B<sub>x</sub>x + 2*B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{Axx*x^2 + 2Axy*x*y + Ayy*y^2 + 2Bx*x + 2By*y + C = 0}}
+\ifelse{html}{\out{A<sub>xx</sub>x<sup>2</sup> + 2A<sub>xy</sub>xy + A<sub>yy</sub>y<sup>2</sup> + 2B<sub>x</sub>x + 2B<sub>y</sub>y + C = 0}}{\eqn{A_{xx} x^2 + 2A_{xy} xy + A_{yy} y^2 + 2B_x x + 2B_y y + C = 0}{A_{xx}*x^2 + 2A_{xy}*x*y + A_{yy}*y^2 + 2B_x*x + 2B_y*y + C = 0}}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hyperbola$equation()}\if{html}{\out{</div>}}
 }
@@ -294,9 +296,11 @@ The coefficients of the equation in a named list.
 L2 <- LineFromInterceptAndSlope(-2, -0.5)
 M <- c(4, 3)
 hyperbola <- Hyperbola$new(L1, L2, M)
+eq <- hyperbola$equation()
+x <- M[1]; y <- M[2]
+with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
 V1 <- hyperbola$vertices()$V1
 x <- V1[1]; y <- V1[2]
-eq <- hyperbola$equation()
 with(eq, Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y + C)
 }
 \if{html}{\out{</div>}}

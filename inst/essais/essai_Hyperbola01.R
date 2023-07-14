@@ -77,6 +77,8 @@ C <- -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
 list(Axx = Axx, Axy = Axy, Ayy = Ayy, Bx = Bx, By = By, C = C)
 x <- V1[1]; y <- V1[2]
 -(Axx*x^2 + 2*Axy*x*y + Ayy*y^2 + 2*Bx*x + 2*By*y)
+# x = O[1]+A[1]; y = O[2]+A[2]
+
 
 f <- function(x,y) ((x-O[1])*B[2]-(y-O[2])*B[1])^2 - ((x-O[1])*A[2]-(y-O[2])*A[1])^2 - det(cbind(A,B))^2
 library(spray)
