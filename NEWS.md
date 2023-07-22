@@ -1,4 +1,4 @@
-# PlaneGeometry 1.6.0 (2023-0?-??)
+# PlaneGeometry 1.6.0 (2023-07-22)
 
 - New functions `LineFromInterceptAndSlope` and `LineFromEquation`.
 
